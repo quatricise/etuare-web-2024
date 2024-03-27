@@ -1,0 +1,123 @@
+/* FONTS */
+
+@font-face {
+  font-family: "HK";
+  src: url(fonts/HKGrotesk-BoldItalic.otf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "HK";
+  src: url(fonts/HKGrotesk-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+
+
+
+/* TEMPLATE */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-etuare: #3fa9f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "HK";
+  color: var(--color-etuare);
+}
+
+img {
+  display: block;
+}
+
+
+
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100vw;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 5px 15px 0 rgb(230, 230, 230);
+  overflow: hidden;
+}
+
+#logo {
+  height: 30px;
+}
+
+#navlinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.navlink {
+  padding-top: 1px;
+  cursor: pointer;
+}
+
+
+
+/* MAIN */
+
+main {
+  width: 100vw;
+  padding-top: 20px;
+}
+
+#gallery-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#gallery {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-rows: max-content;
+  grid-auto-flow: row;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.gallery-thumbnail {
+  width: 100%;
+  height: min-content;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery-thumbnail img {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+#footer-contents {
+  width: 1200px;
+}
