@@ -15,3 +15,17 @@ function init() {
     }
   })
 }
+
+window.onload = () => {
+  Qa(".gallery-thumbnail").forEach(th => {
+    th.onclick = () => {
+      Q("#project-detail").classList.remove("hidden")
+    }
+  })
+}
+
+document.addEventListener("mousedown", (e) => {
+  if(e.target.closest("#project-detail") == null) {
+    Q("#project-detail").classList.add("hidden")
+  }
+})

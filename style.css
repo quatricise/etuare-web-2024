@@ -12,6 +12,18 @@
   font-weight: 500;
   font-style: italic;
 }
+@font-face {
+  font-family: "HK";
+  src: url(fonts/HKGrotesk-Bold.otf);
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HK";
+  src: url(fonts/HKGrotesk-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
 
 
 
@@ -23,6 +35,9 @@
 
 :root {
   --color-etuare: #3fa9f5;
+  --color-etuare-05: #3fa9f580;
+  --color-text: #161616;
+  --header-height: 60px
 }
 
 body {
@@ -35,26 +50,42 @@ body {
 
 img {
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
+.hidden {
+  display: none!important;
+}
+
+p, div {
+  line-height: 140%;
+}
+
+h2 {
+  font-size: 2rem;
+}
 
 
 /* HEADER */
 
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
   width: 100vw;
-  height: 60px;
+  height: var(--header-height);
   background-color: white;
-  box-shadow: 0 5px 15px 0 rgb(230, 230, 230);
+  /* box-shadow: 0 5px 15px 0 rgb(230, 230, 230); */
+  box-shadow: 0 -2px 18px 2px var(--color-etuare-05);
   overflow: hidden;
 }
 
 #logo {
-  height: 30px;
+  height: calc(var(--header-height) / 2);
 }
 
 #navlinks {
@@ -66,6 +97,7 @@ header {
 
 .navlink {
   padding-top: 1px;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
@@ -86,7 +118,6 @@ main {
 
 #gallery {
   display: grid;
-  /* grid-template-columns: 1fr 1fr 1fr; */
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-template-rows: max-content;
   grid-auto-flow: row;
@@ -100,11 +131,47 @@ main {
   height: min-content;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .gallery-thumbnail img {
   width: 100%;
   overflow: hidden;
+}
+
+#project-detail {
+  --inset-plus: 20px;
+  position: fixed;
+  left: calc(var(--header-height) + var(--inset-plus));
+  top: calc(var(--header-height) + var(--inset-plus));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100vw - (var(--header-height) + var(--inset-plus)) * 2);
+  height: calc(100vh - (var(--header-height) + var(--inset-plus)) * 2);
+  padding-bottom: 40px;
+  background-color: white;
+  box-shadow: 0 0 20px 10px rgb(230, 230, 230);
+  border-radius: 20px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.project-cover-image {
+  width: calc(100% - 40px);
+}
+
+.project-heading {
+  width: calc(100% - 40px);
+  max-width: 720px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.project-description {
+  width: calc(100% - 40px);
+  max-width: 720px;
+  color: var(--color-text);
 }
 
 

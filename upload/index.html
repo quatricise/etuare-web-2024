@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="i get no head">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BigT CMS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <form action="../the_only_action_i_get.php" method="post" id="upload-form">
+      <div id="upload-form--inputs">
+        <input type="text" name="title" id="" placeholder="Název projektu" required>
+
+        <textarea name="description" id="" cols="30" rows="10" placeholder="Popisek projektu (nepovinné)"></textarea>
+
+        <label class="upload-form--label" for="cover-image">Hlavní fotka</label>
+        <input type="file" name="cover-image" id="" placeholder="Hlavní fotka" required accept="image/png, image/jpeg, image/webp, image/tiff">
+
+        <label class="upload-form--label" for="thumbnail">Thumbnail (nepovinné)</label>
+        <input type="file" name="thumbnail" id="" placeholder="" required accept="image/png, image/jpeg, image/webp, image/tiff">
+      </div>
+      <div id="upload-buttons--add-row">
+        <div onclick="createRowImage()" class="button--add-row" id="button--add-image">Přidat obrázky</div>
+        <div onclick="createRowText()" class="button--add-row" id="button--add-text">Přidat text</div>
+      </div>
+      <input type="submit" value="Nahrát projekt" id="button--upload">
+    </form>
+  </main>
+  <script src="../utility.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
