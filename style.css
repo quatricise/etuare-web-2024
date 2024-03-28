@@ -24,6 +24,18 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: "HK";
+  src: url(fonts/HKGrotesk-Regular.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HK";
+  src: url(fonts/HKGrotesk-Light.otf);
+  font-weight: 200;
+  font-style: normal;
+}
 
 
 
@@ -36,7 +48,8 @@
 :root {
   --color-etuare: #3fa9f5;
   --color-etuare-05: #3fa9f580;
-  --color-text: #161616;
+  --color-dark: rgb(17, 17, 17);
+  --color-light: white;
   --header-height: 60px
 }
 
@@ -45,7 +58,8 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: "HK";
-  color: var(--color-etuare);
+  color: var(--color-light);
+  background-color: var(--color-dark);
 }
 
 img {
@@ -84,14 +98,27 @@ header {
   gap: 40px;
   width: 100vw;
   height: var(--header-height);
-  background-color: white;
+  background-color: var(--color-dark);
+
   /* box-shadow: 0 5px 15px 0 rgb(230, 230, 230); */
   box-shadow: 0 -2px 18px 2px var(--color-etuare-05);
   overflow: hidden;
+  z-index: 1;
+}
+
+#header--contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
 }
 
 #logo {
   height: calc(var(--header-height) / 2);
+  filter: brightness(50);
 }
 
 #navlinks {
@@ -99,21 +126,32 @@ header {
   align-items: center;
   gap: 20px;
   height: 100%;
+  color: var(--color-light);
 }
 
 .navlink {
-  padding-top: 1px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 2px 0 6px;
+  margin: 2px 0;
   font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
   cursor: pointer;
+  border-bottom: 2px solid transparent;
 }
 
+.navlink:hover {
+  color: var(--color-etuare);
+  border-bottom: 2px solid var(--color-etuare);
+}
 
 
 /* MAIN */
 
 main {
   width: 100vw;
-  padding-top: 20px;
 }
 
 #gallery-wrapper {
@@ -127,57 +165,96 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-template-rows: max-content;
   grid-auto-flow: row;
-  gap: 20px;
+  gap: 1px;
+  background-color: #ffffff20;
   width: 100%;
   max-width: 1200px;
+  overflow: hidden;
 }
 
 .gallery-thumbnail {
+  position: relative;
   width: 100%;
   height: min-content;
-  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  background: var(--color-dark);
+  border-bottom: 2px solid transparent;
+}
+
+.gallery-thumbnail:hover {
+  background: linear-gradient(0deg, var(--color-dark), #ffffff08);
+  border-bottom: 2px solid var(--color-etuare);
+}
+
+.gallery-thumbnail:hover img {
+  rotate: 5deg;
+  scale: 1.1;
 }
 
 .gallery-thumbnail img {
   width: 100%;
   overflow: hidden;
+  transition: rotate 0.25s ease-in-out, scale 0.25s cubic-bezier(0.0, 0.2, 0.2, 1.0);
+}
+
+.gallery-thumbnail:hover .gallery-thumbnail--label {
+  bottom: 0;
+}
+
+.gallery-thumbnail--label {
+  position: absolute;
+  bottom: -45px;
+  left: 0;
+  width: 100%;
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 1px 4px #00000090;
+  transition: bottom 0.35s cubic-bezier(0.0, 0.2, 0.2, 1.0);
 }
 
 #project-detail {
-  --inset-plus: 20px;
+  --inset-plus: 00px;
   position: fixed;
-  left: calc(var(--header-height) + var(--inset-plus));
+  /* left: calc(var(--header-height) + var(--inset-plus)); */
+  left: 0;
   top: calc(var(--header-height) + var(--inset-plus));
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(100vw - (var(--header-height) + var(--inset-plus)) * 2);
-  height: calc(100vh - (var(--header-height) + var(--inset-plus)) * 2);
+  /* width: calc(100vw - (var(--header-height) + var(--inset-plus)) * 2); */
+  /* height: calc(100vh - (var(--header-height) + var(--inset-plus)) * 2); */
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
   padding-bottom: 40px;
-  background-color: white;
-  box-shadow: 0 0 20px 10px rgb(230, 230, 230);
-  border-radius: 20px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
   overflow-y: auto;
   z-index: 10;
 }
 
 .project-cover-image {
-  width: calc(100% - 40px);
+  width: 100%;
+  /* height: 60vh; */
+  object-fit: cover;
 }
 
 .project-heading {
+  /* position: absolute;
+  top: 72vh; */
+  margin-top: -60px;
   width: calc(100% - 40px);
   max-width: 720px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 4rem;
+  text-shadow: 0 1px 20px #00000090;
 }
 
 .project-description {
   width: calc(100% - 40px);
   max-width: 720px;
-  color: var(--color-text);
 }
 
 
