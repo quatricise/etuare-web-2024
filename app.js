@@ -45,4 +45,5 @@ function pageSet(name) {
   }
 }
 
-pageSet("contact")
+project_init()
+project_open("test")

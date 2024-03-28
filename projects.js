@@ -6,7 +6,9 @@ projects["test"] = {
     {
       type: "images",
       images: [
-        {src: "images/logo.png", alt: ""}
+        {src: "images/logo.png", alt: ""},
+        {src: "images/logo.png", alt: ""},
+        {src: "images/logo.png", alt: ""},
       ]
     },
     {
