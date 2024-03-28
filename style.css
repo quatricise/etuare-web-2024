@@ -99,8 +99,6 @@ header {
   width: 100vw;
   height: var(--header-height);
   background-color: var(--color-dark);
-
-  /* box-shadow: 0 5px 15px 0 rgb(230, 230, 230); */
   box-shadow: 0 -2px 18px 2px var(--color-etuare-05);
   overflow: hidden;
   z-index: 1;
@@ -114,6 +112,7 @@ header {
   width: 100%;
   height: 100%;
   padding: 0 20px;
+  user-select: none;
 }
 
 #logo {
@@ -140,6 +139,7 @@ header {
   font-weight: 600;
   cursor: pointer;
   border-bottom: 2px solid transparent;
+  transition: border 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .navlink:hover {
@@ -152,6 +152,35 @@ header {
 
 main {
   width: 100vw;
+}
+
+#project-tags-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+#project-tags {
+  display: flex;
+  gap: 10px;
+  max-width: 1200px;
+}
+
+.project-tag-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  color: var(--color-light);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.project-tag-button:hover,
+.project-tag-button.active {
+  background-color: var(--color-etuare);
+  /* border: 2px solid var(--color-light); */
 }
 
 #gallery-wrapper {
@@ -255,6 +284,19 @@ main {
 .project-description {
   width: calc(100% - 40px);
   max-width: 720px;
+}
+
+
+/* CONTACT */
+
+#page--contact {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.contact-contents {
+  max-width: 1200px;
+  width: 100%;
 }
 
 

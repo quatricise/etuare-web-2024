@@ -11,33 +11,51 @@
     <div id="header--contents">
       <img id="logo" src="images/logo.png"></img>
       <div id="navlinks">
-        <a class="navlink">projekty</a>
-        <a class="navlink">kontakt</a>
+        <a class="navlink" onclick="pageSet('project')">projekty</a>
+        <a class="navlink" onclick="pageSet('contact')">kontakt</a>
       </div>
     </div>
   </header>
   <main>
-    <div id="gallery-wrapper">
-      <div id="gallery">
-        <div class="gallery-thumbnail"><img src="projects/TestProject2/1.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
-        <div class="gallery-thumbnail"><img src="projects/TestProject2/2.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
-        <div class="gallery-thumbnail"><img src="projects/TestProject2/6.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
-        <div class="gallery-thumbnail"><img src="projects/TestProject2/4.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
-        <div class="gallery-thumbnail"><img src="projects/TestProject2/3.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
-        <div class="gallery-thumbnail"><img src="projects/TestProject2/5.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+    <div id="page--project">
+      <div id="project-tags-container">
+        <div id="project-tags">
+          <div class="project-tag-button">#obalový design</div>
+          <div class="project-tag-button">#branding</div>
+          <div class="project-tag-button">#inspirační videa</div>
+        </div>
+      </div>
+      <div id="gallery-wrapper">
+        <div id="gallery">
+          <div class="gallery-thumbnail"><img src="projects/TestProject2/1.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+          <div class="gallery-thumbnail"><img src="projects/TestProject2/2.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+          <div class="gallery-thumbnail"><img src="projects/TestProject2/6.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+          <div class="gallery-thumbnail"><img src="projects/TestProject2/4.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+          <div class="gallery-thumbnail"><img src="projects/TestProject2/3.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+          <div class="gallery-thumbnail"><img src="projects/TestProject2/5.png" alt=""><div class="gallery-thumbnail--label">Název díla, rok, technika</div></div>
+        </div>
+      </div>
+      <div id="project-detail" class="hidden">
+        <img src="projects/TestProject/19.png" alt="" class="project-cover-image">
+        <h2 class="project-heading">Urixal</h2>
+        <div class="project-description">
+          Chlap chcal, ale chcal špatně a málem sa pochcal.
+          <br><br>
+          Dělostřelec Pankrác, dragoun Bimbác a kuchař Servác jsou váleční vysloužilci, kteří dostanou od skřítků tři kouzelné dary: klobouk, schopný vyčarovat jakýkoliv předmět, bezedný váček se zlaťáky a harfičku, přivolávající libovolný počet sloužících. Zatímco Pankrác by chtěl jít na ryby a Servác odpočívat, Bimbác si přeje navštívit všechna místa, kde bojovali.
+        </div>
       </div>
     </div>
-    <div id="project-detail" class="hidden">
-      <img src="projects/TestProject/19.png" alt="" class="project-cover-image">
-      <h2 class="project-heading">Urixal</h2>
-      <div class="project-description">
-        Chlap chcal, ale chcal špatně a málem sa pochcal.
-        <br><br>
-        Dělostřelec Pankrác, dragoun Bimbác a kuchař Servác jsou váleční vysloužilci, kteří dostanou od skřítků tři kouzelné dary: klobouk, schopný vyčarovat jakýkoliv předmět, bezedný váček se zlaťáky a harfičku, přivolávající libovolný počet sloužících. Zatímco Pankrác by chtěl jít na ryby a Servác odpočívat, Bimbác si přeje navštívit všechna místa, kde bojovali.
+    <div id="page--contact" class="hidden">
+      <!-- duplicate code -->
+      <div class="contact-contents">
+        <h2>Kontakt</h2>
+        <div class="footer-link">
+          <a href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>
+        </div>
+        <div class="footer-link">
+          <a href="tel:+420 736 689 470">736 689 470</a>
+        </div>
       </div>
-    </div>
-    <div id="contact">
-
     </div>
   </main>
   <footer>

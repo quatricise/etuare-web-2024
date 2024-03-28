@@ -29,3 +29,20 @@ document.addEventListener("mousedown", (e) => {
     Q("#project-detail").classList.add("hidden")
   }
 })
+
+function pageSet(name) {
+  switch(name) {
+    case "project": {
+      Q("#page--project").classList.remove("hidden")
+      Q("#page--contact").classList.add("hidden")
+      break
+    }
+    case "contact": {
+      Q("#page--contact").classList.remove("hidden")
+      Q("#page--project").classList.add("hidden")
+      break
+    }
+  }
+}
+
+pageSet("contact")
