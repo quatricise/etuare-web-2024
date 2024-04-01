@@ -1,4 +1,3 @@
-//search query parsing
 function init() {
 
   /* Process the URL search */

@@ -136,7 +136,7 @@ header {
   padding: 2px 0 6px;
   margin: 2px 0;
   font-size: 1.2rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   font-weight: 600;
   cursor: pointer;
   border-bottom: 2px solid transparent;
@@ -309,6 +309,7 @@ main {
   display: flex;
   justify-content: center;
 }
+
 .contact-contents {
   max-width: 1200px;
   width: 100%;
@@ -322,10 +323,16 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   width: 100vw;
   padding: 100px 0;
 }
 
 #footer-contents {
   width: 1200px;
+}
+
+#footer-heading {
+  text-align: center;
+  padding-bottom: 40px;
 }

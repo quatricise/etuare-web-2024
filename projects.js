@@ -53,7 +53,9 @@ projects["agro_smoothies"] = {
     {
       type: "images",
       images: [
-        {src: "1.png", title: "Obal na mražený špenát"},
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
       ]
     },
   ]
