@@ -48,6 +48,7 @@
 :root {
   --color-etuare: #3fa9f5;
   --color-etuare-05: #3fa9f580;
+  --color-etuare-025: #3fa9f540;
   --color-dark: rgb(17, 17, 17);
   --color-light: white;
   --header-height: 60px
@@ -77,7 +78,7 @@ p, div {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 a {
@@ -101,7 +102,7 @@ header {
   background-color: var(--color-dark);
   box-shadow: 0 -2px 18px 2px var(--color-etuare-05);
   overflow: hidden;
-  z-index: 1;
+  z-index: 100;
 }
 
 #header--contents {
@@ -175,9 +176,14 @@ main {
   color: var(--color-light);
   border: 2px solid transparent;
   cursor: pointer;
+  user-select: none;
+  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.project-tag-button:hover,
+.project-tag-button:hover {
+  background-color: var(--color-etuare-025);
+}
+
 .project-tag-button.active {
   background-color: var(--color-etuare);
 }
@@ -244,7 +250,7 @@ main {
 }
 
 #project-detail {
-  --inset-plus: 00px;
+  --inset-plus: 0px;
   position: fixed;
   left: 0;
   top: calc(var(--header-height) + var(--inset-plus));
@@ -265,18 +271,34 @@ main {
   object-fit: cover;
 }
 
+.project-image {
+  max-width: min(100%, 720px);
+}
+
 .project-heading {
   margin-top: -60px;
   width: calc(100% - 40px);
   max-width: 720px;
   text-align: center;
   font-size: 4rem;
+  line-height: 120%;
   text-shadow: 0 1px 20px #00000090;
 }
 
 .project-description {
   width: calc(100% - 40px);
   max-width: 720px;
+  font-size: 1.4rem;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-image-title {
+  font-style: italic;
 }
 
 

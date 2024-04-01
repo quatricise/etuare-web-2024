@@ -17,11 +17,7 @@ function init() {
 }
 
 window.onload = () => {
-  Qa(".gallery-thumbnail").forEach(th => {
-    th.onclick = () => {
-      Q("#project-detail").classList.remove("hidden")
-    }
-  })
+
 }
 
 document.addEventListener("mousedown", (e) => {
@@ -46,4 +42,3 @@ function pageSet(name) {
 }
 
 project_init()
-project_open("test")
