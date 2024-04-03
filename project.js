@@ -19,12 +19,14 @@ function project_init() {
       project_tags.add(tag)
     }
   }
+  
 
   project_tags.forEach(tag => {
     const element = El("div", "project-tag-button", [], "#" + tag)
     element.dataset.tag = tag
     element.onclick = () => project_filter_gallery([tag], element)
-
+    
+    project_tags_active.add(tag)
     Q("#project-tags").append(element)
   })
 
@@ -189,7 +191,7 @@ function project_animate_tags(show = true) {
   if(project_state.tagContainerVisible === show) return
 
   /* prevent the tags from hiding if at least one is active */
-  if(show === false && project_tags_active.size > 0) return
+  if(show === false && project_tags_active.size > 0 && project_tags_active.size < project_tags.size) return
   
   const tags = Q("#project-tags-container")
 
