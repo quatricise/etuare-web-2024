@@ -7,7 +7,9 @@ const project_tags = new Set()
 /** @type Set<String> */
 const project_tags_active = new Set()
 
-
+const project_state = {
+  tagContainerVisible: true
+}
 
 function project_init() {
   for(let project in projects) {
@@ -166,7 +168,7 @@ function project_filter_gallery(tags = [], clickedButton = null) {
 }
 
 function project_on_scroll(e) {
-  if(Q("#project-detail").scrollTop > 800) {
+  if(Q("#project-detail").scrollTop > window.innerHeight * 0.75) {
     Q("#button--scroll-to-top").classList.remove("hidden")
   }
   else {
@@ -181,3 +183,74 @@ function project_scroll_to(top = 0, behavior = "auto") {
 function project_gallery_scroll_to(top = 0, behavior = "auto") {
   Q("html").scrollTo({top: top, behavior: behavior})
 }
+
+function project_animate_tags(show = true) {
+  /* if the state is already what it should be */
+  if(project_state.tagContainerVisible === show) return
+
+  /* prevent the tags from hiding if at least one is active */
+  if(show === false && project_tags_active.size > 0) return
+  
+  const tags = Q("#project-tags-container")
+
+  if(tags.getAnimations().length !== 0) {
+    return
+  }
+
+  const height = tags.offsetHeight
+
+  let to = Q("header").offsetHeight + "px"
+  let from = (-height + "px")
+  let easing = show ? "cubic-bezier(0.2, 0.0, 0.3, 1.0)" : "cubic-bezier(0.7, 0.0, 0.8, 1.0)"
+
+  if(!show) {
+    [to, from] = [from, to]
+  }
+
+  // console.log(from, "->", to)
+
+  tags.style.top = from
+  tags.animate([
+    {top: from},
+    {top: to},
+  ], {
+    duration: 500,
+    easing: easing
+  })
+  .onfinish = () => {
+    tags.style.top = to
+  }
+  project_state.tagContainerVisible = show
+}
+
+setTimeout(() => {
+  project_animate_tags(true)
+}, 500);
+
+
+// // Function to get the value of a specific CSS variable declared under :root pseudo-class
+// function getRootCSSVariable(variableName) {
+//   // Loop through all stylesheets
+//   for (let i = 0; i < document.styleSheets.length; i++) {
+//       let styleSheet = document.styleSheets[i];
+      
+//       // Check if the stylesheet is accessible (some may be inaccessible due to CORS policy)
+//       if (!styleSheet.href || styleSheet.href.startsWith(window.location.origin)) {
+//           // Loop through all the rules in the stylesheet
+//           for (let j = 0; j < styleSheet.cssRules.length; j++) {
+//               let rule = styleSheet.cssRules[j];
+              
+//               // Check if the rule is a CSSStyleRule and its selector is :root
+//               if (rule instanceof CSSStyleRule && rule.selectorText === ':root') {
+//                   // Check if the rule contains the desired variable
+//                   if (rule.style.getPropertyValue(variableName)) {
+//                       return rule.style.getPropertyValue(variableName);
+//                   }
+//               }
+//           }
+//       }
+//   }
+
+//   // If the variable is not found, return null
+//   return null;
+// }

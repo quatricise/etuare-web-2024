@@ -30,13 +30,13 @@ const projects = {}
 projects["urixal"] = {
   title: "Urixal",
   description: "Ten popisek byl blbej, ale je to v gitu, takže klid.",
-  tags: ["obalový design", "branding", "inspirační videa", "social media shit"],
+  tags: ["obalový design", "branding"],
   cover: "cover.png",
   content: [
     {
       type: "images",
       images: [
-        {src: "1.png", title: ""},
+        {src: "1.png", title: "jklfds clouhá slova jfjf jahhbhha jklfd sů  fhuifáíd áýáýíčšn  jfdsjlkj"},
         {src: "2.png", title: ""},
         {src: "3.png", title: ""},
       ]

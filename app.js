@@ -16,13 +16,20 @@ function init() {
   })
 }
 
+const state = {
+  lastScrollTop: 0
+}
+
 window.onload = () => init()
 
 /* EVENT HANDLING */
 
-document.addEventListener("mousedown", (e) => {
+document.addEventListener("pointerdown", (e) => {
   if(e.target.closest("#project-detail") == null) {
     project_hide()
+  }
+  if(e.target.closest("#logo")) {
+    project_gallery_scroll_to(0, "smooth")
   }
 })
 
@@ -32,16 +39,35 @@ document.addEventListener("keydown", (e) => {
   }
 })
 
+document.addEventListener("scroll", (e) => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop
+
+  /* scrolled up */
+  if(state.lastScrollTop > scrollTop) {
+    project_animate_tags(false)
+  }
+  /* scrolled down */
+  else {
+    project_animate_tags(true)
+  }
+
+  state.lastScrollTop = scrollTop
+})
+
 function pageSet(name) {
+  Qa(".navlink").forEach(element => element.classList.remove("active"))
+  
   switch(name) {
     case "project": {
       Q("#page--project").classList.remove("hidden")
       Q("#page--contact").classList.add("hidden")
+      Q(`.navlink[data-pagename='${name}']`).classList.add("active")
       break
     }
     case "contact": {
       Q("#page--contact").classList.remove("hidden")
       Q("#page--project").classList.add("hidden")
+      Q(`.navlink[data-pagename='${name}']`).classList.add("active")
       break
     }
   }
