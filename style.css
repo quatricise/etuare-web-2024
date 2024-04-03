@@ -87,6 +87,16 @@ a {
   font-weight: 600;
 }
 
+button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+}
+
 
 /* HEADER */
 
@@ -118,6 +128,8 @@ header {
 
 #logo {
   height: calc(var(--header-height) / 2);
+  max-width: 25vw;
+  object-fit: contain;
   filter: brightness(50);
 }
 
@@ -301,6 +313,37 @@ main {
   font-style: italic;
 }
 
+#button--close-project {
+  position: absolute;
+  top: 20px;
+  padding: 10px 20px;
+  border: 2px solid var(--color-light);
+  cursor: pointer;
+}
+
+#button--close-project:hover {
+  background-color: var(--color-etuare);
+  border-color: var(--color-etuare);
+}
+
+#button--scroll-to-top {
+  position: sticky;
+  top: 20px;
+  padding: 5px;
+  border-radius: 1;
+  z-index: 1;
+  background-color: #00000090;
+}
+
+#button--scroll-to-top:hover {
+  background-color: var(--color-etuare);
+}
+
+#button--scroll-to-top img {
+  width: 40px;
+}
+
+
 
 /* CONTACT */
 
@@ -330,9 +373,90 @@ footer {
 
 #footer-contents {
   width: 1200px;
+  max-width: 100%;
 }
 
 #footer-heading {
   text-align: center;
   padding-bottom: 40px;
+}
+ 
+.footer-link {
+  font-size: 1.4rem;
+}
+
+
+
+
+/* MEDIA - PHONE */
+
+@media screen and (orientation: portrait) {
+
+  /* TEMPLATE */
+
+  :root {
+    --header-height: 48px;
+  }
+
+  /* HEADER */
+
+  .navlink {
+    font-size: 1rem;
+    padding-bottom: 0;
+  }
+  .navlink:hover {
+    color: unset;
+    border-bottom: unset;
+  }
+  .navlink:active {
+    color: var(--color-etuare);
+    border-bottom: 2px solid var(--color-etuare);
+  }
+
+
+
+  /* MAIN */
+
+  #project-tags-container {
+    position: sticky;
+    top: var(--header-height);
+    background-color: var(--color-dark);
+    z-index: 1;
+    padding: 5px;
+    border-bottom: 2px solid var(--color-etuare-025);
+    /* box-shadow: 0 -2px 18px 2px var(--color-etuare-05); */
+  }
+
+  #project-tags {
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .project-tag-button {
+    padding: 8px;
+  }
+
+  .project-tag-button:hover {
+    background-color: unset;
+  }
+
+  .project-tag-button.active {
+    background-color: var(--color-etuare);
+  }
+
+
+  #button--close-project {
+    position: static;
+    margin: 20px 0 10px;
+  }
+  /* .project-cover-image {
+    margin-top: 60px;
+  } */
+
+  .project-heading {
+    margin-top: 10px;
+    font-size: 2rem;
+  }  
 }

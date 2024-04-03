@@ -9,19 +9,26 @@ function init() {
     switch(key) {
       case "project": {
         //display a specific project
+        project_open(value)
         break
       }
     }
   })
 }
 
-window.onload = () => {
+window.onload = () => init()
 
-}
+/* EVENT HANDLING */
 
 document.addEventListener("mousedown", (e) => {
   if(e.target.closest("#project-detail") == null) {
-    Q("#project-detail").classList.add("hidden")
+    project_hide()
+  }
+})
+
+document.addEventListener("keydown", (e) => {
+  if(e.code === "Escape") {
+    project_hide()
   }
 })
 

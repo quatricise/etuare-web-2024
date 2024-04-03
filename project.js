@@ -25,6 +25,9 @@ function project_init() {
 
     Q("#project-tags").append(element)
   })
+
+  /* setup scrolling behavior */
+  Q("#project-detail").onscroll = (e) => project_on_scroll(e)
 }
 
 
@@ -90,7 +93,8 @@ function project_create(name) {
   project.elements.set("thumbnail", thumbnail)
   project.elements.set("description", desc)
 
-
+  /* label elements as ephemeral */
+  project.elements.forEach(el => el.dataset.ephemeral = "true")
 
   /* functionality */
   thumbnail.onclick = () => {
@@ -106,16 +110,24 @@ function project_open(name) {
     throw "No project under name: " + name
   }
 
-  Q("#project-detail").innerHTML = ""
+  /* remove ephemeral elements */
+  Qa("#project-detail *[data-ephemeral='true']").forEach(el => el.remove())
+
   Q("#project-detail").classList.remove("hidden")
 
   Q("#project-detail").append(project.elements.get("coverImage"))
   Q("#project-detail").append(project.elements.get("title"))
-  Q("#project-detail").append(project.elements.get("description"))
+
+  if(project_list.get(name)?.data.description) {
+    Q("#project-detail").append(project.elements.get("description"))
+  }
+  
   Q("#project-detail").append(project.elements.get("content"))
 }
 
-
+function project_hide() {
+  Q("#project-detail").classList.add("hidden")
+}
 
 function project_filter_gallery(tags = [], clickedButton = null) {
   
@@ -149,4 +161,23 @@ function project_filter_gallery(tags = [], clickedButton = null) {
       project.elements.get("thumbnail").classList.add("hidden")
     }
   })
+
+  project_gallery_scroll_to(0)
+}
+
+function project_on_scroll(e) {
+  if(Q("#project-detail").scrollTop > 800) {
+    Q("#button--scroll-to-top").classList.remove("hidden")
+  }
+  else {
+    Q("#button--scroll-to-top").classList.add("hidden")
+  }
+}
+
+function project_scroll_to(top = 0, behavior = "auto") {
+  Q("#project-detail").scrollTo({top: top, behavior: behavior})
+}
+
+function project_gallery_scroll_to(top = 0, behavior = "auto") {
+  Q("html").scrollTo({top: top, behavior: behavior})
 }

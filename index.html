@@ -21,13 +21,19 @@
   <main>
     <div id="page--project">
       <div id="project-tags-container">
-        <div id="project-tags"></div>
+        <div id="project-tags">
+          <!-- the code fills this from projects.js -->
+        </div>
       </div>
       <div id="gallery-wrapper">
         <div id="gallery"></div>
       </div>
       <div id="project-detail" class="hidden">
-        <!-- this will be generated on project-per-project basis -->
+        <button id="button--close-project" onclick="project_hide()">ZPĚT K PROJEKTŮM</button>
+        <button id="button--scroll-to-top" onclick="project_scroll_to(0, 'smooth')" class="hidden">
+          <img src="images/icons/scroll_up.png" alt="">
+        </button>
+        <!-- contents here will be updated on project-per-project basis -->
       </div>
     </div>
     <div id="page--contact" class="hidden">

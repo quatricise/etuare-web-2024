@@ -29,8 +29,8 @@ const projects = {}
 
 projects["urixal"] = {
   title: "Urixal",
-  description: "Chlap chcal, ale chcal špatně a málem sa pochcal. Proto je tu Urichcal, protože nikdy není pozdě mít sucho v kalhotách.",
-  tags: ["obalový design", "branding"],
+  description: "Ten popisek byl blbej, ale je to v gitu, takže klid.",
+  tags: ["obalový design", "branding", "inspirační videa", "social media shit"],
   cover: "cover.png",
   content: [
     {
@@ -46,7 +46,24 @@ projects["urixal"] = {
 
 projects["agro_smoothies"] = {
   title: "Agro Jesenice - Smoothies",
-  description: "Project description.",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["agro_zelenina"] = {
+  title: "Agro Jesenice - Zelenina",
+  description: "",
   tags: ["obalový design"],
   cover: "cover.png",
   content: [
