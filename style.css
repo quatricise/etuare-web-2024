@@ -169,8 +169,9 @@ main {
 }
 
 #project-tags-container {
-  position: fixed;
-  top: 0;
+  position: static;
+  /* top: 0; */
+  top: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -428,6 +429,7 @@ footer {
   /* MAIN */
 
   #project-tags-container {
+    position: fixed;
     top: var(--header-height);
     width: 100%;
     padding: 5px;

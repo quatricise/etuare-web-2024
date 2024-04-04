@@ -191,7 +191,7 @@ function project_animate_tags(show = true) {
   if(project_state.tagContainerVisible === show) return
 
   /* prevent the tags from hiding if at least one is active */
-  if(show === false && project_tags_active.size > 0 && project_tags_active.size < project_tags.size) return
+  if(show === false && project_tags_active.size < project_tags.size) return
   
   const tags = Q("#project-tags-container")
 
