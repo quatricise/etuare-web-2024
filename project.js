@@ -41,6 +41,9 @@ function project_create(name) {
   if(!data) {
     throw "Invalid project name: " + name
   }
+  if(data.hidden) {
+    return
+  }
 
   const project = {}
   project.data = data
@@ -56,7 +59,7 @@ function project_create(name) {
   
   /* gallery thumbnail */
   const thumbnail =   El("div", "gallery-thumbnail")
-  const thumbImage =  El("img", undefined, [["src", `projects/${name}/thumbnail.png`]])
+  const thumbImage =  El("img", "gallery-thumbnail-image", [["src", `projects/${name}/${data.thumbnail || "thumbnail.png"}`]])
   const thumbLabel =  El("div", "gallery-thumbnail--label", [], data.title)
   thumbnail.append(thumbImage, thumbLabel)
 
@@ -135,8 +138,8 @@ function project_hide() {
 
 function project_filter_gallery(tags = [], clickedButton = null) {
   
-  /* if you click the active tag button it un-actives those tags
-  then if there is nothing active it just shows everything */
+  /* if you click the active tag button it un-actives that tag
+  then if there is nothing active it shows everything */
 
   if(clickedButton?.classList.contains("active")) {
     project_tags_active.delete(clickedButton.dataset.tag)
@@ -228,31 +231,3 @@ function project_animate_tags(show = true) {
 setTimeout(() => {
   project_animate_tags(true)
 }, 500);
-
-
-// // Function to get the value of a specific CSS variable declared under :root pseudo-class
-// function getRootCSSVariable(variableName) {
-//   // Loop through all stylesheets
-//   for (let i = 0; i < document.styleSheets.length; i++) {
-//       let styleSheet = document.styleSheets[i];
-      
-//       // Check if the stylesheet is accessible (some may be inaccessible due to CORS policy)
-//       if (!styleSheet.href || styleSheet.href.startsWith(window.location.origin)) {
-//           // Loop through all the rules in the stylesheet
-//           for (let j = 0; j < styleSheet.cssRules.length; j++) {
-//               let rule = styleSheet.cssRules[j];
-              
-//               // Check if the rule is a CSSStyleRule and its selector is :root
-//               if (rule instanceof CSSStyleRule && rule.selectorText === ':root') {
-//                   // Check if the rule contains the desired variable
-//                   if (rule.style.getPropertyValue(variableName)) {
-//                       return rule.style.getPropertyValue(variableName);
-//                   }
-//               }
-//           }
-//       }
-//   }
-
-//   // If the variable is not found, return null
-//   return null;
-// }

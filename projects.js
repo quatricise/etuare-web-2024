@@ -77,3 +77,273 @@ projects["agro_zelenina"] = {
     },
   ]
 }
+
+projects["agro_smesi"] = {
+  title: "Agro Jesenice - Směsi",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["henna"] = {
+  title: "Henna - Přírodní kosmetika",
+  description: "Henna popisek",
+  tags: ["obalový design", "branding"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["karima"] = {
+  title: "Karima - Kosmetika",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["pohorelicky_kapr"] = {
+  title: "Pohořelický kapr",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "thumbnail.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["vestky"] = {
+  title: "Vestky",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["polar_zelenina"] = {
+  title: "Polar - Mražená zelenina",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["husek_zeli"] = {
+  title: "Hušek - Křivické Zelí",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["menu_gold_ryze"] = {
+  title: "Menu Gold - Rýže",
+  description: "",
+  tags: ["obalový design", "branding"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["menu_gold_lusteniny"] = {
+  title: "Menu Gold - Luštěniny",
+  description: "",
+  tags: ["obalový design", "branding"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["menu_gold_lusteniny_2"] = {
+  title: "Menu Gold - Luštěniny",
+  description: "",
+  tags: ["obalový design", "branding"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["japavo_testoviny"] = {
+  hidden: true,
+  title: "Japavo - Těstoviny",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["henna_barvy_zeny"] = {
+  title: "Henna - Barvy na vlasy dámské",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  thumbnail: "1.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["henna_barvy_muzi"] = {
+  title: "Henna - Barvy na vlasy pánské",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  thumbnail: "1.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["kovacz_vina"] = {
+  title: "Kovacz",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  thumbnail: "1.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["bramburky_jana"] = {
+  title: "Brambůrky Jana",
+  description: "",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  thumbnail: "1.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+      ]
+    },
+  ]
+}
+
+projects["delipet"] = {
+  title: "Delipet - Pochoutky pro psy",
+  description: "Když je život pod psa, kup si psa.",
+  tags: ["obalový design"],
+  cover: "cover.png",
+  thumbnail: "1.png",
+  content: [
+    {
+      type: "images",
+      images: [
+        {src: "1.png", title: ""},
+        {src: "2.png", title: ""},
+        {src: "3.png", title: ""},
+      ]
+    },
+  ]
+}
