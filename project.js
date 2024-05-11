@@ -48,11 +48,12 @@ function project_create(name) {
   const project = {}
   project.data = data
   project_list.set(name, project)
+  project.visibleInGallery = true
 
   /** @type Map<string, HTMLElement> */
   project.elements = new Map()  
 
-  const title =       El("h2", "project-heading", [], data.title)
+  const title =       El("h2",  "project-heading", [], data.title)
   const desc =        El("div", "project-description", [], data.description)
   const coverImage =  El("img", "project-cover-image", [["src", `projects/${name}/${data.cover}`]])
   const content =     El("div", "project-content")
@@ -164,12 +165,38 @@ function project_filter_gallery(tags = [], clickedButton = null) {
   project_list.forEach(project => {
     if(project.data.tags.hasAny(...Array.from(project_tags_active))) {
       project.elements.get("thumbnail").classList.remove("hidden")
+      project.visibleInGallery = true
     } else {
       project.elements.get("thumbnail").classList.add("hidden")
+      project.visibleInGallery = false
     }
   })
 
+  /* lazy-fuck solution */
+  project_gallery_fill_end()
+
   project_gallery_scroll_to(0)
+}
+
+/** Fills the end of the gallery with empty items so the bg color does not show */
+function project_gallery_fill_end() {
+  Qa(".gallery-thumbnail.fill-in").forEach(el => el.remove())
+  /* add empty projects to hide the grid bg color */
+  const cellWidth = 320 + 1 /* + 1 because of the grid gap */
+  const galleryWidth = Q("#gallery").getBoundingClientRect().width
+  const rowCount = Math.floor(galleryWidth / cellWidth)
+  const countVisible = Array.from(project_list.values()).filter(p => p.visibleInGallery === true).length
+  const fillInCount = rowCount - (countVisible % rowCount)
+
+  /* makes no sense to fill an entire new row, so just don't */
+  if(fillInCount == rowCount) fillInCount = 0
+
+  /* construct the thumbnails per amount of cells that are underflowing in the last row of the grid */
+  for(let i = 0; i < fillInCount; i++) {
+    const thumbnail = El("div", "gallery-thumbnail fill-in")
+    Q("#gallery").append(thumbnail)
+  }
+  console.log(fillInCount)
 }
 
 function project_on_scroll(e) {

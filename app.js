@@ -8,8 +8,11 @@ function init() {
     
     switch(key) {
       case "project": {
-        //display a specific project
         project_open(value)
+        break
+      }
+      case "tag": {
+        project_filter_gallery([value])
         break
       }
     }
@@ -21,7 +24,7 @@ const state = {
 }
 
 window.onload = () => init()
-
+window.onresize = () => project_gallery_fill_end()
 /* EVENT HANDLING */
 
 document.addEventListener("pointerdown", (e) => {

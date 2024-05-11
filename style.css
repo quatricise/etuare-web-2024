@@ -1,5 +1,7 @@
 /* FONTS */
 
+/* HKGrotesk */
+
 @font-face {
   font-family: "HK";
   src: url(fonts/HKGrotesk-BoldItalic.otf);
@@ -37,6 +39,44 @@
   font-style: normal;
 }
 
+/* EBGaramond */
+
+@font-face {
+  font-family: "Garamond";
+  src: url(fonts/EBGaramond-BoldItalic.otf);
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Garamond";
+  src: url(fonts/EBGaramond-MediumItalic.otf);
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Garamond";
+  src: url(fonts/EBGaramond-Bold.otf);
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Garamond";
+  src: url(fonts/EBGaramond-Medium.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Garamond";
+  src: url(fonts/EBGaramond-Regular.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Garamond";
+  src: url(fonts/EBGaramond-Light.otf);
+  font-weight: 200;
+  font-style: normal;
+}
 
 
 /* TEMPLATE */
@@ -59,6 +99,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: "HK";
+  font-weight: bold;
   color: var(--color-light);
   background-color: var(--color-dark);
 }
@@ -86,6 +127,16 @@ a {
   text-decoration: none;
   font-weight: 600;
 }
+
+
+a.clickable {
+  
+}
+
+a.clickable:hover {
+  text-decoration: underline;
+}
+
 
 button {
   font-family: inherit;
@@ -130,8 +181,13 @@ header {
   height: calc(var(--header-height) / 2);
   max-width: 25vw;
   object-fit: contain;
-  filter: brightness(50);
+  filter: brightness(5);
   cursor: pointer;
+  transition: filter 0.25s cubic-bezier(0.825, 0.18, 0.835, 0.2);
+}
+
+#logo:hover {
+  filter: none;
 }
 
 #navlinks {
@@ -171,7 +227,6 @@ main {
 
 #project-tags-container {
   position: static;
-  /* top: 0; */
   top: var(--header-height);
   display: flex;
   align-items: center;
@@ -220,7 +275,10 @@ main {
 
 #gallery {
   display: grid;
+
+  /* the 320px cannot be changed without changing some JS inside project.js as well, as this value is used for calculating things */
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
   grid-template-rows: max-content;
   grid-auto-flow: row;
   gap: 1px;
@@ -241,6 +299,12 @@ main {
   user-select: none;
 }
 
+.gallery-thumbnail.fill-in {
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
 .gallery-thumbnail:hover {
   background: linear-gradient(0deg, var(--color-dark), #ffffff08);
   border-bottom: 4px solid var(--color-etuare);
@@ -259,6 +323,8 @@ main {
 
 .gallery-thumbnail:hover .gallery-thumbnail--label {
   bottom: 0;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, #11111100 0%, #11111180 100%);
 }
 
 .gallery-thumbnail--label {
@@ -267,10 +333,11 @@ main {
   left: 0;
   width: 100%;
   padding-bottom: 15px;
+  padding-top: 30px;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  text-shadow: 0 1px 4px #00000090;
+  text-shadow: 0 1px 4px #00000090, 0 -1px 2px #00000090;
   transition: bottom 0.35s cubic-bezier(0.0, 0.2, 0.2, 1.0);
 }
 
@@ -331,6 +398,7 @@ main {
   top: 20px;
   padding: 10px 20px;
   border: 2px solid var(--color-light);
+  box-shadow: 0 0 50px 10px #111111;
   cursor: pointer;
 }
 
@@ -385,17 +453,33 @@ footer {
 }
 
 #footer-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 1200px;
   max-width: 100%;
 }
 
-#footer-heading {
+#footer--heading-contact {
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
+  padding-top: 40px;
+}
+
+#footer--heading-about {
+  text-align: center;
+  padding-bottom: 20px;
 }
  
 .footer-link {
   font-size: 1.4rem;
+}
+
+.footer--paragraph {
+  max-width: 500px;
+  margin: 0;
+  font-weight: 400;
+  text-align: justify;
 }
 
 
