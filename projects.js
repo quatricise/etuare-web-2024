@@ -1,7 +1,7 @@
 const projectTemplate = {
   title: "Text",
   description: "Project description",
-  tags: ["obalový design", "branding"],
+  tags: ["obalový design"],
   cover: "cover.png",
   content: [
     {
@@ -30,7 +30,7 @@ const projects = {}
 projects["urixal"] = {
   title: "Urixal",
   description: "Ten popisek byl blbej, ale je to v gitu, takže klid.",
-  tags: ["obalový design", "branding"],
+  tags: ["obalový design"],
   cover: "cover.png",
   content: [
     {
@@ -98,7 +98,7 @@ projects["agro_smesi"] = {
 projects["henna"] = {
   title: "Henna - Přírodní kosmetika",
   description: "Henna popisek",
-  tags: ["obalový design", "branding", "kosmetika"],
+  tags: ["obalový design", "kosmetika"],
   cover: "cover.png",
   content: [
     {
@@ -196,7 +196,7 @@ projects["husek_zeli"] = {
 projects["menu_gold_ryze"] = {
   title: "Menu Gold - Rýže",
   description: "",
-  tags: ["obalový design", "branding", "potraviny"],
+  tags: ["obalový design", "potraviny"],
   cover: "cover.png",
   content: [
     {
@@ -213,7 +213,7 @@ projects["menu_gold_ryze"] = {
 projects["menu_gold_lusteniny"] = {
   title: "Menu Gold - Luštěniny",
   description: "",
-  tags: ["obalový design", "branding", "potraviny"],
+  tags: ["obalový design", "potraviny"],
   cover: "cover.png",
   content: [
     {
@@ -230,7 +230,7 @@ projects["menu_gold_lusteniny"] = {
 projects["menu_gold_lusteniny_2"] = {
   title: "Menu Gold - Luštěniny",
   description: "",
-  tags: ["obalový design", "branding", "potraviny"],
+  tags: ["obalový design", "potraviny"],
   cover: "cover.png",
   content: [
     {
