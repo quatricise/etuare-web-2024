@@ -293,7 +293,7 @@ projects["henna_barvy_muzi"] = {
   ]
 }
 
-projects["kovacz_vina"] = {
+projects["kovacs_vina"] = {
   title: "Kovacs - vinařství",
   description: "",
   tags: ["obalový design", "potraviny"],
