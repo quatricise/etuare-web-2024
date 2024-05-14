@@ -591,3 +591,14 @@ function animateColor(
   })
   return anim
 }
+
+const addNonBreakingSpacesToString = (str) => str.replace(
+  / ([a-zA-Z]) /g,
+  ' $1' + '\u00A0'
+);
+
+function addNonBreakingSpaces() {
+  document.querySelectorAll(".add-nbsp").forEach(element => {
+    element.innerText = addNonBreakingSpacesToString(element.innerText)
+  })
+}

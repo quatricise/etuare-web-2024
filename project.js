@@ -53,9 +53,12 @@ function project_create(name) {
   /** @type Map<string, HTMLElement> */
   project.elements = new Map()  
 
+
+  /* Note: data-src attribs are used for all internal images, which are not to be seen until the project is opened */
+
   const title =       El("h2",  "project-heading", [], data.title)
-  const desc =        El("div", "project-description", [], data.description)
-  const coverImage =  El("img", "project-cover-image", [["src", `projects/${name}/${data.cover}`]])
+  const desc =        El("div", "project-description add-nbsp", [], data.description)
+  const coverImage =  El("img", "project-cover-image", [["data-src", `projects/${name}/${data.cover}`]])
   const content =     El("div", "project-content")
   
   /* gallery thumbnail */
@@ -73,7 +76,7 @@ function project_create(name) {
         for(let image of item.images) {
           const src = "projects/" + name + "/" + image.src
           const alt = image.title
-          const img = El("img", "project-image", [["src", src],["alt", alt]])
+          const img = El("img", "project-image", [["data-src", src],["alt", alt]])
           img.title = alt
 
           content.append(img)
@@ -104,6 +107,8 @@ function project_create(name) {
   /* label elements as ephemeral */
   project.elements.forEach(el => el.dataset.ephemeral = "true")
 
+  addNonBreakingSpaces()
+
   /* functionality */
   thumbnail.onclick = () => {
     project_open(name)
@@ -117,6 +122,20 @@ function project_open(name) {
   if(!project) {
     throw "No project under name: " + name
   }
+
+
+  /* load all from data-src attribs if there are elements with those, and then delete those attribs */
+
+  Array.from(project.elements.get("content").querySelectorAll("[data-src]")).forEach(element => {
+    element.src = element.dataset.src
+    delete element.dataset.src
+  })
+  
+  const cover = project.elements.get("coverImage")
+  cover.src = cover.dataset.src
+  delete cover.dataset.src
+
+
 
   /* remove ephemeral elements */
   Qa("#project-detail *[data-ephemeral='true']").forEach(el => el.remove())
@@ -186,7 +205,7 @@ function project_gallery_fill_end() {
   const galleryWidth = Q("#gallery").getBoundingClientRect().width
   const rowCount = Math.floor(galleryWidth / cellWidth)
   const countVisible = Array.from(project_list.values()).filter(p => p.visibleInGallery === true).length
-  const fillInCount = rowCount - (countVisible % rowCount)
+  let   fillInCount = rowCount - (countVisible % rowCount)
 
   /* makes no sense to fill an entire new row, so just don't */
   if(fillInCount == rowCount) fillInCount = 0

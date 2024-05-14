@@ -29,14 +29,14 @@ const projects = {}
 
 projects["urixal"] = {
   title: "Urixal",
-  description: "Ten popisek byl blbej, ale je to v gitu, takže klid.",
+  description: "",
   tags: ["obalový design"],
   cover: "cover.png",
   content: [
     {
       type: "images",
       images: [
-        {src: "1.png", title: "jklfds clouhá slova jfjf jahhbhha jklfd sů  fhuifáíd áýáýíčšn  jfdsjlkj"},
+        {src: "1.png", title: ""},
         {src: "2.png", title: ""},
         {src: "3.png", title: ""},
       ]
@@ -45,7 +45,7 @@ projects["urixal"] = {
 }
 
 projects["agro_smoothies"] = {
-  title: "Agro Jesenice - Smoothies",
+  title: "Agro Jesenice – Smoothies",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -62,7 +62,7 @@ projects["agro_smoothies"] = {
 }
 
 projects["agro_zelenina"] = {
-  title: "Agro Jesenice - Zelenina",
+  title: "Agro Jesenice – Mražená zelenina",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -79,7 +79,7 @@ projects["agro_zelenina"] = {
 }
 
 projects["agro_smesi"] = {
-  title: "Agro Jesenice - Směsi",
+  title: "Agro Jesenice - Mražená zelenina",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -97,7 +97,7 @@ projects["agro_smesi"] = {
 
 projects["henna"] = {
   title: "Henna - Přírodní kosmetika",
-  description: "Henna popisek",
+  description: "",
   tags: ["obalový design", "kosmetika"],
   cover: "cover.png",
   content: [
@@ -113,7 +113,7 @@ projects["henna"] = {
 }
 
 projects["karima"] = {
-  title: "Karima - Kosmetika",
+  title: "Karima – kosmetika z Mrtvého moře",
   description: "",
   tags: ["obalový design", "kosmetika"],
   cover: "cover.png",
@@ -130,7 +130,7 @@ projects["karima"] = {
 }
 
 projects["pohorelicky_kapr"] = {
-  title: "Pohořelický kapr",
+  title: "Pohořelický kapr - mražené ryby",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -145,7 +145,7 @@ projects["pohorelicky_kapr"] = {
 }
 
 projects["vestky"] = {
-  title: "Vestky",
+  title: "Vest - slané krekry",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -162,7 +162,7 @@ projects["vestky"] = {
 }
 
 projects["polar_zelenina"] = {
-  title: "Polar - Mražená zelenina",
+  title: "Polar – mražená zelenina",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -178,7 +178,7 @@ projects["polar_zelenina"] = {
 }
 
 projects["husek_zeli"] = {
-  title: "Hušek - Křivické Zelí",
+  title: "Hušek – kysané zelí",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -194,7 +194,7 @@ projects["husek_zeli"] = {
 }
 
 projects["menu_gold_ryze"] = {
-  title: "Menu Gold - Rýže",
+  title: "Menu Gold - rýže",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -211,7 +211,7 @@ projects["menu_gold_ryze"] = {
 }
 
 projects["menu_gold_lusteniny"] = {
-  title: "Menu Gold - Luštěniny",
+  title: "Menu Gold – zdravá výživa",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -228,7 +228,7 @@ projects["menu_gold_lusteniny"] = {
 }
 
 projects["menu_gold_lusteniny_2"] = {
-  title: "Menu Gold - Luštěniny",
+  title: "Menu Gold – luštěniny",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
@@ -262,11 +262,10 @@ projects["japavo_testoviny"] = {
 }
 
 projects["henna_barvy_zeny"] = {
-  title: "Henna - Barvy na vlasy dámské",
+  title: "Henna - barvy na vlasy dámské",
   description: "",
   tags: ["obalový design", "kosmetika"],
   cover: "cover.png",
-  thumbnail: "1.png",
   content: [
     {
       type: "images",
@@ -279,11 +278,10 @@ projects["henna_barvy_zeny"] = {
 }
 
 projects["henna_barvy_muzi"] = {
-  title: "Henna - Barvy na vlasy pánské",
+  title: "Henna - barvy na vlasy pánské",
   description: "",
   tags: ["obalový design", "kosmetika"],
   cover: "cover.png",
-  thumbnail: "1.png",
   content: [
     {
       type: "images",
@@ -296,11 +294,10 @@ projects["henna_barvy_muzi"] = {
 }
 
 projects["kovacz_vina"] = {
-  title: "Kovacz",
+  title: "Kovacs - vinařství",
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
-  thumbnail: "1.png",
   content: [
     {
       type: "images",
@@ -318,7 +315,6 @@ projects["bramburky_jana"] = {
   description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
-  thumbnail: "1.png",
   content: [
     {
       type: "images",
@@ -331,11 +327,10 @@ projects["bramburky_jana"] = {
 }
 
 projects["delipet"] = {
-  title: "Delipet - Pochoutky pro psy",
-  description: "Když je život pod psa, kup si psa.",
+  title: "Delipet - pochoutky pro psy",
+  description: "",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
-  thumbnail: "1.png",
   content: [
     {
       type: "images",

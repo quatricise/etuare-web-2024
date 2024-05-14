@@ -15,8 +15,14 @@ function init() {
         project_filter_gallery([value])
         break
       }
+      case "page": {
+        pageSet(value)
+        break
+      }
     }
   })
+
+  addNonBreakingSpaces()
 }
 
 const state = {
@@ -25,6 +31,8 @@ const state = {
 
 window.onload = () => init()
 window.onresize = () => project_gallery_fill_end()
+
+
 /* EVENT HANDLING */
 
 document.addEventListener("pointerdown", (e) => {
@@ -32,6 +40,7 @@ document.addEventListener("pointerdown", (e) => {
     project_hide()
   }
   if(e.target.closest("#logo")) {
+    pageSet("project")
     project_gallery_scroll_to(0, "smooth")
   }
 })
