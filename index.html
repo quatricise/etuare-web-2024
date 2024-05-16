@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Etuare - Obalový design</title>
+  <title>Etuare - Obalový design | Zlín</title>
+  <meta name="description" content="Grafické studio etuare. Již 19 let navrhujeme vizuální identity, obaly, webové stránky.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,6 +14,7 @@
       <img id="logo" src="images/logo_etuare.png" title="logo etuare"></img>
       <div id="navlinks">
         <a class="navlink" onclick="pageSet('project')" data-pagename="project">projekty</a>
+        <a class="navlink" onclick="pageSet('contact')" data-pagename="contact">klienti</a>
         <a class="navlink" onclick="pageSet('contact')" data-pagename="contact">kontakt</a>
       </div>
     </div>
@@ -20,14 +22,33 @@
 
   <main>
     <div id="page--project">
+
       <div id="project-tags-container">
         <div id="project-tags">
           <!-- the code fills this from projects.js -->
         </div>
       </div>
+
+      <div class="section--heading">
+        <h2>Branding</h2>
+      </div>
+
+      <div class="branding-gallery">
+        <img src="projects/agro_smesi/1.png" alt="">
+        <img src="projects/agro_smesi/2.png" alt="">
+        <img src="projects/agro_smesi/3.png" alt="">
+      </div>
+
+      <div class="section--heading">
+        <h2>Obalový design</h2>
+      </div>
+
       <div id="gallery-wrapper">
         <div id="gallery"></div>
       </div>
+
+
+
       <div id="project-detail" class="hidden">
         <button id="button--close-project" onclick="project_hide()">ZPĚT K PROJEKTŮM</button>
         <button id="button--scroll-to-top" onclick="project_scroll_to(0, 'smooth')" class="hidden">

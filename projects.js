@@ -229,18 +229,18 @@ projects["menu_gold_lusteniny"] = {
 
 projects["menu_gold_lusteniny_2"] = {
   title: "Menu Gold – luštěniny",
-  description: "",
+  description: "Ploutvonožci jsou značně rozšířená skupina masožravých savců uzpůsobených k životu ve vodě. Moderní taxonomie je považuje za nezařazený klad v řádu šelem a podřádu psotvární. Patří k nim tři čeledi: tuleňovití, mrožovití a lachtanovití. Počet druhů přesahuje tři desítky.",
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
   content: [
-    {
-      type: "images",
-      images: [
-        {src: "1.png", title: ""},
-        {src: "2.png", title: ""},
-        {src: "3.png", title: ""},
-      ]
-    },
+    // {
+    //   type: "images",
+    //   images: [
+    //     {src: "1.png", title: ""},
+    //     {src: "2.png", title: ""},
+    //     {src: "3.png", title: ""},
+    //   ]
+    // },
   ]
 }
 
@@ -316,13 +316,13 @@ projects["bramburky_jana"] = {
   tags: ["obalový design", "potraviny"],
   cover: "cover.png",
   content: [
-    {
-      type: "images",
-      images: [
-        {src: "1.png", title: ""},
-        {src: "2.png", title: ""},
-      ]
-    },
+    // {
+    //   type: "images",
+    //   images: [
+    //     {src: "1.png", title: ""},
+    //     {src: "2.png", title: ""},
+    //   ]
+    // },
   ]
 }
 

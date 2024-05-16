@@ -89,8 +89,8 @@
   --color-etuare: #3fa9f5;
   --color-etuare-05: #3fa9f580;
   --color-etuare-025: #3fa9f540;
-  --color-dark: rgb(17, 17, 17);
-  --color-light: white;
+  --color-dark: white;
+  --color-light: rgb(17, 17, 17);
   --header-height: 60px
 }
 
@@ -185,13 +185,9 @@ header {
   height: calc(var(--header-height) / 1.5);
   max-width: 25vw;
   object-fit: contain;
-  filter: brightness(5);
+  filter: invert(1);
   cursor: pointer;
   transition: filter 0.25s cubic-bezier(0.825, 0.18, 0.835, 0.2);
-}
-
-#logo:hover {
-  filter: none;
 }
 
 #navlinks {
@@ -345,6 +341,18 @@ main {
   font-weight: 600;
   text-shadow: 0 1px 4px #00000090, 0 -1px 2px #00000090;
   transition: bottom 0.35s cubic-bezier(0.0, 0.2, 0.2, 1.0);
+}
+
+/* BRANDING GALLERY TEST */
+.branding-gallery {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.branding-gallery img {
+  width: 33%;
 }
 
 #project-detail {
