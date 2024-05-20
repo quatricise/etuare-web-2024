@@ -11,6 +11,8 @@ const project_state = {
   tagContainerVisible: true
 }
 
+let project_active = null
+
 function project_init() {
   for(let project in projects) {
     project_create(project)
@@ -19,6 +21,8 @@ function project_init() {
       project_tags.add(tag)
     }
   }
+
+  project_gallery_fill_end()
   
 
   project_tags.forEach(tag => {
@@ -45,20 +49,25 @@ function project_create(name) {
     return
   }
 
-  const project = {}
+  const 
+  project = {}
   project.data = data
-  project_list.set(name, project)
   project.visibleInGallery = true
+  project.loaded = false
+  
+  project_list.set(name, project)
 
   /** @type Map<string, HTMLElement> */
-  project.elements = new Map()  
+  project.elements = new Map()
 
 
   /* Note: data-src attribs are used for all internal images, which are not to be seen until the project is opened */
 
   const title =       El("h2",  "project-heading", [], data.title)
   const desc =        El("div", "project-description add-nbsp", [], data.description)
-  const coverImage =  El("img", "project-cover-image", [["data-src", `projects/${name}/${data.cover}`]])
+  const coverImage =  El("img", "project-cover-image", [["data-src", `projects/${name}/${data.cover || "cover.png"}`]])
+  const coverImageContainer = El("div", "project-cover-image-container")
+  const coverImageShadow = El("div", "project-cover-image-shadow")
   const content =     El("div", "project-content")
   
   /* gallery thumbnail */
@@ -66,6 +75,14 @@ function project_create(name) {
   const thumbImage =  El("img", "gallery-thumbnail-image", [["src", `projects/${name}/${data.thumbnail || "thumbnail.png"}`]])
   const thumbLabel =  El("div", "gallery-thumbnail--label", [], data.title)
   thumbnail.append(thumbImage, thumbLabel)
+  coverImageContainer.append(coverImage, coverImageShadow)
+  
+  thumbnail.onmouseover = () => {
+    thumbnail.style.borderColor = data.accent || "var(--color-etuare)"
+  }
+  thumbnail.onmouseout = () => {
+    thumbnail.style.borderColor = "transparent"
+  }
 
   Q("#gallery").append(thumbnail)
   
@@ -75,14 +92,14 @@ function project_create(name) {
       case "images": {
         for(let image of item.images) {
           const src = "projects/" + name + "/" + image.src
-          const alt = image.title
-          const img = El("img", "project-image", [["data-src", src],["alt", alt]])
-          img.title = alt
+          const title = image.title
+          const img = El("img", "project-image", [["data-src", src],["alt", title]])
+          img.title = title
 
           content.append(img)
 
-          if(alt) {
-            const label = El("div", "project-image-title", [], alt)
+          if(image.title) {
+            const label = El("div", "project-image-title", [], " 🡩 " + title)
             img.after(label)
           }
         }
@@ -99,13 +116,23 @@ function project_create(name) {
   }
 
   project.elements.set("coverImage", coverImage)
+  project.elements.set("coverImageContainer", coverImageContainer)
   project.elements.set("title", title)
   project.elements.set("content", content)
   project.elements.set("thumbnail", thumbnail)
   project.elements.set("description", desc)
 
   /* label elements as ephemeral */
-  project.elements.forEach(el => el.dataset.ephemeral = "true")
+  project.elements.forEach((el, name) => {
+    if(name.isAny( //these will be removed/added to the DOM during opening and closing projects
+      "coverImageContainer",
+      "title",
+      "content",
+      "thumbnail",
+      "description",
+    ))
+      el.dataset.ephemeral = "true"
+  })
 
   addNonBreakingSpaces()
 
@@ -119,30 +146,51 @@ function project_create(name) {
 
 function project_open(name) {
   const project = project_list.get(name)
+
+  /** @type HTMLImageElement */
+  const cover = project.elements.get("coverImage")
+
   if(!project) {
     throw "No project under name: " + name
   }
 
+  if(project_active === project) {
+    setTimeout(() => {
+      Q("#project-detail").scrollTo({top: 0, behavior: "smooth"})
+    }, 100)
+  }
+  project_active = project
 
   /* load all from data-src attribs if there are elements with those, and then delete those attribs */
 
-  Array.from(project.elements.get("content").querySelectorAll("[data-src]")).forEach(element => {
-    element.src = element.dataset.src
-    delete element.dataset.src
-  })
+  if(project.loaded === false) {
+    let elements = []
+    elements.push(...Array.from(project.elements.values()))
+    
+    /* exception for "content" element because its contents is not added to the "project.elements" Map */
+    elements.push(...Array.from(project.elements.get("content").querySelectorAll("[data-src]"))) 
+    
+    elements.forEach(element => {
+      if(!element.dataset.src) return
+      element.src = element.dataset.src
+      delete element.dataset.src
+    })
+    project.loaded = true
+  }
   
-  const cover = project.elements.get("coverImage")
-  cover.src = cover.dataset.src
-  delete cover.dataset.src
 
 
-
-  /* remove ephemeral elements */
+  /* remove ephemeral elements from the project detail panel */
+  
   Qa("#project-detail *[data-ephemeral='true']").forEach(el => el.remove())
+
+
+
+  /* append new elements and show the project-detail */
 
   Q("#project-detail").classList.remove("hidden")
 
-  Q("#project-detail").append(project.elements.get("coverImage"))
+  Q("#project-detail").append(project.elements.get("coverImageContainer"))
   Q("#project-detail").append(project.elements.get("title"))
 
   if(project_list.get(name)?.data.description) {
@@ -150,10 +198,37 @@ function project_open(name) {
   }
   
   Q("#project-detail").append(project.elements.get("content"))
+
+
+
+  /* animations */
+
+  cover.style.pointerEvents = "none"
+  cover.animate([
+    {filter: "opacity(0)"},
+    {filter: "opacity(1)"},
+  ],{
+    duration: 1200,
+    easing: "cubic-bezier(0.2, 0.7, 0.2, 0.7)"
+  })
+  .onfinish = () => cover.style.pointerEvents = ""
+  
 }
 
 function project_hide() {
-  Q("#project-detail").classList.add("hidden")
+  Q("#project-detail").style.pointerEvents = "none"
+  Q("#project-detail").animate([
+    {filter: "opacity(1.0) contrast(1.0) brightness(1.0)", transform: "translateY(0)"},
+    {filter: "opacity(1.0) contrast(2.5) brightness(0.1)", transform: "translateY(100%)"}
+  ], {
+    duration: 500,
+    easing: "cubic-bezier(0.5, 0.0, 0.2, 1.0)"
+  })
+  .onfinish = () => {
+    Q("#project-detail").classList.add("hidden")
+    Q("#project-detail").style.pointerEvents = ""
+  }
+  
 }
 
 function project_filter_gallery(tags = [], clickedButton = null) {
@@ -200,7 +275,7 @@ function project_filter_gallery(tags = [], clickedButton = null) {
 /** Fills the end of the gallery with empty items so the bg color does not show */
 function project_gallery_fill_end() {
   Qa(".gallery-thumbnail.fill-in").forEach(el => el.remove())
-  /* add empty projects to hide the grid bg color */
+
   const cellWidth = 320 + 1 /* + 1 because of the grid gap */
   const galleryWidth = Q("#gallery").getBoundingClientRect().width
   const rowCount = Math.floor(galleryWidth / cellWidth)
@@ -215,15 +290,21 @@ function project_gallery_fill_end() {
     const thumbnail = El("div", "gallery-thumbnail fill-in")
     Q("#gallery").append(thumbnail)
   }
-  console.log(fillInCount)
 }
 
 function project_on_scroll(e) {
-  if(Q("#project-detail").scrollTop > window.innerHeight * 0.75) {
-    Q("#button--scroll-to-top").classList.remove("hidden")
+  const detail = Q("#project-detail")
+  const button = Q("#button--scroll-to-top")
+
+  if(detail.scrollTop > window.innerHeight * 0.75) {
+    button.classList.remove("hidden")
+  }
+  else
+  if(button.classList.contains("hidden") == false && detail.scrollTop > 150) {
+    
   }
   else {
-    Q("#button--scroll-to-top").classList.add("hidden")
+    button.classList.add("hidden")
   }
 }
 
@@ -235,12 +316,11 @@ function project_gallery_scroll_to(top = 0, behavior = "auto") {
   Q("html").scrollTo({top: top, behavior: behavior})
 }
 
-function project_animate_tags(show = true) {
-  /* if the state is already what it should be */
-  if(project_state.tagContainerVisible === show) return
+function project_animate_tags(value = true) {
+  if(project_state.tagContainerVisible === value) return
 
   /* prevent the tags from hiding if at least one is active */
-  if(show === false && project_tags_active.size < project_tags.size) return
+  if(value === false && project_tags_active.size < project_tags.size) return
   
   const tags = Q("#project-tags-container")
 
@@ -252,9 +332,9 @@ function project_animate_tags(show = true) {
 
   let to = Q("header").offsetHeight + "px"
   let from = (-height + "px")
-  let easing = show ? "cubic-bezier(0.2, 0.0, 0.3, 1.0)" : "cubic-bezier(0.7, 0.0, 0.8, 1.0)"
+  let easing = value ? "cubic-bezier(0.2, 0.0, 0.3, 1.0)" : "cubic-bezier(0.7, 0.0, 0.8, 1.0)"
 
-  if(!show) {
+  if(!value) {
     [to, from] = [from, to]
   }
 
@@ -271,7 +351,7 @@ function project_animate_tags(show = true) {
   .onfinish = () => {
     tags.style.top = to
   }
-  project_state.tagContainerVisible = show
+  project_state.tagContainerVisible = value
 }
 
 setTimeout(() => {

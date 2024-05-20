@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etuare - Obalový design | Zlín</title>
   <meta name="description" content="Grafické studio etuare. Již 19 let navrhujeme vizuální identity, obaly, webové stránky.">
+  <meta name="keywords" content="grafický design, obalový design, design, grafika, studio">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,8 +15,7 @@
       <img id="logo" src="images/logo_etuare.png" title="logo etuare"></img>
       <div id="navlinks">
         <a class="navlink" onclick="pageSet('project')" data-pagename="project">projekty</a>
-        <a class="navlink" onclick="pageSet('contact')" data-pagename="contact">klienti</a>
-        <a class="navlink" onclick="pageSet('contact')" data-pagename="contact">kontakt</a>
+        <a class="navlink" onclick="pageSet('contact')" data-pagename="contact">o nás</a>
       </div>
     </div>
   </header>
@@ -29,8 +29,11 @@
         </div>
       </div>
 
-      <div class="section--heading">
-        <h2>Branding</h2>
+      <div class="section" id="section--branding">
+        <h2 class="section--heading">Visual iden&shy;tity</h2>
+        <p class="section--description">
+          Projekty, na kterých jsme vymýšleli celou vizuální identitu, logo, barevnost, vizuální vyznění, propagační materiály, tiskoviny atd.
+        </p>
       </div>
 
       <div class="branding-gallery">
@@ -39,15 +42,29 @@
         <img src="projects/agro_smesi/3.png" alt="">
       </div>
 
-      <div class="section--heading">
-        <h2>Obalový design</h2>
+      <div class="section" id="section--packaging">
+        <h2 class="section--heading">Obalový design</h2>
+        <p class="section--description">
+          Komerční obaly pro širokou škálu produktů v kategoriích potraviny a kosmetika. Každý si dnes vzpomene na klasické "Vestky", jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky.
+        </p>
       </div>
 
       <div id="gallery-wrapper">
         <div id="gallery"></div>
       </div>
 
+      <div class="section" id="section--logo-design">
+        <h2 class="section--heading">Logo design</h2>
+        <p class="section--description">
+          Loga, která jsou z LEGA. Legolas leg day logos.
+        </p>
+      </div>
 
+      <div class="branding-gallery">
+        <img src="projects/agro_smesi/1.png" alt="">
+        <img src="projects/agro_smesi/2.png" alt="">
+        <img src="projects/agro_smesi/3.png" alt="">
+      </div>
 
       <div id="project-detail" class="hidden">
         <button id="button--close-project" onclick="project_hide()">ZPĚT K PROJEKTŮM</button>
@@ -62,31 +79,17 @@
 
       <!-- this shit is not used, it's an empty page and would be duplicate code from the footer -->
 
-      <!-- <div class="contact-contents">
-        <h2>Kontakt</h2>
-        <div class="footer-link">
-          <a href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>
-        </div>
-        <div class="footer-link">
-          <a href="tel:+420 736 689 470">736 689 470</a>
-        </div>
-      </div> -->
     </div>
 
   </main>
 
   <footer>
     <div id="footer-contents">
-        <!-- <h2 id="footer--heading-about">O nás</h2>
-        <p class="footer--paragraph">
-          Jsme grafické studio se zaměřením na tvorbu vizuálních identit a obalového designu. Působíme na trhu již přes 20 let,
-          máme pod sebou [x] projektů, [y] klientů a kdovíco ještě.
-          <br><br>
-          Pokud máte zájem o spolupráci, nebojte se ozvat. Nekoušeme (koušeme jenom pražáky).
-        </p> -->
       <h2 id="footer--heading-contact">etuare – grafické studio</h2>
       <p class="contact--info add-nbsp">
-        Specializujeme se na obalový design. Navrhneme vám i logo, vizuální identitu nebo webové stránky. Neváhejte se ozvat s vaším dotazem či nezávaznou poptávkou!
+        Grafické studio ze Zlína, fungujeme už 19 let.
+        <br><br>
+        Specializujeme se na obalový design, ale navrhneme vám i logo, vizuální identitu nebo webové stránky. Neváhejte se nezávazně ozvat s vaším dotazem či poptávkou!
       </p>
       <div class="footer-link">
         <a class="clickable" href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>

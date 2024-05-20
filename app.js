@@ -36,7 +36,7 @@ window.onresize = () => project_gallery_fill_end()
 /* EVENT HANDLING */
 
 document.addEventListener("pointerdown", (e) => {
-  if(e.target.closest("#project-detail") == null) {
+  if(e.target.closest("#project-detail") == null && e.target.closest(".gallery-thumbnail") == null) {
     project_hide()
   }
   if(e.target.closest("#logo")) {

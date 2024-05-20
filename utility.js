@@ -380,10 +380,6 @@ class Vector2 {
   }
 }
 
-function f(id) {
-  return entities.find(e => e.id === +id)
-}
-
 function capitalize(string) {
   return string.charAt(0).toLocaleUpperCase() + string.slice(1)
 }
@@ -597,8 +593,11 @@ const addNonBreakingSpacesToString = (str) => str.replace(
   ' $1' + '\u00A0'
 );
 
-function addNonBreakingSpaces() {
-  document.querySelectorAll(".add-nbsp").forEach(element => {
-    element.innerText = addNonBreakingSpacesToString(element.innerText)
+/** This is dangerous as it can fuck up some elements */
+function addNonBreakingSpaces(selectors = [".add-nbsp"]) {
+  document.querySelectorAll(selectors.join(", ")).forEach(element => {
+    if(element.innerText) {
+      element.innerText = addNonBreakingSpacesToString(element.innerText)
+    }
   })
 }
