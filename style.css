@@ -102,7 +102,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   font-family: "HK";
-  font-weight: bold;
+  /* font-weight: bold; */
   color: var(--color-light);
   background-color: var(--color-dark);
 }
@@ -121,8 +121,28 @@ p, div {
   line-height: 140%;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 h2 {
   font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+}
+
+h6 {
+  font-size: 1.2rem;
 }
 
 a {
@@ -131,8 +151,15 @@ a {
   font-weight: 600;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-family: "Garamond";
+  kerning: auto;
+  font-kerning: none;
+}
+
+h3, h4, h5, h6 {
+  font-family: "HK";
+  line-height: 140%;
 }
 
 
@@ -142,6 +169,7 @@ a.clickable {
 
 a.clickable:hover {
   text-decoration: underline;
+  color: var(--color-etuare);
 }
 
 
@@ -273,6 +301,7 @@ main {
   align-items: center;
 }
 
+
 /* MAIN: SECTIONS */
 
 .section {
@@ -290,7 +319,7 @@ main {
   width: 100%;
   font-weight: 200;
   font-size: 1.2rem;
-  max-width: 500px;
+  max-width: 620px;
 }
 
 #gallery-wrapper {
@@ -307,7 +336,7 @@ main {
 
   grid-template-rows: max-content;
   grid-auto-flow: row;
-  gap: 8px;
+  gap: 4px;
   /* background-color: #2f74c420; */
   background-color: transparent;
   width: 100%;
@@ -372,7 +401,7 @@ main {
 /* BRANDING GALLERY TEST */
 .branding-gallery {
   display: flex;
-  gap: 2px;
+  gap: 4px;
   width: 100%;
   max-width: 1200px;
 }
@@ -440,6 +469,9 @@ main {
   max-width: 720px;
   font-size: 1.4rem;
   font-weight: 400;
+  word-break: normal;
+  word-wrap: break-word;
+  hyphens: manual;
 }
 
 .project-content {
@@ -452,6 +484,12 @@ main {
   font-style: italic;
   margin-top: 10px;
   font-weight: 200;
+}
+
+.project-html-block {
+  max-width: 720px;
+  font-weight: 400;
+  margin: 40px 0;
 }
 
 #button--close-project {
@@ -504,16 +542,33 @@ main {
 
 .contact--info {
   line-height: 170%;
-  max-width: 430px;
+  max-width: 500px;
   font-size: 1.2rem;
   font-weight: 200;
   margin-bottom: 60px;
+  text-align: left;
 }
 
 .contact--address {
   margin-top: 30px; 
   font-weight: 200; 
   font-size: 1.2rem;
+}
+
+
+
+/* HOW WE WORK */
+
+#page--how-we-work {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#how-we-work-contents {
+  padding: 0 20px;
+  max-width: 720px;
 }
 
 
@@ -525,7 +580,7 @@ footer {
   align-items: center;
   text-align: center;
   width: 100vw;
-  padding: 100px 0;
+  padding: 100px 0 160px;
 }
 
 #footer-contents {
@@ -664,6 +719,6 @@ footer {
   footer {
     /* height: calc(100vh - var(--header-height)); */
     justify-content: center;
-    padding: 0 20px 40px;
+    padding: 0 20px 60px;
   }
 }

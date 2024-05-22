@@ -1,5 +1,16 @@
 function init() {
 
+  /* setup pages */
+  Qa("[data-ispage='true']").forEach(page => {
+    pages.push(page)
+    let 
+    navlink = El("a", "navlink", [], page.dataset.pagetitle)
+    navlink.dataset.pagename = page.dataset.pagename
+    navlink.onclick = () => pageSet(navlink.dataset.pagename)
+
+    Q("#navlinks").append(navlink)
+  })
+
   /* Process the URL search */
   let searchQuery = window.location.search.replace("?", "")
   let pairs = searchQuery.split("+")
@@ -24,7 +35,8 @@ function init() {
 
   addNonBreakingSpaces()
 }
-
+/** @type Array<HTMLElement> */
+const pages = []
 const state = {
   lastScrollTop: 0
 }
@@ -69,20 +81,17 @@ document.addEventListener("scroll", (e) => {
 function pageSet(name) {
   Qa(".navlink").forEach(element => element.classList.remove("active"))
   
-  switch(name) {
-    case "project": {
-      Q("#page--project").classList.remove("hidden")
-      Q("#page--contact").classList.add("hidden")
-      Q(`.navlink[data-pagename='${name}']`).classList.add("active")
-      break
+  pages.forEach(page => {
+    if(page.dataset.pagename === name) {
+      page.classList.remove("hidden")
     }
-    case "contact": {
-      Q("#page--contact").classList.remove("hidden")
-      Q("#page--project").classList.add("hidden")
-      Q(`.navlink[data-pagename='${name}']`).classList.add("active")
-      break
+    else {
+      page.classList.add("hidden")
     }
-  }
+  })
+
+  Q(`.navlink[data-pagename='${name}']`).classList.add("active")
+  window.scrollTo({top: 0, behavior: "smooth"})
 }
 
 project_init()

@@ -14,12 +14,16 @@ const project_state = {
 let project_active = null
 
 function project_init() {
-  for(let project in projects) {
-    project_create(project)
+  let index = 0
+  for(let name in projects) {
+    if(index >= 3) break
 
-    for(let tag of projects[project].tags) {
+    project_create(name)
+
+    for(let tag of projects[name].tags) {
       project_tags.add(tag)
     }
+    index++
   }
 
   project_gallery_fill_end()
@@ -63,17 +67,17 @@ function project_create(name) {
 
   /* Note: data-src attribs are used for all internal images, which are not to be seen until the project is opened */
 
-  const title =       El("h2",  "project-heading", [], data.title)
-  const desc =        El("div", "project-description add-nbsp", [], data.description)
-  const coverImage =  El("img", "project-cover-image", [["data-src", `projects/${name}/${data.cover || "cover.png"}`]])
+  const title =               El("h2",  "project-heading", [], data.title)
+  const desc =                El("div", "project-description add-nbsp", [], data.description)
+  const coverImage =          El("img", "project-cover-image", [["data-src", `projects/${name}/${data.cover || "cover.png"}`]])
   const coverImageContainer = El("div", "project-cover-image-container")
-  const coverImageShadow = El("div", "project-cover-image-shadow")
-  const content =     El("div", "project-content")
+  const coverImageShadow =    El("div", "project-cover-image-shadow")
+  const content =             El("div", "project-content")
   
-  /* gallery thumbnail */
-  const thumbnail =   El("div", "gallery-thumbnail")
-  const thumbImage =  El("img", "gallery-thumbnail-image", [["src", `projects/${name}/${data.thumbnail || "thumbnail.png"}`]])
-  const thumbLabel =  El("div", "gallery-thumbnail--label", [], data.title)
+  const thumbnail =           El("div", "gallery-thumbnail") //thumbnail that goes into the main grid gallery
+  const thumbImage =          El("img", "gallery-thumbnail-image", [["src", `projects/${name}/${data.thumbnail || "thumbnail.png"}`]])
+  const thumbLabel =          El("div", "gallery-thumbnail--label", [], data.title)
+
   thumbnail.append(thumbImage, thumbLabel)
   coverImageContainer.append(coverImage, coverImageShadow)
   
@@ -107,7 +111,7 @@ function project_create(name) {
         break
       }
       case "html": {
-        const html = El("div", "project-text")
+        const html = El("div", "project-html-block")
         html.innerHTML = item.html
         content.append(html)
         break
@@ -276,7 +280,8 @@ function project_filter_gallery(tags = [], clickedButton = null) {
 function project_gallery_fill_end() {
   Qa(".gallery-thumbnail.fill-in").forEach(el => el.remove())
 
-  const cellWidth = 320 + 1 /* + 1 because of the grid gap */
+  const gridGap = 4 /* must match the css value for #gallery */
+  const cellWidth = 320 + gridGap
   const galleryWidth = Q("#gallery").getBoundingClientRect().width
   const rowCount = Math.floor(galleryWidth / cellWidth)
   const countVisible = Array.from(project_list.values()).filter(p => p.visibleInGallery === true).length

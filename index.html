@@ -7,6 +7,17 @@
   <meta name="description" content="Grafické studio etuare. Již 19 let navrhujeme vizuální identity, obaly, webové stránky.">
   <meta name="keywords" content="grafický design, obalový design, design, grafika, studio">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2WL1GFBFKH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2WL1GFBFKH');
+  </script>
+  
 </head>
 <body>
   
@@ -14,14 +25,15 @@
     <div id="header--contents">
       <img id="logo" src="images/logo_etuare.png" title="logo etuare"></img>
       <div id="navlinks">
-        <a class="navlink" onclick="pageSet('project')" data-pagename="project">projekty</a>
-        <a class="navlink" onclick="pageSet('contact')" data-pagename="contact">o nás</a>
+        <!-- <a class="navlink" onclick="pageSet('project')"     data-pagename="project">projekty</a>
+        <a class="navlink" onclick="pageSet('contact')"     data-pagename="contact">o nás</a>
+        <a class="navlink" onclick="pageSet('how-we-work')" data-pagename="how-we-work">jak pracujeme</a> -->
       </div>
     </div>
   </header>
 
   <main>
-    <div id="page--project">
+    <div id="page--project" data-ispage="true" data-pagetitle="projekty" data-pagename="project">
 
       <div id="project-tags-container">
         <div id="project-tags">
@@ -37,9 +49,9 @@
       </div>
 
       <div class="branding-gallery">
-        <img src="projects/agro_smesi/1.png" alt="">
-        <img src="projects/agro_smesi/2.png" alt="">
-        <img src="projects/agro_smesi/3.png" alt="">
+        <img src="projects/placeholder_adria.png" alt="">
+        <img src="projects/placeholder_kovacs.png" alt="">
+        <img src="projects/placeholder_idk.png" alt="">
       </div>
 
       <div class="section" id="section--packaging">
@@ -56,14 +68,14 @@
       <div class="section" id="section--logo-design">
         <h2 class="section--heading">Logo design</h2>
         <p class="section--description">
-          Loga, která jsou z LEGA. Legolas leg day logos.
+          Loga, logopedická liga z LEGA. Legolas leg.
         </p>
       </div>
 
       <div class="branding-gallery">
-        <img src="projects/agro_smesi/1.png" alt="">
-        <img src="projects/agro_smesi/2.png" alt="">
-        <img src="projects/agro_smesi/3.png" alt="">
+        <img src="projects/zabojnik/thumbnail.png" alt="">
+        <img src="projects/adria/logo.png" alt="">
+        <img src="projects/kovacs/logo.png" alt="">
       </div>
 
       <div id="project-detail" class="hidden">
@@ -75,22 +87,57 @@
       </div>
     </div>
     
-    <div id="page--contact" class="hidden">
+    <div id="page--contact" class="hidden" data-ispage="true" data-pagetitle="o nás" data-pagename="contact">
 
       <!-- this shit is not used, it's an empty page and would be duplicate code from the footer -->
 
+    </div>
+
+    <div id="page--how-we-work" class="hidden" data-ispage="true" data-pagetitle="naše služby" data-pagename="how-we-work">
+      <h2>Naše služby</h2>
+      <div id="how-we-work-contents">
+        <h4>Poradenství</h4>
+        <p>
+          <ul>
+            <li>Poradenství v oblasti strategie značek výroků</li>
+            <li>Inovace značek - novinky</li>
+            <li>Architektura značek v portfoliu – produktové řady</li>
+          </ul>
+        </p>
+        <h4>Obalový design</h4>
+        <p>
+          <ul>
+            <li>Návrhy konceptů a vývoj obalu</li>
+            <li>Grafický návrh obalu</li>
+            <li>Úpravy stávajících návrhů obalů – „omlazení“</li>
+            <li>Konzultaci při výrobě a tisku obalů</li>
+            <li>Návrhy prodejních kartonů</li>
+          </ul>
+        </p>
+        <h4>Návrhy propagačních materiálů</h4>
+        <p>
+          <ul>
+            <li>Promo materiály - nabídkové listy, katalogy, ceníky atd. </li>
+            <li>POS a POP materiály – zvýraznění produktů v místě prodeje (regálové lišty, woblery, vymezovače, podlahová grafika, plakáty, ..atd)</li>
+          </ul>
+        </p>
+      </div>
     </div>
 
   </main>
 
   <footer>
     <div id="footer-contents">
-      <h2 id="footer--heading-contact">etuare – grafické studio</h2>
+      <h1 id="footer--heading-contact">etuare – grafické studio</h1>
       <p class="contact--info add-nbsp">
         Grafické studio ze Zlína, fungujeme už 19 let.
         <br><br>
         Specializujeme se na obalový design, ale navrhneme vám i logo, vizuální identitu nebo webové stránky. Neváhejte se nezávazně ozvat s vaším dotazem či poptávkou!
+        <br><br>
       </p>
+      <!-- <button id="button--how-we-work" onclick="pageSet('how-we-work')">
+        Jak pracujeme
+      </button> -->
       <div class="footer-link">
         <a class="clickable" href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>
       </div>

@@ -15,12 +15,6 @@ const projectTemplate = {
       type: "html",
       html: `<button>Input any HTML here</button>`
     },
-    {
-      type: "images",
-      images: [
-        {src: "images/logo.png", title: ""}
-      ]
-    },
   ]
 }
 
@@ -29,7 +23,7 @@ const projects = {}
 
 projects["henna"] = {
   title: "Henna",
-  description: "Různé obaly pro firmu Henna, lokální výrobce přírodní kosmetiky.",
+  description: `Grafický návrh obalu, který kombinuje přírodní prvky s prvky atraktivními a známými pro cílovou skupinu žen, které si barví vlasy. Obalu dominuje benefit "100% přírodní barva."`,
   tags: ["obalový design", "kosmetika"],
   accent: "#e34046",
   content: [
@@ -37,13 +31,29 @@ projects["henna"] = {
       type: "images",
       images: [
         {src: "1.png", title: "Obaly pro pánské barvy na vlasy"},
+      ]
+    },
+    {
+      type: "html",
+      html: 
+      `Šampony svým grafickým stylem navazují
+      na řadu barev na vlasy. Cílem bylo zachování
+      jednotného vzhledu, který spojuje
+      kromě dominantní červené barevnosti
+      i fotografie. Obě výrobkové řady se tak
+      navzájem prodejně podporují.
+      `
+    },
+    {
+      type: "images",
+      images: [
         {src: "3.png", title: "Přípravky na vlasy"},
       ]
     },
   ]
 }
 
-projects["vestky"] = {
+projects["vest"] = {
   title: "Vest - slané krekry",
   description: "",
   tags: ["obalový design", "potraviny"],
@@ -68,7 +78,7 @@ projects["pohorelicky_kapr"] = {
     {
       type: "images",
       images: [
-        {src: "thumbnail.png", title: ""},
+        // {src: "thumbnail.png", title: ""},
       ]
     },
   ]
@@ -82,9 +92,9 @@ projects["urixal"] = {
     {
       type: "images",
       images: [
-        {src: "1.png", title: ""},
-        {src: "2.png", title: ""},
-        {src: "3.png", title: ""},
+        // {src: "1.png", title: ""},
+        // {src: "2.png", title: ""},
+        // {src: "3.png", title: ""},
       ]
     },
   ]
