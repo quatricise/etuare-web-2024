@@ -593,7 +593,7 @@ const addNonBreakingSpacesToString = (str) => str.replace(
   ' $1' + '\u00A0'
 );
 
-/** This is dangerous as it can fuck up some elements */
+/** This is dangerous as it can fuck up some elements by replacing their innerText with rubbish. */
 function addNonBreakingSpaces(selectors = [".add-nbsp"]) {
   document.querySelectorAll(selectors.join(", ")).forEach(element => {
     if(element.innerText) {
