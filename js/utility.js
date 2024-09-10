@@ -21,7 +21,9 @@ function Create(tagname, options = {}) {
   const classes = options.c?.split(" ")
   if(classes) {
     for(let c of classes) {
-      element.classList.add(c)
+      if(c !== "" && c !== " ") {
+        element.classList.add(c)
+      }
     }
   }
   const attributes = options.a?.split(" ")
@@ -31,6 +33,8 @@ function Create(tagname, options = {}) {
       element.setAttribute(key, val)
     }
   }
-  element.innerText = options.t ?? ""
+  if(options.t) element.innerText = options.t
+  if(options.h) element.innerHTML = options.h
+
   return element
 }

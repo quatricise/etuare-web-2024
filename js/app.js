@@ -9,6 +9,25 @@ function addNBSPToAll() {
   })
 }
 
+/** Adds shy hyphens to text. Rudimentary but works. */
+function autoShy(/** @type HTMLElement */ element) {
+  let words = element.innerText.split(" ").filter(word => word !== " ")
+  let results = []
+  for(let word of words) {
+    if(word.length <= 5) {
+      results.push(word)
+      continue
+    }
+    const firstHalf =  word.slice(0, Math.ceil(word.length / 2))
+    const secondHalf = word.slice(Math.ceil(word.length / 2))
+    // for(let char of word) {
+
+    // }
+    results.push(firstHalf + "\u00AD" + secondHalf)
+  }
+  element.innerText = results.join(" ")
+}
+
 
 document.addEventListener("mouseover", (e) => {
  

@@ -5,25 +5,29 @@ class ProjectCard {
 
     /* Create HTML */
 
-    const card =    Create("div", {c: "project-card"})
+    const card =        Create("div", {c: "project-card"})
+    const image =       Create("img", {a: `src=projects/${name}/project_card.png draggable=false`})
+    const title =       Create("h2", {t: this.project.titleShort ?? this.project.title})
+    const text =        Create("div", {c: "project-card--text"})
+    const desc =        Create("div", {t: this.project.description, c: "project-card--description"})
 
-    const image =   Create("img", {a: `src=projects/${name}/project_card.png draggable=false`})
+    const button =      Create("button", {c: "button dark project-card--button", t: "Prohlédnout"})
+    const buttonArrow = Create("div", {c: "button-arrow"})
 
-    const title =   Create("h2", {t: this.project.titleShort ?? this.project.title})
+    const borderLeft =  Create("div", {c: "project-card--border-left"})
+    const borderRight = Create("div", {c: "project-card--border-right"})
+    const borderTop =   Create("div", {c: "project-card--border-top"})
 
-    const desc =    Create("div", {t: this.project.description, c: "project-card--description"})
+    card.append(image, borderLeft, borderRight, borderTop, text)
+    text.append(title, desc, button)
+    button.append(buttonArrow)
 
-    const button =  Create("button", {c: "button", t: "Prohlédnout"})
-
-    const borderLeft = Create("div", {c: "project-card--border-left"})
-    const borderTop = Create("div", {c: "project-card--border-top"})
-
-    card.append(image, title, desc, button, borderLeft, borderTop)
-    Q(`.works--column-${ProjectCard.nextColumn}`).append(card)
-    ProjectCard.flipColumnPlacement()
+    autoShy(desc)
+    ProjectCard.placeCard(card)
   }
   static nextColumn = 1
-  static flipColumnPlacement() {
+  static placeCard(card) {
+    Q(`.works--column-${ProjectCard.nextColumn}`).append(card)
     this.nextColumn = this.nextColumn === 1 ? 2 : 1 
   }
 }

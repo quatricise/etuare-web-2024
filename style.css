@@ -64,6 +64,8 @@ h2 {
 }
 
 button {
+  display: flex;
+  gap: 10px;
   padding: 12px 40px;
   background-color: var(--c-light-0);
   border-style: solid;
@@ -73,10 +75,46 @@ button {
   border-radius: 2px;
   outline: none;
   font-family: "rale";
-  font-weight: 700;
+  font-weight: 750;
   font-size: 18px;
   box-shadow: 0px 0px 80px 5px #ffffff30;
-  animation: var(--animation-cursor);
+  /* animation: var(--animation-cursor); */
+  cursor: url(images/icon_cursor.png) 6 6, default;
+  transition: border-color 0.25s ease-in-out;
+}
+
+button.dark:hover {
+  border-color: var(--c-dark-3);
+  border-bottom-color: var(--c-dark-6);
+}
+
+button.dark {
+  background-color: var(--c-dark-1);
+  color: var(--c-light-0);
+  font-weight: 650;
+  cursor: url(images/icon_cursor_light.png) 6 6, default;
+}
+
+button:hover > .button-arrow {
+  left: 4px;
+}
+
+.button-arrow {
+  position: relative;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  object-fit: cover;
+  background-image: url(images/icon_arrow.png);
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  scale: -1;
+  transition: left 0.2s cubic-bezier(0.2, 0.0, 0.2, 1.0);
+  cursor: inherit;
+}
+button.dark .button-arrow {
+  filter: invert(1);
 }
 
 .section {
@@ -229,11 +267,20 @@ header {
   display: flex;
   flex-direction: column;
   gap: 120px;
-  width: 50%;
+  width: calc(50% - 30px);
 }
 
 .works--column-2 {
   margin-top: 180px;
+}
+
+.home--section--see-more {
+  align-items: center;
+  padding: 80px;
+}
+
+.button--see-more {
+  width: max-content;
 }
 
 /* PROJECT CARD */
@@ -242,12 +289,11 @@ header {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
   width: 100%;
   max-width: 100%;
   color: var(--c-light-0);
   background: no-repeat bottom left 100%/100% url("images/background_var_0.png");
-
+  transition: filter 0.1s ease-out;
 }
 
 .project-card--border-left {
@@ -259,8 +305,9 @@ header {
   opacity: 0.2;
   background: linear-gradient(0deg, 
   var(--c-dark-3) 0%, 
-  var(--c-light-4) 50%, 
+  var(--c-light-4) 30%, 
   var(--c-dark-0) 100%);
+  transition: opacity 0.35s ease-in-out, width 0.5s ease-in-out;
 }
 
 .project-card--border-top {
@@ -273,14 +320,68 @@ header {
   background: linear-gradient(90deg, 
   var(--c-dark-0) 0%, 
   var(--c-light-4) 75%, 
-  var(--c-dark-3) 100%);
+  var(--c-dark-4) 100%);
+  transition: opacity 0.5s ease-in-out, height 0.75s ease-in-out;
+}
+
+.project-card--border-right {
+  position: absolute;
+  right: calc(var(--border-width) * -1);
+  top: 0;
+  width: var(--border-width);
+  height: 100%;
+  opacity: 0.15;
+  background: linear-gradient(0deg, 
+  var(--c-dark-0) 0%, 
+  var(--c-light-4) 75%, 
+  var(--c-dark-4) 100%);
+  transition: opacity 0.75s ease-in-out, width 1s ease-in-out;
+}
+
+.project-card--text {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .project-card--description {
+  margin-bottom: 4px;
+  padding-left: 1px;
   font-family: "rale";
   font-size: 18px;
   font-weight: 250;
+  text-align: justify;
+  text-justify: inter-word;
+  text-shadow: 0px 0px 10px #000000;
 }
+
+.project-card--button {
+  width: max-content;
+  padding-right: 30px;
+}
+
+/* Project card - effects */
+.project-card:hover {
+  filter: brightness(1.09);
+}
+.project-card:hover .project-card--description {
+  text-shadow: 0px 0px 10px #ffffff40;
+}
+.project-card:hover button .button-arrow {
+  left: 4px;
+}
+.project-card:hover .project-card--border-left {
+  opacity: 0.6;
+}
+.project-card:hover .project-card--border-right {
+  opacity: 0.4;
+}
+.project-card:hover .project-card--border-top {
+  opacity: 0.4;
+}
+
+
 
 /* PAGE - OUR SERVICES */
 
