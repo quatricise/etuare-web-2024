@@ -2,6 +2,8 @@
 :root {
   --header-height: 60px;
 
+  --animation-cursor: cursor 2s linear infinite normal;
+
   --c-dark-0:  #121212;
   --c-dark-1:  #1d1d1d;
   --c-dark-2:  #2b2b2b;
@@ -21,6 +23,7 @@
 
 * {
   box-sizing: border-box;
+  cursor: url(images/icon_cursor.png) 6 6, default;
 }
 
 body {
@@ -41,6 +44,8 @@ main {
 
 img {
   display: block;
+  padding: 0;
+  margin: 0;
   -webkit-user-drag: none;
   user-select: none;
 }
@@ -49,6 +54,29 @@ h1 {
   font-family: "next";
   font-weight: bold;
   font-size: 48px;
+  margin: 0;
+}
+h2 {
+  font-family: "next";
+  font-weight: bold;
+  font-size: 32px;
+  margin: 0;
+}
+
+button {
+  padding: 12px 40px;
+  background-color: var(--c-light-0);
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--c-dark-1);
+  border-bottom-color: var(--c-dark-4);
+  border-radius: 2px;
+  outline: none;
+  font-family: "rale";
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0px 0px 80px 5px #ffffff30;
+  animation: var(--animation-cursor);
 }
 
 .section {
@@ -68,6 +96,23 @@ h1 {
 @font-face {
   font-family: "rale";
   src: url(fonts/raleway/Variable.ttf);
+}
+
+
+
+/* ANIMATIONS */
+@keyframes cursor {
+  0%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0000.png)  6 6, pointer}
+  5%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0001.png)  6 6, pointer}
+  10%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0002.png)  6 6, pointer}
+  15%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0003.png)  6 6, pointer}
+  20%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0004.png)  6 6, pointer}
+  25%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0005.png)  6 6, pointer}
+  30%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0006.png)  6 6, pointer}
+  35%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0007.png)  6 6, pointer}
+  40%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0008.png)  6 6, pointer}
+  45%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0009.png)  6 6, pointer}
+  100%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0009.png) 6 6, pointer}
 }
 
 
@@ -97,7 +142,7 @@ header {
   left: 0;
   width: 100%;
   height: var(--border-width);
-  opacity: 0.35;
+  opacity: 0.1;
   background: linear-gradient(90deg, 
   var(--c-dark-0) 0%, 
   var(--c-light-3) 50%, 
@@ -110,7 +155,6 @@ header {
   font-weight: 660;
   font-size: 32px;
   margin-bottom: 6px;
-  cursor: pointer;
 }
 
 .navlinks {
@@ -118,7 +162,7 @@ header {
   align-items: center;
   justify-content: center;
   height: 100%;
-  /* gap: 40px; */
+
 }
 
 .navlink {
@@ -130,8 +174,8 @@ header {
   font-family: "rale";
   font-weight: 300;
   font-size: 16px;
-  cursor: pointer;
   width: 100px;
+  animation: var(--animation-cursor);
 }
 .navlink:hover {
   text-shadow: 0px 5px 5px var(--c-dark-4);
@@ -164,13 +208,78 @@ header {
   max-width: 700px;
 }
 
+.intro-text--button {
+  margin-top: 80px;
+}
+
 .home--section--intro {
   align-items: center;
-  padding-top: 360px;
+  padding-top: 320px;
 }
 
 .home--section--works {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  padding: 0 calc((100vw - 1100px) / 2);
+}
 
+.works--column-1,
+.works--column-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  width: 50%;
+}
+
+.works--column-2 {
+  margin-top: 180px;
+}
+
+/* PROJECT CARD */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 100%;
+  color: var(--c-light-0);
+  background: no-repeat bottom left 100%/100% url("images/background_var_0.png");
+
+}
+
+.project-card--border-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--border-width);
+  height: 100%;
+  opacity: 0.2;
+  background: linear-gradient(0deg, 
+  var(--c-dark-3) 0%, 
+  var(--c-light-4) 50%, 
+  var(--c-dark-0) 100%);
+}
+
+.project-card--border-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: var(--border-width);
+  width: 100%;
+  opacity: 0.15;
+  background: linear-gradient(90deg, 
+  var(--c-dark-0) 0%, 
+  var(--c-light-4) 75%, 
+  var(--c-dark-3) 100%);
+}
+
+.project-card--description {
+  font-family: "rale";
+  font-size: 18px;
+  font-weight: 250;
 }
 
 /* PAGE - OUR SERVICES */

@@ -16,21 +16,21 @@ function Qa_On(element, query) {
 /* HTML */
 
 /** @returns HTMLElement */
-function Create(options = {}) {
-  const element = document.createElement(options.tagname ?? "div")
-  const classes = options.classes?.split(" ")
+function Create(tagname, options = {}) {
+  const element = document.createElement(tagname)
+  const classes = options.c?.split(" ")
   if(classes) {
     for(let c of classes) {
       element.classList.add(c)
     }
   }
-  const attribs = options.attribs?.split("|")
-  if(attribs) {
-    for(let a of attribs) {
-      const [key, val] = a.split(" ")
+  const attributes = options.a?.split(" ")
+  if(attributes) {
+    for(let a of attributes) {
+      const [key, val] = a.split("=")
       element.setAttribute(key, val)
     }
   }
-  element.innerText = options.innerText ?? ""
+  element.innerText = options.t ?? ""
   return element
-} 
+}

@@ -26,3 +26,9 @@ document.addEventListener("mouseover", (e) => {
   }
   
 })
+
+window.onload = () => {
+  new ProjectCard("adria_gold")
+  new ProjectCard("adria_gold")
+  new ProjectCard("adria_gold")
+}
