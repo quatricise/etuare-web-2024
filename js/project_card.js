@@ -11,7 +11,7 @@ class ProjectCard {
     const text =        Create("div", {c: "project-card--text"})
     const desc =        Create("div", {t: this.project.description, c: "project-card--description"})
 
-    const button =      Create("button", {c: "button dark project-card--button", t: "Prohlédnout"})
+    const button =      Create("button", {c: "button dark-1 project-card--button", t: "Prohlédnout"})
     const buttonArrow = Create("div", {c: "button-arrow"})
 
     const borderLeft =  Create("div", {c: "project-card--border-left"})
