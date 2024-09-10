@@ -1,0 +1,180 @@
+/* GENERAL TEMPLATING RULES */
+:root {
+  --header-height: 60px;
+
+  --c-dark-0:  #121212;
+  --c-dark-1:  #1d1d1d;
+  --c-dark-2:  #2b2b2b;
+  --c-dark-3:  #3b3b3b;
+  --c-dark-4:  #4b4b4b;
+  --c-dark-5:  #5f5f5f;
+  --c-dark-6:  #777777;
+
+  --c-light-0: #E4E4E4;
+  --c-light-1: #cfcfcf;
+  --c-light-2: #bebebe;
+  --c-light-3: #a1a1a1;
+  --c-light-4: #969696;
+  
+  --border-width: 1.5px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--c-dark-0);
+  color: var(--c-light-0);
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 360px;
+  width: 100vw;
+}
+
+img {
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+h1 {
+  font-family: "next";
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* FONTS */
+
+@font-face {
+  font-family: "next";
+  src: url(fonts/tt_travels_next/Variable.ttf);
+}
+@font-face {
+  font-family: "rale";
+  src: url(fonts/raleway/Variable.ttf);
+}
+
+
+
+/* HEADER */
+
+header {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: var(--header-height);
+}
+
+.header--contents {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.header--border-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--border-width);
+  opacity: 0.35;
+  background: linear-gradient(90deg, 
+  var(--c-dark-0) 0%, 
+  var(--c-light-3) 50%, 
+  var(--c-dark-0) 100%);
+  transition: width 0.5s ease-in-out, left 0.3s ease-out, opacity 0.5s ease-out, height 0.5s ease-in-out;
+}
+
+.header--logo {
+  font-family: "next";
+  font-weight: 660;
+  font-size: 32px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  /* gap: 40px; */
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  font-family: "rale";
+  font-weight: 300;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
+.navlink:hover {
+  text-shadow: 0px 5px 5px var(--c-dark-4);
+  font-weight: 600;
+}
+
+/* PAGE - HOME */
+
+.intro-text {
+  font-family: "next";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+}
+
+.intro-text--line-1 {
+  font-size: 80px;
+  font-weight: 750;
+  margin-bottom: -10px;
+}
+.intro-text--line-2 {
+  font-size: 20px;
+}
+.intro-text--line-3 {
+  margin-top: 80px;
+  font-family: "rale";
+  font-weight: 200;
+  font-size: 20px;
+  max-width: 700px;
+}
+
+.home--section--intro {
+  align-items: center;
+  padding-top: 360px;
+}
+
+.home--section--works {
+
+}
+
+/* PAGE - OUR SERVICES */
+
+/* PAGE - ABOUT US */
+
+/* PAGE - PROJECT DETAIL */
