@@ -3,6 +3,7 @@
   --header-height: 60px;
 
   --animation-cursor: cursor 2s linear infinite normal;
+  --animation-mouse:  mouse 2s linear infinite normal;
 
   --c-dark-0:  #121212;
   --c-dark-1:  #1d1d1d;
@@ -91,7 +92,6 @@ button {
   font-weight: 750;
   font-size: 18px;
   box-shadow: 0px 0px 80px 5px #ffffff30;
-  /* animation: var(--animation-cursor); */
   cursor: url(images/icon_cursor.png) 6 6, default;
   transition: border-color 0.25s ease-in-out;
 }
@@ -186,6 +186,25 @@ button.dark .button-arrow {
 
 
 
+/* TOOLTIP */
+.tooltip-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  padding: 10px 60px;
+  background-color: var(--c-light-0);
+  color: var(--c-dark-0);
+  border-radius: 10px;
+}
+.tooltip-text {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "rale";
+}
+
+
+
 /* FONTS */
 
 @font-face {
@@ -201,17 +220,31 @@ button.dark .button-arrow {
 
 /* ANIMATIONS */
 @keyframes cursor {
-  0%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0000.png)  6 6, pointer}
-  5%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0001.png)  6 6, pointer}
-  10%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0002.png)  6 6, pointer}
-  15%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0003.png)  6 6, pointer}
-  20%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0004.png)  6 6, pointer}
-  25%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0005.png)  6 6, pointer}
-  30%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0006.png)  6 6, pointer}
-  35%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0007.png)  6 6, pointer}
-  40%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0008.png)  6 6, pointer}
-  45%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0009.png)  6 6, pointer}
-  100%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0009.png) 6 6, pointer}
+  0%    {cursor: url(images/icon_cursor_animated/icon_cursor_animated0000.png)  6 6, pointer}
+  5%    {cursor: url(images/icon_cursor_animated/icon_cursor_animated0001.png)  6 6, pointer}
+  10%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0002.png)  6 6, pointer}
+  15%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0003.png)  6 6, pointer}
+  20%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0004.png)  6 6, pointer}
+  25%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0005.png)  6 6, pointer}
+  30%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0006.png)  6 6, pointer}
+  35%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0007.png)  6 6, pointer}
+  40%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0008.png)  6 6, pointer}
+  45%   {cursor: url(images/icon_cursor_animated/icon_cursor_animated0009.png)  6 6, pointer}
+  100%  {cursor: url(images/icon_cursor_animated/icon_cursor_animated0009.png)  6 6, pointer}
+}
+
+@keyframes mouse {
+  0%    {background-image: url(images/icon_mouse_animated/icon_mouse_animated0000.png)}
+  5%    {background-image: url(images/icon_mouse_animated/icon_mouse_animated0001.png)}
+  10%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0002.png)}
+  15%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0003.png)}
+  20%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0004.png)}
+  25%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0005.png)}
+  30%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0006.png)}
+  35%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0007.png)}
+  40%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0008.png)}
+  45%   {background-image: url(images/icon_mouse_animated/icon_mouse_animated0009.png)}
+  100%  {background-image: url(images/icon_mouse_animated/icon_mouse_animated0009.png)}
 }
 
 
@@ -451,7 +484,7 @@ header {
 /* PAGE - SERVICES */
 
 .services--section--intro {
-  padding: 320px 0;
+  padding: 200px 0;
   align-items: center;
   /* gap: 20px; */
 }
@@ -475,11 +508,19 @@ header {
   justify-content: center;
   gap: 20px;
   max-width: 1100px;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .services--intro-button {
-  /* width: 260px; */
+  width: 260px;
+}
+
+.icon--mouse-animated {
+  margin-top: 80px;
+  width: 64px;
+  height: 64px;
+  background-position: center;
+  background-size: 100%;
 }
 
 /* PAGE - ABOUT */

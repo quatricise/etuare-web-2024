@@ -20,16 +20,46 @@ function autoShy(/** @type HTMLElement */ element) {
     }
     const firstHalf =  word.slice(0, Math.ceil(word.length / 2))
     const secondHalf = word.slice(Math.ceil(word.length / 2))
-    // for(let char of word) {
 
-    // }
     results.push(firstHalf + "\u00AD" + secondHalf)
   }
   element.innerText = results.join(" ")
 }
 
+window.onload = () => {
+  Tooltip.init()
+
+  new ProjectCard("adria_gold")
+  new ProjectCard("adria_gold")
+  new ProjectCard("adria_gold")
+
+  pageSet("services")
+
+  for(let key in services) {
+    const button = Create("button", {c: "dark dark-0 services--intro-button shadow-small", t: key})
+    const arrow = Create("div", {c: "button-arrow rotate-90"})
+    button.append(arrow)
+    Q(".services--intro-buttons").append(button)
+  }
+}
+
+
+
+// #region EVENTS - All event handling is here for now
+
+let timeoutId
+
+timeoutId = setTimeout(() => {
+  Q(".icon--mouse-animated").style.animation = "var(--animation-mouse)"
+}, 3000)
+
+document.addEventListener("wheel", (e) => {
+  Mouse.update(e)
+  window.clearTimeout(timeoutId)
+})
 
 document.addEventListener("mouseover", (e) => {
+  Mouse.update(e)
  
   if(e.target.closest(".navlink, .header--logo")) {
     let rect = e.target.closest(".navlink, .header--logo").getBoundingClientRect()
@@ -46,21 +76,22 @@ document.addEventListener("mouseover", (e) => {
   
 })
 
-window.onload = () => {
-  new ProjectCard("adria_gold")
-  new ProjectCard("adria_gold")
-  new ProjectCard("adria_gold")
+document.addEventListener("mousedown", (e) => {
+  Mouse.update(e)
+})
 
-  pageSet("services")
+document.addEventListener("mouseup", (e) => {
+  Mouse.update(e)
+})
 
-  for(let key in services) {
-    const button = Create("button", {c: "dark dark-0 services--intro-button shadow-small", t: key})
-    const arrow = Create("div", {c: "button-arrow rotate-90"})
-    button.append(arrow)
-    Q(".services--intro-buttons").append(button)
-  }
+document.addEventListener("mousemove", (e) => {
+  Mouse.update(e)
 
-}
+  Tooltip.updateOnMouse(e)
+})
+
+
+//#endregion
 
 
 
@@ -71,27 +102,10 @@ function pageSet(name) {
 
 
 
-const services = {
-  "Obalový design": {
-
-  },
-  "Grafický design": {
-
-  },
-  "Logo design": {
-
-  },
-  "Produkce": {
-
-  },
-  "Digitální design": {
-
-  },
-  "3D Vizualizace": {
-
-  },
-  "Ilustrace": {
-
-  },
-}
-
+(function preload() {
+  for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
+    for(let i = 0; i < 10; ++i) {
+      Create("img", {a: `src=../images/${anim}/${anim}000${i}.png`})  
+    }
+  }
+})()
