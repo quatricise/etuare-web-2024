@@ -39,8 +39,9 @@ class ServiceCard {
     const carouselContainer = Create("div", {c: "service-card--carousel-container"})
     const textContainer =     Create("div", {c: "service-card--text-container"})
     const borderRight =       Create("div", {c: "service-card--border-right"})
+    const borderLeft =       Create("div", {c: "service-card--border-left"})
 
-    container.append(carouselContainer, textContainer, borderRight)
+    container.append(carouselContainer, textContainer, borderRight, borderLeft)
     
     Q(".services--section--cards").append(container)
     

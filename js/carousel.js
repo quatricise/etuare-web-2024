@@ -10,7 +10,7 @@ class Carousel {
     this.images = []
 
     imageSources.forEach(src => {
-      this.images.push(Create("img", {c: "carousel-image", a: `src=${src.src}`}))
+      this.images.push(Create("img", {c: "carousel-image tooltip", d: "tooltip=Prohlédnout projekt", a: `src=${src.src}`}))
     })
 
     /** @type HTMLElement */

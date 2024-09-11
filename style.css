@@ -19,16 +19,17 @@
   --c-light-3: #a1a1a1;
   --c-light-4: #969696;
 
-  --c-light-0-00: hsla(0, 0%, 89%, 0.0);
-  --c-light-0-01: hsla(0, 0%, 89%, 0.1);
-  --c-light-0-02: hsla(0, 0%, 89%, 0.2);
-  --c-light-0-03: hsla(0, 0%, 89%, 0.3);
-  --c-light-0-04: hsla(0, 0%, 89%, 0.4);
-  --c-light-0-05: hsla(0, 0%, 89%, 0.5);
-  --c-light-0-06: hsla(0, 0%, 89%, 0.6);
-  --c-light-0-07: hsla(0, 0%, 89%, 0.7);
-  --c-light-0-08: hsla(0, 0%, 89%, 0.8);
-  --c-light-0-09: hsla(0, 0%, 89%, 0.9);
+  --c-light-0-00:  hsla(0, 0%, 89%, 0.0);
+  --c-light-0-005: hsla(0, 0%, 89%, 0.05);
+  --c-light-0-01:  hsla(0, 0%, 89%, 0.1);
+  --c-light-0-02:  hsla(0, 0%, 89%, 0.2);
+  --c-light-0-03:  hsla(0, 0%, 89%, 0.3);
+  --c-light-0-04:  hsla(0, 0%, 89%, 0.4);
+  --c-light-0-05:  hsla(0, 0%, 89%, 0.5);
+  --c-light-0-06:  hsla(0, 0%, 89%, 0.6);
+  --c-light-0-07:  hsla(0, 0%, 89%, 0.7);
+  --c-light-0-08:  hsla(0, 0%, 89%, 0.8);
+  --c-light-0-09:  hsla(0, 0%, 89%, 0.9);
   
   --border-width: 1.5px;
 }
@@ -623,6 +624,11 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: background-color 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.carousel-image:hover {
+  filter: brightness(1.1);
+  background-color: var(--c-light-0-005);
 }
 
 .service-card--text-container {
@@ -644,6 +650,18 @@ header {
   var(--c-dark-0) 100%);
 }
 
+.service-card--border-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--border-width);
+  background: linear-gradient(0deg, 
+  var(--c-dark-1) 0%, 
+  var(--c-dark-2) 10%,
+  var(--c-dark-0) 100%);
+}
+
 .carousel--bubble-container {
   display: flex;
   align-items: center;
@@ -657,6 +675,7 @@ header {
   border-radius: 20px;
   background-color: var(--c-light-0-01);
   z-index: 1;
+  transition: background-color 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .carousel--bubble:hover {

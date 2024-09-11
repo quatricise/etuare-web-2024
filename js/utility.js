@@ -43,6 +43,13 @@ function Create(tagname, options = {}) {
       element.style[key] = val
     }
   }
+  const data = options.d?.split(" ")
+  if(data) {
+    for(let set of data) {
+      const [key, val] = set.split("=")
+      element.dataset[key] = val
+    }
+  }
 
   return element
 }
