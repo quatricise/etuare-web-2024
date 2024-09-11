@@ -36,5 +36,13 @@ function Create(tagname, options = {}) {
   if(options.t) element.innerText = options.t
   if(options.h) element.innerHTML = options.h
 
+  const styles = options.s?.split(" ")
+  if(styles) {
+    for(let style of styles) {
+      const [key, val] = style.split("=")
+      element.style[key] = val
+    }
+  }
+
   return element
 }

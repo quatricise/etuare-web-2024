@@ -1,8 +1,13 @@
 class ProjectCard {
   constructor(name) {
+
+    /* Set properties */
+
     this.name = name
     this.project = Project.data[name]
 
+
+    
     /* Create HTML */
 
     const card =        Create("div", {c: "project-card"})

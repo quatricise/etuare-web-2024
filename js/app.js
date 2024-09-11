@@ -28,6 +28,7 @@ function autoShy(/** @type HTMLElement */ element) {
 
 window.onload = () => {
   Tooltip.init()
+  Ticker.start()
 
   new ProjectCard("adria_gold")
   new ProjectCard("adria_gold")
@@ -40,7 +41,10 @@ window.onload = () => {
     const arrow = Create("div", {c: "button-arrow rotate-90"})
     button.append(arrow)
     Q(".services--intro-buttons").append(button)
+
   }
+  new ServiceCard("Obalový design")
+  new ServiceCard("Obalový design")
 }
 
 
@@ -56,6 +60,15 @@ timeoutId = setTimeout(() => {
 document.addEventListener("wheel", (e) => {
   Mouse.update(e)
   window.clearTimeout(timeoutId)
+})
+
+document.addEventListener("scroll", (e) => {
+  if(Q(".icon--mouse-animated").getBoundingClientRect().y < 180) {
+    Q(".icon--mouse-animated").style.opacity = "0"
+  }
+  else {
+    Q(".icon--mouse-animated").style.opacity = ""
+  }
 })
 
 document.addEventListener("mouseover", (e) => {
@@ -86,8 +99,9 @@ document.addEventListener("mouseup", (e) => {
 
 document.addEventListener("mousemove", (e) => {
   Mouse.update(e)
-
   Tooltip.updateOnMouse(e)
+  Carousel.list.forEach(car => car.updateGlowOnMouse(e))
+
 })
 
 

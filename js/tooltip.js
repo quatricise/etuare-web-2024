@@ -41,9 +41,11 @@ class Tooltip {
   }
 
   static updateOnFrame() {
+    if(this.hidden) return
+
     /* position update */
     const difference = this.position.copy.sub(Mouse.position)
-    .mult(0.04)
+    .mult(0.08)
     this.position.sub(difference)
 
     this.elements.container.style.left = this.position.x + this.mouseOffset.x + "px"
@@ -52,10 +54,31 @@ class Tooltip {
 
   static hide() {
     this.elements.container.remove()
+    this.lastTrigger = null
+
+    this.elements.container.animate([
+      {filter: "opacity(1)"},
+      {filter: "opacity(0)"},
+    ],{
+      duration: 500,
+      easing: "ease-out"
+    })
+
+    this.hidden = true
   }
   static show() {
     this.position.set_from(Mouse.position)
     document.body.append(this.elements.container)
+
+    this.elements.container.animate([
+      {filter: "opacity(0)"},
+      {filter: "opacity(1)"},
+    ],{
+      duration: 500,
+      easing: "ease-out"
+    })
+
+    this.hidden = false
   }
 
   static init() {
