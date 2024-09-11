@@ -34,17 +34,17 @@ window.onload = () => {
   new ProjectCard("adria_gold")
   new ProjectCard("adria_gold")
 
-  pageSet("services")
+  // pageSet("services")
 
-  for(let key in services) {
-    const button = Create("button", {c: "dark dark-0 services--intro-button shadow-small", t: key})
-    const arrow = Create("div", {c: "button-arrow rotate-90"})
-    button.append(arrow)
-    Q(".services--intro-buttons").append(button)
+  // for(let key in services) {
+  //   const button = Create("button", {c: "dark dark-0 services--intro-button shadow-small", t: key})
+  //   const arrow = Create("div", {c: "button-arrow rotate-90"})
+  //   button.append(arrow)
+  //   Q(".services--intro-buttons").append(button)
 
-  }
-  new ServiceCard("Obalový design")
-  new ServiceCard("Obalový design")
+  // }
+  // new ServiceCard("Obalový design")
+  // new ServiceCard("Obalový design")
 }
 
 
