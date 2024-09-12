@@ -81,6 +81,12 @@ h2 {
   letter-spacing: 0.02em;
   margin: 0;
 }
+h3 {
+  font-family: "next";
+  font-weight: 200;
+  font-size: 24px;
+  margin: 0;
+}
 
 div {
   font-family: "rale";
@@ -940,4 +946,23 @@ header {
 
 .project--description {
   max-width: 720px;
+}
+
+.project--sub-heading {
+  text-align: center;
+}
+
+.project--section--content {
+  align-items: center;
+  gap: 60px;
+  padding: 60px 0;
+}
+
+.project--section--content > * {
+  width: 100%;
+  max-width: 720px;
+}
+
+.project--image--single {
+  width: 100%;
 }

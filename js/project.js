@@ -11,6 +11,21 @@ class Project {
     const bannerImage = Create("img", {c: "project--banner--image", a: `src=../projects/${name}/banner.jpg`})
     const content =     Create("div", {c: "section project--section--content"})
 
+    /* Create HTML Content (the remaining project data that's very variable) */
+    for(let object of this.data.content) {
+
+      if(object.t === "heading") {
+        const h = Create("h3", {c: "project--sub-heading", t: object.h})
+        content.append(h)
+      } else
+      
+      if(object.t === "image") {
+        const i = Create("img", {c: "project--image--single", a: `src=../projects/${name}/${object.f}`})
+        content.append(i)
+      }
+
+    }
+
     this.elements = {
       heading,
       description,
@@ -96,12 +111,12 @@ class Project {
         {
           t: "image",
           d: "",
-          u: "logo_intro.png"
+          f: "logo_intro.png"
         },
         {
           t: "image",
           d: "",
-          u: "logo_intro_2.png"
+          f: "logo_intro_2.jpg"
         },
       ],
     },
