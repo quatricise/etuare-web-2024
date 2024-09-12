@@ -31,6 +31,12 @@ String.prototype.splitCamelCase = function() {
 String.prototype.camelCaseToArray = function() {
   return this.splitCamelCase().toLocaleLowerCase()
 }
+String.prototype.isAny = function(...strings) {
+  for(let str of strings)
+    if(this == str)
+      return true
+  return false //if hasn't found a match
+}
 
 /* array */
 Array.prototype.remove = function(...children) {

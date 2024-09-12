@@ -1,3 +1,5 @@
+let debug = true
+
 const addNBSPToString = (str) => str.replace(
   / ([a-zA-Z]) /g,
   ' $1' + '\u00A0'
@@ -40,6 +42,8 @@ function autoShy(/** @type HTMLElement */ element) {
   element.innerText = results.join(" ")
 }
 
+
+
 window.onload = () => init()
 
 function init() {
@@ -54,7 +58,7 @@ function init() {
     "js/about.js",
     "js/services.js",
     "js/carousel.js",
-    "js/projects.js",
+    "js/project.js",
     "js/project_card.js",
   ]
   function loadScript(src) {
@@ -65,27 +69,37 @@ function init() {
         script.onload = () => resolve(src);
         script.onerror = () => reject(new Error(`Failed to load script ${src}`));
         document.head.appendChild(script);
-  });
-}
+    })
+  }
 
   Promise.all(scripts.map(loadScript))
   .then(() => {
 
 
 
-    /* INITIALIZE SHIT AFTER SCRIPTS ARE LOADED */
+    /* THIS MAKES EVERYTHING WORK AFTER SCRIPTS ARE LOADED */
 
     Qa(".navlink").forEach(navlink => {
       navlink.onclick = () => Page.set(navlink.dataset.page)
     })
 
-    Page.set("about")
+    if(debug) Project.testDataValidity()
 
-    addEventListeners()
+    Page.set("project")
+
 
     Qa(".auto-shy").forEach(element => autoShy(element))
 
     addNBSPToAll()
+
+    addEventListeners()
+
+    const project = new Project("adria_gold")
+    project.open()
+
+  })
+  .catch((error) => {
+    console.error(error)
   })
 }
 
