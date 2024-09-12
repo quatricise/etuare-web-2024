@@ -12,9 +12,9 @@
     <div class="header--contents">
       <div class="header--logo">etuare</div>
       <div class="navlinks">
-        <div class="navlink">Práce</div>
-        <div class="navlink">Naše&nbsp;služby</div>
-        <div class="navlink">O&nbsp;nás</div>
+        <div class="navlink" data-page="home">    Práce</div>
+        <div class="navlink" data-page="services">Naše&nbsp;služby</div>
+        <div class="navlink" data-page="about">   O&nbsp;nás</div>
       </div>
     </div>
     <div class="header--border-bottom"></div>
@@ -29,9 +29,7 @@
         <span class="intro-text--line-1">etuare</span>
         <span class="intro-text--line-2">grafické a produkční studio</span>
         <span class="intro-text--line-3">Umíme to zařídit. Fungujeme už 19 let a máme za sebou <br> mnoho různorodých projektů a řadu spokojených klientů.</span>
-        <div class="button">
-          <button class="intro-text--button">Co děláme&ensp;➤</button>
-        </div>
+        <button class="intro-text--button">Co děláme <div class="button-arrow dark" style="margin-top: 2px;"></div> </button>
         <div class="icon--mouse-animated" onclick="window.scrollBy({top: this.getBoundingClientRect().y - 100, behavior: 'smooth'})"></div>
       </div>
     </div>
@@ -52,7 +50,7 @@
 
   <div class="page page--services">
     <div class="section services--section--intro">
-      <h1 class="page-heading page-heading--services tooltip" data-tooltip="Hej kámo, nemáš pro mě práci?">Naše služby</h1>
+      <h1 class="page-heading page-heading--services">Naše služby</h1>
       <div class="services--intro-text-1">
         Tvoříme řešení, která vám pomohou na cestě k úspěchu. Máme 19&nbsp;let zkušeností a nebojíme se dlouhodobé spolupráce.
       </div>
@@ -60,13 +58,11 @@
         <div class="button-arrow" style="display: inline-block; width: 18px; height: 18px; top: 3px; margin-right: 2px;"></div> 
         Poskytujeme komplexní službu týkající se designu, propagace produktů a firemní identity. Dokážeme zařídit projekt od prvních návrhů až k finální realizaci.
       </div>
-      <div class="services--intro-buttons">
-        <!-- JS -->
-      </div>
+      <div class="services--intro-buttons">        <!-- JS -->      </div>
       <div class="icon--mouse-animated" onclick="window.scrollBy({top: this.getBoundingClientRect().y - 100, behavior: 'smooth'})"></div>
     </div>
     <div class="section services--section--cards"></div>
-  </div> <!-- page--project -->
+  </div> <!-- page--services -->
 
 
 
@@ -77,8 +73,39 @@
 
 
   <div class="page page--about">
-
-  </div> <!-- page--project -->
+    <div class="section about--section--intro">
+      <h1 class="page-heading--about">Náš tým</h1>
+      <p class="about--intro-text-1">
+        🍑 Jsme grafické a produkční studio ze Zlína a fungujeme již 19 let. 
+        Děláme primárně pro malé a středně velké firmy, za sebou máme spolupráce různého druhu - vinařství, výrobci kosmetiky, mražená zelenina, nealko/alko nápoje.
+        <br><br>
+        🎨 Náš tým je složen s kreativních lidí, kteří kromě práce dělají i na osobních projektech, jejich portfolia si můžete prohlédnout skize jejich kartu.
+      </p>
+    </div>
+    <div class="section about--section--team">
+      <div class="about--team--segment-1">
+        <div class="team--role--text">
+          <h2 class="team--role--title">Hlavní tým</h2>
+          <p class="team--role--description auto-shy add-nbsp">
+            Roku 1969 se narodil muž, jehož osudem bylo změnit svět. To se ale nestalo a pořídil si děcko. Musel si najít práci a protože neměl rád práci, založil grafické studio aby mohl vstávat v devět dopoledne. 
+            Jeho syn během té doby dospěl a taky neměl rád práci, proto spojili síly a založili firmu Trvaj & Trvaj, známou předevšim pro svou rychlost a spolehlivost.
+            <br><br>
+            Potom se vydali na výpravu dějinami aby našli ztraceného otce Etuare a od něho se naučili starověké kouzlo marketingu a propagace.
+          </p>
+        </div>
+        <div class="about--people-container--employee"></div>
+      </div>
+      <div class="about--team--segment-2">
+        <div class="team--role--text">
+          <h2 class="team--role--title">Externisté</h2>
+          <p class="team--role--description auto-shy add-nbsp">
+            Nemají sice židli v kanceláři, ale stejně je považujeme za hodnotné kolegy a platíme jim za jejich práci.
+          </p>
+        </div>
+        <div class="about--people-container--contractor"></div>
+      </div>
+    </div>
+  </div> <!-- page--about -->
 
   </main>
 
@@ -87,16 +114,6 @@
   <footer>
 
   </footer>
-
-  <script src="js/vector2.js"></script>
-  <script src="js/ticker.js"></script>
-  <script src="js/utility.js"></script>
-  <script src="js/mouse.js"></script>
-  <script src="js/tooltip.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/carousel.js"></script>
-  <script src="js/projects.js"></script>
-  <script src="js/project_card.js"></script>
-  <script src="js/app.js"></script>
+  <script async src="js/app.js"></script>
 </body>
 </html>

@@ -15,7 +15,10 @@ function Qa_On(element, query) {
 
 /* HTML */
 
-/** @returns HTMLElement */
+/** 
+ * @description Doesn't work when there are spaces in attribute values, very problematic sometimes.
+ * @returns HTMLElement 
+*/
 function Create(tagname, options = {}) {
   const element = document.createElement(tagname)
   const classes = options.c?.split(" ")
