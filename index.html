@@ -28,8 +28,11 @@
       <div class="intro-text">
         <span class="intro-text--line-1">etuare</span>
         <span class="intro-text--line-2">grafické a produkční studio</span>
-        <span class="intro-text--line-3">Umíme to zařídit. Fungujeme už 19 let a máme za sebou <br> mnoho různorodých projektů a řadu spokojených klientů.</span>
-        <button class="intro-text--button">Co děláme <div class="button-arrow dark" style="margin-top: 2px;"></div> </button>
+        <span class="intro-text--line-3">Umíme to zařídit. Fungujeme už 19 let, máme za sebou <br> mnoho různorodých projektů a řadu spokojených klientů.</span>
+        <button class="intro-text--button" onclick="Page.set('services');">
+          Co děláme 
+          <div class="button-arrow dark" style="margin-top: 2px;"></div>
+        </button>
         <div class="icon--mouse-animated" onclick="window.scrollBy({top: this.getBoundingClientRect().y - 100, behavior: 'smooth'})"></div>
       </div>
     </div>
@@ -68,7 +71,12 @@
 
 
   <div class="page page--project">
-    <div class="project--banner"> <!-- JS --> </div>
+    <div class="project--banner">
+    </div>
+    <button class="dark dark-0 project--button--go-back" onclick="Page.set('home');">
+      <div class="button-arrow rotate-180"></div>
+      Zpět k projektům
+    </button>
     <div class="section project--section--intro">
        <!-- 
         JS 
@@ -78,7 +86,6 @@
        --> 
 
     </div>
-    <div class="project--button--go-back"></div>
 
   </div> <!-- page--project -->
 
@@ -124,7 +131,26 @@
 
 
   <footer>
-
+    <h1>Kontakt</h1>
+    <p>
+      Máme momentálně prostor na nové projekty, ať se jedná o něco menšího či většího. 🍆
+    </p>
+    <div class="footer--content">
+      <div class="footer--content--contacts">
+        <a href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>
+        <a href="tel:+420 736 689 470">+420 736 689 470</a>
+      </div>
+      <div class="footer--content--address">
+        <img class="icon--address" src="images/icon_big_address.png" alt="">
+        <div class="address--text">
+          <a href="https://maps.app.goo.gl/d3hiDmHyFH9zAc9x8">Vavrečkova 5673</a>
+          Budova 54
+          Zlín 760 01
+        </div>
+      </div>
+    </div>
+    <img class="footer--decoration-1" src="images/background_var_1.png" alt="">
+    <img class="footer--decoration-2" src="images/background_var_1.png" alt="">
   </footer>
 
 

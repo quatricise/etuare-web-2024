@@ -2,6 +2,9 @@
 :root {
   --header-height: 60px;
 
+  --cursor-default: url(images/icon_cursor.png)       6 6, default;
+  --cursor-pointer: url(images/icon_cursor_light.png) 6 6, pointer;
+
   --animation-cursor: cursor 2s linear infinite normal;
   --animation-mouse:  mouse 2s linear infinite normal;
 
@@ -103,6 +106,15 @@ span {
   line-height: 140%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+  cursor: var(--cursor-pointer);
+}
+
 button {
   display: flex;
   justify-content: center;
@@ -119,8 +131,9 @@ button {
   font-weight: 750;
   font-size: 18px;
   box-shadow: 0px 0px 80px 5px #ffffff30;
-  cursor: url(images/icon_cursor.png) 6 6, default;
-  transition: border-color 0.25s ease-in-out;
+  cursor: var(--cursor-default);
+  --animation: 0.5s ease-in-out;
+  transition: border-color var(--animation), background-color var(--animation), color var(--animation);
 }
 
 button.shadow-small {
@@ -155,17 +168,19 @@ button.dark-1 {
   left: 0;
   width: 18px;
   height: 18px;
+  margin-top: 2px;
   object-fit: cover;
   background-image: url(images/icon_arrow.png);
   background-position: center;
   background-size: auto;
   background-repeat: no-repeat;
   scale: -1;
+  --animation: 1.2s cubic-bezier(0.2, 0.0, 0.2, 1.0);
   transition: 
-  left 1.2s cubic-bezier(0.2, 0.0, 0.2, 1.0),
-  right 1.2s cubic-bezier(0.2, 0.0, 0.2, 1.0),
-  top 1.2s cubic-bezier(0.2, 0.0, 0.2, 1.0),
-  bottom 1.2s cubic-bezier(0.2, 0.0, 0.2, 1.0);
+  left var(--animation),
+  right var(--animation),
+  top var(--animation),
+  bottom var(--animation);
   cursor: inherit;
 }
 
@@ -179,6 +194,10 @@ button.dark-1 {
 
 .button-arrow.rotate-90 {
   margin-top: 3px;
+}
+.button-arrow.rotate-180 {
+  margin-left: -5px;
+  left: unset;
 }
 
 
@@ -197,9 +216,6 @@ button:hover > .button-arrow.rotate-270 {
 
 
 
-.page-heading {
-
-}
 
 .section {
   width: 100vw;
@@ -221,6 +237,21 @@ button:hover > .button-arrow.rotate-270 {
 
 *.rotate-270{
   rotate: 270deg;
+}
+
+
+
+.row {
+  flex-direction: row;
+  grid-auto-flow: row;
+}
+.column {
+  flex-direction: column;
+  grid-auto-flow: column;
+}
+
+.flex {
+  display: flex;
 }
 
 
@@ -295,11 +326,15 @@ button:hover > .button-arrow.rotate-270 {
 
 header {
   position: relative;
+  position: sticky;
+  top: 0;
   width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
   height: var(--header-height);
+  background-color: var(--c-dark-0);
+  z-index: 1;
 }
 
 .header--contents {
@@ -360,6 +395,74 @@ header {
 
 
 
+/* FOOTER */
+
+footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100vw;
+  margin-top: 240px;
+  padding-bottom: 240px;
+}
+
+.footer--content {
+  display: flex;
+  justify-content: space-between;
+  width: var(--project-content--width);
+  margin-top: 120px;
+}
+
+.footer--content--contacts {
+  font-size: 20px;
+  font-family: "rale";
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer--content--address {
+  display: flex;
+  gap: 20px;
+}
+
+.icon--address {
+  --width: 195px;
+  margin-top: calc(var(--width) / -3);
+  width: var(--width);
+  object-fit: contain;
+}
+
+.address--text {
+  font-size: 20px;
+  font-family: "rale";
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer--decoration-1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50vw;
+  mix-blend-mode: lighten;
+  z-index: -1;
+}
+.footer--decoration-2 {
+  position: absolute;
+  bottom: 0;
+  right: -10vw;
+  width: 50vw;
+  mix-blend-mode: lighten;
+  transform: scaleX(-1);
+  z-index: -1;
+}
+
+
+
 /* PAGE - HOME */
 
 .intro-text {
@@ -383,10 +486,11 @@ header {
 
 .intro-text--line-3 {
   margin-top: 80px;
+  max-width: 720px;
   font-family: "rale";
   font-weight: 100;
   font-size: 26px;
-  max-width: 720px;
+  text-align: center;
 }
 
 .intro-text--button {
@@ -439,8 +543,16 @@ header {
   width: 100%;
   max-width: 100%;
   color: var(--c-light-0);
-  background: no-repeat bottom left 100%/100% url("images/background_var_0.png");
+  background-image: url(images/background_var_1.png);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
   transition: filter 0.1s ease-out;
+  animation: var(--animation-cursor);
+}
+
+.project-card * {
+  cursor: inherit;
 }
 
 .project-card--border-left {
@@ -462,7 +574,7 @@ header {
   left: 0;
   top: 0;
   height: var(--border-width);
-  width: 100%;
+  width: calc(100% - var(--border-width));
   opacity: 0.15;
   background: linear-gradient(90deg, 
   var(--c-dark-0) 0%, 
@@ -916,6 +1028,11 @@ header {
 
 /* PAGE - PROJECT */
 
+:root {
+  --project-content--width: 900px;
+  --project-content--spacing: 120px;
+}
+
 .page--project {
 
 }
@@ -923,19 +1040,26 @@ header {
 .project--section--intro {
   align-items: center;
   width: 100vw;
-  margin: 60px 0 60px;
+  margin: var(--project-content--spacing) 0 var(--project-content--spacing);
 }
 
 .page-heading--project {
-  max-width: 720px;
+  max-width: var(--project-content--width);
   line-height: 140%;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: var(--project-content--spacing);
 }
 
 .project--banner {
+  position: relative;
   width: 100vw;
   height: 25vw;
+}
+
+.project--button--go-back {
+  position: fixed;
+  top: calc(var(--header-height) + 40px);
+  left: 40px;
 }
 
 .project--banner--image {
@@ -945,7 +1069,10 @@ header {
 }
 
 .project--description {
-  max-width: 720px;
+  max-width: var(--project-content--width);
+  text-align: justify;
+  font-size: 18px;
+  letter-spacing: 0.01em;
 }
 
 .project--sub-heading {
@@ -954,15 +1081,50 @@ header {
 
 .project--section--content {
   align-items: center;
-  gap: 60px;
-  padding: 60px 0;
+  gap: 120px;
+  padding: var(--project-content--spacing) 0;
 }
 
 .project--section--content > * {
   width: 100%;
-  max-width: 720px;
+  max-width: var(--project-content--width);
 }
 
 .project--image--single {
   width: 100%;
+}
+
+.project--image--flex.row .project--image--one-of-two {
+  width: 50%;
+}
+
+.project--image--flex {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+}
+
+.project--image--label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.project--image--label--border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: var(--border-width);
+  width: 100%;
+  opacity: 0.1;
+  background: linear-gradient(90deg, 
+  var(--c-light-0-02) 0%, 
+  var(--c-light-0) 50%,
+  var(--c-light-0-02) 100%);
+  transition: opacity 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 }

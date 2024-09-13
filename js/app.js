@@ -1,9 +1,14 @@
 let debug = true
+const ls = localStorage
 
 const addNBSPToString = (str) => str.replace(
   / ([a-zA-Z]) /g,
   ' $1' + '\u00A0'
 );
+
+function addNBSP(element) {
+  element.innerText = addNBSPToString(element.innerText)
+}
 
 function addNBSPToAll() {
   Qa(".add-nbsp").forEach(element => {
@@ -20,7 +25,7 @@ function autoShy(/** @type HTMLElement */ element) {
       results.push(word)
       continue
     }
-    let halvingIndex = Math.ceil(word.length / 2)
+    let halvingIndex = Math.floor(word.length / 2)
 
     const czechVowels = ["a", "e", "i", "o", "u", "ě", "á", "í", "é", "ý", "ó", "ů", "ú"]
 
@@ -44,9 +49,13 @@ function autoShy(/** @type HTMLElement */ element) {
 
 
 
-window.onload = () => init()
 
-function init() {
+window.onbeforeunload = () => {
+  ls.setItem("scrollY", window.scrollY)
+  ls.setItem("page",    Page.current)
+}
+
+window.onload = () => {
   const scripts = [
     "js/extensions.js",
     "js/vector2.js",
@@ -59,7 +68,6 @@ function init() {
     "js/services.js",
     "js/carousel.js",
     "js/project.js",
-    "js/project_card.js",
   ]
   function loadScript(src) {
     return new Promise((resolve, reject) => {
@@ -85,9 +93,6 @@ function init() {
 
     if(debug) Project.testDataValidity()
 
-    Page.set("project")
-
-
     Qa(".auto-shy").forEach(element => autoShy(element))
 
     addNBSPToAll()
@@ -97,6 +102,11 @@ function init() {
     const project = new Project("adria_gold")
     project.open()
 
+    if(debug) {
+      Page.set(ls.getItem("page"))
+      setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
+    }
+    
   })
   .catch((error) => {
     console.error(error)
@@ -146,6 +156,13 @@ function addEventListeners() {
 
   document.addEventListener("mousedown", (e) => {
     Mouse.update(e)
+
+    if(e.button === 3) {
+      Page.prev()
+    } else
+    if(e.button === 4) {
+      Page.next()
+    }
   })
 
   document.addEventListener("mouseup", (e) => {
@@ -174,13 +191,28 @@ function addEventListeners() {
 
 class Page {
 
+  static history = [] //@todo
+
+  static current = "home"
+
   static set(name) {
     Qa(".page").forEach(p => p.classList.add("hidden"))
-    Q(`.page--${name}`).classList.remove("hidden")
-    
-    if(Page.readyState[name] === false) {
+    const page = Q(`.page--${name}`)
+    page.classList.remove("hidden")
+    window.scrollTo({top: 0, behavior: "instant"})
+
+    if(Page.ready[name] === false) {
       Page.setup(name)
     }
+    Page.current = name
+  }
+
+  static next() {
+
+  }
+
+  static prev() {
+
   }
 
   /** This sets up a page for working. pageSet() then only switches between them */
@@ -223,10 +255,10 @@ class Page {
       
     }
 
-    Page.readyState[name] = true
+    Page.ready[name] = true
   }
   
-  static readyState = {
+  static ready = {
     home: false,
     services: false,
     about: false,
@@ -241,6 +273,8 @@ for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
   for(let i = 0; i < 10; ++i) {
     let img = new Image()
     img.src = `../images/${anim}/${anim}000${i}.png`
-    img.onload = () => console.log("loaded img")
+    img.onload = () => {
+      if(debug) console.log("loaded img")
+    }
   }
 }
