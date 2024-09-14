@@ -83,7 +83,8 @@ window.onload = () => {
   Promise.all(scripts.map(loadScript))
   .then(() => {
 
-
+    Tooltip.init()
+    Ticker.start()
 
     /* THIS MAKES EVERYTHING WORK AFTER SCRIPTS ARE LOADED */
 
@@ -99,13 +100,12 @@ window.onload = () => {
 
     addEventListeners()
 
-    const project = new Project("adria_gold")
-    project.open()
 
     if(debug) {
       Page.set(ls.getItem("page"))
       setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
     }
+    Page.set("home")
     
   })
   .catch((error) => {
@@ -156,13 +156,6 @@ function addEventListeners() {
 
   document.addEventListener("mousedown", (e) => {
     Mouse.update(e)
-
-    if(e.button === 3) {
-      Page.prev()
-    } else
-    if(e.button === 4) {
-      Page.next()
-    }
   })
 
   document.addEventListener("mouseup", (e) => {
@@ -201,7 +194,7 @@ class Page {
     page.classList.remove("hidden")
     window.scrollTo({top: 0, behavior: "instant"})
 
-    if(Page.ready[name] === false) {
+    if(Page.data[name].ready === false) {
       Page.setup(name)
     }
     Page.current = name
@@ -220,8 +213,9 @@ class Page {
 
     if(name === "home") {
       new ProjectCard("adria_gold")
-      new ProjectCard("adria_gold")
-      new ProjectCard("adria_gold")
+      new ProjectCard("kovacs")
+      new ProjectCard("karima")
+      new ProjectCard("kralovske_marmelady")
     } 
 
 
@@ -229,13 +223,19 @@ class Page {
     else
     if(name === "services") {
       for(let key in Services.list) {
-        const button = Create("button", {c: "dark dark-0 services--intro-button shadow-small", t: key})
-        const arrow = Create("div", {c: "button-arrow rotate-90"})
+        
+        const card = new ServiceCard(key)
+        const button = Create("button", {c: "dark \f dark-0 \f services--intro-button \f shadow-small", t: key})
+        const arrow =  Create("div",    {c: "button-arrow \f rotate-90"})
+
+        button.onclick = () => {
+          let rect = card.elements.get("container").getBoundingClientRect()
+          const [y, height] = [rect.y, rect.height]
+          window.scrollTo({top: y + (height/2) - window.innerHeight/2, behavior: "smooth"})
+        }
+
         button.append(arrow)
         Q(".services--intro-buttons").append(button)
-
-        new ServiceCard(key)
-
       }
     } 
     
@@ -255,14 +255,26 @@ class Page {
       
     }
 
-    Page.ready[name] = true
+    Page.data[name].ready = true
   }
   
-  static ready = {
-    home: false,
-    services: false,
-    about: false,
-    project: false,
+  static data = {
+    home: {
+      ready: false,
+      scrollTop: 0,
+    },
+    services: {
+      ready: false,
+      scrollTop: 0,
+    },
+    about: {
+      ready: false,
+      scrollTop: 0,
+    },
+    project: {
+      ready: false,
+      scrollTop: 0,
+    },
   }
 }
 
@@ -278,3 +290,50 @@ for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
     }
   }
 }
+
+
+
+/* URL stuff */
+const searchQuery = window.location.search.replace("?", "")
+const pairs = searchQuery.split("+")
+pairs.forEach(pair => {
+  const [key, value] = pair.split("=")
+  
+  switch(key) {
+    case "tag": {
+      Project.showByTags(value)
+      break
+    }
+    case "project": {
+      let project = Array.from(Project.list).find(p => p.projectIdentifier === value)
+      project.select()
+      break
+    }
+    case "search": {
+      Search.search(value)
+      break
+    }
+    case "page": {
+      switch(value) {
+        case "projects": {
+          setPage(projectsPage)
+          break
+        }
+        case "about": {
+          setPage(aboutPage)
+          break
+        }
+      }
+      break
+    }
+    case "carouselindex": {
+      for(let i = 0; i < value; i++)
+      Project.current?.showNextImage()
+      break
+    }
+  }
+})
+
+
+
+/* VISITED BEFORE => Show visitor different projects at the front, based on the featured property of the project. */

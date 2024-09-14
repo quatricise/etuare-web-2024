@@ -79,9 +79,9 @@ h1 {
 }
 h2 {
   font-family: "next";
-  font-weight: bold;
-  font-size: 32px;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.01em;
   margin: 0;
 }
 h3 {
@@ -192,10 +192,10 @@ button.dark-1 {
   background-image: url(images/icon_arrow.png);
 }
 
-.button-arrow.rotate-90 {
+button .button-arrow.rotate-90 {
   margin-top: 3px;
 }
-.button-arrow.rotate-180 {
+button .button-arrow.rotate-180 {
   margin-left: -5px;
   left: unset;
 }
@@ -334,7 +334,7 @@ header {
   flex-direction: column;
   height: var(--header-height);
   background-color: var(--c-dark-0);
-  z-index: 1;
+  z-index: 2;
 }
 
 .header--contents {
@@ -406,6 +406,10 @@ footer {
   width: 100vw;
   margin-top: 240px;
   padding-bottom: 240px;
+}
+
+footer p {
+  font-size: 20px;
 }
 
 .footer--content {
@@ -514,12 +518,12 @@ footer {
 .works--column-2 {
   display: flex;
   flex-direction: column;
-  gap: 120px;
+  gap: 240px;
   width: calc(50% - 30px);
 }
 
 .works--column-2 {
-  margin-top: 180px;
+  margin-top: 240px;
 }
 
 .home--section--see-more {
@@ -598,17 +602,18 @@ footer {
 }
 
 .project-card--text {
-  padding: 20px;
+  padding: 15px 20px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 
 .project-card--description {
   margin-bottom: 4px;
+  margin-top: 4px;
   padding-left: 1px;
   font-family: "rale";
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 250;
   text-align: justify;
   text-justify: inter-word;
@@ -699,6 +704,7 @@ footer {
 }
 
 /* Page services - SERVICE CARD */
+
 :root {
   --service-card--width: min(1100px, 100vw);
   --service-card--height: calc(var(--service-card--width) / 2.2);
@@ -770,7 +776,6 @@ footer {
   var(--c-dark-0) 100%);
 }
 
-
 /* CAROUSEL */
 
 .carousel-container {
@@ -839,6 +844,7 @@ footer {
   object-fit: cover;
   animation: var(--animation-cursor);
   transition: background-color 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.1s ease-in-out;
+  z-index: 1;
 }
 .carousel-image:hover {
   filter: brightness(1.1);
@@ -868,6 +874,20 @@ footer {
 .carousel--bubble.active {
   background-color: var(--c-light-0);
 }
+
+.carousel--current-slide-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 8px);
+  margin-top: 4px;
+  padding: 8px 40px 10px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: var(--c-dark-0);
+  border-radius: 10px;
+}
+
 
 
 /* PAGE - ABOUT */
@@ -1073,6 +1093,12 @@ footer {
   text-align: justify;
   font-size: 18px;
   letter-spacing: 0.01em;
+  font-weight: 250;
+}
+
+.project--block-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .project--sub-heading {
@@ -1082,7 +1108,7 @@ footer {
 .project--section--content {
   align-items: center;
   gap: 120px;
-  padding: var(--project-content--spacing) 0;
+  padding: var(--project-content--spacing) 0 0;
 }
 
 .project--section--content > * {
@@ -1102,6 +1128,19 @@ footer {
   display: flex;
   width: 100%;
   gap: 5px;
+}
+
+.project--image--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  grid-auto-flow: row;
+  gap: 5px;
+}
+
+.project--image--for-grid {
+  width: 100%;
 }
 
 .project--image--label {

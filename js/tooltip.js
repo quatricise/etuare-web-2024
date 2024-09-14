@@ -53,6 +53,8 @@ class Tooltip {
   }
 
   static hide() {
+    if(this.hidden) return
+
     this.elements.container.remove()
     this.lastTrigger = null
 
@@ -67,6 +69,8 @@ class Tooltip {
     this.hidden = true
   }
   static show() {
+    if(!this.hidden) return
+    
     this.position.set_from(Mouse.position)
     document.body.append(this.elements.container)
 

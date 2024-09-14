@@ -9,33 +9,81 @@ class Services {
       • 3D vizualizace či produktové fotografie vašich výrobků
       `,
       examples: [
-        {src: "images/assistant.png", projectName: "adria_gold"},
-        {src: "images/assistant_2.png", projectName: "adria_gold"},
-        {src: "images/assistant_3.png", projectName: "adria_gold"},
-        {src: "images/assistant_4.png", projectName: "adria_gold"},
+        {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
+        {src: "images/carousel/3d_2.jpg", projectName: "karima"},
+        {src: "images/carousel/3d_3.jpg", projectName: "henna"},
+        {src: "images/carousel/3d_4.jpg", projectName: "agro_jesenice"},
+        {src: "images/carousel/3d_5.jpg", projectName: "vest"},
       ]
     },
     "Grafický design": {
+      description: `
+      Firemní materiály
+      • logo či jeho redesign
+      • firemní identita
+      • grafický logomanuál
+      • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
+      Propagační materiály
+      • inzeráty pro tištěná média, 
+      • bannery pro internet, billboardy, plakáty...
+      `,
       examples: [
+        
       ]
     },
     "Logo design": {
+      description: `
+      • Zajistíme kompletní produkci
+      • rychlé a spolehlivé dodání všech navržených materiálů - tiskoviny, POS (roll-upy, ochutnávkové stolky, displeje), polepy atd.
+      • fotografie vašich výrobků či firmy
+      • polepy firemních vozidel, prodejen aj.
+      • navigační prvky - směrovky, cedule ...
+      `,
       examples: [
       ]
     },
     "Produkce": {
+      description: `
+      • vytvoříme vám originální ilustrace pro váš projekt
+      • navrhneme ilustrovaný plakát
+      • digitální ilustrace v různých stylech
+      • akvarel, tužka, perokresba či pastelová ilustrace
+      `,
       examples: [
       ]
     },
     "Digitální design": {
+      description: `
+      • navrhneme prototyp
+      • pomůžeme vám navrhnout obsah
+      • zrealizujeme pro vás webové prezentace
+      • zařídíme SEO optimalizaci
+      `,
       examples: [
       ]
     },
     "3D Vizualizace": {
+      description: `
+      Vytvoříme 3D vizualizace produktů:
+      • do katalogů, 
+      • pro web, 
+      • na polepy atd.
+      `,
       examples: [
+        {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
+        {src: "images/carousel/3d_2.jpg", projectName: "karima"},
+        {src: "images/carousel/3d_3.jpg", projectName: "henna"},
+        {src: "images/carousel/3d_4.jpg", projectName: "agro_jesenice"},
+        {src: "images/carousel/3d_5.jpg", projectName: "vest"},
       ]
     },
     "Ilustrace": {
+      description: `
+      • vytvoříme vám originální ilustrace pro váš projekt
+      • navrhneme ilustrovaný plakát
+      • digitální ilustrace v různých stylech
+      • akvarel, tužka, perokresba či pastelová ilustrace
+      `,
       examples: [
       ]
     },
@@ -52,8 +100,8 @@ class ServiceCard {
     const carouselContainer = Create("div", {c: "service-card--carousel-container"})
 
     const textContainer =     Create("div", {c: "service-card--text-container"})
-    const title =             Create("h2",  {c: "service-card--title", t: this.title})
-    const description =       Create("p",   {c: "service-card--description", t: this.description})
+    const title =             Create("h2",  {c: "service-card--title",              t: this.title})
+    const description =       Create("p",   {c: "service-card--description",        t: this.description})
 
     const borderRight =       Create("div", {c: "service-card--border-right"})
     const borderLeft =        Create("div", {c: "service-card--border-left"})

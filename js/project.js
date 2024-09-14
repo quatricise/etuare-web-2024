@@ -1,7 +1,5 @@
 class Project {
-
   constructor(name) {
-
     /* reference data for easier access */
     this.data = Project.data[name]
 
@@ -9,15 +7,16 @@ class Project {
     const heading =     Create("h1",  {c: "page-heading--project", t: this.data.title})
     const description = Create("p",   {c: "project--description", t: this.data.description})
     const bannerImage = Create("img", {c: "project--banner--image", a: `src=../projects/${name}/banner.jpg`})
-    const content =     Create("div", {c: "section project--section--content"})
+    const content =     Create("div", {c: "section \f project--section--content"})
 
     autoShy(description)
     description.innerText = addNBSPToString(description.innerText)
 
+    /** What the shortened property names mean */
     const tagLexicon = {
       t: "type",
       h: "text",
-      f: "filename",
+      f: "filename OR filename[]",
       l: "label",
     }
 
@@ -26,7 +25,7 @@ class Project {
 
       /* elements which might not be used always */
 
-      const flex_vert =   Create("div", {c: "flex column"})
+      const container =   Create("div", {c: "project--block-container"})
       const label =       Create("div", {c: "project--image--label", t: object.l})
       const labelBorder = Create("div", {c: "project--image--label--border"})
 
@@ -36,18 +35,16 @@ class Project {
 
       if(object.t === "heading") {
         const h = Create("h3", {c: "project--sub-heading", t: object.h})
-        content.append(h)
+        container.append(h)
       } else
       
       if(object.t === "image") {
         const i = Create("img", {c: "project--image--single", a: `src=../projects/${name}/${object.f}`})
-        if(object.l) {
-          flex_vert.append(i, label)
-          content.append(flex_vert)
-        }
-        else {
-          content.append(i)
-        }
+        container.append(i)
+
+        /* add label */
+        if(object.l) container.append(label)
+
       } else
       
       if(object.t === "image_2") {
@@ -57,22 +54,36 @@ class Project {
         const i_2 =   Create("img",   {c: "project--image--one-of-two", a: `src=../projects/${name}/${object.f[1]}`})
 
         flex.append(i, i_2)
+        container.append(flex)
 
-        if(object.l) {
-          flex_vert.append(flex, label)
-          content.append(flex_vert)
+        /* add label */
+        if(object.l) container.append(label)
+
+      }
+
+      if(object.t === "image_grid_2") {
+
+        const images = []
+        for(let src of object.f) {
+          images.push(Create("img", {c: "project--image--for-grid", a: `src=../projects/${name}/${src}`}))
         }
-        else {
-          content.append(flex)
-        }
+
+        const grid = Create("div", {c: "project--image--grid"})
+        grid.append(...images)
+        container.append(grid)
+
+        if(object.l) container.append(label)
+
       }
 
       if(object.t === "paragraph") {
         const para = Create("div", {c: "project--description", t: object.h})
         autoShy(para)
-        content.append(para)
+        container.append(para)
       }
 
+      /* THIS HAPPENS FOR EVERY BLOCK */
+      content.append(container)
     }
 
     this.elements = {
@@ -81,17 +92,10 @@ class Project {
       bannerImage,
       content,
     }
+
+    Project.loadedProjects.set(name, this)
   }
 
-  open() {
-    Q(".project--banner").append(this.elements.bannerImage)
-    Q(".project--section--intro").append(this.elements.heading, this.elements.description, this.elements.content)
-  }
-  close() {
-    for(const key in this.elements) {
-      this.elements[key].remove()
-    }
-  }
 
 
   static testDataValidity() {
@@ -138,17 +142,47 @@ class Project {
     console.log("Project data valid.")
   }
 
-  static open() {
-    const project = new Project()
 
-    this.openedProjects.set(name, project)
+
+  static open(name) {
+    if(Project.current) {
+      Project.close()
+    }
+
+    if(!this.loadedProjects.get(name)) {
+      new Project(name)
+    }
+
+    const project = this.loadedProjects.get(name)
+
+    Q(".project--banner").append(project.elements.bannerImage)
+    Q(".project--section--intro").append(project.elements.heading, project.elements.description, project.elements.content)
+
+    Project.current = project
+
+    Page.set("project")
   }
 
+
+  
+  static close() {
+    for(const key in Project.current.elements) {
+      Project.current.elements[key].remove()
+    }
+    Project.current = false
+  }
+
+
+
   /** @type Map<string, Project> */
-  static openedProjects = new Map()
+  static loadedProjects = new Map()
 
   static data = {
+
+
+
     "adria_gold": {
+      featured: true,
       titleShort: "Adria Gold",
       title: "Adria Gold - Firemní identita",
       descriptionShort: "Pro firmu Adria Gold jsme tvořili kompletní vizuální balíček - identita, logo, tiskoviny, POP materiály atd...",
@@ -217,14 +251,110 @@ class Project {
         },
       ],
     },
+
+
+
     "karima": {
       titleShort: "Karima",
       title: "Karima - Kosmetika",
+      description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
+      content: [
+        {
+          t: "image",
+          l: "",
+          f: "renders.jpg"
+        }
+      ],
+    },
+
+
+
+    "kralovske_marmelady": {
+      featured: true,
+      titleShort: "Královské Marmelády",
+      title: "Královské Marmelády",
       description: "",
-      content: [],
+      content: [
+        {
+          t: "image",
+          l: "",
+          f: "citron_a.jpg"
+        },
+        {
+          t: "image",
+          l: "",
+          f: "citron_b.jpg"
+        },
+        {
+          t: "image",
+          l: "",
+          f: "pomeranc_b.jpg"
+        },
+        {
+          t: "image",
+          l: "",
+          f: "pomeranc_b.jpg"
+        },
+        {
+          t: "image_grid_2",
+          l: "Návrhy ilustrací ve dvou různých stylech.",
+          f: ["ilu_1.png", "ilu_2.png", "ilu_3.png", "ilu_4.png"]
+        },
+      ],
+    },
+
+
+
+    "vest": {
+      featured: false,
+      titleShort: "Vest",
+      title: "Vest - Slané tyčinky a krekry",
+      description: "",
+      content: [
+        
+      ],
+    },
+
+
+
+    "agro_jesenice": {
+      featured: false,
+      titleShort: "",
+      title: "Agro Jesenice",
+      description: "",
+      content: [
+        
+      ],
+    },
+
+
+
+    "henna": {
+      featured: false,
+      titleShort: "",
+      title: "Henna - Kosmetika",
+      description: "",
+      content: [
+        
+      ],
+    },
+
+
+
+    "kovacs": {
+      featured: false,
+      titleShort: "Kovacs – Vinařství",
+      title: "Kovacs – Vinařství",
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály.",
+      content: [
+        
+      ],
     },
   }
 }
+
+
+
 
 
 
@@ -240,22 +370,42 @@ class ProjectCard {
     
     /* Create HTML */
 
-    const card =        Create("div", {c: "project-card"})
-    const image =       Create("img", {a: `src=projects/${name}/project_card.png draggable=false`})
-    const title =       Create("h2", {t: this.project.titleShort || this.project.title})
-    const text =        Create("div", {c: "project-card--text"})
-    const desc =        Create("div", {t: this.project.descriptionShort || this.project.description, c: "project-card--description"})
+    const card =        Create("div",    {c: "project-card"})
+    const image =       Create("img",    {a: `src=projects/${name}/project_card.png \f draggable=false`})
+    const title =       Create("h2",     {t: this.project.titleShort || this.project.title})
+    const text =        Create("div",    {c: "project-card--text"})
+    const desc =        Create("div",    {t: this.project.descriptionShort || this.project.description, c: "project-card--description"})
 
-    const button =      Create("button", {c: "button dark dark-1 project-card--button", t: "Prohlédnout"})
-    const buttonArrow = Create("div", {c: "button-arrow"})
+    const button =      Create("button", {c: "button \f dark \f dark-0 \f project-card--button", t: "Prohlédnout"})
+    const buttonArrow = Create("div",    {c: "button-arrow"})
 
-    const borderLeft =  Create("div", {c: "project-card--border-left"})
-    const borderRight = Create("div", {c: "project-card--border-right"})
-    const borderTop =   Create("div", {c: "project-card--border-top"})
+    const borderLeft =  Create("div",    {c: "project-card--border-left"})
+    const borderRight = Create("div",    {c: "project-card--border-right"})
+    const borderTop =   Create("div",    {c: "project-card--border-top"})
 
     card.append(image, borderLeft, borderRight, borderTop, text)
     text.append(title, desc, button)
     button.append(buttonArrow)
+
+
+
+    /* Interactability */
+
+    card.onclick = () => {
+      Project.open(name)
+    }
+
+    // document.addEventListener("scroll", () => {
+    //   let y = card.getBoundingClientRect().y
+    //   let h = card.getBoundingClientRect().height
+    //   if(y + h < 180 || y > window.innerHeight - 180) {
+    //     card.style.filter = "opacity(0.25)"
+    //   }
+    //   else {
+    //     card.style.filter = ""
+    //   }
+    // })
+
 
     autoShy(desc)
     ProjectCard.placeCard(card)
