@@ -48,8 +48,8 @@ class Project {
       } else
       
       if(object.t === "image_2") {
-        const dir = object.d ?? "row"
-        const flex =  Create("div",   {c: "project--image--flex " + dir})
+        const dir =   object.d ?? "row"
+        const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
         const i =     Create("img",   {c: "project--image--one-of-two", a: `src=../projects/${name}/${object.f[0]}`})
         const i_2 =   Create("img",   {c: "project--image--one-of-two", a: `src=../projects/${name}/${object.f[1]}`})
 
@@ -72,6 +72,7 @@ class Project {
         grid.append(...images)
         container.append(grid)
 
+        /* add label */
         if(object.l) container.append(label)
 
       }

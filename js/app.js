@@ -100,11 +100,11 @@ window.onload = () => {
 
     addEventListeners()
 
-
     if(debug) {
       Page.set(ls.getItem("page"))
       setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
     }
+
     Page.set("home")
     
   })
@@ -189,14 +189,29 @@ class Page {
   static current = "home"
 
   static set(name) {
+
+    /* when you're already on the page you want to visit */
+    if(name === Page.current && Page.data[name].ready === true) {
+      if(name === "home") {
+        let y = Q(".project-card").getBoundingClientRect().y + window.scrollY
+        window.scrollTo({top: y - 200, behavior: "smooth"})
+      }
+      return
+    }
+
+    Page.data[Page.current].scrollY = window.scrollY
+
     Qa(".page").forEach(p => p.classList.add("hidden"))
     const page = Q(`.page--${name}`)
     page.classList.remove("hidden")
-    window.scrollTo({top: 0, behavior: "instant"})
+
+    window.scrollTo({top: Page.data[name].scrollY ?? 0, behavior: "instant"})
+    console.log("New page's previous scrollY position: ", Page.data[name].scrollY)
 
     if(Page.data[name].ready === false) {
       Page.setup(name)
     }
+
     Page.current = name
   }
 
@@ -261,19 +276,19 @@ class Page {
   static data = {
     home: {
       ready: false,
-      scrollTop: 0,
+      scrollY: 0,
     },
     services: {
       ready: false,
-      scrollTop: 0,
+      scrollY: 0,
     },
     about: {
       ready: false,
-      scrollTop: 0,
+      scrollY: 0,
     },
     project: {
       ready: false,
-      scrollTop: 0,
+      scrollY: 0,
     },
   }
 }

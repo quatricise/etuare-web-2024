@@ -420,11 +420,8 @@ footer p {
 }
 
 .footer--content--contacts {
-  font-size: 20px;
-  font-family: "rale";
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .footer--content--address {
@@ -432,14 +429,15 @@ footer p {
   gap: 20px;
 }
 
-.icon--address {
+.icon--address,
+.icon--contact {
   --width: 195px;
   margin-top: calc(var(--width) / -3);
   width: var(--width);
   object-fit: contain;
 }
 
-.address--text {
+.address--text, .contact--text {
   font-size: 20px;
   font-family: "rale";
   display: flex;
@@ -578,7 +576,7 @@ footer p {
   left: 0;
   top: 0;
   height: var(--border-width);
-  width: calc(100% - var(--border-width));
+  width: 100%;
   opacity: 0.15;
   background: linear-gradient(90deg, 
   var(--c-dark-0) 0%, 
