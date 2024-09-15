@@ -408,8 +408,10 @@ footer {
   padding-bottom: 240px;
 }
 
-footer p {
+.footer--description {
   font-size: 20px;
+  text-align: justify;
+  width: min(720px, 100vw);
 }
 
 .footer--content {
