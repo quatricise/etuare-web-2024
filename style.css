@@ -995,6 +995,25 @@ footer p {
   flex-grow: 1;
 }
 
+.about--section--logos {
+  margin-top: 360px;
+  align-items: center;
+}
+
+.about--client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: min(1100px, 100vw);
+  margin: 90px 0;
+  gap: 40px;
+}
+
+.client-logo {
+  height: 80px;
+}
+
 
 
 /* PERSON CARD */
