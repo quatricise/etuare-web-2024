@@ -59,7 +59,26 @@ class Project {
         /* add label */
         if(object.l) container.append(label)
 
-      }
+        if(object.o?.gap) flex.style.gap = object.o?.gap
+
+      } else
+      
+      if(object.t === "image_3") {
+        const dir =   object.d ?? "row"
+        const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
+        for(let filename of object.f) {
+          const i = Create("img",   {c: "project--image--one-of-three", a: `src=../projects/${name}/${filename}`})
+          flex.append(i)
+        }
+
+        container.append(flex)
+
+        /* add label */
+        if(object.l) container.append(label)
+
+        if(object.o?.gap) flex.style.gap = object.o?.gap
+
+      } else
 
       if(object.t === "image_grid_2") {
 
@@ -75,7 +94,9 @@ class Project {
         /* add label */
         if(object.l) container.append(label)
 
-      }
+        if(object.o?.gap) grid.style.gap = object.o?.gap
+
+      } else
 
       if(object.t === "paragraph") {
         const para = Create("div", {c: "project--description", t: object.h})
@@ -256,8 +277,8 @@ class Project {
 
 
     "karima": {
-      titleShort: "Karima",
-      title: "Karima - Kosmetika",
+      titleShort: "Karima – Kosmetika",
+      title: "Karima - Přírodní Kosmetika",
       description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
       content: [
         {
@@ -308,7 +329,7 @@ class Project {
 
     "vest": {
       featured: false,
-      titleShort: "Vest",
+      titleShort: "Vest - Tyčinky",
       title: "Vest - Slané tyčinky a krekry",
       description: "",
       content: [
@@ -349,6 +370,58 @@ class Project {
       description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály.",
       content: [
         
+      ],
+    },
+
+
+
+    "corston_and_william": {
+      featured: true,
+      titleShort: "",
+      title: "Design Whisky",
+      description: "Projekt vznikl pouze jako návrh, který se nerealizoval.",
+      content: [
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "0px"},
+          l: "Varianta A - s velkou ilustrací.",
+          f: ["intro_1.jpg", "intro_1_tubus.jpg"]
+        },
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "0px"},
+          l: "Varianta B – s malými ilustracemi.",
+          f: ["intro_2.jpg", "intro_2_tubus.jpg"]
+        },
+        {
+          t: "heading",
+          h: "Ilustrace"
+        },
+        {
+          t: "image",
+          d: "column",
+          l: "Hlavní motiv primárního návrhu. Abstrakce z dřeva, uhlí a kouře, evokuje výrobu whisky a je barevně výrazným motivem který na etiketu přitahuje hodně pozornosti",
+          f: "ilu_big_2.png"
+        },
+        {
+          t: "image",
+          d: "column",
+          l: "Tato verze byla použitá na tubus, je méně výrazná ale barevně harmonizuje s etiketou whisky a neodhaluje celou ilustraci hned na začátku.",
+          f: "ilu_big.png"
+        },
+        {
+          t: "image_grid_2",
+          l: "Různé ilustrace dřeva.",
+          f: ["ilu_wood_1.png", "ilu_wood_2.png", "ilu_wood_3.png", "ilu_wood_4.png"]
+        },
+        {
+          t: "image_3",
+          d: "column",
+          l: "Další ilustrace, které se nakonec na etiketu nepoužily.",
+          f: ["ilu_wood_wonky_1.png", "ilu_wood_wonky_2.png", "ilu_wood_wonky_3.png"]
+        },
       ],
     },
   }

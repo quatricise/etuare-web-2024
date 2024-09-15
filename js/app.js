@@ -16,6 +16,8 @@ function addNBSPToAll() {
   })
 }
 
+
+
 /** Adds shy hyphens to text. Rudimentary but works. */
 function autoShy(/** @type HTMLElement */ element) {
   let words = element.innerText.split(" ").filter(word => word !== " ")
@@ -44,7 +46,7 @@ function autoShy(/** @type HTMLElement */ element) {
 
     results.push(firstHalf + "\u00AD" + secondHalf)
   }
-  element.innerText = results.join(" ")
+  element.innerHTML = results.join(" ")
 }
 
 
@@ -91,6 +93,7 @@ window.onload = () => {
     Qa(".navlink").forEach(navlink => {
       navlink.onclick = () => Page.set(navlink.dataset.page)
     })
+    Q(".header--logo").onclick = () => Page.set("home")
 
     if(debug) Project.testDataValidity()
 
@@ -100,12 +103,20 @@ window.onload = () => {
 
     addEventListeners()
 
+    Qa(".icon--mouse-animated").forEach(element => {
+      element.onclick = () => { 
+        window.scrollBy({top: element.getBoundingClientRect().y + 100, behavior: 'smooth'})
+      }
+    })
+
     if(debug) {
       Page.set(ls.getItem("page"))
       setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
+
+      // Page.set("project")
+      // Project.open("corston_and_william")
     }
 
-    Page.set("home")
     
   })
   .catch((error) => {
@@ -119,7 +130,7 @@ window.onload = () => {
 
 function addEventListeners() {
   let timeoutId = setTimeout(() => {
-    Q(".icon--mouse-animated").style.animation = "var(--animation-mouse)"
+    Qa(".icon--mouse-animated").forEach(element => element.style.animation = "var(--animation-mouse)")
   }, 3000)
 
   document.addEventListener("wheel", (e) => {
@@ -128,12 +139,14 @@ function addEventListeners() {
   })
 
   document.addEventListener("scroll", (e) => {
-    if(Q(".icon--mouse-animated").getBoundingClientRect().y < 180) {
-      Q(".icon--mouse-animated").style.opacity = "0"
-    }
-    else {
-      Q(".icon--mouse-animated").style.opacity = ""
-    }
+    Qa(".icon--mouse-animated").forEach(element => {
+      if(element.getBoundingClientRect().y < 180) {
+        element.style.opacity = "0"
+      }
+      else {
+        element.style.opacity = ""
+      }
+    })
   })
 
   document.addEventListener("mouseover", (e) => {
@@ -188,7 +201,7 @@ class Page {
 
   static current = "home"
 
-  static set(name) {
+  static set(name, scrollMode = "none") {
 
     /* when you're already on the page you want to visit */
     if(name === Page.current && Page.data[name].ready === true) {
@@ -202,25 +215,33 @@ class Page {
     Page.data[Page.current].scrollY = window.scrollY
 
     Qa(".page").forEach(p => p.classList.add("hidden"))
-    const page = Q(`.page--${name}`)
-    page.classList.remove("hidden")
+    Q(`.page--${name}`).classList.remove("hidden")
 
-    window.scrollTo({top: Page.data[name].scrollY ?? 0, behavior: "instant"})
-    console.log("New page's previous scrollY position: ", Page.data[name].scrollY)
+
+    /* What happens to the scrollY of the page. */
+    if(scrollMode === "resume") {
+      window.scrollTo({top: Page.data[name].scrollY ?? 0, behavior: "instant"})
+    } else {
+      window.scrollTo({top: 0, behavior: "instant"})
+    }
+  
+    if(debug) console.log("New page's previous scrollY position: ", Page.data[name].scrollY)
 
     if(Page.data[name].ready === false) {
       Page.setup(name)
     }
 
+    Page.history.push(Page.current)
+
     Page.current = name
   }
 
-  static next() {
+  static next(scrollMode) {
 
   }
 
-  static prev() {
-
+  static prev(scrollMode) {
+    Page.set(Page.history.pop(), scrollMode)
   }
 
   /** This sets up a page for working. pageSet() then only switches between them */

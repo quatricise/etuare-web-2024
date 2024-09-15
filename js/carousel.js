@@ -29,25 +29,39 @@ class Carousel {
 
     /* Create HTML */
 
-    const container =           Create("div", {c: "carousel-container", s: `width=${this.width} \f height=${this.height}`})
-    const arrows =              Create("div", {c: "arrow-container"})
-    const images =              Create("div", {c: "carousel--image-container"})
-    const arrowBg =             Create("div", {c: "arrow-container--background"})
-    const arrowLeft =           Create("div", {c: "button-arrow \f rotate-180", a: "title=Previous"})
-    const arrowRight =          Create("div", {c: "button-arrow", a: "title=Next"})
-    const bubbles =             Create("div", {c: "carousel--bubble-container"})
-    const currentSlideName =    Create("div", {c: "carousel--current-slide-name \f hidden", t: Project.data[imageSources[0].projectName].titleShort})
+    const container =                Create("div", {c: "carousel-container", s: `width=${this.width} \f height=${this.height}`})
+    const arrows =                   Create("div", {c: "arrow-container"})
+    const images =                   Create("div", {c: "carousel--image-container"})
+    const arrowBg =                  Create("div", {c: "arrow-container--background"})
+    const arrowLeft =                Create("div", {c: "button-arrow \f rotate-180", a: "title=Previous"})
+    const arrowRight =               Create("div", {c: "button-arrow", a: "title=Next"})
+    const bubbles =                  Create("div", {c: "carousel--bubble-container"})
+
+    const currentSlideName =         Create("div", {c: "carousel--current-slide-name \f hidden"})
+    const currentSlideNameText =     Create("div", {c: "carousel--current-slide-name--text", t: Project.data[imageSources[0].projectName].titleShort})
+    const currentSlideBorderTop =    Create("div", {c: "carousel--current-slide-name--border--top"})
+    const currentSlideBorderBottom = Create("div", {c: "carousel--current-slide-name--border--bottom"})
     
+
+
     for(let index = 0; index < this.images.length; ++index) {
       const bubble = Create("div", {c: "carousel--bubble" + (index === 0 ? " \f active" : ""), d: `index=${index}`})
       bubble.onclick = () => {
-        this.slide(index - this.current)
+        const direction = index - this.current
+        if(direction > 0) {
+          for(let i = 0; i < direction; ++i) this.slide(1)
+        } else
+        if(direction < 0) {
+          for(let i = 0; i > direction; --i) this.slide(-1)
+        }
       }
       bubbles.append(bubble)
     }
 
 
+
     /* append */
+    currentSlideName.append(currentSlideNameText, currentSlideBorderTop, currentSlideBorderBottom)
     arrows.append(arrowBg, arrowLeft, bubbles, currentSlideName, arrowRight)
     container.append(images, arrows)
     this.parent.append(container)
@@ -55,6 +69,7 @@ class Carousel {
     container.onwheel = (e) => {
       e.preventDefault()
     }
+    this.images.forEach(img => images.append(img))
 
 
     /* functionality */
@@ -62,22 +77,30 @@ class Carousel {
     arrowLeft.onclick =  () => this.slide(-1)
     arrowRight.onclick = () => this.slide(1)
     this.images.forEach(img => {
-      img.onmouseover = () => {
-        bubbles.classList.add("hidden")
-        currentSlideName.classList.remove("hidden")
 
-        currentSlideName.innerText = img.dataset.title
+      img.onmouseenter = () => {
+        currentSlideName.classList.remove("hidden")
+        currentSlideName.getAnimations().forEach(anim => anim.cancel())
+
+        currentSlideName.animate([
+          {bottom: "-60px"},
+          {bottom: "0"},
+        ],{
+          duration: 500,
+          easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
+        })
+
+        currentSlideNameText.innerText = img.dataset.title
       }
+
       img.onmouseleave = () => {
-        bubbles.classList.remove("hidden")
         currentSlideName.classList.add("hidden")
       }
+
+      img.onclick = () => Project.open(img.dataset.project)
+
     })
 
-
-
-    /* images will slide from sides, so it works on mobile */
-    this.images.forEach(img => images.append(img))
 
     /** @type Map<string, HTMLElement> */
     this.elements = new Map()
@@ -115,17 +138,14 @@ class Carousel {
       }, 80)
     }
   }
-  slide(direction) {
+  slide(direction /* -1 OR 1 */) {
     if(this.busy) {
       this.queueSlide(direction)
       return
     }
-    if(direction > 0) {
-      for(let i = 0; i < direction; ++i) this.next()
-    } else
-    if(direction < 0) {
-      for(let i = 0; i > direction; --i) this.prev()
-    }
+    if(direction === 1)  this.next()
+    if(direction === -1) this.prev()
+
     this.setAsBusy()
   }
   resetQueue() {

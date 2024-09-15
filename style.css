@@ -268,7 +268,7 @@ button:hover > .button-arrow.rotate-270 {
   border-radius: 10px;
   pointer-events: none;
   user-select: none;
-  z-index: 2;
+  z-index: 10;
 }
 .tooltip-text {
   font-size: 18px;
@@ -493,6 +493,21 @@ footer p {
   font-weight: 100;
   font-size: 26px;
   text-align: center;
+}
+
+.intro-text--line-4 {
+  display: flex;
+  gap: 40px;
+  margin-top: 80px;
+  max-width: 720px;
+  font-family: "rale";
+  font-weight: 100;
+  font-size: 26px;
+  text-align: center;
+}
+
+.intro-text--line-4 > span {
+  font-weight: 100;
 }
 
 .intro-text--button {
@@ -815,7 +830,7 @@ footer p {
 .arrow-container .button-arrow {
   width:  48px;
   height: 48px;
-  z-index: 1;
+  z-index: 2;
   transition: background-color 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
@@ -874,24 +889,53 @@ footer p {
 }
 
 .carousel--current-slide-name {
+  position: absolute;
   display: flex;
   align-items: center;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
   justify-content: center;
-  height: calc(100% - 8px);
-  margin-top: 4px;
   padding: 8px 40px 10px;
   font-size: 18px;
   font-weight: 600;
   background-color: var(--c-dark-0);
-  border-radius: 10px;
+  z-index: 1;
 }
 
+.carousel--current-slide-name--border--top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0.15;
+  height: var(--border-width);
+  background: linear-gradient(90deg, 
+  var(--c-light-0-00) 0%, 
+  var(--c-light-0) 50%,
+  var(--c-light-0-00) 100%);
+  z-index: 0;
+}
+.carousel--current-slide-name--border--bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.3;
+  height: var(--border-width);
+  background: linear-gradient(90deg, 
+  var(--c-light-0-00) 0%, 
+  var(--c-light-0) 50%,
+  var(--c-light-0-00) 100%);
+  z-index: 0;
+}
 
 
 /* PAGE - ABOUT */
 
 .about--section--intro {
-  padding: 360px 0;
+  padding: 360px 0 180px;
   align-items: center;
 }
 
@@ -901,6 +945,7 @@ footer p {
 
 .about--intro-text-1 {
   max-width: 600px;
+  text-align: justify;
 }
 
 .about--section--team {
@@ -1120,6 +1165,15 @@ footer p {
 
 .project--image--flex.row .project--image--one-of-two {
   width: 50%;
+}
+
+.project--image--flex.row .project--image--one-of-three {
+  width: 33%;
+  object-fit: cover;
+}
+.project--image--flex.row .project--image--one-of-three:first-child {
+  width: 34%;
+  object-fit: cover;
 }
 
 .project--image--flex {
