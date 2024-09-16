@@ -85,17 +85,17 @@ window.onload = () => {
   Promise.all(scripts.map(loadScript))
   .then(() => {
 
+    /* THIS MAKES EVERYTHING WORK AFTER SCRIPTS ARE LOADED */
+
     Tooltip.init()
     Ticker.start()
-
-    /* THIS MAKES EVERYTHING WORK AFTER SCRIPTS ARE LOADED */
+    if(debug) Project.testDataValidity()
 
     Qa(".navlink").forEach(navlink => {
       navlink.onclick = () => Page.set(navlink.dataset.page)
     })
     Q(".header--logo").onclick = () => Page.set("home")
 
-    if(debug) Project.testDataValidity()
 
     Qa(".auto-shy").forEach(element => autoShy(element))
 
@@ -113,8 +113,7 @@ window.onload = () => {
       Page.set(ls.getItem("page"))
       setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
 
-      // Page.set("project")
-      // Project.open("corston_and_william")
+      Page.set("services")
     }
 
     
@@ -250,7 +249,7 @@ class Page {
     if(name === "home") {
       new ProjectCard("adria_gold")
       new ProjectCard("kovacs")
-      new ProjectCard("karima")
+      new ProjectCard("napacider")
       new ProjectCard("kralovske_marmelady")
     } 
 

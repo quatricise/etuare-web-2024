@@ -11,7 +11,12 @@ class Carousel {
 
     imageSources.forEach(src => {
       const title = Project.data[src.projectName].titleShort || Project.data[src.projectName].title
-      this.images.push(Create("img", {c: "carousel-image \f tooltip", d: `tooltip=Prohlédnout projekt \f project=${src.projectName} \f title=${title}`, a: `src=${src.src}`}))
+      const img = Create("img", {c: "carousel-image \f tooltip", d: `tooltip=Prohlédnout projekt \f project=${src.projectName} \f title=${title}`, a: `src=${src.src}`})
+
+      if(src.brightenOnHover !== false) {
+        img.classList.add("brighten-on-hover")
+      }
+      this.images.push(img)
     })
 
     /** @type HTMLElement */
@@ -61,6 +66,7 @@ class Carousel {
 
 
     /* append */
+    
     currentSlideName.append(currentSlideNameText, currentSlideBorderTop, currentSlideBorderBottom)
     arrows.append(arrowBg, arrowLeft, bubbles, currentSlideName, arrowRight)
     container.append(images, arrows)
@@ -70,6 +76,7 @@ class Carousel {
       e.preventDefault()
     }
     this.images.forEach(img => images.append(img))
+
 
 
     /* functionality */
@@ -86,7 +93,7 @@ class Carousel {
           {bottom: "-60px"},
           {bottom: "0"},
         ],{
-          duration: 500,
+          duration: 400,
           easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
         })
 
@@ -100,6 +107,7 @@ class Carousel {
       img.onclick = () => Project.open(img.dataset.project)
 
     })
+
 
 
     /** @type Map<string, HTMLElement> */

@@ -295,7 +295,7 @@ class Project {
       featured: true,
       titleShort: "Královské Marmelády",
       title: "Královské Marmelády",
-      description: "",
+      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu. Projekt se bohužel nakonec nerealizoval, tak nám tyto věci chvíli ležely v šuplíku.",
       content: [
         {
           t: "image",
@@ -339,6 +339,49 @@ class Project {
 
 
 
+    "napacider": {
+      featured: true, brightOnHover: false,
+      titleShort: "Napa cider",
+      title: "Napa cider - Řemeslný cider z Moravy",
+      description: "Napa cider je příjemné alkoholické letní občerstvení. Osvěžující dávka ovocné chuti, nic komplikovaného. Skvělý pro posezení ve dvou na zahradě i večírek s přáteli.",
+      content: [
+        {
+          t: "image_2",
+          d: "column",
+          f: ["tiskoviny.jpg", "vizitky.jpg"]
+        },
+        {
+          t: "image",
+          f: "eshop_ikony.png"
+        },
+        {
+          t: "heading", 
+          h: "Facebook Kampaň"
+        },
+        {
+          t: "paragraph", 
+          h: "Facebook kampaň jsme navrhovali se směrováním na eshop."
+        },
+        {
+          t: "image_2",
+          l: "Základní slevová kampaň pro rozjetí eshopu.",
+          f: ["fb_1.jpg", "fb_2.jpg"]
+        },
+        {
+          t: "image_2",
+          l: "Alternativní, nízkorozpočtová kampaň pro viditelnost produktu.",
+          f: ["fb_3.jpg", "fb_4.jpg"]
+        },
+        {
+          t: "image_2",
+          l: "Alternativní kampaň s využitím fotek, doporučuje se při propagaci produktů využít více variant kampaně pro testování efektivnosti.",
+          f: ["fb_5.jpg", "fb_6.jpg"]
+        },
+      ],
+    },
+
+
+
     "agro_jesenice": {
       featured: false,
       titleShort: "",
@@ -355,9 +398,20 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Henna - Kosmetika",
-      description: "",
+      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Pracovali jsme pro ně primárně na obalech.",
       content: [
-        
+        {
+          t: "image",
+          f: "damske.jpg"
+        },
+        {
+          t: "image",
+          f: "panske.jpg"
+        },
+        {
+          t: "image",
+          f: "balzam_a_gel.jpg"
+        },
       ],
     },
 
@@ -461,6 +515,10 @@ class ProjectCard {
     text.append(title, desc, button)
     button.append(buttonArrow)
 
+
+    if(this.project.brightOnHover !== false) {
+      card.classList.add("brighten-on-hover")
+    }
 
 
     /* Interactability */

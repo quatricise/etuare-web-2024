@@ -254,6 +254,12 @@ button:hover > .button-arrow.rotate-270 {
   display: flex;
 }
 
+.filler {
+  flex-grow: 1;
+}
+
+/* endregion GENERAL TEMPLATING RULES */
+
 
 
 /* TOOLTIP */
@@ -417,18 +423,19 @@ footer {
 .footer--content {
   display: flex;
   justify-content: space-between;
-  width: var(--project-content--width);
-  margin-top: 120px;
+  width: 810px;
+  margin-top: 60px;
+  margin-left: -40px;
 }
 
 .footer--content--contacts {
   display: flex;
-  gap: 20px;
+  gap: 0px;
 }
 
 .footer--content--address {
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .icon--address,
@@ -642,7 +649,7 @@ footer {
 
 /* Project card - effects */
 
-.project-card:hover {
+.project-card.brighten-on-hover:hover {
   filter: brightness(1.09);
 }
 
@@ -753,6 +760,7 @@ footer {
 .service-card--description {
   font-size: 18px;
   line-height: 160%;
+  width: calc(var(--service-card--width) - var(--service-card--height) - 80px);
 }
 
 
@@ -760,7 +768,7 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-left: 40px;
+  padding: 0 40px;
   flex-grow: 1;
   background-image: url(images/background_var_0.png);
   background-position: bottom left;
@@ -790,6 +798,8 @@ footer {
   var(--c-dark-2) 10%,
   var(--c-dark-0) 100%);
 }
+
+
 
 /* CAROUSEL */
 
@@ -861,10 +871,6 @@ footer {
   transition: background-color 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.1s ease-in-out;
   z-index: 1;
 }
-.carousel-image:hover {
-  filter: brightness(1.1);
-  background-color: var(--c-light-0-005);
-}
 
 .carousel--bubble-container {
   display: flex;
@@ -880,10 +886,6 @@ footer {
   background-color: var(--c-light-0-01);
   z-index: 1;
   transition: background-color 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.carousel--bubble:hover {
-  background-color: var(--c-light-0);
 }
 
 .carousel--bubble.active {
@@ -931,6 +933,17 @@ footer {
   var(--c-light-0) 50%,
   var(--c-light-0-00) 100%);
   z-index: 0;
+}
+
+/* Carousel - EFFECTS */
+
+.carousel-image.brighten-on-hover:hover {
+  filter: brightness(1.1);
+  background-color: var(--c-light-0-005);
+}
+
+.carousel--bubble:hover {
+  background-color: var(--c-light-0);
 }
 
 
@@ -1007,7 +1020,7 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: min(1100px, 100vw);
+  width: min(900px, 100vw);
   margin: 90px 0;
   gap: 40px;
 }
@@ -1058,6 +1071,7 @@ footer {
 
 .person-card--description.is-portfolio-link {
   width: max-content;
+  margin-top: -5px;
   padding: 5px 10px 4px 10px;
   background: linear-gradient(90deg, var(--c-light-0-02) 0%, var(--c-light-0-005) 100%);
 }
@@ -1115,6 +1129,7 @@ footer {
 :root {
   --project-content--width: 900px;
   --project-content--spacing: 120px;
+  --project--image--gap: 5px;
 }
 
 .page--project {
@@ -1185,7 +1200,7 @@ footer {
 }
 
 .project--image--flex.row .project--image--one-of-two {
-  width: 50%;
+  width: calc(50% - var(--project--image--gap) / 2);
 }
 
 .project--image--flex.row .project--image--one-of-three {
@@ -1200,7 +1215,7 @@ footer {
 .project--image--flex {
   display: flex;
   width: 100%;
-  gap: 5px;
+  gap: var(--project--image--gap);
 }
 
 .project--image--grid {
@@ -1209,7 +1224,7 @@ footer {
   grid-template-rows: 1fr 1fr;
   width: 100%;
   grid-auto-flow: row;
-  gap: 5px;
+  gap: var(--project--image--gap);
 }
 
 .project--image--for-grid {
@@ -1221,10 +1236,14 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
+  padding: 20px 20px;
   width: 100%;
   font-size: 18px;
   font-weight: 200;
+  background: linear-gradient(90deg, 
+  var(--c-dark-0) 0%, 
+  var(--c-dark-1) 50%,
+  var(--c-dark-0) 100%);
 }
 
 .project--image--label--border {

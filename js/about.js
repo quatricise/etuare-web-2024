@@ -3,25 +3,25 @@ class Person {
     "Zbyněk Trvaj": {
       role: "employee",
       filename: "zbynek",
-      description: "Hlavička makovička",
+      description: "Grafika, Obalový design, DTP, Marketing",
       portfolioLink: "",
     },
     "Štěpán Trvaj": {
       role: "employee",
       filename: "stepan",
-      description: "Hlavička makovička",
+      description: "Grafika, Obaly, Web design, Programování, Ilustrace",
       portfolioLink: "https://www.quatricise.com",
     },
     "Ivana Kotásková": {
       role: "contractor",
       filename: "iva",
-      description: "Hlavička makovička",
+      description: "Ilustrace",
       portfolioLink: "https://www.instagram.com/ivana.kotaskova/",
     },
     "Tomáš Novosád": {
       role: "contractor",
       filename: "tomas",
-      description: "Hlavička makovička",
+      description: "Fotografie",
       portfolioLink: "https://www.tomas-novosad.com",
     },
   }
@@ -63,6 +63,9 @@ class PersonCard {
       container.classList.add("has-portfolio")
       
       container.onmouseenter = () => {
+        let height = container.getBoundingClientRect().height
+        container.style.height = height + "px"
+
         description.classList.add("is-portfolio-link")
         description.innerHTML = "<b>Portfolio</b>"
         description.append(Create("div", {c: "button-arrow"}))
@@ -84,6 +87,8 @@ class PersonCard {
       container.onmouseleave = () => {
         description.classList.remove("is-portfolio-link")
         description.innerHTML = this.description
+
+        container.style.height = ""
       }
     }
 
