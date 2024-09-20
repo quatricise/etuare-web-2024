@@ -17,19 +17,6 @@ function addNBSPToAll() {
 }
 
 
-const wildIndex = 0
-const wildPassword = "wild"
-
-function wildGo() {
-  
-}
-
-function wildProcessKey() {
-
-}
-
-
-
 
 /** Adds shy hyphens to text. Rudimentary but works. */
 function autoShy(/** @type HTMLElement */ element) {
@@ -182,6 +169,7 @@ window.onload = () => {
 // #region EVENTS - All event handling is here for now
 
 function addEventListeners() {
+
   let timeoutId = setTimeout(() => {
     Qa(".icon--mouse-animated").forEach(element => element.style.animation = "var(--animation-mouse)")
   }, 3000)
@@ -195,9 +183,11 @@ function addEventListeners() {
     Qa(".icon--mouse-animated").forEach(element => {
       if(element.getBoundingClientRect().y < 180) {
         element.style.opacity = "0"
+        element.style.pointerEvents = "none"
       }
       else {
         element.style.opacity = ""
+        element.style.pointerEvents = ""
       }
     })
   })
@@ -362,6 +352,30 @@ class Page {
     },
   }
 }
+
+
+
+function showMoreProjects() {
+  const max = 4
+  let counter = 0
+
+  for(let key in Project.data) {
+    if(counter >= max) break
+    
+    if(Project.homeCardsLoaded.has(key)) {
+      continue
+    }
+    else {
+      new ProjectCard(key)
+      counter++
+    }
+  }
+  if(counter < max) {
+    //run out of projects
+    Q(".button--see-more").classList.add("hidden")
+  }
+}
+
 
 
 

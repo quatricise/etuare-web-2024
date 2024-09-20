@@ -34,8 +34,8 @@ class Services {
     "Logo design": {
       description: `
       • Navrhneme vám nové logo
-      • Modernizujeme vaše staré logo
-      • Vytvoříme třeba i varianty loga pro nové produkty
+      • Zmodernizujeme vaše staré logo
+      • Vytvoříme varianty loga pro nové produkty
       `,
       examples: [
         {src: "../images/carousel/logo_1.png", projectName: "adria_gold", brightenOnHover: false},

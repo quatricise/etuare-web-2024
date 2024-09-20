@@ -122,12 +122,23 @@ class Project {
 
 
   static testDataValidity() {
-    const acceptedProps = [
-      "titleShort",
+    
+    /** @type Array<string> */
+    const requiredProps = [
       "title",
       "description",
       "content",
     ]
+    
+    /** @type Array<string> */
+    const acceptedProps = [
+      "titleShort",
+      "descriptionShort",
+      "featured",
+      "brightOnHover",
+    ].concat(requiredProps)
+
+    /** @type Array<string> */
     const acceptedContentTypes = [
       "heading",
       "paragraph",
@@ -142,8 +153,14 @@ class Project {
 
       /* top-level */
 
-      for(let prop of acceptedProps) {
+      for(let prop of requiredProps) {
         if(this.data[key][prop] === undefined) throw `Missing property '${prop}' in datablock '${key}'`        
+      }
+
+      for(let prop in this.data[key]) {
+        if(acceptedProps.find(p => p === prop) === undefined) {
+          throw "Property not accepted: " + prop + " in project: " + prop
+        }
       }
 
 
@@ -192,7 +209,7 @@ class Project {
     for(const key in Project.current.elements) {
       Project.current.elements[key].remove()
     }
-    Project.current = false
+    Project.current = null
   }
 
 
@@ -202,6 +219,9 @@ class Project {
 
   /** @type Project */
   static current = null
+
+  /** @type Set<string> */
+  static homeCardsLoaded = new Set()
 
   static data = {
 
@@ -295,6 +315,26 @@ class Project {
 
 
 
+    "martenz_boruvkovice": {
+      titleShort: "Martenz - Borůvkovice",
+      title: "Martenz - Borůvkovice",
+      description: "Design exclusivní borůvkovice od značky Martenz. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky/fanoušky značky.",
+      content: [
+        {
+          t: "image",
+          l: "",
+          f: "lahev.jpg"
+        },
+        {
+          t: "image_3",
+          l: "Alternativní ilustrace pro etiketu, z nich se nakonec použila prostřední.",
+          f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg"]
+        },
+      ],
+    },
+
+
+
     "kralovske_marmelady": {
       featured: true,
       titleShort: "Královské Marmelády",
@@ -302,24 +342,16 @@ class Project {
       description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
       content: [
         {
-          t: "image",
+          t: "image_2",
+          d: "column",
           l: "",
-          f: "citron_a.jpg"
+          f: ["citron_a.jpg", "citron_b.jpg"]
         },
         {
-          t: "image",
+          t: "image_2",
+          d: "column",
           l: "",
-          f: "citron_b.jpg"
-        },
-        {
-          t: "image",
-          l: "",
-          f: "pomeranc_b.jpg"
-        },
-        {
-          t: "image",
-          l: "",
-          f: "pomeranc_b.jpg"
+          f: ["pomeranc_a.jpg", "pomeranc_b.jpg"]
         },
         {
           t: "image_grid_2",
@@ -335,8 +367,8 @@ class Project {
       featured: false,
       titleShort: "Vest - Tyčinky",
       title: "Vest - Slané tyčinky a krekry",
-      description: "",
-      descriptionWild: 'Každý si dnes vzpomene na klasické \"Vestky\", jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že se mu z toho rozteklo horní patro.',
+      descriptionShort: "Design obalů pro sérii slaných tyčinek a krekrů.",
+      description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání přišel domů a měl potečenou sváteční košili a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Příběh Vestek',
       content: [
         {
           t: "image",
@@ -395,12 +427,17 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Brela - Čistící prostředek",
-      description: "",
+      description: "Jednoduchý design pro jednoduchý produkt. Maminka vždycky říkávala že od Důbravy jsou přípravky nejlevnější ale také nejlepší!",
       content: [
         {
+          t: "image",
+          f: "lahvicka.jpg"
+        },
+        {
           t: "image_grid_2",
+          l: "Originální ilustrace vytvořené pro projekt.",
           f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg", "ilu_4.jpg"]
-        }
+        },
       ],
     },
 
@@ -527,7 +564,7 @@ class ProjectCard {
     const text =        Create("div",    {c: "project-card--text"})
     const desc =        Create("div",    {t: this.project.descriptionShort || this.project.description, c: "project-card--description"})
 
-    const button =      Create("button", {c: "button \f dark \f dark-0 \f project-card--button", t: "Prohlédnout"})
+    const button =      Create("button", {c: "button \f no-glow \f dark \f dark-0 \f project-card--button", t: "Prohlédnout"})
     const buttonArrow = Create("div",    {c: "button-arrow"})
 
     const borderLeft =  Create("div",    {c: "project-card--border-left"})
@@ -563,7 +600,9 @@ class ProjectCard {
 
 
     autoShy(desc)
+    addNBSP(desc)
     ProjectCard.placeCard(card)
+    Project.homeCardsLoaded.add(name)
   }
   static nextColumn = 1
   static placeCard(card) {

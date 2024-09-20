@@ -136,6 +136,10 @@ button {
   transition: border-color var(--animation), background-color var(--animation), color var(--animation);
 }
 
+button.no-glow {
+  box-shadow: none!important;
+}
+
 button.shadow-small {
   box-shadow: 0 0 40px 2px #ffffff10;
 }
@@ -175,7 +179,7 @@ button.dark-1 {
   background-size: auto;
   background-repeat: no-repeat;
   scale: -1;
-  --animation: 1.2s cubic-bezier(0.2, 0.0, 0.2, 1.0);
+  --animation: 0.75s cubic-bezier(0.2, 0.0, 0.2, 1.0);
   transition: 
   left var(--animation),
   right var(--animation),
@@ -624,7 +628,7 @@ footer {
 }
 
 .project-card--text {
-  padding: 15px 20px 20px;
+  padding: 10px 20px 20px;
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -1176,6 +1180,7 @@ footer {
   text-align: justify;
   font-size: 18px;
   letter-spacing: 0.01em;
+  line-height: 150%;
   font-weight: 250;
 }
 
