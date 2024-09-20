@@ -1,6 +1,7 @@
 class Project {
   constructor(name) {
     /* reference data for easier access */
+    this.name = name
     this.data = Project.data[name]
 
     /* Create HTML */
@@ -10,7 +11,7 @@ class Project {
     const content =     Create("div", {c: "section \f project--section--content"})
 
     autoShy(description)
-    description.innerText = addNBSPToString(description.innerText)
+    description.innerHTML = addNBSPToString(description.innerHTML)
 
     /** What the shortened property names mean */
     const tagLexicon = {
@@ -199,6 +200,9 @@ class Project {
   /** @type Map<string, Project> */
   static loadedProjects = new Map()
 
+  /** @type Project */
+  static current = null
+
   static data = {
 
 
@@ -295,7 +299,7 @@ class Project {
       featured: true,
       titleShort: "Královské Marmelády",
       title: "Královské Marmelády",
-      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu. Projekt se bohužel nakonec nerealizoval, tak nám tyto věci chvíli ležely v šuplíku.",
+      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
       content: [
         {
           t: "image",
@@ -332,8 +336,12 @@ class Project {
       titleShort: "Vest - Tyčinky",
       title: "Vest - Slané tyčinky a krekry",
       description: "",
+      descriptionWild: 'Každý si dnes vzpomene na klasické \"Vestky\", jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že se mu z toho rozteklo horní patro.',
       content: [
-        
+        {
+          t: "image",
+          f: "obaly.jpg"
+        }
       ],
     },
 
@@ -343,7 +351,8 @@ class Project {
       featured: true, brightOnHover: false,
       titleShort: "Napa cider",
       title: "Napa cider - Řemeslný cider z Moravy",
-      description: "Napa cider je příjemné alkoholické letní občerstvení. Osvěžující dávka ovocné chuti, nic komplikovaného. Skvělý pro posezení ve dvou na zahradě i večírek s přáteli.",
+      description: "Napa cider je příjemné alkoholické letní občerstvení. Osvěžující dávka ovocné chuti, nic komplikovaného.  Skvělý pro posezení ve dvou na zahradě i večírek s přáteli. \n \n Pro Napa cider jsme dělali všechno, vlastně i ten cider, do kterého se pan Zbyněk pustil ve volném čase, když zrovna neměl co na práci.",
+      descriptionShort: "Vizuální identita pro řemeslný cider + reklamní kampaň a eshop.",
       content: [
         {
           t: "image_2",
@@ -360,7 +369,7 @@ class Project {
         },
         {
           t: "paragraph", 
-          h: "Facebook kampaň jsme navrhovali se směrováním na eshop."
+          h: "Facebook kampaň jsme orientovali na návštěvnost nově spuštěného eshopu."
         },
         {
           t: "image_2",
@@ -377,6 +386,21 @@ class Project {
           l: "Alternativní kampaň s využitím fotek, doporučuje se při propagaci produktů využít více variant kampaně pro testování efektivnosti.",
           f: ["fb_5.jpg", "fb_6.jpg"]
         },
+      ],
+    },
+
+
+
+    "brela": {
+      featured: false,
+      titleShort: "",
+      title: "Brela - Čistící prostředek",
+      description: "",
+      content: [
+        {
+          t: "image_grid_2",
+          f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg", "ilu_4.jpg"]
+        }
       ],
     },
 
@@ -471,10 +495,9 @@ class Project {
           f: ["ilu_wood_1.png", "ilu_wood_2.png", "ilu_wood_3.png", "ilu_wood_4.png"]
         },
         {
-          t: "image_3",
-          d: "column",
+          t: "image_grid_2",
           l: "Další ilustrace, které se nakonec na etiketu nepoužily.",
-          f: ["ilu_wood_wonky_1.png", "ilu_wood_wonky_2.png", "ilu_wood_wonky_3.png"]
+          f: ["ilu_wood_wonky_1.png", "ilu_wood_wonky_2.png", "ilu_wood_wonky_3.png", "ilu_wood_wonky_4.png"]
         },
       ],
     },

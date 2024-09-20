@@ -17,16 +17,38 @@ function addNBSPToAll() {
 }
 
 
+const wildIndex = 0
+const wildPassword = "wild"
+
+function wildGo() {
+  
+}
+
+function wildProcessKey() {
+
+}
+
+
+
 
 /** Adds shy hyphens to text. Rudimentary but works. */
 function autoShy(/** @type HTMLElement */ element) {
-  let words = element.innerText.split(" ").filter(word => word !== " ")
+  let words = element.innerHTML.split(" ")
+  words = words.map(word => {
+    if(word === "<br>") {
+      return "\n"
+    }
+    else {
+      return word
+    }
+  })
   let results = []
   for(let word of words) {
     if(word.length <= 5) {
       results.push(word)
       continue
     }
+
     let halvingIndex = Math.floor(word.length / 2)
 
     const czechVowels = ["a", "e", "i", "o", "u", "ě", "á", "í", "é", "ý", "ó", "ů", "ú"]
@@ -46,6 +68,16 @@ function autoShy(/** @type HTMLElement */ element) {
 
     results.push(firstHalf + "\u00AD" + secondHalf)
   }
+
+  results = results.map(res => {
+    if(res === "\n") {
+      return "<br>"
+    }
+    else {
+      return res
+    }
+  })
+  
   element.innerHTML = results.join(" ")
 }
 
@@ -55,6 +87,7 @@ function autoShy(/** @type HTMLElement */ element) {
 window.onbeforeunload = () => {
   ls.setItem("scrollY", window.scrollY)
   ls.setItem("page",    Page.current)
+  ls.setItem("project", Project.current.name)
 }
 
 window.onload = () => {
@@ -85,17 +118,17 @@ window.onload = () => {
   Promise.all(scripts.map(loadScript))
   .then(() => {
 
-    /* THIS MAKES EVERYTHING WORK AFTER SCRIPTS ARE LOADED */
+    /* WEBSITE INIT */
 
     Tooltip.init()
     Ticker.start()
-    if(debug) Project.testDataValidity()
+    if(debug) {
+      Project.testDataValidity()
+    }
 
-    Qa(".navlink").forEach(navlink => {
-      navlink.onclick = () => Page.set(navlink.dataset.page)
-    })
+    Qa(".navlink").forEach(navlink => navlink.onclick = () => Page.set(navlink.dataset.page))
+
     Q(".header--logo").onclick = () => Page.set("home")
-
 
     Qa(".auto-shy").forEach(element => autoShy(element))
 
@@ -111,10 +144,31 @@ window.onload = () => {
 
     if(debug) {
       Page.set(ls.getItem("page"))
+      if(Page.current === "project") {
+        Project.open(ls.getItem("project"))
+      }
       setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
-
-      Page.set("services")
     }
+
+
+
+    /* URL stuff */
+    const searchQuery = window.location.search.replace("?", "")
+    const pairs = searchQuery.split("+")
+    pairs.forEach(pair => {
+      const [key, value] = pair.split("=")
+      
+      switch(key) {
+        case "project": {
+          Project.open(value)
+          break
+        }
+        case "page": {
+          Page.set(value)
+          break
+        }
+      }
+    })
 
     
   })
@@ -263,11 +317,7 @@ class Page {
         const button = Create("button", {c: "dark \f dark-0 \f services--intro-button \f shadow-small", t: key})
         const arrow =  Create("div",    {c: "button-arrow \f rotate-90"})
 
-        button.onclick = () => {
-          let rect = card.elements.get("container").getBoundingClientRect()
-          const [y, height] = [rect.y, rect.height]
-          window.scrollTo({top: y + (height/2) - window.innerHeight/2, behavior: "smooth"})
-        }
+        button.onclick = () => card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
 
         button.append(arrow)
         Q(".services--intro-buttons").append(button)
@@ -328,47 +378,34 @@ for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
 
 
 
-/* URL stuff */
-const searchQuery = window.location.search.replace("?", "")
-const pairs = searchQuery.split("+")
-pairs.forEach(pair => {
-  const [key, value] = pair.split("=")
-  
-  switch(key) {
-    case "tag": {
-      Project.showByTags(value)
-      break
-    }
-    case "project": {
-      let project = Array.from(Project.list).find(p => p.projectIdentifier === value)
-      project.select()
-      break
-    }
-    case "search": {
-      Search.search(value)
-      break
-    }
-    case "page": {
-      switch(value) {
-        case "projects": {
-          setPage(projectsPage)
-          break
-        }
-        case "about": {
-          setPage(aboutPage)
-          break
-        }
-      }
-      break
-    }
-    case "carouselindex": {
-      for(let i = 0; i < value; i++)
-      Project.current?.showNextImage()
-      break
-    }
-  }
-})
 
 
 
 /* VISITED BEFORE => Show visitor different projects at the front, based on the featured property of the project. */
+
+
+
+/* syllable splitting idea */
+function syllableSplit(word) {
+  
+  "a ne ta";
+  "an té na";
+  "ant mé na";
+  "man dra žé";
+
+  /* these are what is accepted as the core vowel sound of a syllable */
+  const cores = ["a", "e", "i", "o", "u", "ě", "á", "í", "é", "ý", "ó", "ů", "ú"]
+  /* these only apply if the primary core is not found */
+  const cores_2nd = ["l", "r"]
+
+  let foundConsonant = false
+  let lastVowelAt = 0 //index in word
+  for(let [index, char] of [word.split("").entries()]) {
+    if(char.includesAny(...cores)) {
+      lastVowelAt = index
+    }
+
+    if(lastVowelAt === index - 1) {}
+  }
+
+}

@@ -33,33 +33,41 @@ class Services {
     },
     "Logo design": {
       description: `
-      • Navrhneme nové logo a vizuální identitu
+      • Navrhneme vám nové logo
       • Modernizujeme vaše staré logo
       • Vytvoříme třeba i varianty loga pro nové produkty
       `,
       examples: [
         {src: "../images/carousel/logo_1.png", projectName: "adria_gold", brightenOnHover: false},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", brightenOnHover: false},
+        {src: "../images/carousel/logo_3.jpg", projectName: "adria_gold", brightenOnHover: false},
+        {src: "../images/carousel/logo_4.jpg", projectName: "adria_gold", brightenOnHover: false},
       ]
     },
     "Produkce": {
       description: `
-      • vytvoříme vám originální ilustrace pro váš projekt
-      • navrhneme ilustrovaný plakát
-      • digitální ilustrace v různých stylech
-      • akvarel, tužka, perokresba či pastelová ilustrace
+      Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
+      
+      • tiskoviny, roll-upy, ochutnávkové stolky, displeje, polepy atd.
+      • fotografie vašich výrobků či firmy
+      • polepy firemních vozidel, prodejen
+      • navigační prvky - směrovky, cedule atd.
       `,
       examples: [
+        {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", brightenOnHover: false},
       ]
     },
     "Digitální design": {
       description: `
-      • navrhneme prototyp
-      • pomůžeme vám navrhnout obsah
-      • zrealizujeme pro vás webové prezentace
+      • navrhneme design a prototyp webu
+      • pomůžeme vám navrhnout obsahovou strukturu
+      • jsme shopni naprogramovat prezentační weby
       • zařídíme SEO optimalizaci
       `,
       examples: [
+        // {src: "images/carousel/digi_1.jpg", projectName: ""},
+        // {src: "images/carousel/digi_2.jpg", projectName: ""},
+        {src: "images/carousel/digi_3.jpg", projectName: "napacider"},
       ]
     },
     "3D Vizualizace": {
@@ -67,9 +75,10 @@ class Services {
       Vytvoříme 3D vizualizace produktů:
       • do katalogů, 
       • pro web, 
-      • na polepy atd.
+      • na polepy aut atd.
       `,
       examples: [
+        {src: "images/carousel/3d_6.jpg", projectName: ""},
         {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
         {src: "images/carousel/3d_2.jpg", projectName: "karima"},
         {src: "images/carousel/3d_3.jpg", projectName: "henna"},
@@ -81,11 +90,12 @@ class Services {
       description: `
       • vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
-      • digitální ilustrace v různých stylech
+      • digitální ilustrace v různých stylech (lineart, airbrush, vektor...)
       • akvarel, tužka, perokresba či pastelová ilustrace
       `,
       examples: [
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
+        {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
       ]
     },
   }

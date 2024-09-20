@@ -867,9 +867,12 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: var(--animation-cursor);
   transition: background-color 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.1s ease-in-out;
   z-index: 1;
+}
+
+.carousel-image.interactable {
+  animation: var(--animation-cursor);
 }
 
 .carousel--bubble-container {
@@ -1159,6 +1162,7 @@ footer {
   position: fixed;
   top: calc(var(--header-height) + 40px);
   left: 40px;
+  z-index: 1;
 }
 
 .project--banner--image {

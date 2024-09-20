@@ -10,12 +10,22 @@ class Carousel {
     this.images = []
 
     imageSources.forEach(src => {
-      const title = Project.data[src.projectName].titleShort || Project.data[src.projectName].title
-      const img = Create("img", {c: "carousel-image \f tooltip", d: `tooltip=Prohlédnout projekt \f project=${src.projectName} \f title=${title}`, a: `src=${src.src}`})
+      const img = Create("img", {c: "carousel-image", a: `src=${src.src}`})
+
+      if(src.projectName) {
+        const title = Project.data[src.projectName]?.titleShort || Project.data[src.projectName]?.title
+        img.classList.add("tooltip", "interactable")
+        img.dataset.tooltip = "Prohlédnout projekt"
+        img.dataset.title = title
+        img.dataset.project = src.projectName
+      } else {
+
+      }
 
       if(src.brightenOnHover !== false) {
         img.classList.add("brighten-on-hover")
       }
+
       this.images.push(img)
     })
 
@@ -43,7 +53,7 @@ class Carousel {
     const bubbles =                  Create("div", {c: "carousel--bubble-container"})
 
     const currentSlideName =         Create("div", {c: "carousel--current-slide-name \f hidden"})
-    const currentSlideNameText =     Create("div", {c: "carousel--current-slide-name--text", t: Project.data[imageSources[0].projectName].titleShort})
+    const currentSlideNameText =     Create("div", {c: "carousel--current-slide-name--text", t: Project.data[imageSources[0].projectName]?.titleShort})
     const currentSlideBorderTop =    Create("div", {c: "carousel--current-slide-name--border--top"})
     const currentSlideBorderBottom = Create("div", {c: "carousel--current-slide-name--border--bottom"})
     
@@ -84,6 +94,7 @@ class Carousel {
     arrowLeft.onclick =  () => this.slide(-1)
     arrowRight.onclick = () => this.slide(1)
     this.images.forEach(img => {
+      if(!img.dataset.title) return
 
       img.onmouseenter = () => {
         currentSlideName.classList.remove("hidden")

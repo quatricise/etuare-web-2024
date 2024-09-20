@@ -3,13 +3,13 @@ class Person {
     "Zbyněk Trvaj": {
       role: "employee",
       filename: "zbynek",
-      description: "Grafika, Obalový design, DTP, Marketing",
+      description: "Grafika, obalový design, DTP, marketing",
       portfolioLink: "",
     },
     "Štěpán Trvaj": {
       role: "employee",
       filename: "stepan",
-      description: "Grafika, Obaly, Web design, Programování, Ilustrace",
+      description: "Grafika, obaly, web design, programování, ilustrace",
       portfolioLink: "https://www.quatricise.com",
     },
     "Ivana Kotásková": {
