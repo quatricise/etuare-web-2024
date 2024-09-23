@@ -114,8 +114,12 @@ window.onload = () => {
 
     /* WEBSITE INIT */
 
-    Tooltip.init()
+    if(!state.mobile) {
+      Tooltip.init()
+    }
+
     Ticker.start()
+
     if(debug) {
       Project.testDataValidity()
     }
@@ -129,6 +133,18 @@ window.onload = () => {
     Q(".header--logo").onclick = () => Page.set("home")
 
     Qa(".auto-shy").forEach(element => autoShy(element))
+
+    {
+      let [intro, intro2] = [Q(".intro-text--line-1"), Q(".intro-text--line-2")]
+      let width = intro.getBoundingClientRect().width
+      let scale = width / window.innerWidth
+      console.log(scale)
+      const desiredScale = 0.70
+      if(scale > desiredScale) {
+        intro.style.transform = `scale(${desiredScale / scale})`
+        intro2.style.transform = `scale(${desiredScale / scale})`
+      }
+    }
 
     addNBSPToAll()
 
@@ -406,6 +422,12 @@ function toggleNavlinks(visib) {
     .animate( [{transform: "translateY(0px)"}, {transform: "translateY(-250px)"}], {duration, easing} )
     .classAdd("hidden")
     .then(() => state.navlinksOpen = false)
+
+    Qa(".navlink").forEach((navlink, index) => {
+      new Animate(navlink)
+      .animate([{transform: `translateY(0px)`}, {transform: `translateY(${60 + index*10}px)`}], {duration: duration * (1 + index/3), easing})
+    })
+
   } else
 
   {
@@ -652,4 +674,41 @@ class Animate {
 
   /** @type Map<HTMLElement, Animate> */
   static list = new Map()
+}
+
+
+
+
+
+/** Simple lightbox - Only for phones probably. */
+class Lightbox {
+  constructor(parent = document.body, position = "fixed") {
+    
+    this.parent = parent
+    this.position = position
+
+    const lightbox = Create("div", {c: "lightbox", s: `position=${position}`})
+
+    document.addEventListener("click", (e) => {
+      if(e.target.closest(".lightbox") === this.elements.lightbox) {
+        this.close()
+      }
+    })
+    parent.append(lightbox)
+
+    this.elements = {
+      lightbox
+    }
+
+  }
+  open() {
+    this.elements.lightbox.classList.remove("hidden")
+  }
+  openImage(imageSrc, options = {}) {
+    const img = Create("img", {a: `src=${imageSrc}`})
+    this.elements.lightbox.append(img)
+  }
+  close() {
+    this.elements.lightbox.classList.add("hidden")
+  }
 }

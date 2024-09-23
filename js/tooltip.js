@@ -41,6 +41,7 @@ class Tooltip {
   }
 
   static updateOnFrame() {
+    if(this.ready === false) return
     if(this.hidden) return
 
     /* position update */
@@ -53,6 +54,7 @@ class Tooltip {
   }
 
   static hide() {
+    if(this.ready === false) return
     if(this.hidden) return
 
     this.elements.container.remove()
@@ -69,6 +71,7 @@ class Tooltip {
     this.hidden = true
   }
   static show() {
+    if(this.ready === false) return
     if(!this.hidden) return
     
     this.position.set_from(Mouse.position)
