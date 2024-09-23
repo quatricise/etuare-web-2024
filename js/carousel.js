@@ -12,6 +12,12 @@ class Carousel {
     imageSources.forEach(src => {
       const img = Create("img", {c: "carousel-image", a: `src=${src.src}`})
 
+      if(src.projectName && src.projectName === "$out") {
+        img.onclick = () => window.open(src.url, "_blank")
+        img.classList.add("tooltip", "interactable")
+        img.dataset.tooltip = "☍ Prohlédnout v novém okně"
+      } else
+
       if(src.projectName) {
         const title = Project.data[src.projectName]?.titleShort || Project.data[src.projectName]?.title
         img.classList.add("tooltip", "interactable")
@@ -57,6 +63,8 @@ class Carousel {
     const currentSlideBorderTop =    Create("div", {c: "carousel--current-slide-name--border--top"})
     const currentSlideBorderBottom = Create("div", {c: "carousel--current-slide-name--border--bottom"})
     
+    arrowLeft.style.mixBlendMode = "difference"
+    arrowRight.style.mixBlendMode = "difference"
 
 
     for(let index = 0; index < this.images.length; ++index) {

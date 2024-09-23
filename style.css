@@ -427,7 +427,7 @@ footer {
 .footer--content {
   display: flex;
   justify-content: space-between;
-  width: 810px;
+  width: 840px;
   margin-top: 60px;
   margin-left: -40px;
 }
@@ -439,7 +439,7 @@ footer {
 
 .footer--content--address {
   display: flex;
-  gap: 25px;
+  gap: 30px;
 }
 
 .icon--address,
@@ -450,7 +450,14 @@ footer {
   object-fit: contain;
 }
 
+.icon--gps {
+  left: -36px;
+  display: inline-block;
+  width: 24px;
+}
+
 .address--text, .contact--text {
+  position: relative;
   font-size: 20px;
   font-family: "rale";
   display: flex;

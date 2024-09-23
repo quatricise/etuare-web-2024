@@ -55,6 +55,7 @@ class Services {
       `,
       examples: [
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", brightenOnHover: false},
+        {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", brightenOnHover: false},
       ]
     },
     "Digitální design": {
@@ -65,8 +66,6 @@ class Services {
       • zařídíme SEO optimalizaci
       `,
       examples: [
-        // {src: "images/carousel/digi_1.jpg", projectName: ""},
-        // {src: "images/carousel/digi_2.jpg", projectName: ""},
         {src: "images/carousel/digi_3.jpg", projectName: "napacider"},
       ]
     },
