@@ -1,9 +1,0 @@
-@media screen and (max-width: 720px) {
-  header {
-    display: flex;
-    align-items: center;
-  }
-  .navlinks {
-    display: none;
-  }
-}

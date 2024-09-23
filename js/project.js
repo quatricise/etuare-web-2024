@@ -607,6 +607,11 @@ class ProjectCard {
   static nextColumn = 1
   static placeCard(card) {
     Q(`.works--column-${ProjectCard.nextColumn}`).append(card)
-    this.nextColumn = this.nextColumn === 1 ? 2 : 1 
+    
+    if(state.mobile) {
+      //nothing
+    } else {
+      this.nextColumn = this.nextColumn === 1 ? 2 : 1 
+    }
   }
 }

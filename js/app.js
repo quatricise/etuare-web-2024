@@ -1,4 +1,11 @@
 let debug = true
+
+const state = {
+  mobile: window.innerWidth <= 720,
+  navlinksOpen: false
+}
+state.navlinksOpen = !state.mobile
+
 const ls = localStorage
 
 const addNBSPToString = (str) => str.replace(
@@ -113,6 +120,10 @@ window.onload = () => {
       Project.testDataValidity()
     }
 
+    const navlinks = Q(".navlinks")
+    navlinks.classList.add("hidden")
+    document.body.append(navlinks)
+
     Qa(".navlink").forEach(navlink => navlink.onclick = () => Page.set(navlink.dataset.page))
 
     Q(".header--logo").onclick = () => Page.set("home")
@@ -195,17 +206,19 @@ function addEventListeners() {
   document.addEventListener("mouseover", (e) => {
     Mouse.update(e)
   
-    if(e.target.closest(".navlink, .header--logo")) {
-      let rect = e.target.closest(".navlink, .header--logo").getBoundingClientRect()
-      Q("header .header--border-bottom").style.left = rect.x + "px"
-      Q("header .header--border-bottom").style.width = rect.width + "px"
-      Q("header .header--border-bottom").style.opacity = "1.0"
-      
-    }
-    else {
-      Q("header .header--border-bottom").style.left = ""
-      Q("header .header--border-bottom").style.width = ""
-      Q("header .header--border-bottom").style.opacity = ""
+    if(!state.mobile) {
+      if(e.target.closest(".navlink, .header--logo")) {
+        let rect = e.target.closest(".navlink, .header--logo").getBoundingClientRect()
+        Q("header .header--border-bottom").style.left = rect.x + "px"
+        Q("header .header--border-bottom").style.width = rect.width + "px"
+        Q("header .header--border-bottom").style.opacity = "1.0"
+        
+      }
+      else {
+        Q("header .header--border-bottom").style.left = ""
+        Q("header .header--border-bottom").style.width = ""
+        Q("header .header--border-bottom").style.opacity = ""
+      }
     }
     
   })
@@ -245,6 +258,10 @@ class Page {
   static current = "home"
 
   static set(name, scrollMode = "none") {
+
+    if(state.mobile) {
+      toggleNavlinks(false)
+    }
 
     /* when you're already on the page you want to visit */
     if(name === Page.current && Page.data[name].ready === true) {
@@ -370,9 +387,38 @@ function showMoreProjects() {
       counter++
     }
   }
+
   if(counter < max) {
     //run out of projects
     Q(".button--see-more").classList.add("hidden")
+  }
+}
+
+
+
+function toggleNavlinks(visib) {
+  const duration = 700
+  const easing = "cubic-bezier(0.7, 0.0, 0.3, 1.0)"
+
+  if(visib === false || state.navlinksOpen) {
+    
+    new Animate(Q(".navlinks"))
+    .animate( [{transform: "translateY(0px)"}, {transform: "translateY(-250px)"}], {duration, easing} )
+    .classAdd("hidden")
+    .then(() => state.navlinksOpen = false)
+  } else
+
+  {
+    Q(".navlinks").classList.remove("hidden")
+
+    Qa(".navlink").forEach((navlink, index) => {
+      new Animate(navlink)
+      .animate([{transform: `translateY(-${20 + index*10}px)`}, {transform: "translateY(0px)"}], {duration: duration * (1 + index/3), easing})
+    })
+
+    new Animate(Q(".navlinks"))
+    .animate( [{transform: "translateY(-250px)"}, {transform: "translateY(0px)"}], {duration, easing} )
+    .then(() => state.navlinksOpen = true)
   }
 }
 
@@ -406,6 +452,7 @@ function syllableSplit(word) {
   "an té na";
   "ant mé na";
   "man dra žé";
+  "kr ko no še";
 
   /* these are what is accepted as the core vowel sound of a syllable */
   const cores = ["a", "e", "i", "o", "u", "ě", "á", "í", "é", "ý", "ó", "ů", "ú"]
@@ -422,4 +469,187 @@ function syllableSplit(word) {
     if(lastVowelAt === index - 1) {}
   }
 
+}
+
+
+
+
+
+
+class Animate {
+  constructor(
+    /** @type HTMLElement */ element,
+  ) {
+
+    /** @type boolean */
+    this.suspended = false
+
+    /** @type function */
+    this._ondestroy = null
+
+    /** @type HTMLElement */
+    this.element = element
+
+    /** @type Animation */
+    this.current = null
+
+    /** @type Array<Object> */
+    this.actions = []
+
+    if(Animate.list.has(element)) {
+      this.suspended = true
+      this.current = true //hack so no chained commands work
+
+      console.log("suspended")
+      // Animate.list.get(element)._ondestroy = () => {
+      //   Animate.list.set(this.element, this)
+      //   this.suspended = false 
+      //   this._queueNext()
+      // }
+    }
+
+    else {
+      Animate.list.set(this.element, this)
+    }
+  }
+
+  _queueNext() {
+    if(this.suspended) return
+
+    this.current = null
+    const action = this.actions.shift()
+    if(action) {
+      switch (action.type) {
+        case "animate": {
+          this.animate(action.keyframes, action.options)
+          break
+        }
+        case "set": {
+          this.set(action.data)
+          break
+        }
+        case "class": {
+          this._classSet(action.state, action.classes)
+          break
+        }
+        case "wait": {
+          this.wait(action.durationMS)
+          break
+        }
+        case "then": {
+          this.then(action.fn)
+          break
+        }
+        default: {
+          throw "invalid action type"
+        }
+      }
+    }
+
+    else {
+      this.destroy()
+    }
+  }
+
+  then(fn) {
+    if(this.current) {
+      this.actions.push({type: "then", fn})
+    }
+
+    else {
+      fn()
+      this._queueNext()
+    }
+
+    return this
+  }
+
+  wait(durationMS) {
+    if(this.current) {
+      this.actions.push({type: "wait", durationMS})
+    }
+    
+    else {
+      this.current = true
+      console.log("wait for " + durationMS)
+      window.setInterval(() => this._queueNext(), durationMS)
+    }
+
+    return this
+  }
+
+  animate(/** @type Keyframe[] */ keyframes, /** @type KeyframeAnimationOptions */ options) {
+    
+    if(this.current) {
+      this.actions.push({type: "animate", keyframes, options})
+    }
+
+    else {
+      console.log("animate")
+      this.current = this.element.animate(keyframes, options)
+      this.current.onfinish = () => this._queueNext()
+    }
+
+    return this
+  }
+
+  /** Sets some things on the element */
+  set(data = {style: {}, attribs: {}}) {
+
+    if(this.current) {
+      this.actions.push({type: "set", data})
+    }
+
+    else {
+      console.log("set")
+      if(data?.style) {
+        for(let key in data.style) {
+          this.element.style[key] = data.style[key]
+        }
+      }
+      if(data?.attribs) {
+        for(let key in data.attribs) {
+          this.element.setAttribute(key, data.attribs[key])
+        }
+      }
+      this._queueNext()
+    }
+
+    return this
+  }
+
+  _classSet(state = "", ...classes) {
+
+    if(this.current) {
+      this.actions.push({type: "class", state, classes})
+    }
+
+    else {
+      for(let c of classes) {
+        this.element.classList[state](c)
+      }
+      console.log("class set")
+      this._queueNext()
+    }
+
+    return this
+  }
+  classAdd(...classes) {
+    this._classSet("add", ...classes)
+    return this
+  }
+  classRemove(...classes) {
+    this._classSet("remove", ...classes)
+    return this
+  }
+
+  destroy() {
+    console.log("destroy")
+    this._ondestroy?.()
+    Animate.list.delete(this.element)
+  }
+
+
+  /** @type Map<HTMLElement, Animate> */
+  static list = new Map()
 }

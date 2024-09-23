@@ -6,17 +6,33 @@
   <title>Etuare | Grafické a produkční studio</title>
 
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style_mobile.css">
 </head>
 <body>
   <header>
     <div class="header--contents">
       <div class="header--logo">etuare</div>
+
       <div class="navlinks">
-        <div class="navlink" data-page="home">    Práce</div>
-        <div class="navlink" data-page="services">Naše&nbsp;služby</div>
-        <div class="navlink" data-page="about">   O&nbsp;nás</div>
+        <div class="navlink" data-page="home">    
+          Práce
+          <div class="navlink--border--bottom"></div>
+        </div>
+        <div class="navlink" data-page="services">
+          Naše&nbsp;služby
+          <div class="navlink--border--bottom"></div>
+        </div>
+        <div class="navlink" data-page="about">   
+          O&nbsp;nás
+          <div class="navlink--border--bottom"></div>
+        </div>
       </div>
+
+      <div class="burger" onclick="toggleNavlinks()">
+        <div class="burger-bar"></div>
+        <div class="burger-bar"></div>
+        <div class="burger-bar"></div>
+      </div>
+      
     </div>
     <div class="header--border-bottom"></div>
   </header>
@@ -149,9 +165,9 @@
 
   <footer>
     <h1>Kontakt</h1>
-    <p class="footer--description auto-shy add-nbsp">
+    <div class="footer--description auto-shy add-nbsp">
       Za dotaz nic nedáte. Nebojte se na nás obrátit s otázkou či nezávaznou poptávkou a domluvíme se jestli jsme pro vás ti praví. A nebo se můžete stavit, pokud to máte po cestě.
-    </p>
+    </div>
     <div class="footer--content">
       <div class="footer--content--contacts">
         <img class="icon--contact" src="images/icon_big_contact.png" alt="">
