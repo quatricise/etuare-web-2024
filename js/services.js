@@ -62,6 +62,7 @@ class Services {
       description: `
       • navrhneme design a prototyp webu
       • pomůžeme vám navrhnout obsahovou strukturu
+      • vytvoříme obsah pro internetovou reklamní kampaň
       • jsme shopni naprogramovat prezentační weby
       • zařídíme SEO optimalizaci
       `,
@@ -143,5 +144,16 @@ class ServiceCard {
 
     Q(".services--section--cards").append(container)
     this.carousel = new Carousel(Services.list[serviceName].examples, carouselContainer)
+
+    ServiceCard.list.set(serviceName, this)
+  }
+
+  /** @type Map<string, ServiceCard> */
+  static list = new Map()
+
+  static navigateToCard(name) {
+    Page.set("services")
+    const card = this.list.get(name)
+    card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
   }
 }

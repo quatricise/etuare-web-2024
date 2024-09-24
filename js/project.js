@@ -103,6 +103,15 @@ class Project {
         const para = Create("div", {c: "project--description", t: object.h})
         autoShy(para)
         container.append(para)
+      } else
+
+      if(object.t === "video") {
+        /** @type HTMLVideoElement */
+        const video = Create("video", {c: "project--video", a: `src=../projects/${name}/${object.f}`})
+        video.autoplay = false
+        video.controls = true
+        container.style.alignItems = "center"
+        container.append(video)
       }
 
       /* THIS HAPPENS FOR EVERY BLOCK */
@@ -147,6 +156,7 @@ class Project {
       "image_3",
       "image_grid_2",
       "image_grid_3",
+      "video",
     ]
 
     for(let key in this.data) {
@@ -402,6 +412,10 @@ class Project {
         {
           t: "paragraph", 
           h: "Facebook kampaň jsme orientovali na návštěvnost nově spuštěného eshopu."
+        },
+        {
+          t: "video", 
+          f: "video.mp4"
         },
         {
           t: "image_2",

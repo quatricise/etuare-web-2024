@@ -124,9 +124,11 @@ window.onload = () => {
       Project.testDataValidity()
     }
 
-    const navlinks = Q(".navlinks")
-    navlinks.classList.add("hidden")
-    document.body.append(navlinks)
+    if(state.mobile) {
+      const navlinks = Q(".navlinks")
+      navlinks.classList.add("hidden")
+      document.body.append(navlinks)
+    }
 
     Qa(".navlink").forEach(navlink => navlink.onclick = () => Page.set(navlink.dataset.page))
 

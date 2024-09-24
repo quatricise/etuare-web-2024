@@ -81,7 +81,6 @@ h2 {
   font-family: "next";
   font-weight: 600;
   font-size: 28px;
-  letter-spacing: 0.01em;
   line-height: 120%;
   margin: 0;
 }
@@ -380,6 +379,10 @@ header {
   user-select: none;
 }
 
+.burger {
+  display: none;
+}
+
 .navlinks {
   display: flex;
   align-items: center;
@@ -519,8 +522,57 @@ footer {
   max-width: 720px;
   font-family: "rale";
   font-weight: 100;
-  font-size: 26px;
+  font-size: 20px;
   text-align: center;
+}
+
+.intro-text--services {
+  display: flex;
+  margin-top: 80px;
+}
+
+.intro-text--services--part {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: var(--animation-cursor);
+  padding: 20px 20px;
+}
+
+.intro-text--services--part--border--bottom {
+  position: absolute;
+  bottom: calc(-1 * var(--border-width));
+  left: 0;
+  height: var(--border-width);
+  width: 100%;
+  opacity: 0.2;
+  background: linear-gradient(90deg, 
+  var(--c-dark-3) 0%, 
+  var(--c-light-4) 50%, 
+  var(--c-dark-0) 100%);
+  transition: opacity 0.35s ease-in-out, width 0.5s ease-in-out;
+}
+
+.intro-text--services--part * {
+  animation: inherit;
+  cursor: unset;
+}
+
+.intro-text--services--part:hover {
+  background-color: var(--c-dark-1);
+}
+
+.intro-text--services--part--heading {
+  font-family: "next";
+  font-size: 24px;
+  font-weight: 100;
+}
+
+/* INTRO TEXT - effects */
+
+.intro-text--services--part:hover .intro-text--services--part--border--bottom {
+  opacity: 0.5;
 }
 
 .intro-text--line-4 {
@@ -1177,11 +1229,16 @@ footer {
   height: 25vw;
 }
 
-.project--button--go-back {
+.project--button--go-back--container {
   position: fixed;
   top: calc(var(--header-height) + 40px);
-  left: 40px;
   z-index: 1;
+}
+
+.project--button--go-back {
+  position: relative;
+  width: max-content;
+  left: 40px;
 }
 
 .project--banner--image {
@@ -1282,6 +1339,10 @@ footer {
   var(--c-light-0) 50%,
   var(--c-light-0-02) 100%);
   transition: opacity 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+.project--video {
+  width: 50%;
 }
 
 
@@ -1464,6 +1525,24 @@ footer {
   .project--section--content {
     padding-left: var(--mobile-padding);
     padding-right: var(--mobile-padding);
+  }
+
+  .project--button--go-back--container {
+    position: sticky;
+    top: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 20px 0;
+  }
+
+  .project--button--go-back {
+    left: 0;
+  }
+
+  .project--video {
+    width: 100%;
   }
 
 
