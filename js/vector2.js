@@ -30,9 +30,9 @@ class Vector2 {
   get copy() {
     return new Vector2(this.x, this.y)
   }
-  mult(magnitude) {
-    this.x = this.x * magnitude
-    this.y = this.y * magnitude
+  mult(factor) {
+    this.x = this.x * factor
+    this.y = this.y * factor
     return this
   }
   invert() {

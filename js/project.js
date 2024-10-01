@@ -110,8 +110,12 @@ class Project {
         const video = Create("video", {c: "project--video", a: `src=../projects/${name}/${object.f}`})
         video.autoplay = false
         video.controls = true
+        video.loop = true
         container.style.alignItems = "center"
         container.append(video)
+
+        /* add label */
+        if(object.l) container.append(label)
       }
 
       /* THIS HAPPENS FOR EVERY BLOCK */
@@ -399,10 +403,12 @@ class Project {
         {
           t: "image_2",
           d: "column",
+          l: "Tiskoviny - leták, kupon a vizitky.",
           f: ["tiskoviny.jpg", "vizitky.jpg"]
         },
         {
           t: "image",
+          l: "Ikony pro eshop cideru.",
           f: "eshop_ikony.png"
         },
         {
@@ -411,10 +417,11 @@ class Project {
         },
         {
           t: "paragraph", 
-          h: "Facebook kampaň jsme orientovali na návštěvnost nově spuštěného eshopu."
+          h: "Facebook kampaň jsme orientovali na návštěvnost nově spuštěného eshopu. Soustředili jsme se na agregaci co nejvíce potencionálních zákazníků aby se přes FB reklamní systém vymezily parametry podle kterých dále hledat."
         },
         {
-          t: "video", 
+          t: "video",
+          l: "Reklamní 'reels' video pro upoutání pozornosti.",
           f: "video.mp4"
         },
         {
@@ -429,7 +436,7 @@ class Project {
         },
         {
           t: "image_2",
-          l: "Alternativní kampaň s využitím fotek, doporučuje se při propagaci produktů využít více variant kampaně pro testování efektivnosti.",
+          l: "Alternativní kampaň s využitím fotek.",
           f: ["fb_5.jpg", "fb_6.jpg"]
         },
       ],
@@ -461,7 +468,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Agro Jesenice",
-      description: "",
+      description: "Obaly pro mraženou řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
       content: [
         
       ],
@@ -508,7 +515,8 @@ class Project {
       featured: true,
       titleShort: "",
       title: "Design Whisky",
-      description: "Projekt vznikl pouze jako návrh, který se nerealizoval.",
+      descriptionShort: "Projekt vznikl jako návrh pro začínající českou firmu zabývající se lokální výrobou whisky.",
+      description: "Projekt vznikl jako návrh pro začínající českou firmu zabývající se lokální výrobou whisky. Na projektu jsem dělal sám, v rámci školního zadání. Základem identity jsou vysoce detailní ilustrace dřeva a moderní serifové písmo. — Štěpán",
       content: [
         {
           t: "image_2",
@@ -604,11 +612,16 @@ class ProjectCard {
     // document.addEventListener("scroll", () => {
     //   let y = card.getBoundingClientRect().y
     //   let h = card.getBoundingClientRect().height
-    //   if(y + h < 180 || y > window.innerHeight - 180) {
-    //     card.style.filter = "opacity(0.25)"
-    //   }
-    //   else {
-    //     card.style.filter = ""
+
+    //   let top = y + h
+    //   let bottom = y
+    //   if(top < 40 || bottom > window.innerHeight - 40) {
+    //     card.style.opacity = "0.25"
+    //   } else {
+    //   if(top < 80 || bottom > window.innerHeight - 80) {
+    //     card.style.opacity = "0.5"
+    //   } else
+    //     card.style.opacity = ""
     //   }
     // })
 

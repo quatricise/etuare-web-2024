@@ -13,19 +13,27 @@ const addNBSPToString = (str) => str.replace(
   ' $1' + '\u00A0'
 );
 
+/** Adds &nbsp; elements to element. ONLY use after autoShy(), not the other way around. It's still broken as it does not respect HTML entities. */
 function addNBSP(element) {
-  element.innerText = addNBSPToString(element.innerText)
+  // let words = element.innerHTML.split(" ")
+  // console.log(words)
+
+  // if(affectTextOnly)
+  // element.innerText = addNBSPToString(element.innerText)
+  // else
+
+  element.innerHTML = addNBSPToString(element.innerHTML).replace("\n", "<br>")
 }
 
-function addNBSPToAll() {
-  Qa(".add-nbsp").forEach(element => {
-    element.innerText = addNBSPToString(element.innerText)
-  })
-}
+// function addNBSPToAll() {
+//   Qa(".add-nbsp").forEach(element => {
+//     element.innerHTML = addNBSPToString(element.innerHTML).replace("\n", "<br>")
+//   })
+// }
 
 
 
-/** Adds shy hyphens to text. Rudimentary but works. */
+/** Adds shy hyphens to text. Rudimentary but works in most simple cases. Does not respect HTML entities. */
 function autoShy(/** @type HTMLElement */ element) {
   let words = element.innerHTML.split(" ")
   words = words.map(word => {
@@ -36,6 +44,7 @@ function autoShy(/** @type HTMLElement */ element) {
       return word
     }
   })
+
   let results = []
   for(let word of words) {
     if(word.length <= 5) {
@@ -130,11 +139,19 @@ window.onload = () => {
       document.body.append(navlinks)
     }
 
-    Qa(".navlink").forEach(navlink => navlink.onclick = () => Page.set(navlink.dataset.page))
+    Qa(".navlink").forEach(navlink => navlink.onmousedown = () => {
+      if(navlink.dataset.page === "home" && Page.current === "services") {
+        Page.set(navlink.dataset.page, "resume")
+      }
+      else {
+        Page.set(navlink.dataset.page)
+      }
+    })
 
     Q(".header--logo").onclick = () => Page.set("home")
 
     Qa(".auto-shy").forEach(element => autoShy(element))
+    Qa(".add-nbsp").forEach(element => addNBSP(element))
 
     {
       let [intro, intro2] = [Q(".intro-text--line-1"), Q(".intro-text--line-2")]
@@ -147,8 +164,6 @@ window.onload = () => {
         intro2.style.transform = `scale(${desiredScale / scale})`
       }
     }
-
-    addNBSPToAll()
 
     addEventListeners()
 
@@ -163,7 +178,7 @@ window.onload = () => {
       if(Page.current === "project") {
         Project.open(ls.getItem("project"))
       }
-      setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 1000) //this is eye-balled, im lazy adding promises to project loading
+      setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 800) //this is eye-balled, im lazy adding promises to project loading
     }
 
 
@@ -408,7 +423,7 @@ function showMoreProjects() {
 
   if(counter < max) {
     //run out of projects
-    Q(".button--see-more").classList.add("hidden")
+    Q(".home--section--see-more").classList.add("hidden")
   }
 }
 
@@ -449,7 +464,10 @@ function toggleNavlinks(visib) {
 
 
 
+
+
 /* PRELOAD ANIMS */
+
 for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
   for(let i = 0; i < 10; ++i) {
     let img = new Image()
@@ -459,6 +477,10 @@ for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
     }
   }
 }
+
+const placeholder = new Image();
+placeholder.src = "../images/placeholder.jpg"
+
 
 
 
@@ -495,6 +517,20 @@ function syllableSplit(word) {
 
 }
 
+
+
+function testOverflowXElements(...excludedQueries) {
+  let query = "*"
+  if(excludedQueries.length) {
+    query += `:not(${excludedQueries.join(", ")})`
+  }
+  Qa(`*`).forEach(element => {
+    const rect = element.getBoundingClientRect()
+    if(rect.right > window.innerWidth) {
+      console.log(element)
+    }
+  })
+}
 
 
 

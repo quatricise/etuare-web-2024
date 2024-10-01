@@ -23,12 +23,14 @@ class Services {
       • firemní identita
       • grafický logomanuál
       • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
+
       Propagační materiály
       • inzeráty pro tištěná média, 
       • bannery pro internet, billboardy, plakáty...
       `,
       examples: [
         {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", brightenOnHover: false},
+        {src: "../images/carousel/graf_2.jpg", projectName: "napacider", brightenOnHover: false},
       ]
     },
     "Logo design": {
@@ -48,10 +50,11 @@ class Services {
       description: `
       Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
       
-      • tiskoviny, roll-upy, ochutnávkové stolky, displeje, polepy atd.
+      • tiskoviny - katalogy, vizitky, plakáty
+      • roll-upy, ochutnávkové stolky, displeje, polepy
       • fotografie vašich výrobků či firmy
       • polepy firemních vozidel, prodejen
-      • navigační prvky - směrovky, cedule atd.
+      • navigační prvky - směrovky, cedule...
       `,
       examples: [
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", brightenOnHover: false},
@@ -63,16 +66,17 @@ class Services {
       • navrhneme design a prototyp webu
       • pomůžeme vám navrhnout obsahovou strukturu
       • vytvoříme obsah pro internetovou reklamní kampaň
-      • jsme shopni naprogramovat prezentační weby
+      • dokážeme naprogramovat i navrhnout prezentační weby
       • zařídíme SEO optimalizaci
       `,
       examples: [
         {src: "images/carousel/digi_3.jpg", projectName: "napacider"},
       ]
     },
-    "3D Vizualizace": {
+    "3D vizualizace": {
       description: `
-      Vytvoříme 3D vizualizace produktů:
+      Váš produkt ještě nemusí být ve výrobě a může se stát, že potřebujete vizualizace do katalogů. My vám vytvoříme obal na jakýkoli produkt.
+      
       • do katalogů, 
       • pro web, 
       • na polepy aut atd.
@@ -96,6 +100,7 @@ class Services {
       examples: [
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
         {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
+        {src: "images/carousel/ilu_3.jpg", projectName: ""},
       ]
     },
   }
@@ -118,7 +123,9 @@ class ServiceCard {
     const textContainer =     Create("div", {c: "service-card--text-container"})
     const title =             Create("h2",  {c: "service-card--title",              t: this.title})
     const description =       Create("p",   {c: "service-card--description",        t: this.description})
+    const backgroundImg =     Create("img", {c: "service-card--background-image", a:`src=../images/services_icons/${serviceName}.png`})
 
+    const borderTop =         Create("div", {c: "service-card--border-top"})
     const borderRight =       Create("div", {c: "service-card--border-right"})
     const borderLeft =        Create("div", {c: "service-card--border-left"})
 
@@ -126,9 +133,12 @@ class ServiceCard {
 
     /* append */
 
-    container.append(carouselContainer, textContainer, borderRight, borderLeft)
+    container.append(carouselContainer, textContainer, backgroundImg, borderRight, borderLeft, borderTop)
     textContainer.append(title, description)
 
+
+    autoShy(description)
+    addNBSP(description, false)
 
 
     /** @type Map<string, HTMLElement> */
@@ -139,6 +149,7 @@ class ServiceCard {
     this.elements.set("textContainer", textContainer)
     this.elements.set("borderRight", borderRight)
     this.elements.set("borderLeft", borderLeft)
+    this.elements.set("borderTop", borderTop)
 
 
 

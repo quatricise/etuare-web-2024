@@ -6,11 +6,46 @@ class Carousel {
     */
     this.current = 0
 
+    /* Images filled with placeholders at the start. */
     /** @type Array<HTMLImageElement> */
-    this.images = []
+    this.images = imageSources.map(() => {
+      const plc = placeholder.cloneNode(true)
+      plc.classList.add("carousel-image")
+      return plc
+    })
 
-    imageSources.forEach(src => {
+    imageSources.forEach((src, index) => {
       const img = Create("img", {c: "carousel-image", a: `src=${src.src}`})
+
+      /* placeholder clones are replaced with the right image when it is loaded */
+      img.onload = () => {
+        this.images[index].replaceWith(img)
+        this.images[index] = img
+
+        /* add functionality to the image */
+        if(img.dataset.title) {
+          img.onmouseenter = () => {
+            currentSlideName.classList.remove("hidden")
+            currentSlideName.getAnimations().forEach(anim => anim.cancel())
+    
+            currentSlideName.animate([
+              {bottom: "-60px"},
+              {bottom: "0"},
+            ],{
+              duration: 400,
+              easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
+            })
+    
+            currentSlideNameText.innerText = img.dataset.title
+          }
+    
+          img.onmouseleave = () => {
+            currentSlideName.classList.add("hidden")
+          }
+    
+          img.onclick = () => Project.open(img.dataset.project)
+        }
+      }
 
       if(src.projectName && src.projectName === "$out") {
         img.onclick = () => window.open(src.url, "_blank")
@@ -21,7 +56,7 @@ class Carousel {
       if(src.projectName) {
         const title = Project.data[src.projectName]?.titleShort || Project.data[src.projectName]?.title
         img.classList.add("tooltip", "interactable")
-        img.dataset.tooltip = "Prohlédnout projekt"
+        img.dataset.tooltip = `${title} – Prohlédnout projekt`
         img.dataset.title = title
         img.dataset.project = src.projectName
       } else {
@@ -31,8 +66,6 @@ class Carousel {
       if(src.brightenOnHover !== false) {
         img.classList.add("brighten-on-hover")
       }
-
-      this.images.push(img)
     })
 
     /** @type HTMLElement */
@@ -91,8 +124,11 @@ class Carousel {
     this.parent.append(container)
 
     container.onwheel = (e) => {
-      e.preventDefault()
+      if(!state.mobile && debug) e.preventDefault()
     }
+
+    /* append placeholder first */
+  
     this.images.forEach(img => images.append(img))
 
 
@@ -101,32 +137,6 @@ class Carousel {
 
     arrowLeft.onclick =  () => this.slide(-1)
     arrowRight.onclick = () => this.slide(1)
-    this.images.forEach(img => {
-      if(!img.dataset.title) return
-
-      img.onmouseenter = () => {
-        currentSlideName.classList.remove("hidden")
-        currentSlideName.getAnimations().forEach(anim => anim.cancel())
-
-        currentSlideName.animate([
-          {bottom: "-60px"},
-          {bottom: "0"},
-        ],{
-          duration: 400,
-          easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
-        })
-
-        currentSlideNameText.innerText = img.dataset.title
-      }
-
-      img.onmouseleave = () => {
-        currentSlideName.classList.add("hidden")
-      }
-
-      img.onclick = () => Project.open(img.dataset.project)
-
-    })
-
 
 
     /** @type Map<string, HTMLElement> */

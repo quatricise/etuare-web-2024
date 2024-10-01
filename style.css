@@ -45,14 +45,16 @@
   font-variant-numeric: lining-nums;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   padding: 0;
   margin: 0;
   background-color: var(--c-dark-0);
   color: var(--c-light-0);
   width: 100vw;
-  overflow-x: hidden;
-
 }
 
 main {
@@ -204,7 +206,6 @@ button .button-arrow.rotate-180 {
   left: unset;
 }
 
-
 button:hover > .button-arrow:not(.rotate-90, .rotate-180, .rotate-270) {
   left: 4px;
 }
@@ -217,7 +218,6 @@ button:hover > .button-arrow.rotate-180 {
 button:hover > .button-arrow.rotate-270 {
   bottom: 2px;
 }
-
 
 
 
@@ -340,6 +340,7 @@ header {
   position: relative;
   position: sticky;
   top: 0;
+  left: 0;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -431,6 +432,7 @@ footer {
 
 .footer--description {
   font-size: 20px;
+  font-weight: 200;
   text-align: justify;
   width: min(720px, 100vw);
 }
@@ -476,6 +478,36 @@ footer {
   gap: 10px;
 }
 
+.contact--text:hover .icon--copy--inline {
+  opacity: 0.25;
+}
+
+.contact--text a {
+  position: relative;
+}
+.icon--copy--inline {
+  position: absolute;
+  left: -36px;
+  top: 0;
+  display: inline-block;
+  width: 32px;
+  opacity: 0;
+}
+.icon--copy--inline:hover {
+  opacity: 1!important;
+}
+/* .contact--text a::before {
+  content: url(images/icon_copy.png);
+  width: 32px;
+  position: absolute;
+  left: -32px;
+  opacity: 0;
+}
+
+.contact--text a:hover::before {
+  opacity: 1;
+} */
+
 .footer--decoration-1 {
   position: absolute;
   bottom: 0;
@@ -504,6 +536,7 @@ footer {
   flex-direction: column;
   align-items: center;
   width: max-content;
+  overflow: visible;
 }
 
 .intro-text--line-1 {
@@ -529,15 +562,18 @@ footer {
 .intro-text--services {
   display: flex;
   margin-top: 80px;
+  width: min(1100px, 100vw);
 }
 
 .intro-text--services--part {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 10px;
   animation: var(--animation-cursor);
-  padding: 20px 20px;
+  padding: 5px 20px 20px;
+  transition: background-color 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .intro-text--services--part--border--bottom {
@@ -559,20 +595,19 @@ footer {
   cursor: unset;
 }
 
-.intro-text--services--part:hover {
-  background-color: var(--c-dark-1);
-}
-
 .intro-text--services--part--heading {
   font-family: "next";
   font-size: 24px;
   font-weight: 100;
 }
 
-/* INTRO TEXT - effects */
+.intro-text--services--part--description {
+  font-weight: 200;
+}
 
-.intro-text--services--part:hover .intro-text--services--part--border--bottom {
-  opacity: 0.5;
+.intro-text--services--part--icon {
+  width: 100%;
+  transition: rotate 0.7s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .intro-text--line-4 {
@@ -593,6 +628,24 @@ footer {
 .intro-text--button {
   margin-top: 80px;
 }
+
+
+
+/* INTRO TEXT - effects */
+
+.intro-text--services--part:hover .intro-text--services--part--border--bottom {
+  opacity: 0.5;
+}
+
+.intro-text--services--part:hover .intro-text--services--part--icon {
+  rotate: -3deg;
+}
+
+.intro-text--services--part:hover {
+  background-color: var(--c-dark-1);
+}
+
+
 
 .home--section--intro {
   align-items: center;
@@ -644,7 +697,7 @@ footer {
   background-repeat: no-repeat;
   background-position: bottom left;
   background-size: cover;
-  transition: filter 0.1s ease-out;
+  transition: filter 0.15s ease-out, opacity 0.9s ease-in-out;
   animation: var(--animation-cursor);
 }
 
@@ -830,8 +883,17 @@ footer {
 
 .service-card--description {
   font-size: 18px;
-  line-height: 160%;
+  line-height: 180%;
   width: calc(var(--service-card--width) - var(--service-card--height) - 80px);
+}
+
+.service-card--background-image {
+  --width: 270px;
+  width: var(--width);
+  position: absolute;
+  bottom: calc((var(--width)/2.45) * -1);
+  right: calc((var(--width)/2.6) * -1);
+  z-index: 1;
 }
 
 
@@ -844,6 +906,20 @@ footer {
   background-image: url(images/background_var_0.png);
   background-position: bottom left;
   background-size: cover;
+}
+
+.service-card--border-top {
+  display: none;
+  position: absolute;
+  top: calc(var(--border-width) * -1);
+  left: 0;
+  width: 100%;
+  height: var(--border-width);
+  opacity: 0.75;
+  background: linear-gradient(90deg, 
+  var(--c-dark-1) 0%, 
+  var(--c-dark-3) 50%,
+  var(--c-dark-0) 100%);
 }
 
 .service-card--border-right {
@@ -936,7 +1012,6 @@ footer {
 
 .carousel-image {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   transition: background-color 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.1s ease-in-out;
   z-index: 1;
@@ -1034,6 +1109,7 @@ footer {
 
 .about--intro-text-1 {
   max-width: 600px;
+  font-weight: 200;
   text-align: justify;
 }
 
@@ -1067,6 +1143,7 @@ footer {
   max-width: 420px;
   text-align: justify;
   letter-spacing: 0.01em;
+  font-weight: 200;
 }
 
 .about--people-container--employee,
@@ -1148,6 +1225,9 @@ footer {
   margin-top: -5px;
   padding: 5px 10px 4px 10px;
   background: linear-gradient(90deg, var(--c-light-0-02) 0%, var(--c-light-0-005) 100%);
+}
+.person-card--description.is-portfolio-link:hover {
+  background: linear-gradient(90deg, var(--c-light-0-03) 0%, var(--c-light-0-01) 100%);
 }
 
 .person-card--image {
@@ -1363,6 +1443,10 @@ footer {
   :root {
     --mobile-padding: 10px;
   }
+  
+  body {
+    overflow-x: hidden;
+  }
 
   body::-webkit-scrollbar {
     display: none;
@@ -1374,6 +1458,10 @@ footer {
   header {
     display: flex;
     align-items: center;
+  }
+
+  .icon--mouse-animated {
+    display: none;
   }
 
   .navlinks {
@@ -1424,9 +1512,27 @@ footer {
 
   /* PAGE - HOME */
 
+  .home--section--intro {
+    padding-top: 120px;
+  }
+
+  .intro-text--line-3 {
+    max-width: calc(100vw - var(--mobile-padding)*2);
+  }
+
   .intro-text--line-4 {
     display: flex;
     flex-direction: column;
+  }
+
+  .intro-text--services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .intro-text--services--part {
+    width: calc(50vw - var(--mobile-padding)*2);
   }
 
   .home--section--works {
@@ -1448,6 +1554,11 @@ footer {
 
   /* PAGE - ABOUT */
 
+  .about--section--intro {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   .about--intro-text-1 {
     padding-left: var(--mobile-padding);
     padding-right: var(--mobile-padding);
@@ -1457,6 +1568,10 @@ footer {
   .about--team--segment-2 {
     flex-direction: column;
     gap: 60px;
+  }
+
+  .team--role--title {
+    text-align: center;
   }
 
   .team--role--text {
@@ -1478,16 +1593,35 @@ footer {
     flex-direction: column;
     width: 100%;
     align-items: center;
+    padding-left: var(--mobile-padding);
+    padding-right: var(--mobile-padding);
   }
 
+  .person-card--container {
+    width: 100%;
+  }
 
+  .about--section--logos {
+    margin-top: 120px;
+  }
+
+  .client-logo {
+    height: 60px;
+  }
 
   /* PAGE - SERVICES */
 
   .services--section--intro {
     padding-left: var(--mobile-padding);
     padding-right: var(--mobile-padding);
+    padding-bottom: 120px;
+    padding-top: 120px;
+  }
 
+  .page-heading--services {
+    width: 100%;
+    text-align: center;
+    line-height: 140%;
   }
 
   .services--intro-text-1 {
@@ -1497,18 +1631,46 @@ footer {
     text-align: justify;
   }
 
+  .services--intro-buttons {
+    gap: 10px;
+    margin-top: 40px;
+  }
+
+  .services--intro-button {
+    width: 100%;
+  }
+
 
 
   /* SERVICE CARD */
 
+  .services--section--cards {
+    gap: 120px;
+    padding-left: var(--mobile-padding);
+    padding-right: var(--mobile-padding);
+  }
+
   .service-card {
     flex-direction: column;
+    width: 100%;
+    height: auto;
   }
 
   .service-card--carousel-container {
     width: 100%;
   }
 
+  .service-card--text-container {
+    padding: 20px;
+  }
+
+  .service-card--description {
+    width: 100%;
+  }
+
+  .service-card--border-top {
+    display: block;
+  }
 
 
   /* PAGE - PROJECT */
@@ -1553,11 +1715,14 @@ footer {
     padding-left: var(--mobile-padding);
     padding-right: var(--mobile-padding);
     padding-bottom: 60px;
+    margin-top: 120px;
   }
   
   .footer--description {
-    padding-left: var(--mobile-padding);
-    padding-right: var(--mobile-padding);
+    font-weight: 150;
+    font-size: 20px;
+    padding-left: calc(var(--mobile-padding) * 2);
+    padding-right: calc(var(--mobile-padding) * 2);
   }
   
   .footer--content {
@@ -1580,6 +1745,7 @@ footer {
     padding-left: var(--mobile-padding);
     padding-right: var(--mobile-padding);
     gap: 0;
+    font-weight: 600;
   }
 
   .footer--content--address > *,

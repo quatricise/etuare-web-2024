@@ -15,13 +15,13 @@ class Person {
     "Ivana Kotásková": {
       role: "contractor",
       filename: "iva",
-      description: "Ilustrace",
+      description: "Ilustrace, malba",
       portfolioLink: "https://www.instagram.com/ivana.kotaskova/",
     },
     "Tomáš Novosád": {
       role: "contractor",
       filename: "tomas",
-      description: "Fotografie",
+      description: "Fotografie, fotografická post-produkce",
       portfolioLink: "https://www.tomas-novosad.com",
     },
   }
