@@ -470,7 +470,18 @@ class Project {
       title: "Agro Jesenice",
       description: "Obaly pro mraženou řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
       content: [
-        
+        {
+          t: "image",
+          f: "smesi_vseci_rovni.jpg"
+        },
+        {
+          t: "image",
+          f: "send_vegana.jpg"
+        },
+        {
+          t: "image",
+          f: "smooth_ass.jpg"
+        },
       ],
     },
 
