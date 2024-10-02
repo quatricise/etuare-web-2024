@@ -43,11 +43,15 @@ class PersonCard {
     const container =     Create("div", {c: "person-card--container"})
     const title =         Create("div", {c: "person-card--title", t: this.title})
     const description =   Create("div", {c: "person-card--description", t: this.description})
-    const image =         Create("img", {c: "person-card--image", a: `src=../images/people/${Person.list[name].filename}.png`})
+    const image =         Create("img", {c: "person-card--image", a: `src=../images/people/${Person.list[name].filename}.jpg`})
     const borderTop =     Create("div", {c: "person-card--border-top"})
     const borderBottom =  Create("div", {c: "person-card--border-bottom"})
 
-    container.append(image, title, description, borderTop, borderBottom)
+    const plc = placeholder.cloneNode(true)
+    plc.classList.add("person-card--image")
+    image.onload = () => plc.replaceWith(image)
+
+    container.append(plc, title, description, borderTop, borderBottom)
 
     this.elements = {
       container,

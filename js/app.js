@@ -1,4 +1,4 @@
-let debug = true
+let debug = false
 
 const state = {
   mobile: window.innerWidth <= 720,
@@ -91,10 +91,11 @@ window.onbeforeunload = () => {
   ls.setItem("scrollY", window.scrollY)
   ls.setItem("page",    Page.current)
   ls.setItem("project", Project.current.name)
+  ls.setItem("visitedBefore", "true")
 }
 
 window.onload = () => {
-  const scripts = [
+  const sources = [
     "js/extensions.js",
     "js/vector2.js",
     "js/ticker.js",
@@ -105,23 +106,37 @@ window.onload = () => {
     "js/about.js",
     "js/services.js",
     "js/carousel.js",
+    "js/lightbox.js",
+    "js/animate.js",
     "js/project.js",
   ]
+  const scripts = new Map()
+
   function loadScript(src) {
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        script.onload = () => resolve(src);
-        script.onerror = () => reject(new Error(`Failed to load script ${src}`));
-        document.head.appendChild(script);
+    return new Promise(async (resolve, reject) => {
+        const response = await fetch(src)
+        
+        if(!response.ok) {
+          reject(new Error(`Failed to load script ${src}`))
+        } 
+        
+        else {
+          const data = await response.text()
+          const script = document.createElement('script')
+          script.textContent = data
+          scripts.set(src, script)
+          resolve()
+        }
     })
   }
 
-  Promise.all(scripts.map(loadScript))
+  /* WEBSITE INIT */
+
+  Promise.all(sources.map(loadScript))
   .then(() => {
 
-    /* WEBSITE INIT */
+
+    sources.forEach(src => document.head.appendChild(scripts.get(src)))
 
     if(!state.mobile) {
       Tooltip.init()
@@ -157,7 +172,6 @@ window.onload = () => {
       let [intro, intro2] = [Q(".intro-text--line-1"), Q(".intro-text--line-2")]
       let width = intro.getBoundingClientRect().width
       let scale = width / window.innerWidth
-      console.log(scale)
       const desiredScale = 0.70
       if(scale > desiredScale) {
         intro.style.transform = `scale(${desiredScale / scale})`
@@ -182,8 +196,6 @@ window.onload = () => {
     }
 
 
-
-    /* URL stuff */
     const searchQuery = window.location.search.replace("?", "")
     const pairs = searchQuery.split("+")
     pairs.forEach(pair => {
@@ -201,12 +213,20 @@ window.onload = () => {
       }
     })
 
+
+    if(!debug && Page.current === "home") {
+      Page.setup("home")
+    }
+
     
   })
   .catch((error) => {
     console.error(error)
   })
 }
+
+
+
 
 
 
@@ -281,6 +301,9 @@ function addEventListeners() {
 }
 
 //#endregion EVENTS
+
+
+
 
 
 
@@ -405,7 +428,7 @@ class Page {
 
 
 
-function showMoreProjects() {
+async function showMoreProjects() {
   const max = 4
   let counter = 0
 
@@ -418,6 +441,7 @@ function showMoreProjects() {
     else {
       new ProjectCard(key)
       counter++
+      await wait(240)
     }
   }
 
@@ -466,7 +490,7 @@ function toggleNavlinks(visib) {
 
 
 
-/* PRELOAD ANIMS */
+/* PRELOAD STUFF */
 
 for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
   for(let i = 0; i < 10; ++i) {
@@ -530,223 +554,4 @@ function testOverflowXElements(...excludedQueries) {
       console.log(element)
     }
   })
-}
-
-
-
-
-
-class Animate {
-  constructor(
-    /** @type HTMLElement */ element,
-  ) {
-
-    /** @type boolean */
-    this.suspended = false
-
-    /** @type function */
-    this._ondestroy = null
-
-    /** @type HTMLElement */
-    this.element = element
-
-    /** @type Animation */
-    this.current = null
-
-    /** @type Array<Object> */
-    this.actions = []
-
-    if(Animate.list.has(element)) {
-      this.suspended = true
-      this.current = true //hack so no chained commands work
-
-      console.log("suspended")
-      // Animate.list.get(element)._ondestroy = () => {
-      //   Animate.list.set(this.element, this)
-      //   this.suspended = false 
-      //   this._queueNext()
-      // }
-    }
-
-    else {
-      Animate.list.set(this.element, this)
-    }
-  }
-
-  _queueNext() {
-    if(this.suspended) return
-
-    this.current = null
-    const action = this.actions.shift()
-    if(action) {
-      switch (action.type) {
-        case "animate": {
-          this.animate(action.keyframes, action.options)
-          break
-        }
-        case "set": {
-          this.set(action.data)
-          break
-        }
-        case "class": {
-          this._classSet(action.state, action.classes)
-          break
-        }
-        case "wait": {
-          this.wait(action.durationMS)
-          break
-        }
-        case "then": {
-          this.then(action.fn)
-          break
-        }
-        default: {
-          throw "invalid action type"
-        }
-      }
-    }
-
-    else {
-      this.destroy()
-    }
-  }
-
-  then(fn) {
-    if(this.current) {
-      this.actions.push({type: "then", fn})
-    }
-
-    else {
-      fn()
-      this._queueNext()
-    }
-
-    return this
-  }
-
-  wait(durationMS) {
-    if(this.current) {
-      this.actions.push({type: "wait", durationMS})
-    }
-    
-    else {
-      this.current = true
-      console.log("wait for " + durationMS)
-      window.setInterval(() => this._queueNext(), durationMS)
-    }
-
-    return this
-  }
-
-  animate(/** @type Keyframe[] */ keyframes, /** @type KeyframeAnimationOptions */ options) {
-    
-    if(this.current) {
-      this.actions.push({type: "animate", keyframes, options})
-    }
-
-    else {
-      console.log("animate")
-      this.current = this.element.animate(keyframes, options)
-      this.current.onfinish = () => this._queueNext()
-    }
-
-    return this
-  }
-
-  /** Sets some things on the element */
-  set(data = {style: {}, attribs: {}}) {
-
-    if(this.current) {
-      this.actions.push({type: "set", data})
-    }
-
-    else {
-      console.log("set")
-      if(data?.style) {
-        for(let key in data.style) {
-          this.element.style[key] = data.style[key]
-        }
-      }
-      if(data?.attribs) {
-        for(let key in data.attribs) {
-          this.element.setAttribute(key, data.attribs[key])
-        }
-      }
-      this._queueNext()
-    }
-
-    return this
-  }
-
-  _classSet(state = "", ...classes) {
-
-    if(this.current) {
-      this.actions.push({type: "class", state, classes})
-    }
-
-    else {
-      for(let c of classes) {
-        this.element.classList[state](c)
-      }
-      console.log("class set")
-      this._queueNext()
-    }
-
-    return this
-  }
-  classAdd(...classes) {
-    this._classSet("add", ...classes)
-    return this
-  }
-  classRemove(...classes) {
-    this._classSet("remove", ...classes)
-    return this
-  }
-
-  destroy() {
-    console.log("destroy")
-    this._ondestroy?.()
-    Animate.list.delete(this.element)
-  }
-
-
-  /** @type Map<HTMLElement, Animate> */
-  static list = new Map()
-}
-
-
-
-
-
-/** Simple lightbox - Only for phones probably. */
-class Lightbox {
-  constructor(parent = document.body, position = "fixed") {
-    
-    this.parent = parent
-    this.position = position
-
-    const lightbox = Create("div", {c: "lightbox", s: `position=${position}`})
-
-    document.addEventListener("click", (e) => {
-      if(e.target.closest(".lightbox") === this.elements.lightbox) {
-        this.close()
-      }
-    })
-    parent.append(lightbox)
-
-    this.elements = {
-      lightbox
-    }
-
-  }
-  open() {
-    this.elements.lightbox.classList.remove("hidden")
-  }
-  openImage(imageSrc, options = {}) {
-    const img = Create("img", {a: `src=${imageSrc}`})
-    this.elements.lightbox.append(img)
-  }
-  close() {
-    this.elements.lightbox.classList.add("hidden")
-  }
 }

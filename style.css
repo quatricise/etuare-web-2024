@@ -638,7 +638,7 @@ footer {
 }
 
 .intro-text--services--part:hover .intro-text--services--part--icon {
-  rotate: -3deg;
+  rotate: -2deg;
 }
 
 .intro-text--services--part:hover {
@@ -697,7 +697,7 @@ footer {
   background-repeat: no-repeat;
   background-position: bottom left;
   background-size: cover;
-  transition: filter 0.15s ease-out, opacity 0.9s ease-in-out;
+  transition: filter 0.15s ease-out, opacity 0.5s ease-in-out;
   animation: var(--animation-cursor);
 }
 

@@ -472,6 +472,10 @@ class Project {
       content: [
         {
           t: "image",
+          f: "zaklad.jpg"
+        },
+        {
+          t: "image",
           f: "smesi_vseci_rovni.jpg"
         },
         {
@@ -491,7 +495,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Henna - Kosmetika",
-      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Pracovali jsme pro ně primárně na obalech.",
+      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
       content: [
         {
           t: "image",
@@ -636,6 +640,14 @@ class ProjectCard {
     //   }
     // })
 
+    new Animate(card)
+    .animate([
+      {transform: "translateY(-8px)", filter: "opacity(0)"},
+      {transform: "translateY(0px)", filter: "opacity(1)"}
+    ],{
+      duration: 750, 
+      easing: "cubic-bezier(0.3, 0.0, 0.6, 1.0)"
+    })
 
     autoShy(desc)
     addNBSP(desc)

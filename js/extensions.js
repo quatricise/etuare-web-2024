@@ -1,4 +1,5 @@
 /* string */
+
 String.prototype.capitalize = function() {
   return this.charAt(0).toLocaleUpperCase() + this.slice(1)
 }
@@ -38,7 +39,10 @@ String.prototype.isAny = function(...strings) {
   return false //if hasn't found a match
 }
 
+
+
 /* array */
+
 Array.prototype.remove = function(...children) {
   children.forEach(child => {
     if(this.find(c => c === child) === undefined)
@@ -67,7 +71,10 @@ Array.prototype.has = function(value) {
   return this.find(obj => obj === value)
 }
 
+
+
 /* set */
+
 Set.prototype.random = function() {
   if(!this.size) return null
   let index = Math.round(Math.random() * (this.size - 1))
@@ -98,7 +105,10 @@ Set.prototype.find = function(/** @type Function */ filterFn) {
   return result
 }
 
+
+
 /* Map */
+
 Map.prototype.random = function() {
   let index = Math.round(Math.random() * (this.size - 1))
   return Array.from(this).at(index)

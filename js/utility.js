@@ -13,10 +13,12 @@ function Qa_On(element, query) {
   return Array.from(element.querySelectorAll(query))
 }
 
-/* HTML */
+
+
+
+
 
 /** 
- * @description Doesn't work when there are spaces in attribute values, very problematic sometimes.
  * @returns HTMLElement 
 */
 function Create(tagname, options = {}) {
@@ -57,4 +59,17 @@ function Create(tagname, options = {}) {
   }
 
   return element
+}
+
+
+
+
+
+
+function wait(durationMS) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, durationMS);
+  });
 }

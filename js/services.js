@@ -1,6 +1,7 @@
 class Services {
   static list = {
     "Obalový design": {
+      key: "obalovy_design",
       description: `
       • Grafické návrhy obalů
       • Redesign stávajících obalů
@@ -17,6 +18,7 @@ class Services {
       ]
     },
     "Grafický design": {
+      key: "graficky_design",
       description: `
       Firemní materiály
       • logo či jeho redesign
@@ -34,6 +36,7 @@ class Services {
       ]
     },
     "Logo design": {
+      key: "logo_design",
       description: `
       • Navrhneme vám nové logo
       • Zmodernizujeme vaše staré logo
@@ -47,6 +50,7 @@ class Services {
       ]
     },
     "Produkce": {
+      key: "produkce",
       description: `
       Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
       
@@ -62,6 +66,7 @@ class Services {
       ]
     },
     "Digitální design": {
+      key: "digitalni_design",
       description: `
       • navrhneme design a prototyp webu
       • pomůžeme vám navrhnout obsahovou strukturu
@@ -74,6 +79,7 @@ class Services {
       ]
     },
     "3D vizualizace": {
+      key: "3d_vizualizace",
       description: `
       Váš produkt ještě nemusí být ve výrobě a může se stát, že potřebujete vizualizace do katalogů. My vám vytvoříme obal na jakýkoli produkt.
       
@@ -91,6 +97,7 @@ class Services {
       ]
     },
     "Ilustrace": {
+      key: "ilustrace",
       description: `
       • vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
@@ -123,7 +130,7 @@ class ServiceCard {
     const textContainer =     Create("div", {c: "service-card--text-container"})
     const title =             Create("h2",  {c: "service-card--title",              t: this.title})
     const description =       Create("p",   {c: "service-card--description",        t: this.description})
-    const backgroundImg =     Create("img", {c: "service-card--background-image", a:`src=../images/services_icons/${serviceName}.png`})
+    const backgroundImg =     Create("img", {c: "service-card--background-image", a:`src=../images/services_icons/${this.data.key}.png`})
 
     const borderTop =         Create("div", {c: "service-card--border-top"})
     const borderRight =       Create("div", {c: "service-card--border-right"})
