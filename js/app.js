@@ -8,6 +8,8 @@ state.navlinksOpen = !state.mobile
 
 const ls = localStorage
 
+
+
 const addNBSPToString = (str) => str.replace(
   / ([a-zA-Z]) /g,
   ' $1' + '\u00A0'
@@ -15,21 +17,8 @@ const addNBSPToString = (str) => str.replace(
 
 /** Adds &nbsp; elements to element. ONLY use after autoShy(), not the other way around. It's still broken as it does not respect HTML entities. */
 function addNBSP(element) {
-  // let words = element.innerHTML.split(" ")
-  // console.log(words)
-
-  // if(affectTextOnly)
-  // element.innerText = addNBSPToString(element.innerText)
-  // else
-
   element.innerHTML = addNBSPToString(element.innerHTML).replace("\n", "<br>")
 }
-
-// function addNBSPToAll() {
-//   Qa(".add-nbsp").forEach(element => {
-//     element.innerHTML = addNBSPToString(element.innerHTML).replace("\n", "<br>")
-//   })
-// }
 
 
 
@@ -515,7 +504,7 @@ placeholder.src = "../images/placeholder.jpg"
 
 
 
-/* syllable splitting idea */
+/* syllable splitting idea unfinished */
 function syllableSplit(word) {
   
   "a ne ta";
