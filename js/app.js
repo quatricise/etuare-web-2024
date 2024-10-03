@@ -1,4 +1,4 @@
-let debug = false
+let debug = true
 
 const state = {
   mobile: window.innerWidth <= 720,
@@ -436,7 +436,15 @@ async function showMoreProjects() {
 
   if(counter < max) {
     //run out of projects
-    Q(".home--section--see-more").classList.add("hidden")
+    
+    if(debug) {
+      const button = Q(".button--see-more")
+      button.innerText = "A to je vše (s čím se nám chtělo srát)!"
+      button.classList.add("dark", "dark-0")
+    }
+    else {
+      Q(".home--section--see-more").classList.add("hidden")
+    }
   }
 }
 

@@ -51,8 +51,9 @@ class Project {
       if(object.t === "image_2") {
         const dir =   object.d ?? "row"
         const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
-        const i =     Create("img",   {c: "project--image--one-of-two", a: `src=../projects/${name}/${object.f[0]}`})
-        const i_2 =   Create("img",   {c: "project--image--one-of-two", a: `src=../projects/${name}/${object.f[1]}`})
+        const i =     Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${object.f[0]}`})
+        const i_2 =   Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${object.f[1]}`})
+
 
         flex.append(i, i_2)
         container.append(flex)
@@ -68,7 +69,8 @@ class Project {
         const dir =   object.d ?? "row"
         const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
         for(let filename of object.f) {
-          const i = Create("img",   {c: "project--image--one-of-three", a: `src=../projects/${name}/${filename}`})
+          const i = Create("img",   {c: "project--image--one-of-three", a: `loading=lazy \f src=../projects/${name}/${filename}`})
+          i.loading = "lazy"
           flex.append(i)
         }
 
@@ -85,7 +87,7 @@ class Project {
 
         const images = []
         for(let src of object.f) {
-          images.push(Create("img", {c: "project--image--for-grid", a: `src=../projects/${name}/${src}`}))
+          images.push(Create("img", {c: "project--image--for-grid", a: `loading=lazy \f src=../projects/${name}/${src}`}))
         }
 
         const grid = Create("div", {c: "project--image--grid"})
@@ -358,13 +360,13 @@ class Project {
         {
           t: "image_2",
           d: "column",
-          l: "",
+          l: "Dvě varianty návrhu pro citrónovou marmeládu.",
           f: ["citron_a.jpg", "citron_b.jpg"]
         },
         {
           t: "image_2",
           d: "column",
-          l: "",
+          l: "Dvě varianty návrhu pro pomerančovou marmeládu.",
           f: ["pomeranc_a.jpg", "pomeranc_b.jpg"]
         },
         {
@@ -520,7 +522,28 @@ class Project {
       title: "Kovacs – Vinařství",
       description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály.",
       content: [
-        
+        {
+          t: "image_2",
+          f: ["sidlo_2.jpg", "sidlo_1.jpg"],
+        },
+        {
+          t: "image_2",
+          l: "Reklamní předměty.",
+          f: ["ubrus.jpg", "reklamni_predmety.jpg"],
+        },
+        {
+          t: "heading",
+          h: "Ilustrace"
+        },
+        {
+          t: "paragraph",
+          h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)."
+        },
+        {
+          t: "image_2",
+          l: "Autorka - Ivana Kotásková",
+          f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
+        },
       ],
     },
 
