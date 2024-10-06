@@ -21,6 +21,12 @@ class Project {
       l: "label",
     }
 
+    function replaceWithPlaceholder(img, classAdd) {
+      const plc = placeholder.cloneNode(true)
+      plc.classList.add(classAdd)
+      img.onerror = img.replaceWith(plc)
+    }
+
     /* Create HTML Content (the remaining project data that's very variable) */
     for(let object of this.data.content) {
 
@@ -45,17 +51,18 @@ class Project {
 
         /* add label */
         if(object.l) container.append(label)
+        i.onerror = () => replaceWithPlaceholder(i, "project--image--single")
 
       } else
       
       if(object.t === "image_2") {
         const dir =   object.d ?? "row"
         const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
-        const i =     Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${object.f[0]}`})
-        const i_2 =   Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${object.f[1]}`})
-
-
-        flex.append(i, i_2)
+        for(let filename of object.f) {
+          const i = Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${filename}`})
+          flex.append(i)
+          i.onerror = () => replaceWithPlaceholder(i, "project--image--one-of-two") 
+        }
         container.append(flex)
 
         /* add label */
@@ -70,8 +77,9 @@ class Project {
         const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
         for(let filename of object.f) {
           const i = Create("img",   {c: "project--image--one-of-three", a: `loading=lazy \f src=../projects/${name}/${filename}`})
-          i.loading = "lazy"
           flex.append(i)
+
+          i.onerror = () => replaceWithPlaceholder(i, "project--image--one-of-three") 
         }
 
         container.append(flex)
@@ -87,7 +95,9 @@ class Project {
 
         const images = []
         for(let src of object.f) {
-          images.push(Create("img", {c: "project--image--for-grid", a: `loading=lazy \f src=../projects/${name}/${src}`}))
+          const i = Create("img", {c: "project--image--for-grid", a: `loading=lazy \f src=../projects/${name}/${src}`})
+          i.onerror = () => replaceWithPlaceholder(i, "project--image--for-grid")
+          images.push(i)
         }
 
         const grid = Create("div", {c: "project--image--grid"})
@@ -520,16 +530,49 @@ class Project {
       featured: false,
       titleShort: "Kovacs – Vinařství",
       title: "Kovacs – Vinařství",
-      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály.",
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály. Je toho docela dost a dal bych si polívku, mám hlad.",
       content: [
         {
-          t: "image_2",
-          f: ["sidlo_2.jpg", "sidlo_1.jpg"],
+          t: "heading",
+          h: "Etikety na víno"
         },
         {
           t: "image_2",
-          l: "Reklamní předměty.",
-          f: ["ubrus.jpg", "reklamni_predmety.jpg"],
+          f: ["wine_7.jpg", "wine_1.jpg"],
+        },
+        {
+          t: "image_2",
+          f: ["kovacs_logo_vinarsky_dvur.jpg", "sidlo_1.jpg"],
+        },
+        {
+          t: "image_2",
+          l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
+          f: ["reklamni_predmety.jpg", "reklamni_predmety.jpg"],
+        },
+        {
+          t: "heading",
+          h: "Vínovice"
+        },
+        {
+          t: "image_2",
+          f: ["vinovice_1.jpg", "vinovice_2.jpg"],
+        },
+        {
+          t: "image_2",
+          f: ["rollups_mockup.jpg", "vinovice_2.jpg"],
+        },
+      ],
+    },
+
+
+    "kovacs_and_hess": {
+      featured: false,
+      title: "Kovacs & Hess",
+      description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jen jeho polovina? A co na to Jan Tleskač?",
+      content: [
+        {
+          t: "image_3",
+          f: ["kovacs_and_hess_etiketa_predni.jpg", "kovacs_and_hess_etiketa_predni_2.jpg", "kovacs_and_hess_pecet_prezentace.jpg"]
         },
         {
           t: "heading",
@@ -544,7 +587,7 @@ class Project {
           l: "Autorka - Ivana Kotásková",
           f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
         },
-      ],
+      ]
     },
 
 

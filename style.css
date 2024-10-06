@@ -820,6 +820,11 @@ footer {
   max-width: 600px;
 }
 
+.services--intro-text-3 {
+  max-width: 600px;
+  margin-top: 20px;
+}
+
 .services--intro-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -864,6 +869,7 @@ footer {
   background-color: var(--c-dark-1);
   height: var(--service-card--height);
   width: var(--service-card--width);
+  overflow: hidden;
 }
 
 .service-card--carousel-container {
@@ -887,6 +893,8 @@ footer {
   font-size: 18px;
   line-height: 180%;
   width: calc(var(--service-card--width) - var(--service-card--height) - 80px);
+  text-shadow: 0px 0px 10px var(--c-dark-0);
+  padding: 0 80px 0 0;
 }
 
 .service-card--background-image {
@@ -895,6 +903,16 @@ footer {
   position: absolute;
   bottom: calc((var(--width)/2.45) * -1);
   right: calc((var(--width)/2.6) * -1);
+  z-index: 1;
+}
+
+.service-card--background-image-v2 {
+  --width: 400px;
+  width: var(--width);
+  position: absolute;
+  bottom: calc((var(--width)/3) * -1);
+  right:  calc((var(--width)/5) * -1);
+  opacity: 0.15;
   z-index: 1;
 }
 
