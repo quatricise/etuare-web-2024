@@ -81,11 +81,11 @@ class Services {
       Vytvoříme vizualizace:
       • do katalogů, 
       • pro web,
-      • na polepy aut atd. \n
-      Váš produkt ještě nemusí být ve výrobě a může se stát, že potřebujete vizualizace do katalogů. Vytvoříme vám model obalu na jakýkoli produkt, a nebo vám pomůžeme vytvořit lepší vizualizace, pokud modely svých produktů už máte.
+      • na polepy aut
+      ...vlastně na cokoliv, co potřebujete
       `,
       examples: [
-        {src: "images/carousel/3d_6.jpg", projectName: ""},
+        // {src: "images/carousel/3d_6.jpg", projectName: ""},
         {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
         {src: "images/carousel/3d_2.jpg", projectName: "karima"},
         {src: "images/carousel/3d_3.jpg", projectName: "henna"},

@@ -440,9 +440,9 @@ footer {
 .footer--content {
   display: flex;
   justify-content: space-between;
-  width: 840px;
+  width: 760px;
   margin-top: 60px;
-  margin-left: -40px;
+  margin-left: -20px;
 }
 
 .footer--content--contacts {

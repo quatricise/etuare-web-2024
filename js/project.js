@@ -321,6 +321,14 @@ class Project {
           l: "Mincovník.",
           f: "mincovnik.jpg"
         },
+        {
+          t: "image",
+          f: "zapichovatka.jpg"
+        },
+        {
+          t: "image_2",
+          f: ["stojanek_1.jpg", "stojanek_2.jpg"]
+        },
       ],
     },
 
@@ -571,6 +579,10 @@ class Project {
       description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jen jeho polovina? A co na to Jan Tleskač?",
       content: [
         {
+          t: "image",
+          f: "bottle_render_shit.jpg"
+        },
+        {
           t: "image_3",
           f: ["kovacs_and_hess_etiketa_predni.jpg", "kovacs_and_hess_etiketa_predni_2.jpg", "kovacs_and_hess_pecet_prezentace.jpg"]
         },
@@ -586,6 +598,30 @@ class Project {
           t: "image_2",
           l: "Autorka - Ivana Kotásková",
           f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
+        },
+      ]
+    },
+
+
+
+    "la_food": {
+      featured: false,
+      titleShort: "La Food",
+      title: "La Food - Luštěniny, rýže a horkýže slíže",
+      description: "La Food je česká firma zabývající se výrobou luštěnin, rýže a podobných věcí. Dělali jsme primárně design obalů a redesign loga.",
+      content: [
+        {
+          t: "image",
+          f: "lusteniny.jpg",
+        },
+        {
+          t: "image",
+          f: "ryze.jpg",
+        },
+        {
+          t: "image",
+          l: "Redesign starého loga.",
+          f: "logo_redesign.jpg",
         },
       ]
     },
