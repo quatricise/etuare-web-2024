@@ -71,6 +71,28 @@ class Project {
         if(object.o?.gap) flex.style.gap = object.o?.gap
 
       } else
+
+      if(object.t === "image_2_1") {
+        const dir =   object.d ?? "row"
+        const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
+        for(let [index, filename] of object.f.entries()) {
+          const i = Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${filename}`})
+          flex.append(i)
+
+          if (index === 2) {
+            i.classList.replace("project--image--one-of-two", "project--image--single")
+          }
+
+          i.onerror = () => replaceWithPlaceholder(i, "project--image--one-of-two") 
+        }
+        container.append(flex)
+
+        /* add label */
+        if(object.l) container.append(label)
+
+        if(object.o?.gap) flex.style.gap = object.o?.gap
+
+      } else
       
       if(object.t === "image_3") {
         const dir =   object.d ?? "row"
@@ -169,6 +191,7 @@ class Project {
       "paragraph",
       "image",
       "image_2",
+      "image_2_1",
       "image_3",
       "image_grid_2",
       "image_grid_3",
@@ -541,6 +564,11 @@ class Project {
       description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály. Je toho docela dost a dal bych si polívku, mám hlad.",
       content: [
         {
+          t: "image",
+          l: "Redesign loga + návrh firemního claimu: Umění ve víně",
+          f: "kovacs_logo.png"
+        },
+        {
           t: "heading",
           h: "Etikety na víno"
         },
@@ -553,11 +581,6 @@ class Project {
           f: ["kovacs_logo_vinarsky_dvur.jpg", "sidlo_1.jpg"],
         },
         {
-          t: "image_2",
-          l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
-          f: ["reklamni_predmety.jpg", "reklamni_predmety.jpg"],
-        },
-        {
           t: "heading",
           h: "Vínovice"
         },
@@ -566,8 +589,23 @@ class Project {
           f: ["vinovice_1.jpg", "vinovice_2.jpg"],
         },
         {
+          t: "heading",
+          h: "Propagační materiály"
+        },
+        {
           t: "image_2",
-          f: ["rollups_mockup.jpg", "vinovice_2.jpg"],
+          f: ["rollups_mockup.jpg", "fake.jpg"],
+        },
+        {
+          t: "image_2",
+          d: "column",
+          l: "Profil - nevím k čemu to bylo - Štěpán",
+          f: ["profil_1.jpg", "profil_2.jpg"],
+        },
+        {
+          t: "image_2_1",
+          l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
+          f: ["vinny_listek.jpg", "reklamni_predmety.jpg", "ubrus.jpg"],
         },
       ],
     },
@@ -598,6 +636,29 @@ class Project {
           t: "image_2",
           l: "Autorka - Ivana Kotásková",
           f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
+        },
+      ]
+    },
+
+
+
+    "jarmila": {
+      featured: false,
+      titleShort: "Jarmila",
+      title: "Jarmila - Víno",
+      description: "Jarmila.",
+      content: [
+        {
+          t: "image_2",
+          f: ["photo_1.jpg", "ilustrace.jpg"]
+        },
+        {
+          t: "image_2",
+          f: ["photo_2.jpg", "photo_3.jpg"]
+        },
+        {
+          t: "image_2",
+          f: ["domecek.jpg", "bottle_interior_photo.jpg"]
         },
       ]
     },

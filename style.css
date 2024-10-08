@@ -1396,8 +1396,12 @@ footer {
 
 .project--image--flex {
   display: flex;
-  width: 100%;
   gap: var(--project--image--gap);
+  width: 100%;
+}
+
+.project--image--flex.row {
+  flex-wrap: wrap;
 }
 
 .project--image--grid {
