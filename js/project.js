@@ -538,7 +538,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Henna - Kosmetika",
-      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
+      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",/* @todo */
       content: [
         {
           t: "image",
@@ -561,7 +561,7 @@ class Project {
       featured: false,
       titleShort: "Kovacs – Vinařství",
       title: "Kovacs – Vinařství",
-      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály. Je toho docela dost a dal bych si polívku, mám hlad.",
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály. Je toho docela dost a dal bych si polívku, mám hlad.",/* @todo */
       content: [
         {
           t: "image",
@@ -598,8 +598,13 @@ class Project {
         },
         {
           t: "image_2",
+          l: "Edice vín Family Reserve s obrazy rodiny Kovács, dedikovaná rodině majitele.", /* @todo */
+          f: ["cuvee_miroslav.jpg", "cuvee_amalie.jpg"],
+        },
+        {
+          t: "image_2",
           d: "column",
-          l: "Profil - nevím k čemu to bylo - Štěpán",
+          l: "Profil - leták o 4 stránkách, který shrnuje filozofii firmy.",
           f: ["profil_1.jpg", "profil_2.jpg"],
         },
         {
@@ -614,7 +619,7 @@ class Project {
     "kovacs_and_hess": {
       featured: false,
       title: "Kovacs & Hess",
-      description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jen jeho polovina? A co na to Jan Tleskač?",
+      description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jeho drahá polovička? A co na to Jan Tleskač?",
       content: [
         {
           t: "image",
@@ -787,21 +792,23 @@ class ProjectCard {
       Project.open(name)
     }
 
-    // document.addEventListener("scroll", () => {
-    //   let y = card.getBoundingClientRect().y
-    //   let h = card.getBoundingClientRect().height
+    if(!state.mobile) {
+      document.addEventListener("scroll", () => {
 
-    //   let top = y + h
-    //   let bottom = y
-    //   if(top < 40 || bottom > window.innerHeight - 40) {
-    //     card.style.opacity = "0.25"
-    //   } else {
-    //   if(top < 80 || bottom > window.innerHeight - 80) {
-    //     card.style.opacity = "0.5"
-    //   } else
-    //     card.style.opacity = ""
-    //   }
-    // })
+        const rect =  card.getBoundingClientRect()
+        
+        /* this shit is sorta broken but idk why, i'm adding an offset manually that I observed to be the correct offset */
+        let top =     window.innerHeight + rect.y - rect.height + 30 /* <- the offset */
+        let bottom =  window.innerHeight - rect.y
+  
+        const opacityRaw = Math.min(top, bottom) / 120
+        card.style.opacity = Math.max(opacityRaw, 0.4)
+  
+        // if(this.name === "kralovske_marmelady") {
+        //   console.log("Node top: " + top + " bottom: " + bottom + " opacity: " + opacityRaw)
+        // }
+      })
+    }
 
     new Animate(card)
     .animate([

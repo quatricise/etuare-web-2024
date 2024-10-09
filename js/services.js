@@ -72,7 +72,8 @@ class Services {
       • zařídíme SEO optimalizaci
       `,
       examples: [
-        {src: "images/carousel/digi_3.jpg", projectName: "napacider"},
+        {src: "images/carousel/digi_3.jpg",    projectName: "napacider"},
+        {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", brightenOnHover: false},
       ]
     },
     "3D vizualizace": {
@@ -137,8 +138,8 @@ class ServiceCard {
 
     /* append */
 
-    container.append(carouselContainer, textContainer, backgroundImg, borderRight, borderLeft, borderTop)
-    textContainer.append(title, description)
+    container.append(carouselContainer, textContainer, borderRight, borderLeft, borderTop)
+    textContainer.append(title, description, backgroundImg)
 
 
     autoShy(description)

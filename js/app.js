@@ -140,6 +140,7 @@ window.onload = () => {
     if(state.mobile) {
       const navlinks = Q(".navlinks")
       navlinks.classList.add("hidden")
+      Qa(".show-only-on-mobile").forEach(element => element.classList.remove("hidden"))
       document.body.append(navlinks)
     }
 
@@ -151,6 +152,8 @@ window.onload = () => {
         Page.set(navlink.dataset.page)
       }
     })
+
+    
 
     Q(".header--logo").onclick = () => Page.set("home")
 
@@ -439,7 +442,7 @@ async function showMoreProjects() {
     
     if(debug) {
       const button = Q(".button--see-more")
-      button.innerText = "A to je vše (s čím se nám chtělo srát)!"
+      button.innerText = "A to je vše, prozatím..."
       button.classList.add("dark", "dark-0")
     }
     else {
