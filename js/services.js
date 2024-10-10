@@ -2,6 +2,7 @@ class Services {
   static list = {
     "Obalový design": {
       key: "obalovy_design",
+      blurb: "",
       description: `
       • Grafické návrhy obalů
       • Redesign stávajících obalů
@@ -19,6 +20,7 @@ class Services {
     },
     "Grafický design": {
       key: "graficky_design",
+      blurb: "",
       description: `
       • logo či jeho redesign
       • firemní identita
@@ -28,26 +30,28 @@ class Services {
       • bannery pro internet, billboardy, plakáty...
       `,
       examples: [
-        {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", brightenOnHover: false},
-        {src: "../images/carousel/graf_2.jpg", projectName: "napacider", brightenOnHover: false},
+        {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: false, hasBrightSubject: true},
+        {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
       ]
     },
     "Logo design": {
       key: "logo_design",
+      blurb: "",
       description: `
       • Navrhneme vám nové logo
       • Zmodernizujeme vaše staré logo
       • Vytvoříme varianty loga pro nové produkty
       `,
       examples: [
-        {src: "../images/carousel/logo_1.png", projectName: "adria_gold", brightenOnHover: false},
-        {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", brightenOnHover: false},
-        {src: "../images/carousel/logo_3.jpg", projectName: "adria_gold", brightenOnHover: false},
-        {src: "../images/carousel/logo_4.jpg", projectName: "adria_gold", brightenOnHover: false},
+        {src: "../images/carousel/logo_1.png", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_5.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
       ]
     },
     "Produkce": {
       key: "produkce",
+      blurb: "",
       description: `
       Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
       
@@ -58,12 +62,17 @@ class Services {
       • navigační prvky - směrovky, cedule...
       `,
       examples: [
-        {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", brightenOnHover: false},
-        {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", brightenOnHover: false},
+        {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu."},
+        {src: "../images/carousel/prod_5.jpg", projectName: "adria_gold"},
+        {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold"},
+        {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Stojánky na zmrzlinové kornouty do cukráren."},
+        {src: "../images/carousel/prod_4.jpg", projectName: "kovacs", hasBrightBG: true },
       ]
     },
     "Digitální design": {
       key: "digitalni_design",
+      blurb: "",
       description: `
       • navrhneme design a prototyp webu
       • pomůžeme vám navrhnout obsahovou strukturu
@@ -73,11 +82,12 @@ class Services {
       `,
       examples: [
         {src: "images/carousel/digi_3.jpg",    projectName: "napacider"},
-        {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", brightenOnHover: false},
+        {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", hasBrightBG: true, hasBrightSubject: true},
       ]
     },
     "3D vizualizace": {
       key: "3d_vizualizace",
+      blurb: "",
       description: `
       Vytvoříme vizualizace:
       • do katalogů, 
@@ -86,7 +96,6 @@ class Services {
       ...vlastně na cokoliv, co potřebujete
       `,
       examples: [
-        // {src: "images/carousel/3d_6.jpg", projectName: ""},
         {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
         {src: "images/carousel/3d_2.jpg", projectName: "karima"},
         {src: "images/carousel/3d_3.jpg", projectName: "henna"},
@@ -96,6 +105,7 @@ class Services {
     },
     "Ilustrace": {
       key: "ilustrace",
+      blurb: "",
       description: `
       • vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
@@ -105,9 +115,51 @@ class Services {
       examples: [
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
         {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
-        {src: "images/carousel/ilu_3.jpg", projectName: ""},
+        {src: "images/carousel/ilu_3.jpg", projectName: "", hasBrightBG: true, hasBrightSubject: true},
       ]
     },
+  }
+
+  static testDataValidity() {
+    const validKeys = [
+      "key",
+      "blurb",
+      "description",
+      "examples",
+    ]
+    const requiredExampleKeys = [
+      "src", "projectName"
+    ]
+    const allowedExampleKeys = [
+      "src", "projectName", "hasBrightBG", "hasBrightSubject", "url", "tooltip"
+    ]
+    for(let service in Services.list) {
+
+      for(let key in Services.list[service]) {
+
+        if(validKeys.find(k => k == key) == undefined)  throw `Invalid key in service ${service}: ${key}.`
+
+        for(let [exampleIndex, example] of Services.list[service].examples.entries()) {
+
+          for(let [index, reqKey] of requiredExampleKeys.entries()) {
+            if(reqKey in example != true) {
+              throw `Missing required key in ${service}, example index ${index}: ${reqKey}.`
+            }
+          }
+          const exampleKeys = Object.keys(example)
+          for(let exampleKey of exampleKeys) {
+            if(!allowedExampleKeys.find(k => k === exampleKey)) throw `Service ${service} contains invalid key '${exampleKey}' in examples[${exampleIndex}].`
+
+            if(exampleKey === "hasBrightBG" && example[exampleKey] !== undefined && typeof example[exampleKey] !== "boolean") {
+              throw "hasBrightBG has to be of type boolean"
+            }
+            if(exampleKey === "hasBrightSubject" && example[exampleKey] !== undefined && typeof example[exampleKey] !== "boolean") {
+              throw "hasBrightSubject has to be of type boolean"
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -171,5 +223,22 @@ class ServiceCard {
     Page.set("services")
     const card = this.list.get(name)
     card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
+  }
+}
+
+class ServiceCardSmall {
+  constructor(/** @type string */ serviceName) {
+    this.data = Services.list[serviceName]
+    this.title = serviceName
+    this.description = this.data.description ?? "MISSING!"
+
+    this.elements = {card, glow}
+  }
+  updateGlowOnMouse(e) {
+    let x = e.clientX
+    let cardLeft = this.elements.card.getBoundingClientRect().left
+    let width = this.elements.glow.getBoundingClientRect().width
+
+    this.elements.glow.style.left = x - (width/2) - cardLeft + "px"
   }
 }

@@ -135,6 +135,7 @@ window.onload = () => {
 
     if(debug) {
       Project.testDataValidity()
+      Services.testDataValidity()
     }
 
     if(state.mobile) {
@@ -333,7 +334,9 @@ class Page {
       window.scrollTo({top: 0, behavior: "instant"})
     }
   
-    if(debug) console.log("New page's previous scrollY position: ", Page.data[name].scrollY)
+    if(debug) {
+      console.log("New page's previous scrollY position: ", Page.data[name].scrollY)
+    }
 
     if(Page.data[name].ready === false) {
       Page.setup(name)
@@ -437,9 +440,7 @@ async function showMoreProjects() {
     }
   }
 
-  if(counter < max) {
-    //run out of projects
-    
+  if(counter < max) { //ran out of projects
     if(debug) {
       const button = Q(".button--see-more")
       button.innerText = "A to je vše, prozatím..."

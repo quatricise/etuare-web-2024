@@ -24,26 +24,49 @@ class Carousel {
 
         /* add functionality to the image */
         if(img.dataset.title) {
+          console.log(img.dataset.title)
           img.onmouseenter = () => {
             currentSlideName.classList.remove("hidden")
-            currentSlideName.getAnimations().forEach(anim => anim.cancel())
-    
-            currentSlideName.animate([
-              {bottom: "-60px"},
-              {bottom: "0"},
-            ],{
-              duration: 400,
-              easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
-            })
-    
             currentSlideNameText.innerText = img.dataset.title
+            currentSlideName.getAnimations().forEach(a => a.cancel())
+              currentSlideName.animate([
+                {bottom: "-60px"},
+                {bottom: "0"},
+              ],{
+                duration: 400,
+                easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
+              })
           }
     
           img.onmouseleave = () => {
-            currentSlideName.classList.add("hidden")
+            const anims = currentSlideName.getAnimations()
+            if(anims.length) {
+              anims.forEach((a, index) => {
+                if(index !== anims.length - 1) a.cancel()
+              })
+              anims[anims.length - 1].onfinish = () => animate()
+            }
+            else {
+              animate()
+            }
+            
+            function animate() {
+              currentSlideName.animate([
+                {bottom: "0"},
+                {bottom: "-60px"},
+              ],{
+                duration: 400,
+                easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
+              }).onfinish = () => {
+                currentSlideName.classList.add("hidden")
+              }
+            }
           }
     
           img.onclick = () => Project.open(img.dataset.project)
+        }
+        if(index === 0) {
+          this.updateControlsColor()
         }
       }
 
@@ -57,13 +80,20 @@ class Carousel {
         const title = Project.data[src.projectName]?.titleShort || Project.data[src.projectName]?.title
         img.classList.add("tooltip", "interactable")
         img.dataset.tooltip = `${title} – Prohlédnout projekt`
-        img.dataset.title = title
+        img.dataset.title = src.tooltip ?? title
         img.dataset.project = src.projectName
       } else {
 
       }
 
-      if(src.brightenOnHover !== false) {
+      if(src.hasBrightSubject === true) {
+        img.classList.add("has-bright-subject")
+      }
+
+      if(src.hasBrightBG === true) {
+        img.dataset.hasBrightBG = "true"
+      }
+      else {
         img.classList.add("brighten-on-hover")
       }
     })
@@ -130,8 +160,6 @@ class Carousel {
     /* append placeholder first */
   
     this.images.forEach(img => images.append(img))
-
-
 
     /* functionality */
 
@@ -224,6 +252,21 @@ class Carousel {
         bubble.classList.remove("active")
       }
     })
+    this.updateControlsColor()
+  }
+  updateControlsColor() {
+    if(this.images[this.current].dataset.hasBrightBG === "true") {
+      this.elements.get("bubbles").classList.add("dark")
+      this.elements.get("arrowLeft").classList.add("dark")
+      this.elements.get("arrowRight").classList.add("dark")
+      this.elements.get("arrowBg").classList.add("dark")
+    }
+    else {
+      this.elements.get("bubbles").classList.remove("dark")
+      this.elements.get("arrowLeft").classList.remove("dark")
+      this.elements.get("arrowRight").classList.remove("dark")
+      this.elements.get("arrowBg").classList.remove("dark")
+    }
   }
   updateGlowOnMouse(e) {
     let x = e.clientX
