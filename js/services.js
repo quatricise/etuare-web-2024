@@ -188,12 +188,12 @@ class ServiceCard {
     
     this.title = serviceName
     this.description = this.data.description ?? "MISSING!"
-
+    this.initiated = false
 
 
     /* Create HTML */
 
-    const container =         Create("div", {c: "service-card"})
+    const container =         Create("div", {c: "service-card", s: "opacity=0"})
     const carouselContainer = Create("div", {c: "service-card--carousel-container"})
 
     const textContainer =     Create("div", {c: "service-card--text-container"})
@@ -214,7 +214,7 @@ class ServiceCard {
 
 
     autoShy(description)
-    addNBSP(description, false)
+    autoNBSP(description, false)
 
 
     /** @type Map<string, HTMLElement> */
@@ -231,6 +231,38 @@ class ServiceCard {
 
     Q(".services--section--cards").append(container)
     this.carousel = new Carousel(Services.list[serviceName].examples, carouselContainer)
+
+
+
+    /* try a little animation on entry */
+    const checkVisibility = (e) => {
+      const rect = container.getBoundingClientRect()
+      if(rect.y < window.innerHeight && rect.bottom > 0) {
+        container.style.opacity = ""
+
+        new Animate(container)
+        .animate([
+          {transform: "translateY(-10px)", opacity: "0"}, 
+          {transform: "", opacity: "1"}
+        ], 
+          {duration: 900, easing: "cubic-bezier(0.2, 0.0, 0.3, 1.0)"}
+        )
+
+        new Animate(backgroundImg)
+        .animate([
+          {rotate: "-10deg",  scale: "0.98", translate: "5px 5px"},
+          {rotate: "",      scale: "",     translate: ""},
+        ], {
+          duration: 3000,
+          easing: "cubic-bezier(0.2, 0.2, 0.3, 1)",
+        })
+
+        document.removeEventListener("scroll", checkVisibility)
+      }
+    }
+    document.addEventListener("scroll", checkVisibility)
+
+
 
     ServiceCard.list.set(serviceName, this)
   }

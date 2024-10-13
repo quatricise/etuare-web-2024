@@ -427,6 +427,22 @@ header {
   display: none;
 }
 
+.navlink--icons {
+  display: flex;
+  gap: 0px;
+  height: 100%;
+}
+.navlink--icon {
+  display: flex;
+  align-items: center;
+}
+.navlink--icon--image {
+  height: 100%;
+  object-fit: contain;
+}
+.navlink--icon--text {
+  display: none;
+}
 
 
 /* FOOTER */
@@ -1048,6 +1064,18 @@ footer {
   var(--c-dark-0) 100%);
 }
 
+/* SERVICE CARD - effects */
+
+/* .service-card--background-image-v2 {
+  transition: rotate 3s cubic-bezier(0.23, 0.2, 0.320, 1), scale 2.5s cubic-bezier(0.2, 0.2, 0.3, 1), translate 2.75s cubic-bezier(0.1, 0.2, 0.3, 1);
+}
+
+.service-card:hover .service-card--background-image-v2 {
+  rotate: 2deg;
+  scale: 1.02;
+  translate: -5px -5px;
+} */
+
 
 
 /* CAROUSEL */
@@ -1629,6 +1657,14 @@ footer {
     var(--c-light-3) 50%, 
     var(--c-dark-0) 100%);
   }
+
+  .navlink--icons {
+    flex-direction: column;
+  }
+
+  .navlink--icon--text {
+    display: unset;
+  }  
 
   .burger {
     display: flex;

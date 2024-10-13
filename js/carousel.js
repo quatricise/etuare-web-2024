@@ -63,7 +63,7 @@ class Carousel {
           }
     
           if(src.projectName != "$out") {
-            img.onclick = () => Project.open(img.dataset.project)
+            img.onclick = () => this._queueClick(() => Project.open(img.dataset.project))
           }
         }
         if(index === 0) {
@@ -112,7 +112,8 @@ class Carousel {
     /** @type Array<number>  -1 means back, 1 means forward. These are the only valid values. */
     this.queuedSlides = []
 
-
+    /** @type Function | null */
+    this.onclick = null
     /* Create HTML */
 
     const container =                Create("div", {c: "carousel-container", s: `width=${this.width} \f height=${this.height}`})
@@ -181,12 +182,26 @@ class Carousel {
 
     Carousel.list.push(this)
   }
+  _queueClick(fn) { //only queues one click
+    if(this.busy) {
+      this.onclick = fn
+    }
+    else {
+      fn()
+    }
+  }
   _queueSlide(dir) {
     this.queuedSlides.push(dir)
   }
   _processQueue() {
-    if(this.queuedSlides.length === 0) return
-
+    if(this.onclick !== null) {
+      this.onclick()
+      this.onclick = null
+      return
+    }
+    if(this.queuedSlides.length === 0){
+      return
+    }
     this.slide(this.queuedSlides.shift())
   }
   _setAsBusy() {

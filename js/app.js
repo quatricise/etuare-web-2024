@@ -16,7 +16,7 @@ const addNBSPToString = (str) => str.replace(
 );
 
 /** Adds &nbsp; elements to element. ONLY use after autoShy(), not the other way around. It's still broken as it does not respect HTML entities. */
-function addNBSP(element) {
+function autoNBSP(element) {
   element.innerHTML = addNBSPToString(element.innerHTML).replace("\n", "<br>")
 }
 
@@ -161,7 +161,7 @@ window.onload = () => {
     Q(".header--logo").onclick = () => Page.set("home")
 
     Qa(".auto-shy").forEach(element => autoShy(element))
-    Qa(".add-nbsp").forEach(element => addNBSP(element))
+    Qa(".add-nbsp").forEach(element => autoNBSP(element))
 
     {
       let [intro, intro2] = [Q(".intro-text--line-1"), Q(".intro-text--line-2")]

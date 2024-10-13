@@ -26,6 +26,16 @@
           O&nbsp;nás
           <div class="navlink--border--bottom"></div>
         </div>
+        <div class="navlink--icons">
+          <div class="navlink--icon" onclick="Q('#link--contact').scrollIntoView({behavior: 'smooth'})">
+            <img class="navlink--icon--image" src="images/icon_mail.png"  alt="">
+            <a class="navlink--icon--text" href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>
+          </div>
+          <div class="navlink--icon" onclick="Q('#link--contact').scrollIntoView({behavior: 'smooth'})">
+            <img class="navlink--icon--image" src="images/icon_phone.png" alt="">
+            <a class="navlink--icon--text" href="tel:+420 736 689 470">736 689 470</a>
+          </div>
+        </div>
       </div>
 
       <div class="burger" onclick="toggleNavlinks()">
@@ -50,38 +60,10 @@
         <span class="intro-text--line-1">etuare</span>
 
         <span class="intro-text--line-2 auto-shy add-nbsp">grafické a produkční studio</span>
-        <span class="intro-text--line-3 auto-shy add-nbsp">Co potřebujete?</span>
+        <span class="intro-text--line-3 auto-shy add-nbsp">Co pro vás můžeme udělat?</span>
 
          <div class="intro-text--services">
-          <!-- <div class="service-card--small" onclick="ServiceCard.navigateToCard('Grafický design')">
-            <img class="service-card--small--background" src="images/background_var_0.png" alt="">
-            <img class="service-card--small--icon" src="images/services_icons_home/graficky_design.png" alt="">
-            <span class="service-card--small--heading">Grafický design</span>  
-            <span class="service-card--small--description" >Letáky, tiskoviny, plakáty, loga, to je lepší než s manželkou yoga.</span>
-            <div class="service-card--small--border--bottom"></div>
-          </div> -->
-          <!-- 
-          <div class="service-card--small" onclick="ServiceCard.navigateToCard('Produkce')">
-            <img class="service-card--small--background" src="images/background_var_0.png" alt="">
-            <img class="service-card--small--icon" src="images/services_icons_home/produkce.png" alt="">
-            <span class="service-card--small--heading">Produkce</span>   
-            <span class="service-card--small--description" >POP materiály, věcičky, udělátka a párátka pro detičky.</span>
-            <div class="service-card--small--border--bottom"></div>
-          </div>
-          <div class="service-card--small" onclick="ServiceCard.navigateToCard('Digitální design')">
-            <img class="service-card--small--background" src="images/background_var_0.png" alt="">
-            <img class="service-card--small--icon" src="images/services_icons_home/digitalni_design.png" alt="">
-            <span class="service-card--small--heading">Digitální design</span>
-            <span class="service-card--small--description" >Webové stránky, Facebook posty, to jsou to k nám ale hosti!</span>
-            <div class="service-card--small--border--bottom"></div>
-          </div>
-          <div class="service-card--small hidden show-only-on-mobile" onclick="ServiceCard.navigateToCard('Ilustrace')">
-            <img class="service-card--small--background" src="images/background_var_0.png" alt="">
-            <img class="service-card--small--icon" src="images/services_icons_home/ilustrace.png" alt="">
-            <span class="service-card--small--heading">Ilustrace</span>
-            <span class="service-card--small--description" >V řece Svratce dítě pláče.</span>
-            <div class="service-card--small--border--bottom"></div>
-          </div> -->
+            <!-- JS -->
          </div>
 
         <button class="intro-text--button" onclick="Page.set('services');">
@@ -139,13 +121,7 @@
       </button>
     </div>
     <div class="section project--section--intro">
-       <!-- 
-        JS 
-        • heading 
-        • description 
-        • content 
-       --> 
-
+       <!-- JS --> 
     </div>
 
   </div> <!-- page--project -->
@@ -212,7 +188,7 @@
       Za dotaz nic nedáte! Nebojte se na nás obrátit s otázkou či nezávaznou poptávkou a domluvíme se jestli jsme pro vás ti praví. Nebo se můžete stavit, pokud to máte po cestě.
     </div>
     <div class="footer--content">
-      <div class="footer--content--contacts">
+      <div class="footer--content--contacts" id="link--contact">
         <img class="icon--contact" src="images/icon_big_contact.png" alt="">
         <div class="contact--text">
           <a href="mailto:trvaj@etuare.com"> 

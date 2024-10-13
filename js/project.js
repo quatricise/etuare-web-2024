@@ -294,13 +294,9 @@ class Project {
           f: ["logo_intro.png", "logo_intro_2.jpg"],
         },
         {
-          t: "heading",
-          h: "Obalový design",
-        },
-        {
           t: "image",
-          l: "Obaly na prémiovou řadu zmrzlin.",
-          f: "obaly_0.jpg"
+          l: "Variace loga na další produkty firmy.",
+          f: "loga_tocena_a_trist.jpg"
         },
         {
           t: "heading",
@@ -308,13 +304,13 @@ class Project {
         },
         {
           t: "image_2",
-          l: "Katalog točené zmrzliny pro velkoobchody a restaurace.",
-          f: ["tocena_0.jpg", "tocena_1.jpg"]
+          l: "Manuál zmrzlináře - jak správně pracovat se zmrzlinou.",
+          f: ["manual_0.jpg", "manual_1.jpg"]
         },
         {
           t: "image_2",
-          l: "Manuál zmrzlináře - jak správně pracovat se zmrzlinou.",
-          f: ["manual_0.jpg", "manual_1.jpg"]
+          l: "Katalog točené zmrzliny pro velkoobchody a restaurace.",
+          f: ["tocena_0.jpg", "tocena_1.jpg"]
         },
         {
           t: "image_2",
@@ -325,6 +321,20 @@ class Project {
           t: "image",
           l: "Vizitky pro pracovníky firmy.",
           f: "vizitky.jpg"
+        },
+        {
+          t: "heading",
+          h: "Obalový design",
+        },
+        {
+          t: "image",
+          l: "Obaly na prémiovou řadu zmrzlin.",
+          f: "obaly_0.jpg"
+        },
+        {
+          t: "image",
+          l: "Obaly na topping.",
+          f: "topping.jpg"
         },
         {
           t: "heading",
@@ -538,7 +548,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Henna - Kosmetika",
-      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",/* @todo */
+      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
       content: [
         {
           t: "image",
@@ -561,7 +571,7 @@ class Project {
       featured: false,
       titleShort: "Kovacs – Vinařství",
       title: "Kovacs – Vinařství",
-      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály. Je toho docela dost a dal bych si polívku, mám hlad.",/* @todo */
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a vše co zde vidíte.", // @todo
       content: [
         {
           t: "image",
@@ -619,7 +629,7 @@ class Project {
     "kovacs_and_hess": {
       featured: false,
       title: "Kovacs & Hess",
-      description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jeho drahá polovička? A co na to Jan Tleskač?",
+      description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jeho drahá polovička? A co na to Jan Tleskač?", //@todo
       content: [
         {
           t: "image",
@@ -635,7 +645,7 @@ class Project {
         },
         {
           t: "paragraph",
-          h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)."
+          h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)." //@todo
         },
         {
           t: "image_2",
@@ -651,7 +661,7 @@ class Project {
       featured: false,
       titleShort: "Jarmila",
       title: "Jarmila - Víno",
-      description: "Jarmila.",
+      description: "Jarmila.", //@todo
       content: [
         {
           t: "image_2",
@@ -674,7 +684,7 @@ class Project {
       featured: false,
       titleShort: "La Food",
       title: "La Food - Luštěniny, rýže a horkýže slíže",
-      description: "La Food je česká firma zabývající se výrobou luštěnin, rýže a podobných věcí. Dělali jsme primárně design obalů a redesign loga.",
+      description: "La Food je česká firma zabývající se výrobou luštěnin, rýže a podobných věcí. Dělali jsme primárně design obalů a redesign loga pro řadu Menu Gold.",
       content: [
         {
           t: "image",
@@ -798,15 +808,11 @@ class ProjectCard {
         const rect =  card.getBoundingClientRect()
         
         /* this shit is sorta broken but idk why, i'm adding an offset manually that I observed to be the correct offset */
-        let top =     window.innerHeight + rect.y - rect.height + 30 /* <- the offset */
+        let top =     window.innerHeight + rect.y - rect.height + 30 /* <-- the offset */
         let bottom =  window.innerHeight - rect.y
   
         const opacityRaw = Math.min(top, bottom) / 120
         card.style.opacity = Math.max(opacityRaw, 0.4)
-  
-        // if(this.name === "kralovske_marmelady") {
-        //   console.log("Node top: " + top + " bottom: " + bottom + " opacity: " + opacityRaw)
-        // }
       })
     }
 
@@ -820,7 +826,7 @@ class ProjectCard {
     })
 
     autoShy(desc)
-    addNBSP(desc)
+    autoNBSP(desc)
     ProjectCard.placeCard(card)
     Project.homeCardsLoaded.add(name)
   }
