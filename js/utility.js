@@ -73,3 +73,12 @@ function wait(durationMS) {
     }, durationMS);
   });
 }
+
+const TAU  = Math.PI * 2
+const PI   = Math.PI
+const PI_2 = Math.PI / 2
+const PI_4 = Math.PI / 4
+
+function radToDeg(/** @type number */ rad) {
+  return rad * 180/Math.PI
+}

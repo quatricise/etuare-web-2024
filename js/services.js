@@ -2,7 +2,7 @@ class Services {
   static list = {
     "Obalový design": {
       key: "obalovy_design",
-      blurb: "",
+      blurb: "Obalíme vaši firmu alobalem abychom ji ochránili před útoky mimozemšťanů!",
       description: `
       • Grafické návrhy obalů
       • Redesign stávajících obalů
@@ -18,9 +18,12 @@ class Services {
         {src: "../images/carousel/3d_5.jpg", projectName: "vest"},
       ]
     },
+
+
+
     "Grafický design": {
       key: "graficky_design",
-      blurb: "",
+      blurb: "Letáky, tiskoviny, plakáty, loga a další...",
       description: `
       • logo či jeho redesign
       • firemní identita
@@ -35,12 +38,15 @@ class Services {
         {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
       ]
     },
-    "Logo design": {
+
+
+
+    "Logo a firemní identita": {
       key: "logo_design",
-      blurb: "",
+      blurb: "Design, redesign a varianty. Vše co se týče práce s logem a firemní identitou.",
       description: `
-      • Navrhneme vám nové logo
-      • Zmodernizujeme vaše staré logo
+      • Navrhneme vám nové logo a identitu
+      • Zmodernizujeme vaši starou identitu
       • Vytvoříme varianty loga pro nové produkty
       `,
       examples: [
@@ -49,9 +55,12 @@ class Services {
         {src: "../images/carousel/logo_5.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
       ]
     },
+
+
+
     "Produkce": {
       key: "produkce",
-      blurb: "",
+      blurb: "Vyrobíme cokoliv - tiskoviny, polepy, stojánky, držáky, POP materiály...",
       description: `
       Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
       
@@ -70,9 +79,12 @@ class Services {
         {src: "../images/carousel/prod_4.jpg", projectName: "kovacs", hasBrightBG: true },
       ]
     },
+
+
+
     "Digitální design": {
       key: "digitalni_design",
-      blurb: "",
+      blurb: "FB reklamy, digitální prezentace a weby, ikony, správa eshopů...",
       description: `
       • navrhneme design a prototyp webu
       • pomůžeme vám navrhnout obsahovou strukturu
@@ -81,10 +93,14 @@ class Services {
       • zařídíme SEO optimalizaci
       `,
       examples: [
-        {src: "images/carousel/digi_3.jpg",    projectName: "napacider"},
-        {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/digi_3.jpg",    projectName: "napacider", tooltip: "Reklamní FB kampaň pro Napa cider."},
+        {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", tooltip: "Web pro Napa cider",  hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/digi_4.jpg",    projectName: "$out", url: "https://quatricise.com", tooltip: "Portfolio pro umělce a ilustrátora."},
       ]
     },
+
+
+
     "3D vizualizace": {
       key: "3d_vizualizace",
       blurb: "",
@@ -103,14 +119,17 @@ class Services {
         {src: "images/carousel/3d_5.jpg", projectName: "vest"},
       ]
     },
+
+
+
     "Ilustrace": {
       key: "ilustrace",
       blurb: "",
       description: `
       • vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
-      • digitální ilustrace v různých stylech (lineart, airbrush, vektor...)
-      • akvarel, tužka, perokresba či pastelová ilustrace
+      • digitální ilustrace - lineart, airbrush, comicbook-style, vektorová ilustrace, 3D art
+      • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace
       `,
       examples: [
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
@@ -229,10 +248,24 @@ class ServiceCard {
 class ServiceCardSmall {
   constructor(/** @type string */ serviceName) {
     this.data = Services.list[serviceName]
-    this.title = serviceName
-    this.description = this.data.description ?? "MISSING!"
 
+    const card =          Create("div",  {c: "service-card--small"})
+    const glow =          Create("div",  {c: "service-card--small--glow"})
+    const background =    Create("img",  {c: "service-card--small--background", a: "src=../images/background_var_0.png"})
+    const icon =          Create("img",  {c: "service-card--small--icon", a: `src=../images/services_icons_home/${this.data.key}.png`})
+    const heading =       Create("span", {c: "service-card--small--heading", h: serviceName})
+    const description =   Create("span", {c: "service-card--small--description", h: this.data.blurb})
+    const borderBottom =  Create("div",  {c: "service-card--small--border--bottom"})
+    const borderTop =     Create("div",  {c: "service-card--small--border--top"})
+
+    card.append(background, icon, heading, description, borderBottom, borderTop)
+
+    /* functionality */
+    card.onclick = () => ServiceCard.navigateToCard(serviceName)
+    
     this.elements = {card, glow}
+    
+    Q(".intro-text--services").append(card)
   }
   updateGlowOnMouse(e) {
     let x = e.clientX

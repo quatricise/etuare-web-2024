@@ -24,7 +24,6 @@ class Carousel {
 
         /* add functionality to the image */
         if(img.dataset.title) {
-          console.log(img.dataset.title)
           img.onmouseenter = () => {
             currentSlideName.classList.remove("hidden")
             currentSlideNameText.innerText = img.dataset.title
@@ -63,10 +62,12 @@ class Carousel {
             }
           }
     
-          img.onclick = () => Project.open(img.dataset.project)
+          if(src.projectName != "$out") {
+            img.onclick = () => Project.open(img.dataset.project)
+          }
         }
         if(index === 0) {
-          this.updateControlsColor()
+          this._updateControlsColor()
         }
       }
 
@@ -74,6 +75,7 @@ class Carousel {
         img.onclick = () => window.open(src.url, "_blank")
         img.classList.add("tooltip", "interactable")
         img.dataset.tooltip = "☍ Prohlédnout v novém okně"
+        img.dataset.title = src.tooltip ?? ""
       } else
 
       if(src.projectName) {
@@ -167,84 +169,86 @@ class Carousel {
     arrowRight.onclick = () => this.slide(1)
 
 
-    /** @type Map<string, HTMLElement> */
-    this.elements = new Map()
-    this.elements.set("container",  container)
-    this.elements.set("images",     images)
-    this.elements.set("arrows",     arrows)
-    this.elements.set("arrowBg",    arrowBg)
-    this.elements.set("arrowLeft",  arrowLeft)
-    this.elements.set("arrowRight", arrowRight)
-    this.elements.set("bubbles",    bubbles)
+    this.elements = {
+      container,
+      images,
+      arrows,
+      arrowBg,
+      arrowLeft,
+      arrowRight,
+      bubbles,
+    }
 
     Carousel.list.push(this)
   }
-  queueSlide(dir) {
+  _queueSlide(dir) {
     this.queuedSlides.push(dir)
   }
-  processQueue() {
+  _processQueue() {
     if(this.queuedSlides.length === 0) return
 
     this.slide(this.queuedSlides.shift())
   }
-  setAsBusy() {
+  _setAsBusy() {
     this.busy = true
-    let isScrolling = setTimeout(() => {
-      this.busy = false
-      this.processQueue()
-    }, 80)
-
-    this.elements.get("images").onscroll = () => {
+    let isScrolling
+    
+    const unsetBusy = () => {
       window.clearTimeout(isScrolling);
-
       isScrolling = setTimeout(() => {
           this.busy = false
-          this.processQueue()
-      }, 80)
+          this._processQueue()
+      }, 90)
     }
+
+    unsetBusy()
+
+    this.elements.images.onscroll = unsetBusy
   }
   slide(direction /* -1 OR 1 */) {
     if(this.busy) {
-      this.queueSlide(direction)
+      this._queueSlide(direction)
       return
     }
-    if(direction === 1)  this.next()
-    if(direction === -1) this.prev()
+    if(direction === 1)  this._next()
+      else
+    if(direction === -1) this._prev()
+      else 
+    throw "Wrong direction."
 
-    this.setAsBusy()
+    this._setAsBusy()
   }
-  resetQueue() {
+  _resetQueue() {
     this.queuedSlides = []
-    this.setAsBusy()
   }
-  next() {
+  _next() {
     if(this.current === this.images.length - 1) {
-      this.resetQueue() 
+      this._resetQueue() 
       return
     }
 
-    this.elements.get("images").scrollBy({left: //the images overflow a lil sometimes, i know how to fix it but im disinterested
+    this.elements.images.scrollBy({left: //the images overflow a lil sometimes, i know how to fix it but im disinterested
       Math.round(this.images[0].getBoundingClientRect().width)
     , behavior: "smooth"})
     this.current++
 
-    this.updateBubbles()
+    this._updateBubbles()
   }
-  prev() {
+  _prev() {
     if(this.current === 0) {
-      this.resetQueue() 
+      this._resetQueue() 
       return
     }
 
-    this.elements.get("images").scrollBy({left: //the images overflow a lil sometimes, i know how to fix it but im disinterested
+    this.elements.images.scrollBy({left: //the images overflow a little sometimes, i know how to fix it but im disinterested to do so
       Math.round(-this.images[0].getBoundingClientRect().width)
     , behavior: "smooth"})
     this.current--
 
-    this.updateBubbles()
+    this._updateBubbles()
   }
-  updateBubbles() {
-    Array.from(this.elements.get("bubbles").children).forEach((bubble, index) => {
+  _updateBubbles() {
+    Array.from(this.elements.bubbles.children).forEach((bubble, index) => {
       if(index === this.current) {
         bubble.classList.add("active")
       }
@@ -252,41 +256,69 @@ class Carousel {
         bubble.classList.remove("active")
       }
     })
-    this.updateControlsColor()
+    this._updateControlsColor()
   }
-  updateControlsColor() {
+  _updateControlsColor() {
     if(this.images[this.current].dataset.hasBrightBG === "true") {
-      this.elements.get("bubbles").classList.add("dark")
-      this.elements.get("arrowLeft").classList.add("dark")
-      this.elements.get("arrowRight").classList.add("dark")
-      this.elements.get("arrowBg").classList.add("dark")
+      this.elements.bubbles.classList.add("dark")
+      this.elements.arrowLeft.classList.add("dark")
+      this.elements.arrowRight.classList.add("dark")
+      this.elements.arrowBg.classList.add("dark")
     }
     else {
-      this.elements.get("bubbles").classList.remove("dark")
-      this.elements.get("arrowLeft").classList.remove("dark")
-      this.elements.get("arrowRight").classList.remove("dark")
-      this.elements.get("arrowBg").classList.remove("dark")
+      this.elements.bubbles.classList.remove("dark")
+      this.elements.arrowLeft.classList.remove("dark")
+      this.elements.arrowRight.classList.remove("dark")
+      this.elements.arrowBg.classList.remove("dark")
     }
   }
   updateGlowOnMouse(e) {
     let x = e.clientX
-    let containerLeft = this.elements.get("container").getBoundingClientRect().left
-    let width = this.elements.get("arrowBg").getBoundingClientRect().width
+    let containerLeft = this.elements.container.getBoundingClientRect().left
+    let width = this.elements.arrowBg.getBoundingClientRect().width
 
-    this.elements.get("arrowBg").style.left = x - (width/2) - containerLeft + "px"
+    this.elements.arrowBg.style.left = x - (width/2) - containerLeft + "px"
   }
   updateGlowOnFrame() {
     
   }
 
-  dragBegin() {
+  touchStart(e) {
+    
+  }
+  touchMove() {
 
   }
-  dragConfirm() {
+  touchEnd(direction) {
+    switch(direction) {
+      case "left": {
+        this.slide(1)
+        break
+      }
+      case "right": {
+        this.slide(-1)
+        break
+      }
+      case "up": {
+
+        break
+      }
+      case "down": {
+
+        break
+      }
+    }
+  }
+  touchCancel() {
 
   }
-  dragCancel() {
+  /** @returns Carousel || null */
+  static getByImage(img) {
+    for(let carousel of this.list) {
+      if(carousel.images.find(i => i === img)) return carousel
+    }
 
+    return null
   }
 
   /** @type Array<Carousel> */

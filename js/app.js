@@ -89,6 +89,7 @@ window.onload = () => {
     "js/vector2.js",
     "js/ticker.js",
     "js/utility.js",
+    "js/touch_support.js",
     "js/keys.js",
     "js/mouse.js",
     "js/tooltip.js",
@@ -132,6 +133,7 @@ window.onload = () => {
     }
 
     Ticker.start()
+    Touch.init()
 
     if(debug) {
       Project.testDataValidity()
@@ -359,6 +361,15 @@ class Page {
   static setup(name) {
 
     if(name === "home") {
+
+      new ServiceCardSmall("Grafický design")
+      new ServiceCardSmall("Produkce")
+      new ServiceCardSmall("Digitální design")
+      
+      if(state.mobile) {
+        new ServiceCardSmall("Ilustrace")
+      }
+
       new ProjectCard("adria_gold")
       new ProjectCard("kovacs")
       new ProjectCard("napacider")
