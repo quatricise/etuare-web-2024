@@ -17,7 +17,9 @@ class Project {
     const tagLexicon = {
       t: "type",
       h: "text",
+      d: "direction",
       f: "filename OR filename[]",
+      o: "options",
       l: "label",
     }
 
@@ -342,7 +344,7 @@ class Project {
         },
         {
           t: "paragraph",
-          h: "Materiály jsme navrhovali a zároveň zařizovali jejich produkci. Dělali jsme toho více, ale protože se to nefotilo je těžké ty věci teď najít a musel bych proto všechno vyrenderovat. \n — Štěpán",
+          h: "Materiály jsme navrhovali a zároveň zařizovali jejich produkci. Dělali jsme toho více, ale protože se to často nefotilo, je těžké ty věci teď najít a musel bych proto všechno vymodelovat a to smrdí prací. \n — Štěpán",
         },
         {
           t: "image",
@@ -435,7 +437,7 @@ class Project {
       titleShort: "Vest - Tyčinky",
       title: "Vest - Slané tyčinky a krekry",
       descriptionShort: "Design obalů pro sérii slaných tyčinek a krekrů.",
-      description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání přišel domů a měl potečenou sváteční košili a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Příběh Vestek',
+      description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání a mlaskání přišel domů a měl sváteční košili potečenou od slin a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Wild Wild Vest: Pepa Chroupal a kluci od železnice.', /* @todo */
       content: [
         {
           t: "image",
@@ -474,7 +476,7 @@ class Project {
         },
         {
           t: "video",
-          l: "Reklamní 'reels' video pro upoutání pozornosti.",
+          l: "Reklamní 'reels' video pro upoutání pozornosti, použití je možné na FB i Instagramu.",
           f: "video.mp4"
         },
         {
@@ -501,7 +503,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Brela - Čistící prostředek",
-      description: "Jednoduchý design pro jednoduchý produkt. Maminka vždycky říkávala že od Důbravy jsou přípravky nejlevnější ale také nejlepší!",
+      description: "Jednoduchý design pro jednoduchý produkt. Maminka vždycky říkávala že od Důbravy jsou přípravky nejlevnější ale také nejlepší!", /* @todo */
       content: [
         {
           t: "image",
@@ -568,7 +570,7 @@ class Project {
 
 
     "kovacs": {
-      featured: false,
+      featured: true,
       titleShort: "Kovacs – Vinařství",
       title: "Kovacs – Vinařství",
       description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a vše co zde vidíte.", // @todo
@@ -604,7 +606,7 @@ class Project {
         },
         {
           t: "image_2",
-          f: ["rollups_mockup.jpg", "fake.jpg"],
+          f: ["rollups_mockup.jpg", "fake.jpg" /* @todo something here */],
         },
         {
           t: "image_2",
@@ -658,10 +660,10 @@ class Project {
 
 
     "jarmila": {
-      featured: false,
+      featured: true,
       titleShort: "Jarmila",
       title: "Jarmila - Víno",
-      description: "Jarmila.", //@todo
+      description: "Jarmila je žena Miroslava Kovácse a teď nevím jestli to víno dělá ona nebo její manžel ale každopádně Zbyněk to ví.", //@todo
       content: [
         {
           t: "image_2",
@@ -762,12 +764,12 @@ class Project {
 
 
 class ProjectCard {
-  constructor(name) {
+  constructor(/** @type string */ name) {
 
     /* Set properties */
 
     this.name = name
-    this.project = Project.data[name]
+    this.data = Project.data[name]
 
 
     
@@ -775,9 +777,9 @@ class ProjectCard {
 
     const card =        Create("div",    {c: "project-card"})
     const image =       Create("img",    {a: `src=projects/${name}/project_card.png \f draggable=false`})
-    const title =       Create("h2",     {t: this.project.titleShort || this.project.title})
+    const title =       Create("h2",     {t: this.data.titleShort || this.data.title})
     const text =        Create("div",    {c: "project-card--text"})
-    const desc =        Create("div",    {t: this.project.descriptionShort || this.project.description, c: "project-card--description"})
+    const desc =        Create("div",    {t: this.data.descriptionShort || this.data.description, c: "project-card--description"})
 
     const button =      Create("button", {c: "button \f no-glow \f dark \f dark-0 \f project-card--button", t: "Prohlédnout"})
     const buttonArrow = Create("div",    {c: "button-arrow"})
@@ -791,7 +793,7 @@ class ProjectCard {
     button.append(buttonArrow)
 
 
-    if(this.project.brightOnHover !== false) {
+    if(this.data.brightOnHover !== false) {
       card.classList.add("brighten-on-hover")
     }
 
@@ -830,7 +832,9 @@ class ProjectCard {
     ProjectCard.placeCard(card)
     Project.homeCardsLoaded.add(name)
   }
+  
   static nextColumn = 1
+
   static placeCard(card) {
     Q(`.works--column-${ProjectCard.nextColumn}`).append(card)
     
