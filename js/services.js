@@ -41,7 +41,7 @@ class Services {
 
 
 
-    "Logo a firemní identita": {
+    "Logo a identita": {
       key: "logo_design",
       blurb: "Design, redesign a varianty. Vše co se týče práce s logem a firemní identitou.",
       description: `
@@ -103,7 +103,7 @@ class Services {
 
     "3D vizualizace": {
       key: "3d_vizualizace",
-      blurb: "",
+      blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt, na jakékoli použití.",
       description: `
       Vytvoříme vizualizace:
       • do katalogů, 
@@ -124,7 +124,7 @@ class Services {
 
     "Ilustrace": {
       key: "ilustrace",
-      blurb: "",
+      blurb: "Ozdobíme váš projekt originálními ilustracemi",
       description: `
       • vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
@@ -282,6 +282,7 @@ class ServiceCardSmall {
     this.data = Services.list[serviceName]
 
     const card =          Create("div",  {c: "service-card--small"})
+    const glowContainer = Create("div",  {c: "service-card--small--glow-container"})
     const glow =          Create("div",  {c: "service-card--small--glow"})
     const background =    Create("img",  {c: "service-card--small--background", a: "src=../images/background_var_0.png"})
     const icon =          Create("img",  {c: "service-card--small--icon", a: `src=../images/services_icons_home/${this.data.key}.png`})
@@ -290,20 +291,32 @@ class ServiceCardSmall {
     const borderBottom =  Create("div",  {c: "service-card--small--border--bottom"})
     const borderTop =     Create("div",  {c: "service-card--small--border--top"})
 
-    card.append(background, icon, heading, description, borderBottom, borderTop)
+    card.append(background, icon, heading, description, borderBottom, borderTop, glowContainer)
+    glowContainer.append(glow)
 
     /* functionality */
     card.onclick = () => ServiceCard.navigateToCard(serviceName)
     
-    this.elements = {card, glow}
+    this.elements = {card, glow, background, icon, heading, description, borderBottom, borderTop}
     
     Q(".intro-text--services").append(card)
+    ServiceCardSmall.list.push(this)
   }
-  updateGlowOnMouse(e) {
-    let x = e.clientX
-    let cardLeft = this.elements.card.getBoundingClientRect().left
-    let width = this.elements.glow.getBoundingClientRect().width
+  updateGlowOnMouse(/** @type MouseEvent */ e) {
+    if(this.elements.card.contains(e.target) === false) {
+      this.elements.glow.style.opacity = "0"
+      return
+    }
+    else {
+      this.elements.glow.style.opacity = "0.10"
+    }
 
-    this.elements.glow.style.left = x - (width/2) - cardLeft + "px"
+    let card = this.elements.card.getBoundingClientRect()
+    let glowRect = this.elements.glow.getBoundingClientRect()
+    let [width, height] = [glowRect.width, glowRect.height]
+
+    this.elements.glow.style.left = e.clientX - (width/2) - card.left + "px"
   }
+  
+  static list = []
 }

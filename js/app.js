@@ -283,6 +283,7 @@ function addEventListeners() {
     Mouse.update(e)
     Tooltip.updateOnMouse(e)
     Carousel.list.forEach(car => car.updateGlowOnMouse(e))
+    ServiceCardSmall.list.forEach(card => card.updateGlowOnMouse(e))
 
   })
 
@@ -362,18 +363,21 @@ class Page {
 
     if(name === "home") {
 
-      new ServiceCardSmall("Grafický design")
-      new ServiceCardSmall("Produkce")
-      new ServiceCardSmall("Digitální design")
-      
-      if(state.mobile) {
-        new ServiceCardSmall("Ilustrace")
+      for(let key in Services.list) {
+        new ServiceCardSmall(key)
       }
+      // new ServiceCardSmall("Grafický design")
+      // new ServiceCardSmall("Produkce")
+      // new ServiceCardSmall("Digitální design")
+      
+      // if(state.mobile) {
+      //   new ServiceCardSmall("Ilustrace")
+      // }
 
       new ProjectCard("adria_gold")
       new ProjectCard("kovacs")
-      new ProjectCard("napacider")
-      new ProjectCard("kralovske_marmelady")
+      new ProjectCard("agro_jesenice")
+      new ProjectCard("la_food")
     } 
 
 
@@ -435,7 +439,7 @@ class Page {
 
 
 async function showMoreProjects() {
-  const max = 4
+  const max = 6
   let counter = 0
 
   for(let key in Project.data) {

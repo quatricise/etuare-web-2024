@@ -279,11 +279,10 @@ class Project {
 
 
     "adria_gold": {
-      featured: true,
-      titleShort: "Adria Gold",
-      title: "Adria Gold - Firemní identita",
-      descriptionShort: "Pro firmu Adria Gold jsme tvořili kompletní vizuální balíček - identita, logo, tiskoviny, POP materiály atd...",
-      description: "Pro firmu Adria Gold jsme tvořili kompletní vizuální balíček - vizuální identitu a logo, obalový design, firemní tiskoviny (katalogy, vizitky, letáky...), POS a POP materiály, polepy aut atd.",
+      featured: true, brightOnHover: false,
+      title: "Identita – Adria Gold",
+      descriptionShort: "Vizuální identita, logo, tiskoviny...",
+      description: "Pro firmu Adria Gold jsme tvořili kompletní vizuální balíček - vizuální identitu, claim, logo, obalový design, firemní tiskoviny (katalogy, vizitky, letáky...), POS a POP materiály, polepy aut atd.",
       content: [
         {
           t: "heading",
@@ -292,7 +291,7 @@ class Project {
         {
           t: "image_2",
           d: "column",
-          l: "Nové logo + rozvinutí identity na vizuálním stylu",
+          l: "Logo + claim a rozvinutí identity na vizuálním stylu",
           f: ["logo_intro.png", "logo_intro_2.jpg"],
         },
         {
@@ -306,16 +305,19 @@ class Project {
         },
         {
           t: "image_2",
+          o: {gap: "2px"},
           l: "Manuál zmrzlináře - jak správně pracovat se zmrzlinou.",
           f: ["manual_0.jpg", "manual_1.jpg"]
         },
         {
           t: "image_2",
+          o: {gap: "2px"},
           l: "Katalog točené zmrzliny pro velkoobchody a restaurace.",
           f: ["tocena_0.jpg", "tocena_1.jpg"]
         },
         {
           t: "image_2",
+          o: {gap: "2px"},
           l: "Katalog nabídek pro velkoobchody a restaurace.",
           f: ["katalog_0.jpg", "katalog_1.jpg"]
         },
@@ -333,11 +335,11 @@ class Project {
           l: "Obaly na prémiovou řadu zmrzlin.",
           f: "obaly_0.jpg"
         },
-        {
+        /* {
           t: "image",
           l: "Obaly na topping.",
           f: "topping.jpg"
-        },
+        }, */
         {
           t: "heading",
           h: "POP materiály",
@@ -353,11 +355,6 @@ class Project {
         },
         {
           t: "image",
-          l: "Mincovník.",
-          f: "mincovnik.jpg"
-        },
-        {
-          t: "image",
           f: "zapichovatka.jpg"
         },
         {
@@ -369,24 +366,38 @@ class Project {
 
 
 
-    "karima": {
-      titleShort: "Karima – Kosmetika",
-      title: "Karima - Přírodní Kosmetika",
-      description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
+    "agro_jesenice": {
+      featured: false,
+      titleShort: "",
+      title: "Agro Jesenice",
+      descriptionShort: "Obalový design",
+      description: "Obaly pro mraženou řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
       content: [
         {
           t: "image",
-          l: "",
-          f: "renders.jpg"
-        }
+          f: "zaklad.jpg"
+        },
+        {
+          t: "image",
+          f: "smesi_vseci_rovni.jpg"
+        },
+        {
+          t: "image",
+          f: "send_vegana.jpg"
+        },
+        {
+          t: "image",
+          f: "smooth_ass.jpg"
+        },
       ],
     },
 
 
 
-    "martenz_boruvkovice": {
-      titleShort: "Martenz - Borůvkovice",
-      title: "Martenz - Borůvkovice",
+    "martenz": {
+      titleShort: "Martenz",
+      title: "Martenz",
+      descriptionShort: "Obalový design",
       description: "Design exclusivní borůvkovice od značky Martenz. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky/fanoušky značky.",
       content: [
         {
@@ -404,10 +415,94 @@ class Project {
 
 
 
+    "kovacs": {
+      featured: true,
+      titleShort: "",
+      title: "Vinařství Kovacs",
+      descriptionShort: "Logo redesign, etikety, tiskoviny ad.", // @todo
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a vše co zde vidíte.", // @todo
+      content: [
+        {
+          t: "image",
+          l: "Redesign loga + návrh firemního claimu: Umění ve víně",
+          f: "kovacs_logo_intro.jpg"
+        },
+        {
+          t: "heading",
+          h: "Etikety na víno"
+        },
+        {
+          t: "image_2",
+          f: ["wine_7.jpg", "wine_1.jpg"],
+        },
+        {
+          t: "image_2",
+          l: "Edice vín Family Reserve s obrazy rodiny Kovács, dedikovaná rodině majitele.", /* @todo */
+          f: ["cuvee_miroslav.jpg", "cuvee_amalie.jpg"],
+        },
+        {
+          t: "heading",
+          h: "Vínovice"
+        },
+        {
+          t: "image_2",
+          f: ["vinovice_1.jpg", "vinovice_2.jpg"],
+        },
+        {
+          t: "heading",
+          h: "Kovacs & Hess"
+        },
+        {
+          t: "image",
+          f: "bottle_render_shit.jpg"
+        },
+        {
+          t: "image",
+          f: ["kovacs_and_hess_etiketa_predni_2.jpg"]
+        },
+        {
+          t: "heading",
+          h: "Ilustrace"
+        },
+        {
+          t: "paragraph",
+          h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)." //@todo
+        },
+        {
+          t: "image_2",
+          l: "Autorka - Ivana Kotásková",
+          f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
+        },
+
+        {
+          t: "heading",
+          h: "Další materiály"
+        },
+        {
+          t: "image_2",
+          f: ["rollups_mockup.jpg", "sidlo_1.jpg"],
+        },
+        {
+          t: "image_2",
+          d: "column",
+          l: "Profil - leták o 4 stránkách, který shrnuje filozofii firmy.",
+          f: ["profil_1.jpg", "profil_2.jpg"],
+        },
+        {
+          t: "image_2_1",
+          l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
+          f: ["vinny_listek.jpg", "reklamni_predmety.jpg", "ubrus.jpg"],
+        },
+      ],
+    },
+
+
+
     "kralovske_marmelady": {
       featured: true,
       titleShort: "Královské Marmelády",
       title: "Královské Marmelády",
+      descriptionShort: "Logo, obalový design, vizualizace",
       description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
       content: [
         {
@@ -434,10 +529,10 @@ class Project {
 
     "vest": {
       featured: false,
-      titleShort: "Vest - Tyčinky",
+      titleShort: "Vest",
       title: "Vest - Slané tyčinky a krekry",
-      descriptionShort: "Design obalů pro sérii slaných tyčinek a krekrů.",
-      description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání a mlaskání přišel domů a měl sváteční košili potečenou od slin a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Wild Wild Vest: Pepa Chroupal a kluci od železnice.', /* @todo */
+      descriptionShort: "Obalový design",
+      description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání a mlaskání přišel domů a měl sváteční košili potečenou od slin a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to, že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Wild Wild Vest: Pepa Chroupal a kluci od železnice.',
       content: [
         {
           t: "image",
@@ -502,45 +597,35 @@ class Project {
     "brela": {
       featured: false,
       titleShort: "",
-      title: "Brela - Čistící prostředek",
+      title: "Ilustrace pro čistící prostředek.",
+      descriptionShort: "Obalový design, ilustrace",
       description: "Jednoduchý design pro jednoduchý produkt. Maminka vždycky říkávala že od Důbravy jsou přípravky nejlevnější ale také nejlepší!", /* @todo */
       content: [
-        {
-          t: "image",
-          f: "lahvicka.jpg"
-        },
         {
           t: "image_grid_2",
           l: "Originální ilustrace vytvořené pro projekt.",
           f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg", "ilu_4.jpg"]
+        },
+        {
+          t: "image",
+          f: "lahvicka.jpg"
         },
       ],
     },
 
 
 
-    "agro_jesenice": {
-      featured: false,
-      titleShort: "",
-      title: "Agro Jesenice",
-      description: "Obaly pro mraženou řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
+    "karima": {
+      titleShort: "Karima – Kosmetika",
+      title: "Karima - Přírodní Kosmetika",
+      descriptionShort: "Obalový design, logo",
+      description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
       content: [
         {
           t: "image",
-          f: "zaklad.jpg"
-        },
-        {
-          t: "image",
-          f: "smesi_vseci_rovni.jpg"
-        },
-        {
-          t: "image",
-          f: "send_vegana.jpg"
-        },
-        {
-          t: "image",
-          f: "smooth_ass.jpg"
-        },
+          l: "",
+          f: "renders.jpg"
+        }
       ],
     },
 
@@ -550,6 +635,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Henna - Kosmetika",
+      descriptionShort: "Obalový design",
       description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
       content: [
         {
@@ -569,93 +655,14 @@ class Project {
 
 
 
-    "kovacs": {
-      featured: true,
-      titleShort: "Kovacs – Vinařství",
-      title: "Kovacs – Vinařství",
-      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a vše co zde vidíte.", // @todo
-      content: [
-        {
-          t: "image",
-          l: "Redesign loga + návrh firemního claimu: Umění ve víně",
-          f: "kovacs_logo.png"
-        },
-        {
-          t: "heading",
-          h: "Etikety na víno"
-        },
-        {
-          t: "image_2",
-          f: ["wine_7.jpg", "wine_1.jpg"],
-        },
-        {
-          t: "image_2",
-          f: ["kovacs_logo_vinarsky_dvur.jpg", "sidlo_1.jpg"],
-        },
-        {
-          t: "heading",
-          h: "Vínovice"
-        },
-        {
-          t: "image_2",
-          f: ["vinovice_1.jpg", "vinovice_2.jpg"],
-        },
-        {
-          t: "heading",
-          h: "Propagační materiály"
-        },
-        {
-          t: "image_2",
-          f: ["rollups_mockup.jpg", "fake.jpg" /* @todo something here */],
-        },
-        {
-          t: "image_2",
-          l: "Edice vín Family Reserve s obrazy rodiny Kovács, dedikovaná rodině majitele.", /* @todo */
-          f: ["cuvee_miroslav.jpg", "cuvee_amalie.jpg"],
-        },
-        {
-          t: "image_2",
-          d: "column",
-          l: "Profil - leták o 4 stránkách, který shrnuje filozofii firmy.",
-          f: ["profil_1.jpg", "profil_2.jpg"],
-        },
-        {
-          t: "image_2_1",
-          l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
-          f: ["vinny_listek.jpg", "reklamni_predmety.jpg", "ubrus.jpg"],
-        },
-      ],
-    },
+    // "kovacs_and_hess": {
+    //   featured: false,
+    //   title: "Kovacs & Hess",
+    //   description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jeho drahá polovička? A co na to Jan Tleskač?", //@todo
+    //   content: [
 
-
-    "kovacs_and_hess": {
-      featured: false,
-      title: "Kovacs & Hess",
-      description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jeho drahá polovička? A co na to Jan Tleskač?", //@todo
-      content: [
-        {
-          t: "image",
-          f: "bottle_render_shit.jpg"
-        },
-        {
-          t: "image_3",
-          f: ["kovacs_and_hess_etiketa_predni.jpg", "kovacs_and_hess_etiketa_predni_2.jpg", "kovacs_and_hess_pecet_prezentace.jpg"]
-        },
-        {
-          t: "heading",
-          h: "Ilustrace"
-        },
-        {
-          t: "paragraph",
-          h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)." //@todo
-        },
-        {
-          t: "image_2",
-          l: "Autorka - Ivana Kotásková",
-          f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
-        },
-      ]
-    },
+    //   ]
+    // },
 
 
 
@@ -663,15 +670,12 @@ class Project {
       featured: true,
       titleShort: "Jarmila",
       title: "Jarmila - Víno",
+      descriptionShort: "Obalový design, logo, polepy budov.",
       description: "Jarmila je žena Miroslava Kovácse a teď nevím jestli to víno dělá ona nebo její manžel ale každopádně Zbyněk to ví.", //@todo
       content: [
         {
           t: "image_2",
           f: ["photo_1.jpg", "ilustrace.jpg"]
-        },
-        {
-          t: "image_2",
-          f: ["photo_2.jpg", "photo_3.jpg"]
         },
         {
           t: "image_2",
@@ -685,9 +689,16 @@ class Project {
     "la_food": {
       featured: false,
       titleShort: "La Food",
-      title: "La Food - Luštěniny, rýže a horkýže slíže",
-      description: "La Food je česká firma zabývající se výrobou luštěnin, rýže a podobných věcí. Dělali jsme primárně design obalů a redesign loga pro řadu Menu Gold.",
+      title: "La Food - Luštěniny, rýže",
+      descriptionShort: "Obalový design",
+      description: "La Food je česká firma zabývající se výrobou luštěnin, rýže atd. Dělali jsme primárně design obalů a redesign loga pro řadu Menu Gold.",
       content: [
+        {
+          t: "image_2",
+          d: "column",
+          l: "Redesign starého loga.",
+          f: ["logo.jpg", "logo_redesign.jpg"],
+        },
         {
           t: "image",
           f: "lusteniny.jpg",
@@ -695,11 +706,6 @@ class Project {
         {
           t: "image",
           f: "ryze.jpg",
-        },
-        {
-          t: "image",
-          l: "Redesign starého loga.",
-          f: "logo_redesign.jpg",
         },
       ]
     },
@@ -776,7 +782,7 @@ class ProjectCard {
     /* Create HTML */
 
     const card =        Create("div",    {c: "project-card"})
-    const image =       Create("img",    {a: `src=projects/${name}/project_card.png \f draggable=false`})
+    const image =       Create("img",    {c: "project-card--image", a: `src=projects/${name}/project_card.png \f draggable=false`})
     const title =       Create("h2",     {t: this.data.titleShort || this.data.title})
     const text =        Create("div",    {c: "project-card--text"})
     const desc =        Create("div",    {t: this.data.descriptionShort || this.data.description, c: "project-card--description"})
@@ -804,19 +810,19 @@ class ProjectCard {
       Project.open(name)
     }
 
-    if(!state.mobile) {
-      document.addEventListener("scroll", () => {
+    // if(!state.mobile) {
+    //   document.addEventListener("scroll", () => {
 
-        const rect =  card.getBoundingClientRect()
+    //     const rect =  card.getBoundingClientRect()
         
-        /* this shit is sorta broken but idk why, i'm adding an offset manually that I observed to be the correct offset */
-        let top =     window.innerHeight + rect.y - rect.height + 30 /* <-- the offset */
-        let bottom =  window.innerHeight - rect.y
+    //     /* this shit is sorta broken but idk why, i'm adding an offset manually that I observed to be the correct offset */
+    //     let top =     window.innerHeight + rect.y - rect.height + 30 /* <-- the offset */
+    //     let bottom =  window.innerHeight - rect.y
   
-        const opacityRaw = Math.min(top, bottom) / 120
-        card.style.opacity = Math.max(opacityRaw, 0.4)
-      })
-    }
+    //     const opacityRaw = Math.min(top, bottom) / 120
+    //     card.style.opacity = Math.max(opacityRaw, 0.4)
+    //   })
+    // }
 
     new Animate(card)
     .animate([

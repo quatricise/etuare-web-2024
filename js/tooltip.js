@@ -78,8 +78,8 @@ class Tooltip {
     document.body.append(this.elements.container)
 
     this.elements.container.animate([
-      {filter: "opacity(0)"},
-      {filter: "opacity(1)"},
+      {backgroundColor: "var(--dark-1)",    filter: "opacity(0)", transform: "scale(0.95)"},
+      {backgroundColor: "var(--c-light-0)", filter: "opacity(1)", transform: "scale(1.0)"},
     ],{
       duration: 500,
       easing: "ease-out"
