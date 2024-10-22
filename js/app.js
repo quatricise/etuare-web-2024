@@ -178,7 +178,7 @@ window.onload = () => {
 
     Qa(".icon--mouse-animated").forEach(element => {
       element.onclick = () => { 
-        window.scrollBy({top: element.getBoundingClientRect().y + 100, behavior: 'smooth'})
+        window.scrollBy({top: element.getBoundingClientRect().y + 50, behavior: 'smooth'})
       }
     })
 
@@ -310,7 +310,6 @@ class Page {
   static current = "home"
 
   static set(name, scrollMode = "none") {
-
     if(state.mobile) {
       toggleNavlinks(false)
     }
@@ -348,6 +347,7 @@ class Page {
     Page.history.push(Page.current)
 
     Page.current = name
+
   }
 
   static next(scrollMode) {
@@ -385,15 +385,14 @@ class Page {
     else
     if(name === "services") {
       for(let key in Services.list) {
-        
         const card = new ServiceCard(key)
-        const button = Create("button", {c: "dark \f dark-0 \f services--intro-button \f shadow-small", t: key})
+        /* const button = Create("button", {c: "dark \f dark-0 \f services--intro-button \f shadow-small", t: key})
         const arrow =  Create("div",    {c: "button-arrow \f rotate-90"})
 
         button.onclick = () => card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
 
         button.append(arrow)
-        Q(".services--intro-buttons").append(button)
+        Q(".services--intro-buttons").append(button) */
       }
     } 
     
@@ -456,7 +455,7 @@ async function showMoreProjects() {
   }
 
   if(counter < max) { //ran out of projects
-    if(debug) {
+    if(false) {
       const button = Q(".button--see-more")
       button.innerText = "A to je vše, prozatím..."
       button.classList.add("dark", "dark-0")

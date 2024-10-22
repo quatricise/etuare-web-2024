@@ -280,7 +280,7 @@ class Project {
 
     "adria_gold": {
       featured: true, brightOnHover: false,
-      title: "Identita – Adria Gold",
+      title: "Adria Gold",
       descriptionShort: "Vizuální identita, logo, tiskoviny...",
       description: "Pro firmu Adria Gold jsme tvořili kompletní vizuální balíček - vizuální identitu, claim, logo, obalový design, firemní tiskoviny (katalogy, vizitky, letáky...), POS a POP materiály, polepy aut atd.",
       content: [
@@ -350,7 +350,7 @@ class Project {
         },
         {
           t: "image",
-          l: "Velké reklamní kornouty.",
+          l: "Velké reklamní kornouty, výška cca. 160cm.",
           f: "kornouty.jpg"
         },
         {
@@ -360,6 +360,16 @@ class Project {
         {
           t: "image_2",
           f: ["stojanek_1.jpg", "stojanek_2.jpg"]
+        },
+        {
+          t: "image_2",
+          d: "column",
+          f: ["kelimky.jpg", "drzak_fotka.jpg"]
+        },
+        {
+          t: "image_2",
+          d: "column",
+          f: ["stanek_1.jpg", "stanek_2.jpg"]
         },
       ],
     },
@@ -597,7 +607,7 @@ class Project {
     "brela": {
       featured: false,
       titleShort: "",
-      title: "Ilustrace pro čistící prostředek.",
+      title: "Brela",
       descriptionShort: "Obalový design, ilustrace",
       description: "Jednoduchý design pro jednoduchý produkt. Maminka vždycky říkávala že od Důbravy jsou přípravky nejlevnější ale také nejlepší!", /* @todo */
       content: [
@@ -634,7 +644,7 @@ class Project {
     "henna": {
       featured: false,
       titleShort: "",
-      title: "Henna - Kosmetika",
+      title: "Henna",
       descriptionShort: "Obalový design",
       description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
       content: [
@@ -655,31 +665,32 @@ class Project {
 
 
 
-    // "kovacs_and_hess": {
-    //   featured: false,
-    //   title: "Kovacs & Hess",
-    //   description: "Nejvíc epický crossover od dob Marvelovského Endgame. Kdo je to Hess? Je mocnější než pan Tau. A co pan Pi - je to jeho drahá polovička? A co na to Jan Tleskač?", //@todo
-    //   content: [
-
-    //   ]
-    // },
-
-
-
     "jarmila": {
       featured: true,
       titleShort: "Jarmila",
-      title: "Jarmila - Víno",
+      title: "Víno Jarmila",
       descriptionShort: "Obalový design, logo, polepy budov.",
       description: "Jarmila je žena Miroslava Kovácse a teď nevím jestli to víno dělá ona nebo její manžel ale každopádně Zbyněk to ví.", //@todo
       content: [
         {
-          t: "image_2",
-          f: ["photo_1.jpg", "ilustrace.jpg"]
+          t: "image",
+          f: "jarmila_logo.png"
         },
         {
-          t: "image_2",
-          f: ["domecek.jpg", "bottle_interior_photo.jpg"]
+          t: "image",
+          f: "ilustrace.jpg"
+        },
+        {
+          t: "image",
+          f: "photo_1.jpg"
+        },
+        /* {
+          t: "image",
+          f: "bottle_interior_photo.jpg"
+        }, */
+        {
+          t: "image",
+          f: "domecek.jpg"
         },
       ]
     },
@@ -690,6 +701,7 @@ class Project {
       featured: false,
       titleShort: "La Food",
       title: "La Food - Luštěniny, rýže",
+      // descriptionShort: "Obalový design",
       descriptionShort: "Obalový design",
       description: "La Food je česká firma zabývající se výrobou luštěnin, rýže atd. Dělali jsme primárně design obalů a redesign loga pro řadu Menu Gold.",
       content: [
@@ -716,7 +728,7 @@ class Project {
       featured: true,
       titleShort: "",
       title: "Design Whisky",
-      descriptionShort: "Projekt vznikl jako návrh pro začínající českou firmu zabývající se lokální výrobou whisky.",
+      descriptionShort: "Logo, identita, obalový design, ilustrace.",
       description: "Projekt vznikl jako návrh pro začínající českou firmu zabývající se lokální výrobou whisky. Na projektu jsem dělal sám, v rámci školního zadání. Základem identity jsou vysoce detailní ilustrace dřeva a moderní serifové písmo. — Štěpán",
       content: [
         {
@@ -795,7 +807,9 @@ class ProjectCard {
     const borderTop =   Create("div",    {c: "project-card--border-top"})
 
     card.append(image, borderLeft, borderRight, borderTop, text)
-    text.append(title, desc, button)
+    text.append(title)
+    text.append(desc)
+    text.append(button)
     button.append(buttonArrow)
 
 

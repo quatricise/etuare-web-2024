@@ -410,12 +410,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 120px;
   height: 100%;
   padding: 20px;
   font-family: "rale";
   font-weight: 400;
-  font-size: 19px;
-  width: 120px;
+  font-size: 16px;
+  letter-spacing: 0.015em;
   animation: var(--animation-cursor);
   user-select: none;
 }
@@ -453,10 +454,14 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 60px;
+  /* gap: 60px; */
   width: 100vw;
   margin-top: 240px;
   padding-bottom: 240px;
+}
+
+.footer-heading {
+  margin-bottom: 40px;
 }
 
 .footer--description {
@@ -759,15 +764,24 @@ footer {
 .home--section--services {
   position: relative;
   align-items: center;
-  padding-top: 80px;
+  margin-top: 120px;
   padding-bottom: 110px;
 }
 
 .home--section--about {
-  gap: 40px;
+  /* gap: 40px; */
   position: relative;
   align-items: center;
   padding-top: 120px;
+}
+
+.home--section--about--heading {
+  margin-bottom: 80px;
+}
+
+.home--section--about--text {
+  max-width: 720px;
+  margin-bottom: 40px;
 }
 
 .home--section--about--buttons {
@@ -825,16 +839,17 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  /* gap: 20px; */
   width: 100%;
   max-width: 100%;
   color: var(--c-light-0);
-  background-image: url(images/background_var_1.png);
+  /* background-image: url(images/background_var_1.png);
   background-repeat: no-repeat;
   background-position: bottom left;
-  background-size: cover;
+  background-size: cover; */
   transition: filter 0.15s ease-out, opacity 0.3s ease-in-out;
   animation: var(--animation-cursor);
+  overflow: hidden;
 }
 
 .project-card--image {
@@ -859,6 +874,7 @@ footer {
   var(--c-dark-0) 100%);
   mix-blend-mode: screen;
   transition: opacity 0.35s ease-in-out, width 0.5s ease-in-out;
+  z-index: 1;
 }
 
 .project-card--border-top {
@@ -873,6 +889,7 @@ footer {
   var(--c-light-4) 75%, 
   var(--c-dark-4) 100%);
   transition: opacity 0.5s ease-in-out, height 0.75s ease-in-out;
+  z-index: 1;
 }
 
 .project-card--border-right {
@@ -887,13 +904,31 @@ footer {
   var(--c-light-4) 75%, 
   var(--c-dark-4) 100%);
   transition: opacity 0.75s ease-in-out, width 1s ease-in-out;
+  z-index: 1;
 }
 
 .project-card--text {
-  padding: 5px 20px 20px;
+  position: absolute;
+  bottom: 0;
+  left: -100%;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  /* align-items: center; */
+  gap: 10px;
+  width: 100%;
+  padding: 20px 20px;
+  background-image: url(images/background_var_1.png);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  opacity: 0.0;
+  filter: brightness(0.1);
+  transition: left 0.5s cubic-bezier(0.3, 0.0, 0.1, 1.0), opacity 0.75s cubic-bezier(0.3, 0.0, 0.1, 1.0), filter 0.9s ease-in-out;
+}
+
+.project-card--text h2 {
+  font-size: 30px;
+  color: var(--c-light-0);
 }
 
 .project-card--description {
@@ -914,6 +949,12 @@ footer {
 }
 
 /* Project card - effects */
+
+.project-card:hover .project-card--text {
+  left: 0;
+  opacity: 1;
+  filter: none;
+}
 
 .project-card.brighten-on-hover:hover {
   filter: brightness(1.07);
@@ -936,7 +977,7 @@ footer {
 }
 
 .project-card:hover .project-card--border-top {
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 
@@ -944,7 +985,7 @@ footer {
 /* PAGE - SERVICES */
 
 .services--section--intro {
-  padding: 200px 0;
+  padding: 180px 0 100px;
   align-items: center;
 }
 
@@ -992,7 +1033,8 @@ footer {
 }
 
 .services--section--cards {
-  gap: 360px;
+  /* gap: 360px; */
+  gap: 160px;
   align-items: center;
   padding: 0 60px;
 }
@@ -1307,12 +1349,12 @@ footer {
 /* PAGE - ABOUT */
 
 .about--section--intro {
-  padding: 180px 0 180px;
+  padding: 120px 0 70px;
   align-items: center;
 }
 
 .page-heading--about {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .about--intro-text-1 {

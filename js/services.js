@@ -135,6 +135,9 @@ class Services {
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
         {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
         {src: "images/carousel/ilu_3.jpg", projectName: "", hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_4.jpg", projectName: "kovacs", hasBrightBG: true},
+        {src: "images/carousel/ilu_5.jpg", projectName: "napacider", hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_6.jpg", projectName: "kralovske_marmelady", hasBrightBG: true},
       ]
     },
   }
