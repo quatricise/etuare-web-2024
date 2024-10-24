@@ -22,10 +22,7 @@ class Tooltip {
   static updateOnMouse(/** @type MouseEvent */ e) {
     if(this.ready === false) return
 
-    //drag behind mouse a lil bit, my dividing the difference between mouse and the tooltip, or something that looks smooth
-    //also have accel. so it's a bit flowy and has a wind-up and wind-down
-
-    if(e.target.closest(".tooltip") == null) {
+    if(e.target.closest(".tooltip") == null || e.target.dataset.blocktooltip === "true") {
       this.hide()
       return
     }

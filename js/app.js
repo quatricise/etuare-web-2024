@@ -8,7 +8,8 @@ state.navlinksOpen = !state.mobile
 
 const ls = localStorage
 
-
+/** @type Lightbox */
+let lightbox
 
 const addNBSPToString = (str) => str.replace(
   / ([a-zA-Z]) /g,
@@ -120,6 +121,8 @@ window.onload = () => {
     })
   }
 
+  
+
   /* WEBSITE INIT */
 
   Promise.all(sources.map(loadScript))
@@ -156,6 +159,7 @@ window.onload = () => {
       }
     })
 
+    lightbox = new Lightbox(document.body)
     
 
     Q(".header--logo").onclick = () => Page.set("home")
@@ -268,7 +272,12 @@ function addEventListeners() {
         Q("header .header--border-bottom").style.opacity = ""
       }
     }
-    
+  })
+
+  document.addEventListener("click", (e) => {
+    if(e.target.dataset.openlightbox === "true") {
+      lightbox.openImage(e.target.src)
+    }
   })
 
   document.addEventListener("mousedown", (e) => {
@@ -305,7 +314,7 @@ function addEventListeners() {
 
 class Page {
 
-  static history = [] //@todo
+  static history = []
 
   static current = "home"
 
@@ -351,7 +360,7 @@ class Page {
   }
 
   static next(scrollMode) {
-
+    //@todo
   }
 
   static prev(scrollMode) {
@@ -366,33 +375,24 @@ class Page {
       for(let key in Services.list) {
         new ServiceCardSmall(key)
       }
-      // new ServiceCardSmall("Grafický design")
-      // new ServiceCardSmall("Produkce")
-      // new ServiceCardSmall("Digitální design")
-      
-      // if(state.mobile) {
-      //   new ServiceCardSmall("Ilustrace")
-      // }
 
       new ProjectCard("adria_gold")
       new ProjectCard("kovacs")
       new ProjectCard("agro_jesenice")
       new ProjectCard("la_food")
-    } 
+    }
 
 
 
     else
     if(name === "services") {
-      for(let key in Services.list) {
+      const keys = Object.keys(Services.list)
+      for(let [index, key] of keys.entries()) {
         const card = new ServiceCard(key)
-        /* const button = Create("button", {c: "dark \f dark-0 \f services--intro-button \f shadow-small", t: key})
-        const arrow =  Create("div",    {c: "button-arrow \f rotate-90"})
-
-        button.onclick = () => card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
-
-        button.append(arrow)
-        Q(".services--intro-buttons").append(button) */
+        
+        if(index === 0) {
+          card.checkVisibility()
+        }
       }
     } 
     
@@ -455,27 +455,20 @@ async function showMoreProjects() {
   }
 
   if(counter < max) { //ran out of projects
-    if(false) {
-      const button = Q(".button--see-more")
-      button.innerText = "A to je vše, prozatím..."
-      button.classList.add("dark", "dark-0")
-    }
-    else {
-      Q(".home--section--see-more").classList.add("hidden")
-    }
+    Q(".home--section--see-more").classList.add("hidden")
   }
 }
 
 
 
-function toggleNavlinks(visib) {
+function toggleNavlinks(visible) {
   const duration = 700
   const easing = "cubic-bezier(0.7, 0.0, 0.3, 1.0)"
 
-  if(visib === false || state.navlinksOpen) {
+  if(visible === false || state.navlinksOpen) {
     
     new Animate(Q(".navlinks"))
-    .animate( [{transform: "translateY(0px)"}, {transform: "translateY(-250px)"}], {duration, easing} )
+    .animate( [{transform: "translateY(0px)"}, {transform: "translateY(-400px)"}], {duration, easing} )
     .classAdd("hidden")
     .then(() => state.navlinksOpen = false)
 

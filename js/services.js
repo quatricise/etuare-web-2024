@@ -238,7 +238,7 @@ class ServiceCard {
 
 
     /* try a little animation on entry */
-    const checkVisibility = (e) => {
+    this.checkVisibility = (e) => {
       const rect = container.getBoundingClientRect()
       if(rect.y < window.innerHeight && rect.bottom > 0) {
         container.style.opacity = ""
@@ -260,10 +260,10 @@ class ServiceCard {
           easing: "cubic-bezier(0.2, 0.2, 0.3, 1)",
         })
 
-        document.removeEventListener("scroll", checkVisibility)
+        document.removeEventListener("scroll", this.checkVisibility)
       }
     }
-    document.addEventListener("scroll", checkVisibility)
+    document.addEventListener("scroll", this.checkVisibility)
 
 
 

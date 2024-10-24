@@ -27,6 +27,7 @@
   --c-dark-0-07:  hsla(0, 0%, 7%, 0.7);
   --c-dark-0-08:  hsla(0, 0%, 7%, 0.8);
   --c-dark-0-09:  hsla(0, 0%, 7%, 0.9);
+  --c-dark-0-095: hsla(0, 0%, 7%, 0.95);
 
   --c-light-0: #E4E4E4;
   --c-light-1: #cfcfcf;
@@ -743,8 +744,9 @@ footer {
 }
 
 :root {
-  --works--column-gap: 60px;
-  --works--width: 1200px; 
+  --works--column-gap: 3vw;
+  --works--width: 1200px;
+  --works--column-width: calc(50% - var(--works--column-gap)/2);
 }
 
 .home--section--intro {
@@ -794,11 +796,11 @@ footer {
   display: flex;
   flex-direction: column;
   gap: var(--works--column-gap);
-  width: calc(50% - var(--works--column-gap)/2);
+  width: var(--works--column-width);
 }
 
 .works--column-2 {
-  margin-top: 240px;
+  margin-top: calc(var(--works--column-width) / 2 + var(--works--column-gap) / 2);
 }
 
 .home--section--see-more {
@@ -923,7 +925,7 @@ footer {
   background-size: cover;
   opacity: 0.0;
   filter: brightness(0.1);
-  transition: left 0.5s cubic-bezier(0.3, 0.0, 0.1, 1.0), opacity 0.75s cubic-bezier(0.3, 0.0, 0.1, 1.0), filter 0.9s ease-in-out;
+  transition: left 0.5s cubic-bezier(0.3, 0.0, 0.1, 1.0), opacity 0.75s cubic-bezier(0.3, 0.0, 0.1, 1.0), filter 0.8s ease-in-out;
 }
 
 .project-card--text h2 {
@@ -1412,7 +1414,8 @@ footer {
 }
 
 .about--section--logos {
-  margin-top: 360px;
+  /* margin-top: 360px; */
+  margin-top: 240px;
   align-items: center;
 }
 
@@ -1422,7 +1425,7 @@ footer {
   justify-content: center;
   align-items: center;
   width: min(900px, 100vw);
-  margin: 90px 0;
+  margin: 90px 0 0px;
   gap: 40px;
 }
 
@@ -1617,11 +1620,12 @@ footer {
 }
 
 .project--image--flex.row .project--image--one-of-three {
-  width: 33%;
+  width: calc(33% - var(--project--image--gap) / 3);
   object-fit: cover;
 }
 .project--image--flex.row .project--image--one-of-three:first-child {
-  width: 34%;
+  /* width: calc(34% - var(--project--image--gap) / 3); */
+  flex-grow: 1;
   object-fit: cover;
 }
 
@@ -1679,6 +1683,26 @@ footer {
 
 .project--video {
   width: 50%;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background-color: var(--c-dark-0-095);
+  z-index: 2;
+}
+
+.lightbox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 

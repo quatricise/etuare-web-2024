@@ -41,7 +41,6 @@ class Project {
       label.append(labelBorder)
 
 
-
       if(object.t === "heading") {
         const h = Create("h3", {c: "project--sub-heading", t: object.h})
         container.append(h)
@@ -156,6 +155,7 @@ class Project {
 
       /* THIS HAPPENS FOR EVERY BLOCK */
       content.append(container)
+      Qa_On(container, "img").forEach(image => image.dataset.openlightbox = "true")
     }
 
     this.elements = {
@@ -413,12 +413,45 @@ class Project {
         {
           t: "image",
           l: "",
+          f: "logo.png"
+        },
+        {
+          t: "heading",
+          h: "Borůvkovice",
+        },
+        {
+          t: "image",
+          l: "",
           f: "lahev.jpg"
         },
         {
           t: "image_3",
           l: "Alternativní ilustrace pro etiketu, z nich se nakonec použila prostřední.",
           f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg"]
+        },
+        {
+          t: "image",
+          f: "black_silver.jpg",
+        },
+        {
+          t: "image",
+          f: "black_gold.jpg",
+        },
+        {
+          t: "image",
+          f: "red_silver.jpg",
+        },
+        {
+          t: "image",
+          f: "red_gold.jpg",
+        },
+        {
+          t: "image",
+          f: "black_reserve_lahev_a_krabicka.jpg",
+        },
+        {
+          t: "image",
+          f: "malinovice_2016_lahev_a_krabicka.jpg",
         },
       ],
     },
