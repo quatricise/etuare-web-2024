@@ -499,21 +499,17 @@ class Project {
           t: "image",
           f: "bottle_render_shit.jpg"
         },
-        {
-          t: "image",
-          f: ["kovacs_and_hess_etiketa_predni_2.jpg"]
-        },
-        {
-          t: "heading",
-          h: "Ilustrace"
-        },
-        {
+        // {
+        //   t: "heading",
+        //   h: "Ilustrace"
+        // },
+        /* {
           t: "paragraph",
           h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)." //@todo
-        },
+        }, */
         {
           t: "image_2",
-          l: "Autorka - Ivana Kotásková",
+          l: "Ilustrace pro etiketu, Autorka - Ivana Kotásková",
           f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
         },
 
@@ -535,6 +531,10 @@ class Project {
           t: "image_2_1",
           l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
           f: ["vinny_listek.jpg", "reklamni_predmety.jpg", "ubrus.jpg"],
+        },
+        {
+          t: "image",
+          f: "krabice_papir.jpg"
         },
       ],
     },

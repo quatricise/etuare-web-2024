@@ -95,13 +95,16 @@ h1 {
 h2 {
   font-family: "next";
   font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   font-size: 32px;
   line-height: 120%;
   margin: 0;
 }
 h3 {
   font-family: "next";
-  font-weight: 200;
+  /* font-weight: 200; */
+  font-weight: 700;
   font-size: 24px;
   margin: 0;
 }
@@ -577,13 +580,19 @@ footer {
 .intro-text--line-1 {
   font-size: 80px;
   font-weight: 750;
-  margin-bottom: -18px;
 }
 
 .intro-text--line-2 {
   font-size: 20px;
   font-weight: 200;
-  /* margin-bottom: 100px; */
+}
+
+.intro-text--line-2 {
+  font-size: 25px;
+  letter-spacing: 0.08em;
+  font-weight: 200;
+  font-family: "rale";
+  margin-top: -15px;
 }
 
 .intro-text--line-3 {
@@ -652,6 +661,7 @@ footer {
   font-family: "next";
   font-size: 24px;
   font-weight: 100;
+  font-weight: 700;
 }
 
 .service-card--small--description {
@@ -753,7 +763,7 @@ footer {
   position: relative;
   align-items: center;
   padding-top: 80px;
-  padding-bottom: 110px;
+  padding-bottom: 120px;
 }
 
 .home--section--works {
