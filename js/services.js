@@ -41,7 +41,7 @@ class Services {
 
 
 
-    "Logo a identita": {
+    "Logo a identita": {
       key: "logo_design",
       blurb: "Design, redesign a varianty. Vše co se týče práce s logem a firemní identitou.",
       description: `

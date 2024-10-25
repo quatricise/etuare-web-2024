@@ -1,4 +1,4 @@
-/** Simple lightbox - Only for phones probably. */
+/** Simple lightbox. */
 class Lightbox {
   constructor(parent = document.body) {
     
@@ -14,6 +14,7 @@ class Lightbox {
     })
     parent.append(lightbox)
     lightbox.append(image)
+
     this.elements = {
       lightbox,
       image

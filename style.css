@@ -96,7 +96,7 @@ h2 {
   font-family: "next";
   font-weight: 600;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   font-size: 32px;
   line-height: 120%;
   margin: 0;
@@ -311,7 +311,7 @@ button:hover > .button-arrow.rotate-270 {
 
 @font-face {
   font-family: "next";
-  src: url(fonts/tt_travels_next/Variable.ttf);
+  src: url(fonts/tt_travels_next/TT_Travels_Next_Bold.woff2);
 }
 @font-face {
   font-family: "rale";
@@ -495,7 +495,7 @@ footer {
 
 .icon--address,
 .icon--contact {
-  --width: 195px;
+  --width: 180px;
   margin-top: calc(var(--width) / -3);
   width: var(--width);
   object-fit: contain;
@@ -509,11 +509,12 @@ footer {
 
 .address--text, .contact--text {
   position: relative;
-  font-size: 20px;
-  font-family: "rale";
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-size: 20px;
+  font-family: "rale";
+  font-weight: 600;
 }
 
 .contact--text:hover .icon--copy--inline {

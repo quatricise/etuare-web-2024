@@ -499,14 +499,6 @@ class Project {
           t: "image",
           f: "bottle_render_shit.jpg"
         },
-        // {
-        //   t: "heading",
-        //   h: "Ilustrace"
-        // },
-        /* {
-          t: "paragraph",
-          h: "K vínu už je zvykem dávat na etiketu kresby krajiny, tato pochází přímo z (Zbyněk doplní, protože si nepamatuju, ale asi to bude Pálava)." //@todo
-        }, */
         {
           t: "image_2",
           l: "Ilustrace pro etiketu, Autorka - Ivana Kotásková",
