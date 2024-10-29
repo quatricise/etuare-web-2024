@@ -1846,9 +1846,17 @@ footer {
 
   .works--column-1 {
     width: 100%;
-    gap: 120px;
+    gap: var(--works--column-gap);
     padding-left: var(--mobile-padding);
     padding-right: var(--mobile-padding);
+  }
+
+  .project-card--text {
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    filter: none;
   }
 
 
@@ -1967,6 +1975,7 @@ footer {
 
   .service-card--description {
     width: 100%;
+    padding-right: 0;
   }
 
   .service-card--border-top {

@@ -192,6 +192,11 @@ window.onload = () => {
         Project.open(ls.getItem("project"))
       }
       setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 800) //this is eye-balled, im lazy adding promises to project loading
+    } else
+    if(Page.current === "home") {
+      Page.setup("home")
+    } else {
+
     }
 
 
@@ -199,6 +204,8 @@ window.onload = () => {
     const pairs = searchQuery.split("+")
     pairs.forEach(pair => {
       const [key, value] = pair.split("=")
+      
+      if(!key) return 
       
       switch(key) {
         case "project": {
@@ -209,15 +216,11 @@ window.onload = () => {
           Page.set(value)
           break
         }
+        default: {
+          console.warn("Invalid key in url: " + key)
+        }
       }
     })
-
-
-    if(!debug && Page.current === "home") {
-      Page.setup("home")
-    }
-
-    
   })
   .catch((error) => {
     console.error(error)
@@ -370,46 +373,41 @@ class Page {
   /** This sets up a page for working. pageSet() then only switches between them */
   static setup(name) {
 
-    if(name === "home") {
-
-      for(let key in Services.list) {
-        new ServiceCardSmall(key)
-      }
-
-      new ProjectCard("adria_gold")
-      new ProjectCard("kovacs")
-      new ProjectCard("agro_jesenice")
-      new ProjectCard("la_food")
-    }
-
-
-
-    else
-    if(name === "services") {
-      const keys = Object.keys(Services.list)
-      for(let [index, key] of keys.entries()) {
-        const card = new ServiceCard(key)
-        
-        if(index === 0) {
-          card.checkVisibility()
+    switch(name) {
+      case "home": {
+        for(let key in Services.list) {
+          new ServiceCardSmall(key)
         }
+  
+        new ProjectCard("adria_gold")
+        new ProjectCard("kovacs")
+        new ProjectCard("agro_jesenice")
+        new ProjectCard("la_food")
+        break
       }
-    } 
-    
-    
 
-    else
-    if(name === "about") {
-      for(let key in Person.list) {
-        new PersonCard(key)
+      case "services": {
+        const keys = Object.keys(Services.list)
+        for(let [index, key] of keys.entries()) {
+          const card = new ServiceCard(key)
+          
+          if(index === 0) {
+            card.checkVisibility()
+          }
+        }
+        break
       }
-    } 
-    
 
-    
-    else
-    if(name === "project") {
-      
+      case "about": {
+        for(let key in Person.list) {
+          new PersonCard(key)
+        }
+
+        break
+      }
+      case "project": {
+        break
+      }
     }
 
     Page.data[name].ready = true

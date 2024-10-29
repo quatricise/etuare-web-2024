@@ -63,7 +63,6 @@ class Services {
       blurb: "Vyrobíme cokoliv - tiskoviny, polepy, stojánky, držáky, POP materiály...",
       description: `
       Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
-      
       • tiskoviny - katalogy, vizitky, plakáty
       • roll-upy, ochutnávkové stolky, displeje, polepy
       • fotografie vašich výrobků či firmy
