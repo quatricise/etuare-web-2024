@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etuare | Grafické a produkční studio</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,11 +26,11 @@
           <div class="navlink--border--bottom"></div>
         </div>
         <div class="navlink--icons">
-          <div class="navlink--icon tooltip" onclick="Q('#link--contact').scrollIntoView({behavior: 'smooth'})" data-tooltip="trvaj@etuare.com">
+          <div class="navlink--icon tooltip" onclick="scrollToContactOnDesktop()" data-tooltip="trvaj@etuare.com">
             <img class="navlink--icon--image" src="images/icon_mail.png"  alt="">
             <a class="navlink--icon--text" href="mailto:trvaj@etuare.com">trvaj@etuare.com</a>
           </div>
-          <div class="navlink--icon tooltip" onclick="Q('#link--contact').scrollIntoView({behavior: 'smooth'})" data-tooltip="736 689 470">
+          <div class="navlink--icon tooltip" onclick="scrollToContactOnDesktop()" data-tooltip="736 689 470">
             <img class="navlink--icon--image" src="images/icon_phone.png" alt="">
             <a class="navlink--icon--text" href="tel:+420 736 689 470">736 689 470</a>
           </div>
@@ -51,30 +50,8 @@
   
 
   <main>
-    <div class="page page--home">
-    <!-- <div class="section home--section--intro">
-      <img src="images/background_var_2.png" class="home--section--intro--background-0" alt="">
-      <img src="images/background_var_2.png" class="home--section--intro--background-1" alt="">
-      <div class="intro-text">
-
-        <span class="intro-text--line-1">etuare</span>
-        <span class="intro-text--line-2 auto-shy add-nbsp">grafické a produkční studio</span>
-        <span class="intro-text--line-3 auto-shy add-nbsp">Co pro vás můžeme udělat?</span>
-
-         <div class="intro-text--services">
-            
-         </div>
-
-        <button class="intro-text--button" onclick="Page.set('services');">
-          Více o našich službách 
-          <div class="button-arrow dark" style="margin-top: 2px;"></div>
-        </button>
-        
-
-        <div class="icon--mouse-animated"></div>
-      </div>
-    </div> -->
-
+    
+  <div class="page page--home">
     <div class="section home--section--intro"> <!-- V2 -->
       <img src="images/background_var_2.png" class="home--section--intro--background-0" alt="">
       <img src="images/background_var_2.png" class="home--section--intro--background-1" alt="">
@@ -119,10 +96,6 @@
           Více o nás
           <div class="button-arrow right dark"></div>
         </button>
-       <!--  <button onclick="Page.set('about')">
-          Naši klienti
-          <div class="button-arrow right dark"></div>
-        </button> -->
       </div>
     </div>
   </div> <!-- page--home -->
@@ -143,7 +116,7 @@
         Ceník nemáme, na cenách se domlouváme individuálně tak aby to odpovídalo potřebám vašeho projektu či firmy. Nebojte se ozvat i v případě že rozjíždíte startup, pokud se nám projekt bude líbit jsme ochotni slevit. (napsat to lépe, ale myslím že něco takového by tu mohlo být??)
       </div>
       <!-- <div class="services--intro-buttons"></div> -->
-      <div class="icon--mouse-animated"></div>
+      <!-- <div class="icon--mouse-animated"></div> -->
     </div>
     <div class="section services--section--cards"></div>
 
@@ -176,21 +149,15 @@
     <div class="section about--section--intro">
       <h1 class="page-heading--about">O nás</h1>
       <p class="about--intro-text-1 add-nbsp auto-shy">
-        Jsme grafické a produkční studio ze Zlína a fungujeme již 19 let. Soustředíme se primárně na malé a středně velké firmy, za sebou máme spolupráce různého druhu - vinařství, výrobci kosmetiky, mražená zelenina, nealko/alko nápoje.
-        <br><br>
-        Náš tým je složen s kreativních lidí, kteří kromě práce dělají i na osobních projektech, jejich portfolia si můžete prohlédnout skize jejich kartu.
+        Jsme grafické a produkční studio ze Zlína a fungujeme již 19 let. Za sebou máme spolupráce různého druhu - vinařství, výrobci kosmetiky, mražená zelenina, nealko/alko nápoje.
       </p>
-      <div class="icon--mouse-animated"></div>
     </div>
     <div class="section about--section--team">
       <div class="about--team--segment-1">
         <div class="team--role--text">
           <h2 class="team--role--title">Hlavní tým</h2>
           <p class="team--role--description auto-shy add-nbsp">
-            Roku 1969 se narodil muž, jehož osudem bylo změnit svět. To se ale nestalo a pořídil si děcko. Musel si najít práci a protože neměl rád práci, založil grafické studio aby mohl vstávat v devět dopoledne. Jeho syn během té doby dospěl a taky neměl rád práci, proto spojili síly a založili firmu Trvaj & Trvaj, známou předevšim pro svou rychlost a spolehlivost.
-            <!--  @todo předělat text -->
-            <br><br>
-            Potom se vydali na výpravu dějinami aby našli ztraceného otce Etuare a od něho se naučili starověké kouzlo marketingu a propagace.
+            Trvaj a Trvaj. Otec a syn. Známá firma. Znají se už od doby co se narodil Štěpán.
           </p>
         </div>
         <div class="about--people-container--employee"> <!-- JS --> </div>
@@ -200,8 +167,6 @@
           <h2 class="team--role--title">Externisté</h2>
           <p class="team--role--description auto-shy add-nbsp">
             Nemají sice židli v kanceláři, ale stejně je považujeme za hodnotné kolegy a platíme jim za jejich práci.
-            <br><br>
-            Jejich služeb využíváme v případě když potřebujeme zařídit něco speciálního, třeba nafotit hromadu věcí nebo nakreslit etiketu pro víno.
           </p>
         </div>
         <div class="about--people-container--contractor"> <!-- JS --> </div>
@@ -229,9 +194,9 @@
 
   <footer>
     <h1 class="footer-heading">Kontakt</h1>
-    <div class="footer--description auto-shy add-nbsp">
+    <p class="footer--description auto-shy add-nbsp">
       Za dotaz nic nedáte! Nebojte se na nás obrátit s otázkou či nezávaznou poptávkou a domluvíme se jestli jsme pro vás ti praví. Nebo se můžete stavit, pokud to máte po cestě.
-    </div>
+    </p>
     <div class="footer--content">
       <div class="footer--content--contacts" id="link--contact">
         <img class="icon--contact" src="images/icon_big_contact.png" alt="">

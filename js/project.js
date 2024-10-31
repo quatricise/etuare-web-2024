@@ -249,6 +249,10 @@ class Project {
     Q(".project--banner").append(project.elements.bannerImage)
     Q(".project--section--intro").append(project.elements.heading, project.elements.description, project.elements.content)
 
+    const imageSet = Qa_On(project.elements.content, "img").map(image => {return image.src})
+    lightbox.loadImageSet(imageSet)
+    console.log(imageSet)
+
     Project.current = project
 
     Page.set("project")
@@ -281,7 +285,7 @@ class Project {
     "adria_gold": {
       featured: true, brightOnHover: false,
       title: "Adria Gold",
-      descriptionShort: "Vizuální identita, logo, tiskoviny...",
+      descriptionShort: "Vizuální identita pro výrobce zmrzliny",
       description: "Pro firmu Adria Gold jsme tvořili kompletní vizuální balíček - vizuální identitu, claim, logo, obalový design, firemní tiskoviny (katalogy, vizitky, letáky...), POS a POP materiály, polepy aut atd.",
       content: [
         {
@@ -380,8 +384,8 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Agro Jesenice",
-      descriptionShort: "Obalový design",
-      description: "Obaly pro mraženou řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
+      descriptionShort: "Obaly pro řady mražených výrobků",
+      description: "Obaly pro řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
       content: [
         {
           t: "image",
@@ -407,7 +411,7 @@ class Project {
     "martenz": {
       titleShort: "Martenz",
       title: "Martenz",
-      descriptionShort: "Obalový design",
+      descriptionShort: "Etikety pro moravskou pálenku",
       description: "Design exclusivní borůvkovice od značky Martenz. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky/fanoušky značky.",
       content: [
         {
@@ -462,8 +466,8 @@ class Project {
       featured: true,
       titleShort: "",
       title: "Vinařství Kovacs",
-      descriptionShort: "Logo redesign, etikety, tiskoviny ad.", // @todo
-      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a vše co zde vidíte.", // @todo
+      descriptionShort: "Vizuální identita a obaly pro vinařství",
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a další.",
       content: [
         {
           t: "image",
@@ -480,7 +484,7 @@ class Project {
         },
         {
           t: "image_2",
-          l: "Edice vín Family Reserve s obrazy rodiny Kovács, dedikovaná rodině majitele.", /* @todo */
+          l: "Edice vín Family Reserve s obrazy rodiny Kovács, na obrazech jsou děti majitele.",
           f: ["cuvee_miroslav.jpg", "cuvee_amalie.jpg"],
         },
         {
@@ -496,8 +500,8 @@ class Project {
           h: "Kovacs & Hess"
         },
         {
-          t: "image",
-          f: "bottle_render_shit.jpg"
+          t: "image_2",
+          f: ["bottle_render_shit.jpg", "kovacs_and_hess_etiketa_predni_2.jpg"]
         },
         {
           t: "image_2",
@@ -537,7 +541,7 @@ class Project {
       featured: true,
       titleShort: "Královské Marmelády",
       title: "Královské Marmelády",
-      descriptionShort: "Logo, obalový design, vizualizace",
+      descriptionShort: "Série obalů pro značku marmelád",
       description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
       content: [
         {
@@ -566,13 +570,25 @@ class Project {
       featured: false,
       titleShort: "Vest",
       title: "Vest - Slané tyčinky a krekry",
-      descriptionShort: "Obalový design",
+      descriptionShort: "Obaly pro slané krekry",
       description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání a mlaskání přišel domů a měl sváteční košili potečenou od slin a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to, že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Wild Wild Vest: Pepa Chroupal a kluci od železnice.',
       content: [
         {
           t: "image",
-          f: "obaly.jpg"
-        }
+          f: "tuty.jpg"
+        },
+        {
+          t: "image",
+          f: "makovky.jpg"
+        },
+        {
+          t: "image",
+          f: "syrovky.jpg"
+        },
+        // {
+        //   t: "image",
+        //   f: "obaly.jpg"
+        // }
       ],
     },
 
@@ -582,8 +598,8 @@ class Project {
       featured: true, brightOnHover: false,
       titleShort: "Napa cider",
       title: "Napa cider - Řemeslný cider z Moravy",
+      descriptionShort: "Vizuální identita pro řemeslný cider",
       description: "Napa cider je příjemné alkoholické letní občerstvení. Osvěžující dávka ovocné chuti, nic komplikovaného.  Skvělý pro posezení ve dvou na zahradě i večírek s přáteli. \n \n Pro Napa cider jsme dělali všechno, vlastně i ten cider, do kterého se pan Zbyněk pustil ve volném čase, když zrovna neměl co na práci.",
-      descriptionShort: "Vizuální identita pro řemeslný cider + reklamní kampaň a eshop.",
       content: [
         {
           t: "image_2",
@@ -633,34 +649,45 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Brela",
-      descriptionShort: "Obalový design, ilustrace",
-      description: "Jednoduchý design pro jednoduchý produkt. Maminka vždycky říkávala že od Důbravy jsou přípravky nejlevnější ale také nejlepší!", /* @todo */
+      descriptionShort: "Obal na čistící prostředek",
+      description: "Redesign etikety pro čistící prostředek Brela.",
       content: [
+        {
+          t: "image",
+          f: "lahvicka.jpg"
+        },
         {
           t: "image_grid_2",
           l: "Originální ilustrace vytvořené pro projekt.",
           f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg", "ilu_4.jpg"]
         },
-        {
-          t: "image",
-          f: "lahvicka.jpg"
-        },
+        
       ],
     },
 
 
 
     "karima": {
-      titleShort: "Karima – Kosmetika",
+      titleShort: "Karima",
       title: "Karima - Přírodní Kosmetika",
-      descriptionShort: "Obalový design, logo",
+      descriptionShort: "Obaly na řadu přírodní kosmetiky",
       description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
       content: [
         {
           t: "image",
           l: "",
-          f: "renders.jpg"
-        }
+          f: "sampon.jpg"
+        },
+        {
+          t: "image",
+          l: "",
+          f: "sampon_s_kondicionerem.jpg"
+        },
+        {
+          t: "image",
+          l: "",
+          f: "pena.jpg"
+        },
       ],
     },
 
@@ -670,7 +697,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Henna",
-      descriptionShort: "Obalový design",
+      descriptionShort: "Obaly na řadu přírodní kosmetiky",
       description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
       content: [
         {
@@ -694,7 +721,7 @@ class Project {
       featured: true,
       titleShort: "Jarmila",
       title: "Víno Jarmila",
-      descriptionShort: "Obalový design, logo, polepy budov.",
+      descriptionShort: "Obaly pro řadu vína",
       description: "Jarmila je žena Miroslava Kovácse a teď nevím jestli to víno dělá ona nebo její manžel ale každopádně Zbyněk to ví.", //@todo
       content: [
         {
@@ -726,8 +753,7 @@ class Project {
       featured: false,
       titleShort: "La Food",
       title: "La Food - Luštěniny, rýže",
-      // descriptionShort: "Obalový design",
-      descriptionShort: "Obalový design",
+      descriptionShort: "Obaly pro výrobce luštěnin a rýže",
       description: "La Food je česká firma zabývající se výrobou luštěnin, rýže atd. Dělali jsme primárně design obalů a redesign loga pro řadu Menu Gold.",
       content: [
         {
@@ -753,7 +779,7 @@ class Project {
       featured: true,
       titleShort: "",
       title: "Design Whisky",
-      descriptionShort: "Logo, identita, obalový design, ilustrace.",
+      descriptionShort: "Vizuální identita pro značku whisky",
       description: "Projekt vznikl jako návrh pro začínající českou firmu zabývající se lokální výrobou whisky. Na projektu jsem dělal sám, v rámci školního zadání. Základem identity jsou vysoce detailní ilustrace dřeva a moderní serifové písmo. — Štěpán",
       content: [
         {

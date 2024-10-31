@@ -14,6 +14,10 @@ class Touch {
     if(e.target.closest(".carousel-image")) {
       this.target = Carousel.getByImage(e.target.closest(".carousel-image"))
       this.active = true
+    } else
+    if(e.target.closest(".lightbox")) {
+      this.target = Lightbox.getByElement(e.target.closest(".lightbox"))
+      this.active = true
     }
 
     this.direction = null

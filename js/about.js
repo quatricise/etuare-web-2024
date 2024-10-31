@@ -2,25 +2,25 @@ class Person {
   static list = {
     "Zbyněk Trvaj": {
       role: "employee",
-      filename: "zbynek",
+      filename: "zbynek.jpg",
       description: "Grafika, obalový design, DTP, marketing",
       portfolioLink: "",
     },
     "Štěpán Trvaj": {
       role: "employee",
-      filename: "stepan",
+      filename: "stepan.jpg",
       description: "Grafika, obaly, web design, programování, ilustrace",
       portfolioLink: "https://www.quatricise.com",
     },
     "Ivana Kotásková": {
       role: "contractor",
-      filename: "iva",
+      filename: "iva.jpg",
       description: "Ilustrace, malba",
       portfolioLink: "https://www.instagram.com/ivana.kotaskova/",
     },
     "Tomáš Novosád": {
       role: "contractor",
-      filename: "tomas",
+      filename: "tomas.jpg",
       description: "Fotografie, fotografická post-produkce",
       portfolioLink: "https://www.tomas-novosad.com",
     },
@@ -43,7 +43,7 @@ class PersonCard {
     const container =     Create("div", {c: "person-card--container"})
     const title =         Create("div", {c: "person-card--title", t: this.title})
     const description =   Create("div", {c: "person-card--description", t: this.description})
-    const image =         Create("img", {c: "person-card--image", a: `src=../images/people/${Person.list[name].filename}.jpg`})
+    const image =         Create("img", {c: "person-card--image", a: `src=../images/people/${Person.list[name].filename}`})
     const borderTop =     Create("div", {c: "person-card--border-top"})
     const borderBottom =  Create("div", {c: "person-card--border-bottom"})
 

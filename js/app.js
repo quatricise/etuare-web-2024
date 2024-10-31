@@ -1,4 +1,4 @@
-let debug = false
+let debug = true
 
 const state = {
   mobile: window.innerWidth <= 720,
@@ -72,6 +72,9 @@ function autoShy(/** @type HTMLElement */ element) {
   })
   
   element.innerHTML = results.join(" ")
+  if(element.innerHTML.slice(0, 4) === "<br>") {
+    element.innerHTML = element.innerHTML.slice(4)
+  }
 }
 
 
@@ -285,6 +288,10 @@ function addEventListeners() {
 
   document.addEventListener("mousedown", (e) => {
     Mouse.update(e)
+    
+    if(state.mobile && e.target.closest("header") === null) {
+      toggleNavlinks(false)
+    }
   })
 
   document.addEventListener("mouseup", (e) => {
@@ -301,6 +308,15 @@ function addEventListeners() {
 
   document.addEventListener("keydown", (e) => {
     Keyboard.updateKeys(e)
+
+    if(lightbox.flags.open) {
+      if(e.code.isAny("ArrowLeft", "Numpad4")) {
+        lightbox.prev()
+      }
+      if(e.code.isAny("ArrowRight", "Numpad6")) {
+        lightbox.next()
+      }
+    }
   })
 
   document.addEventListener("keyup", (e) => {
@@ -470,7 +486,7 @@ function toggleNavlinks(visible) {
     .classAdd("hidden")
     .then(() => state.navlinksOpen = false)
 
-    Qa(".navlink").forEach((navlink, index) => {
+    Qa(".navlink, .navlink--icon").forEach((navlink, index) => {
       new Animate(navlink)
       .animate([{transform: `translateY(0px)`}, {transform: `translateY(${60 + index*10}px)`}], {duration: duration * (1 + index/3), easing})
     })
@@ -480,7 +496,7 @@ function toggleNavlinks(visible) {
   {
     Q(".navlinks").classList.remove("hidden")
 
-    Qa(".navlink").forEach((navlink, index) => {
+    Qa(".navlink, .navlink--icon").forEach((navlink, index) => {
       new Animate(navlink)
       .animate([{transform: `translateY(-${20 + index*10}px)`}, {transform: "translateY(0px)"}], {duration: duration * (1 + index/3), easing})
     })
@@ -489,6 +505,14 @@ function toggleNavlinks(visible) {
     .animate( [{transform: "translateY(-250px)"}, {transform: "translateY(0px)"}], {duration, easing} )
     .then(() => state.navlinksOpen = true)
   }
+}
+
+
+
+function scrollToContactOnDesktop() {
+  if(state.mobile) return
+  
+  Q('#link--contact').scrollIntoView({behavior: 'smooth'})
 }
 
 

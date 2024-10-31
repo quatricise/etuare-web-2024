@@ -217,6 +217,7 @@ class ServiceCard {
 
     autoShy(description)
     autoNBSP(description, false)
+    autoShy(title)
 
 
     /** @type Map<string, HTMLElement> */
@@ -295,6 +296,9 @@ class ServiceCardSmall {
 
     card.append(background, icon, heading, description, borderBottom, borderTop, glowContainer)
     glowContainer.append(glow)
+
+    autoShy(heading)
+    autoShy(description)
 
     /* functionality */
     card.onclick = () => ServiceCard.navigateToCard(serviceName)
