@@ -19,6 +19,9 @@ class Touch {
       this.target = Lightbox.getByElement(e.target.closest(".lightbox"))
       this.active = true
     }
+    else {
+      this.target = null
+    }
 
     this.direction = null
     this.start.set(e.touches[0].pageX, e.touches[0].pageY)

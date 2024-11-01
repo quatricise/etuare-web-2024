@@ -251,11 +251,8 @@ class Project {
 
     const imageSet = Qa_On(project.elements.content, "img").map(image => {return image.src})
     lightbox.loadImageSet(imageSet)
-    console.log(imageSet)
 
     Project.current = project
-
-    Page.set("project")
   }
 
 
@@ -872,7 +869,7 @@ class ProjectCard {
     /* Interactability */
 
     card.onclick = () => {
-      Project.open(name)
+      Page.applyState({page: "project", project: name})
     }
 
     // if(!state.mobile) {

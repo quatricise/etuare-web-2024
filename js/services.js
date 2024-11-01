@@ -274,7 +274,7 @@ class ServiceCard {
   static list = new Map()
 
   static navigateToCard(name) {
-    Page.set("services")
+    Page.applyState({page: "services"})
     const card = this.list.get(name)
     card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
   }

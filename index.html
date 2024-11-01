@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="header-fake"></div>
   <header>
     <div class="header--contents">
       <div class="header--logo hidden">etuare</div>
@@ -35,6 +36,7 @@
             <a class="navlink--icon--text" href="tel:+420 736 689 470">736 689 470</a>
           </div>
         </div>
+        <div class="navlinks--border--bottom"></div>
       </div>
 
       <div class="burger" onclick="toggleNavlinks()">
@@ -80,7 +82,7 @@
             <!-- JS -->
          </div>
 
-        <button class="intro-text--button" onclick="Page.set('services');">
+        <button class="intro-text--button" onclick="Page.applyState({page: 'services'});">
           Více o našich službách 
           <div class="button-arrow dark" style="margin-top: 2px;"></div>
         </button>
@@ -92,7 +94,7 @@
         Fungujeme už 19 let. Snažíme se aby práce dobrá a klient spokojený.
       </p>
       <div class="home--section--about--buttons">
-        <button onclick="Page.set('about')">
+        <button onclick="Page.applyState({page: 'about'})">
           Více o nás
           <div class="button-arrow right dark"></div>
         </button>
@@ -132,7 +134,7 @@
     <div class="project--banner">
     </div>
     <div class="project--button--go-back--container">
-      <button class="dark dark-0 project--button--go-back" onclick="Page.prev('resume');">
+      <button class="dark dark-0 project--button--go-back" onclick="history.back()">
         <div class="button-arrow rotate-180"></div>
         Zpět k projektům
       </button>

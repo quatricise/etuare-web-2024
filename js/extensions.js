@@ -68,7 +68,7 @@ Array.prototype.clear = function() {
     this.pop()
 }
 Array.prototype.has = function(value) {
-  return this.find(obj => obj === value)
+  return this.find(obj => obj === value) !== undefined
 }
 
 

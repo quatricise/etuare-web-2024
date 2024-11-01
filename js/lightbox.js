@@ -49,7 +49,7 @@ class Lightbox {
     ], {duration: 250, easing: "cubic-bezier(0.3, 0.0, 0.2, 1.0"})
 
     this.current = this.images.indexOf(imageSrc)
-    console.log(this.current)
+    // console.log(this.current)
 
     this.open()
   }

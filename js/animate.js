@@ -22,7 +22,7 @@ class Animate {
       this.suspended = true
       this.current = true //@todo - hack, so no chained commands work, i think it just means the animation is not added anywhere, so it's not finished
 
-      console.log("suspended")
+      // console.log("suspended")
       // Animate.list.get(element)._ondestroy = () => {
       //   Animate.list.set(this.element, this)
       //   this.suspended = false 
@@ -92,7 +92,7 @@ class Animate {
     
     else {
       this.current = true
-      console.log("wait for " + durationMS)
+      // console.log("wait for " + durationMS)
       window.setInterval(() => this._queueNext(), durationMS)
     }
 
@@ -106,7 +106,7 @@ class Animate {
     }
 
     else {
-      console.log("animate")
+      // console.log("animate")
       this.current = this.element.animate(keyframes, options)
       this.current.onfinish = () => this._queueNext()
     }
@@ -122,7 +122,7 @@ class Animate {
     }
 
     else {
-      console.log("set")
+      // console.log("set")
       if(data?.style) {
         for(let key in data.style) {
           this.element.style[key] = data.style[key]
@@ -149,7 +149,7 @@ class Animate {
       for(let c of classes) {
         this.element.classList[state](c)
       }
-      console.log("class set")
+      // console.log("class set")
       this._queueNext()
     }
 
@@ -165,7 +165,7 @@ class Animate {
   }
 
   destroy() {
-    console.log("destroy")
+    // console.log("destroy")
     this._ondestroy?.()
     Animate.list.delete(this.element)
   }

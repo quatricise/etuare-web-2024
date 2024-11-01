@@ -63,7 +63,7 @@ class Carousel {
           }
     
           if(src.projectName != "$out") {
-            img.onclick = () => this._queueClick(() => Project.open(img.dataset.project))
+            img.onclick = () => this._queueClick(() => Page.applyState({page: "project", project: img.dataset.project}))
           }
         }
         if(index === 0) {

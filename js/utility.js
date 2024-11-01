@@ -82,3 +82,9 @@ const PI_4 = Math.PI / 4
 function radToDeg(/** @type number */ rad) {
   return rad * 180/Math.PI
 }
+
+/** @returns boolean */
+function keyInObject(obj, tested) {
+  if(!obj) return false
+  return Object.keys(obj).has(tested)
+}

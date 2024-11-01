@@ -134,6 +134,10 @@ window.onload = () => {
 
     sources.forEach(src => document.head.appendChild(scripts.get(src)))
 
+    if(window.location.href.includes("etuare.com")) {
+      debug = false
+    }
+
     if(!state.mobile) {
       Tooltip.init()
     }
@@ -154,18 +158,20 @@ window.onload = () => {
     }
 
     Qa(".navlink").forEach(navlink => navlink.onmousedown = () => {
-      if(navlink.dataset.page === "home" && Page.current === "services") {
-        Page.set(navlink.dataset.page, "resume")
+      if(navlink.dataset.page === Page.current) return
+
+      if(navlink.dataset.page === "home") {
+        Page.applyState({page: navlink.dataset.page, scroll: "resume"})
       }
       else {
-        Page.set(navlink.dataset.page)
+        Page.applyState({page: navlink.dataset.page})
       }
     })
 
     lightbox = new Lightbox(document.body)
     
 
-    Q(".header--logo").onclick = () => Page.set("home")
+    Q(".header--logo").onclick = () => Page.applyState({page: "home"})
 
     Qa(".auto-shy").forEach(element => autoShy(element))
     Qa(".add-nbsp").forEach(element => autoNBSP(element))
@@ -189,41 +195,24 @@ window.onload = () => {
       }
     })
 
-    if(debug) {
-      Page.set(ls.getItem("page"))
-      if(Page.current === "project") {
-        Project.open(ls.getItem("project"))
-      }
-      setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 800) //this is eye-balled, im lazy adding promises to project loading
+    if(false) { //old debug, just needs big rewriting for it to work
+      // Page.set(ls.getItem("page"))
+      // if(Page.current === "project") {
+      //   Project.open(ls.getItem("project"))
+      // }
+      // setTimeout(() => window.scrollTo({top: +ls.getItem("scrollY")}), 800) //this is eye-balled, im lazy adding promises to project loading
     } else
+    
     if(Page.current === "home") {
       Page.setup("home")
-    } else {
+    } 
+    
+    else {
 
     }
 
-
-    const searchQuery = window.location.search.replace("?", "")
-    const pairs = searchQuery.split("+")
-    pairs.forEach(pair => {
-      const [key, value] = pair.split("=")
-      
-      if(!key) return 
-      
-      switch(key) {
-        case "project": {
-          Project.open(value)
-          break
-        }
-        case "page": {
-          Page.set(value)
-          break
-        }
-        default: {
-          console.warn("Invalid key in url: " + key)
-        }
-      }
-    })
+    const data = Page.deserializeSearchString()
+    Page.applyState(data)
   })
   .catch((error) => {
     console.error(error)
@@ -239,13 +228,12 @@ window.onload = () => {
 
 function addEventListeners() {
 
-  let timeoutId = setTimeout(() => {
-    Qa(".icon--mouse-animated").forEach(element => element.style.animation = "var(--animation-mouse)")
-  }, 3000)
+  window.addEventListener("popstate", (e) => {
+    Page.applyState(history.state, true)
+  })
 
   document.addEventListener("wheel", (e) => {
     Mouse.update(e)
-    window.clearTimeout(timeoutId)
   })
 
   document.addEventListener("scroll", (e) => {
@@ -316,6 +304,9 @@ function addEventListeners() {
       if(e.code.isAny("ArrowRight", "Numpad6")) {
         lightbox.next()
       }
+      if(e.code.isAny("Escape", "Enter", "NumpadEnter", "Backspace")) {
+        lightbox.close()
+      }
     }
   })
 
@@ -333,63 +324,110 @@ function addEventListeners() {
 
 class Page {
 
-  static history = []
-
   static current = "home"
 
-  static set(name, scrollMode = "none") {
+  /** @returns Object */
+  static deserializeSearchString() {
+    const searchQuery = window.location.search.replace("?", "")
+    const pairs = searchQuery.split("+")
+    const state = {}
+    for(let pair of pairs) {
+      const [key, value] = pair.split("=")
+      state[key] = value
+    }
+    return state
+  }
+
+  /** @returns string */
+  static serializeSearchString(data) {
+    let url = "?"
+    for(let key in data) {
+      if(!key) continue
+
+      if(url !== "?") url += "+"
+      url += key + "=" + data[key]
+    }
+    return url
+  }
+
+  static applyState(stateData, fromHistory = false) {
+    if(!stateData) return
+
+    if(keyInObject(stateData, "page") === false) {
+      stateData.page = "home"
+    }
+
+    if(stateData.page === "home") {
+      stateData.scroll = "resume"
+    }
+
+    for(let key in stateData) {
+      const value = stateData[key]
+      
+      if(!key) continue 
+      
+      switch(key) {
+        case "project": {
+          Project.open(value)
+          break
+        }
+        case "page": {
+          Page.set(stateData.page, stateData.scroll)
+          break
+        }
+        case "scroll": {
+          if(value === "resume") {
+            setTimeout(() => {
+              window.scrollTo({top: Page.data[stateData.page].scrollY ?? 0, behavior: "instant"})
+            }, 0)
+          }
+          break
+        }
+        case "scrollY": {
+          
+          break
+        }
+        default: {
+          console.warn("Invalid key in url: " + key)
+        }
+      }
+    }
+
+    if(!fromHistory) {
+      history.pushState(stateData, "", Page.serializeSearchString(stateData))
+    }
+  }
+
+  static set(page, scroll) {
     if(state.mobile) {
       toggleNavlinks(false)
     }
 
-    /* when you're already on the page you want to visit */
-    if(name === Page.current && Page.data[name].ready === true) {
-      if(name === "home") {
-        let y = Q(".project-card").getBoundingClientRect().y + window.scrollY
-        window.scrollTo({top: y - 200, behavior: "smooth"})
-      }
-      return
-    }
+    console.log(page)
 
     Page.data[Page.current].scrollY = window.scrollY
 
     Qa(".page").forEach(p => p.classList.add("hidden"))
-    Q(`.page--${name}`).classList.remove("hidden")
+    Q(`.page--${page}`).classList.remove("hidden")
 
 
-    /* What happens to the scrollY of the page. */
-    if(scrollMode === "resume") {
-      window.scrollTo({top: Page.data[name].scrollY ?? 0, behavior: "instant"})
-    } else {
-      window.scrollTo({top: 0, behavior: "instant"})
-    }
+    window.scrollTo({top: 0, behavior: "instant"})
   
     if(debug) {
-      console.log("New page's previous scrollY position: ", Page.data[name].scrollY)
+      console.log("New page's previous scrollY position: ", Page.data[page].scrollY)
     }
 
-    if(Page.data[name].ready === false) {
-      Page.setup(name)
+    if(Page.data[page].ready === false) {
+      Page.setup(page)
     }
 
-    Page.history.push(Page.current)
-
-    Page.current = name
-
-  }
-
-  static next(scrollMode) {
-    //@todo
-  }
-
-  static prev(scrollMode) {
-    Page.set(Page.history.pop(), scrollMode)
+    Page.current = page
   }
 
   /** This sets up a page for working. pageSet() then only switches between them */
-  static setup(name) {
+  static setup(page) {
 
-    switch(name) {
+    switch(page) {
       case "home": {
         for(let key in Services.list) {
           new ServiceCardSmall(key)
@@ -426,7 +464,7 @@ class Page {
       }
     }
 
-    Page.data[name].ready = true
+    Page.data[page].ready = true
   }
   
   static data = {
@@ -478,11 +516,11 @@ async function showMoreProjects() {
 function toggleNavlinks(visible) {
   const duration = 700
   const easing = "cubic-bezier(0.7, 0.0, 0.3, 1.0)"
-
+  const heightEst = 400
   if(visible === false || state.navlinksOpen) {
     
     new Animate(Q(".navlinks"))
-    .animate( [{transform: "translateY(0px)"}, {transform: "translateY(-400px)"}], {duration, easing} )
+    .animate( [{transform: "translateY(0px)"}, {transform: `translateY(-${heightEst}px)`}], {duration, easing} )
     .classAdd("hidden")
     .then(() => state.navlinksOpen = false)
 
@@ -502,7 +540,7 @@ function toggleNavlinks(visible) {
     })
 
     new Animate(Q(".navlinks"))
-    .animate( [{transform: "translateY(-250px)"}, {transform: "translateY(0px)"}], {duration, easing} )
+    .animate( [{transform: `translateY(-${heightEst}px)`}, {transform: "translateY(0px)"}], {duration, easing} )
     .then(() => state.navlinksOpen = true)
   }
 }
@@ -511,7 +549,7 @@ function toggleNavlinks(visible) {
 
 function scrollToContactOnDesktop() {
   if(state.mobile) return
-  
+
   Q('#link--contact').scrollIntoView({behavior: 'smooth'})
 }
 

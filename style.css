@@ -1,6 +1,7 @@
 /* GENERAL TEMPLATING RULES */
 :root {
   --header-height: 60px;
+  --mobile-padding: 10px;
 
   --cursor-default: url(images/icon_cursor.png)       6 6, default;
   --cursor-pointer: url(images/icon_cursor_light.png) 6 6, pointer;
@@ -68,6 +69,7 @@ body {
   background-color: var(--c-dark-0);
   color: var(--c-light-0);
   width: 100vw;
+  overflow-x: hidden;
 }
 
 main {
@@ -75,6 +77,7 @@ main {
   flex-direction: column;
   gap: 360px;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 img {
@@ -354,9 +357,13 @@ button:hover > .button-arrow.rotate-270 {
 
 /* HEADER */
 
+.header-fake {
+  width: 100vw;
+  height: var(--header-height);
+}
+
 header {
-  position: relative;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -409,6 +416,20 @@ header {
   height: 100%;
 }
 
+.navlinks--border--bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: var(--border-width);
+  opacity: 0.2;
+  background: linear-gradient(90deg, 
+  var(--c-dark-0) 0%, 
+  var(--c-light-3) 50%, 
+  var(--c-dark-0) 100%);
+}
+
 
 .navlink {
   position: relative;
@@ -459,10 +480,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 60px; */
   width: 100vw;
   margin-top: 240px;
-  padding-bottom: 240px;
+  padding-bottom: 120px;
 }
 
 .footer-heading {
@@ -742,12 +762,10 @@ footer {
 }
 
 .service-card--small:hover .service-card--small--background {
-  /* background-color: var(--c-dark-1); */
   opacity: 0.75;
 }
 
 .service-card--small:hover {
-  /* box-shadow: 0 0 100px 10px var(--c-light-0-005); */
 }
 
 :root {
@@ -778,7 +796,6 @@ footer {
 }
 
 .home--section--about {
-  /* gap: 40px; */
   position: relative;
   align-items: center;
   padding-top: 120px;
@@ -848,14 +865,9 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
   width: 100%;
   max-width: 100%;
   color: var(--c-light-0);
-  /* background-image: url(images/background_var_1.png);
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  background-size: cover; */
   transition: filter 0.15s ease-out, opacity 0.3s ease-in-out;
   animation: var(--animation-cursor);
   overflow: hidden;
@@ -1649,6 +1661,20 @@ footer {
   width: 100%;
 }
 
+.project--image--flex.column {
+  display: block;
+  width: 100%;
+}
+
+.project--image--flex.column img {
+  width: 100%;
+  height: auto;
+}
+
+.project--image--flex.column img:not(:first-child) {
+  margin-top: var(--project--image--gap);
+}
+
 .project--image--flex.row {
   flex-wrap: wrap;
 }
@@ -1732,6 +1758,15 @@ footer {
 
 @media screen and (max-width: 1100px) {
 
+  .page-heading--project {
+    padding-left: calc(var(--mobile-padding) * 2);
+    padding-right: calc(var(--mobile-padding) * 2);
+  }
+
+  .project--description {
+    padding-left: calc(var(--mobile-padding) * 2);
+    padding-right: calc(var(--mobile-padding) * 2);
+  }
 
   .service-card--text-container {
     padding-right: 0; 
@@ -1740,6 +1775,46 @@ footer {
     line-height: 160%;
     font-size: 17px;
     padding-right: 20px;
+  }
+
+  .project--button--go-back--container {
+    position: sticky;
+    top: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 20px 0;
+  }
+  .project--button--go-back {
+    left: 0;
+  }
+
+  .about--team--segment-1,
+  .about--team--segment-2 {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .about--people-container--employee {
+    justify-content: center;
+  }
+
+  .about--people-container--contractor {
+    justify-content: center;
+  }
+
+  .team--role--text {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about--team--segment-2 .team--role--text {
+    order: unset;
+  }
+
+  .team--role--description {
+    max-width: 600px;
   }
 }
 
@@ -1756,10 +1831,6 @@ footer {
 
 @media screen and (max-width: 720px) {
 
-  :root {
-    --mobile-padding: 10px;
-  }
-  
   /* body {
     overflow-x: hidden;
   } */
@@ -1793,6 +1864,10 @@ footer {
     z-index: 1;
   }
 
+  .navlinks--border--bottom {
+    display: block;
+  }
+  
   .navlink--border--bottom {
     position: absolute;
     bottom: 0;
