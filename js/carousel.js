@@ -84,8 +84,13 @@ class Carousel {
         img.dataset.tooltip = `${title} – Prohlédnout projekt`
         img.dataset.title = src.tooltip ?? title
         img.dataset.project = src.projectName
+      } else 
+      
+      if(src.tooltip) {
+        img.classList.add("tooltip", "interactable")
+        img.dataset.tooltip = src.tooltip
       } else {
-
+        
       }
 
       if(src.hasBrightSubject === true) {

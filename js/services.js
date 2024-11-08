@@ -43,7 +43,7 @@ class Services {
 
     "Logo a identita": {
       key: "logo_design",
-      blurb: "Design, redesign a varianty. Vše co se týče práce s logem a firemní identitou.",
+      blurb: "Design, redesign a varianty. Vše co se týče loga a brand identity.",
       description: `
       • Navrhneme vám nové logo a identitu
       • Zmodernizujeme vaši starou identitu
@@ -102,7 +102,7 @@ class Services {
 
     "3D vizualizace": {
       key: "3d_vizualizace",
-      blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt, na jakékoli použití.",
+      blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt.",
       description: `
       Vytvoříme vizualizace:
       • do katalogů, 
@@ -133,10 +133,12 @@ class Services {
       examples: [
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
         {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
-        {src: "images/carousel/ilu_3.jpg", projectName: "", hasBrightBG: true, hasBrightSubject: true},
-        {src: "images/carousel/ilu_4.jpg", projectName: "kovacs", hasBrightBG: true},
-        {src: "images/carousel/ilu_5.jpg", projectName: "napacider", hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_3.jpg", projectName: "",                    hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_4.jpg", projectName: "kovacs",              hasBrightBG: true},
+        {src: "images/carousel/ilu_5.jpg", projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true},
         {src: "images/carousel/ilu_6.jpg", projectName: "kralovske_marmelady", hasBrightBG: true},
+        {src: "images/carousel/ilu_7.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Low poly kresba brusinek"},
+        {src: "images/carousel/ilu_8.jpg", projectName: "",                    hasBrightBG: false, tooltip: "Kreslená pozvánka na firemní akci"},
       ]
     },
   }

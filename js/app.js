@@ -1,4 +1,4 @@
-let debug = true
+let debug = false
 
 const state = {
   mobile: window.innerWidth <= 720,
@@ -247,6 +247,17 @@ function addEventListeners() {
         element.style.pointerEvents = ""
       }
     })
+
+    // {
+    //   const button  = Q(".project--button--go-back--container")
+    //   const rect    = button.getBoundingClientRect()
+    //   if(rect.y < 60) {
+    //     button.style.position = "fixed"
+    //   } else {
+    //     button.style.position = "relative"
+    //   }
+    // }
+    
   })
 
   document.addEventListener("mouseover", (e) => {
@@ -304,7 +315,7 @@ function addEventListeners() {
       if(e.code.isAny("ArrowRight", "Numpad6")) {
         lightbox.next()
       }
-      if(e.code.isAny("Escape", "Enter", "NumpadEnter", "Backspace")) {
+      if(e.code.isAny("Escape", "Enter", "NumpadEnter", "Backspace", "Delete")) {
         lightbox.close()
       }
     }

@@ -306,18 +306,21 @@ class Project {
         },
         {
           t: "image_2",
+          d: "column",
           o: {gap: "2px"},
           l: "Manuál zmrzlináře - jak správně pracovat se zmrzlinou.",
           f: ["manual_0.jpg", "manual_1.jpg"]
         },
         {
           t: "image_2",
+          d: "column",
           o: {gap: "2px"},
           l: "Katalog točené zmrzliny pro velkoobchody a restaurace.",
           f: ["tocena_0.jpg", "tocena_1.jpg"]
         },
         {
           t: "image_2",
+          d: "column",
           o: {gap: "2px"},
           l: "Katalog nabídek pro velkoobchody a restaurace.",
           f: ["katalog_0.jpg", "katalog_1.jpg"]
@@ -754,10 +757,9 @@ class Project {
       description: "La Food je česká firma zabývající se výrobou luštěnin, rýže atd. Dělali jsme primárně design obalů a redesign loga pro řadu Menu Gold.",
       content: [
         {
-          t: "image_2",
+          t: "image",
           d: "column",
-          l: "Redesign starého loga.",
-          f: ["logo.jpg", "logo_redesign.jpg"],
+          f: "logo.jpg",
         },
         {
           t: "image",

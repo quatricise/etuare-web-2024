@@ -12,17 +12,17 @@ class Person {
       description: "Grafika, obaly, web design, programování, ilustrace",
       portfolioLink: "https://www.quatricise.com",
     },
-    "Ivana Kotásková": {
-      role: "contractor",
-      filename: "iva.jpg",
-      description: "Ilustrace, malba",
-      portfolioLink: "https://www.instagram.com/ivana.kotaskova/",
-    },
     "Tomáš Novosád": {
       role: "contractor",
       filename: "tomas.jpg",
       description: "Fotografie, fotografická post-produkce",
       portfolioLink: "https://www.tomas-novosad.com",
+    },
+    "Ivana Kotásková": {
+      role: "contractor",
+      filename: "iva.jpg",
+      description: "Ilustrace, malba",
+      portfolioLink: "https://www.instagram.com/ivana.kotaskova/",
     },
   }
 }
