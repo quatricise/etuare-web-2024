@@ -42,7 +42,7 @@ class Project {
 
 
       if(object.t === "heading") {
-        const h = Create("h3", {c: "project--sub-heading", t: object.h})
+        const h = Create("h2", {c: "project--sub-heading", t: object.h})
         container.append(h)
       } else
       
@@ -290,16 +290,16 @@ class Project {
           h: "Vizuální identita"
         },
         {
-          t: "image_2",
+          t: "image_3",
           d: "column",
-          l: "Logo + claim a rozvinutí identity na vizuálním stylu",
-          f: ["logo_intro.png", "logo_intro_2.jpg"],
+          l: "Logo + claim a rozvinutí identity na vizuálním stylu a variace loga na další produkty značky.",
+          f: ["logo_intro.png", "logo_intro_2.jpg", "loga_tocena_a_trist.jpg"],
         },
-        {
-          t: "image",
-          l: "Variace loga na další produkty firmy.",
-          f: "loga_tocena_a_trist.jpg"
-        },
+        // {
+        //   t: "image",
+        //   l: "Variace loga na další produkty firmy.",
+        //   f: "loga_tocena_a_trist.jpg"
+        // },
         {
           t: "heading",
           h: "Tiskoviny",
@@ -384,7 +384,7 @@ class Project {
       featured: false,
       titleShort: "",
       title: "Agro Jesenice",
-      descriptionShort: "Obaly pro řady mražených výrobků",
+      descriptionShort: "Vizuální identita a obaly",
       description: "Obaly pro řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
       content: [
         {
@@ -393,15 +393,19 @@ class Project {
         },
         {
           t: "image",
+          f: "smooth_ass.jpg"
+        },
+        {
+          t: "image",
           f: "smesi_vseci_rovni.jpg"
         },
         {
           t: "image",
-          f: "send_vegana.jpg"
+          f: "mexicana_a_na_gril.jpg"
         },
         {
           t: "image",
-          f: "smooth_ass.jpg"
+          f: "send_vegana.jpg"
         },
       ],
     },
@@ -420,18 +424,8 @@ class Project {
           f: "logo.png"
         },
         {
-          t: "heading",
-          h: "Borůvkovice",
-        },
-        {
           t: "image",
-          l: "",
-          f: "lahev.jpg"
-        },
-        {
-          t: "image_3",
-          l: "Alternativní ilustrace pro etiketu, z nich se nakonec použila prostřední.",
-          f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg"]
+          f: "red_gold.jpg",
         },
         {
           t: "image",
@@ -439,23 +433,29 @@ class Project {
         },
         {
           t: "image",
-          f: "black_gold.jpg",
-        },
-        {
-          t: "image",
-          f: "red_silver.jpg",
-        },
-        {
-          t: "image",
-          f: "red_gold.jpg",
-        },
-        {
-          t: "image",
           f: "black_reserve_lahev_a_krabicka.jpg",
         },
         {
           t: "image",
-          f: "malinovice_2016_lahev_a_krabicka.jpg",
+          f: "malinovice_reserve.jpg",
+        },
+        {
+          t: "image",
+          f: "malinovice_v.jpg",
+        },
+        {
+          t: "heading",
+          h: "Borůvkovice"
+        },
+        {
+          t: "image",
+          l: "",
+          f: "boruvkovice.jpg"
+        },
+        {
+          t: "image_3",
+          l: "Alternativní ilustrace pro etiketu Borůvkovice, z nichž se nakonec použila prostřední.",
+          f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg"]
         },
       ],
     },
@@ -489,28 +489,6 @@ class Project {
         },
         {
           t: "heading",
-          h: "Vínovice"
-        },
-        {
-          t: "image_2",
-          f: ["vinovice_1.jpg", "vinovice_2.jpg"],
-        },
-        {
-          t: "heading",
-          h: "Kovacs & Hess"
-        },
-        {
-          t: "image_2",
-          f: ["bottle_render_shit.jpg", "kovacs_and_hess_etiketa_predni_2.jpg"]
-        },
-        {
-          t: "image_2",
-          l: "Ilustrace pro etiketu, Autorka - Ivana Kotásková",
-          f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
-        },
-
-        {
-          t: "heading",
           h: "Další materiály"
         },
         {
@@ -529,8 +507,25 @@ class Project {
           f: ["vinny_listek.jpg", "reklamni_predmety.jpg", "ubrus.jpg"],
         },
         {
-          t: "image",
-          f: "krabice_papir.jpg"
+          t: "heading",
+          h: "Vínovice"
+        },
+        {
+          t: "image_2",
+          f: ["vinovice_1.jpg", "vinovice_2.jpg"],
+        },
+{
+          t: "heading",
+          h: "Kovacs & Hess"
+        },
+        {
+          t: "image_2",
+          f: ["bottle_render_shit.jpg", "kovacs_and_hess_etiketa_predni_2.jpg"]
+        },
+        {
+          t: "image_2",
+          l: "Ilustrace pro etiketu, Autorka - Ivana Kotásková",
+          f: ["iva_ilu_1.jpg", "iva_ilu_2.jpg"]
         },
       ],
     },
@@ -602,15 +597,19 @@ class Project {
       description: "Napa cider je příjemné alkoholické letní občerstvení. Osvěžující dávka ovocné chuti, nic komplikovaného.  Skvělý pro posezení ve dvou na zahradě i večírek s přáteli. \n \n Pro Napa cider jsme dělali všechno, vlastně i ten cider, do kterého se pan Zbyněk pustil ve volném čase, když zrovna neměl co na práci.",
       content: [
         {
+          t: "image",
+          f: ["logo.png"],
+        },
+        {
+          t: "image_2",
+          d: "column",
+          f: ["letak.jpg", "kupon_1.jpg"]
+        },
+        {
           t: "image_2",
           d: "column",
           l: "Tiskoviny - leták, kupon a vizitky.",
           f: ["tiskoviny.jpg", "vizitky.jpg"]
-        },
-        {
-          t: "image",
-          l: "Ikony pro eshop cideru.",
-          f: "eshop_ikony.png"
         },
         {
           t: "heading", 
@@ -639,6 +638,11 @@ class Project {
           t: "image_2",
           l: "Alternativní kampaň s využitím fotek.",
           f: ["fb_5.jpg", "fb_6.jpg"]
+        },
+        {
+          t: "image",
+          l: "Ikony pro eshop cideru.",
+          f: "eshop_ikony.png"
         },
       ],
     },
@@ -844,7 +848,7 @@ class ProjectCard {
     /* Create HTML */
 
     const card =        Create("div",    {c: "project-card"})
-    const image =       Create("img",    {c: "project-card--image", a: `src=projects/${name}/project_card.png \f draggable=false`})
+    const image =       Create("img",    {c: "project-card--image", a: `src=projects/${name}/project_card.jpg \f draggable=false`})
     const title =       Create("h2",     {t: this.data.titleShort || this.data.title})
     const text =        Create("div",    {c: "project-card--text"})
     const desc =        Create("div",    {t: this.data.descriptionShort || this.data.description, c: "project-card--description"})

@@ -1398,10 +1398,27 @@ footer {
   gap: 180px;
 }
 
+.about--section--contractors {
+  align-items: center;
+  padding-top: 180px;
+  padding-left: var(--mobile-padding);
+  padding-right: var(--mobile-padding);
+  gap: 40px;
+}
+
+.about--section--contractors p {
+  max-width: 800px;
+}
+
+.about--section--contractors h1 {
+  text-align: center;
+}
+
 .about--team--segment-1,
 .about--team--segment-2 {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   width: min(1100px, 100vw);
 }
 
@@ -1443,7 +1460,7 @@ footer {
 
 .about--section--logos {
   /* margin-top: 360px; */
-  margin-top: 240px;
+  margin-top: 180px;
   align-items: center;
 }
 
@@ -1452,13 +1469,13 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: min(900px, 100vw);
+  width: min(1100px, 100vw);
   margin: 90px 0 0px;
   gap: 40px;
 }
 
 .client-logo {
-  height: 80px;
+  height: 90px;
 }
 
 
@@ -1639,7 +1656,7 @@ footer {
 }
 
 .project--section--content img {
-  cursor: pointer;
+  animation: var(--animation-cursor);
 }
 
 .project--image--single {
@@ -2031,7 +2048,8 @@ footer {
   }
 
   .client-logo {
-    height: 60px;
+    width: 60%;
+    height: auto;
   }
 
   /* PAGE - SERVICES */

@@ -368,7 +368,7 @@ class Page {
       stateData.page = "home"
     }
 
-    if(stateData.page === "home") {
+    if(stateData.page.isAny("home", "services")) {
       stateData.scroll = "resume"
     }
 

@@ -4,11 +4,10 @@ class Services {
       key: "obalovy_design",
       blurb: "Obalíme vaši firmu alobalem abychom ji ochránili před útoky mimozemšťanů!",
       description: `
-      • Grafické návrhy obalů
+      • Grafický návrh nových obalů
       • Redesign stávajících obalů
-      • Návrhy krabiček a prodejních kartonů
-      • Přípravu tiskových podkladů pro výrobu
-      • 3D vizualizace či produktové fotografie vašich výrobků
+      • Návrh krabiček a prodejních kartonů
+      • Příprava tiskových podkladů pro výrobu
       `,
       examples: [
         {src: "../images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
@@ -36,6 +35,7 @@ class Services {
         {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: false, hasBrightSubject: true},
         {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_4.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
       ]
     },
 
@@ -53,6 +53,7 @@ class Services {
         {src: "../images/carousel/logo_1.png", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_5.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_6.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
       ]
     },
 
@@ -67,15 +68,13 @@ class Services {
       • roll-upy, ochutnávkové stolky, displeje, polepy
       • fotografie vašich výrobků či firmy
       • polepy firemních vozidel, prodejen
-      • navigační prvky - směrovky, cedule...
+      • navigační prvky - směrovky, cedule, plachty...
       `,
       examples: [
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu."},
-        {src: "../images/carousel/prod_5.jpg", projectName: "adria_gold"},
         {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold"},
-        {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Stojánky na zmrzlinové kornouty do cukráren."},
-        {src: "../images/carousel/prod_4.jpg", projectName: "kovacs", hasBrightBG: true },
+        {src: "../images/carousel/prod_8.jpg", projectName: "kovacs", hasBrightBG: true, tooltip: "Rollupy pro prezentaci firmy na akcích." },
       ]
     },
 
@@ -107,8 +106,7 @@ class Services {
       Vytvoříme vizualizace:
       • do katalogů, 
       • pro web,
-      • na polepy aut
-      ...vlastně na cokoliv, co potřebujete
+      • na polepy budov, aut, výloh
       `,
       examples: [
         {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
@@ -133,12 +131,12 @@ class Services {
       examples: [
         {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
         {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
-        {src: "images/carousel/ilu_3.jpg", projectName: "",                    hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_3.jpg", projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
         {src: "images/carousel/ilu_4.jpg", projectName: "kovacs",              hasBrightBG: true},
         {src: "images/carousel/ilu_5.jpg", projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true},
         {src: "images/carousel/ilu_6.jpg", projectName: "kralovske_marmelady", hasBrightBG: true},
-        {src: "images/carousel/ilu_7.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Low poly kresba brusinek"},
-        {src: "images/carousel/ilu_8.jpg", projectName: "",                    hasBrightBG: false, tooltip: "Kreslená pozvánka na firemní akci"},
+        {src: "images/carousel/ilu_7.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},
+        {src: "images/carousel/ilu_8.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Kreslená pozvánka na firemní akci PPG"},
       ]
     },
   }
@@ -153,9 +151,8 @@ class Services {
     const requiredExampleKeys = [
       "src", "projectName"
     ]
-    const allowedExampleKeys = [
-      "src", "projectName", "hasBrightBG", "hasBrightSubject", "url", "tooltip"
-    ]
+    const allowedExampleKeys = requiredExampleKeys.concat(["hasBrightBG", "hasBrightSubject", "url", "tooltip"])
+
     for(let service in Services.list) {
 
       for(let key in Services.list[service]) {

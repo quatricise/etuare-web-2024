@@ -13,13 +13,13 @@ class Person {
       portfolioLink: "https://www.quatricise.com",
     },
     "Tomáš Novosád": {
-      role: "contractor",
+      role: "employee",
       filename: "tomas.jpg",
       description: "Fotografie, fotografická post-produkce",
       portfolioLink: "https://www.tomas-novosad.com",
     },
     "Ivana Kotásková": {
-      role: "contractor",
+      role: "employee",
       filename: "iva.jpg",
       description: "Ilustrace, malba",
       portfolioLink: "https://www.instagram.com/ivana.kotaskova/",

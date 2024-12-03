@@ -62,7 +62,7 @@ class Carousel {
             }
           }
     
-          if(src.projectName != "$out") {
+          if(src.projectName != "$out" && src.projectName) {
             img.onclick = () => this._queueClick(() => Page.applyState({page: "project", project: img.dataset.project}))
           }
         }
@@ -70,6 +70,8 @@ class Carousel {
           this._updateControlsColor()
         }
       }
+
+
 
       if(src.projectName && src.projectName === "$out") {
         img.onclick = () => window.open(src.url, "_blank")
@@ -81,17 +83,18 @@ class Carousel {
       if(src.projectName) {
         const title = Project.data[src.projectName]?.titleShort || Project.data[src.projectName]?.title
         img.classList.add("tooltip", "interactable")
-        img.dataset.tooltip = `${title} – Prohlédnout projekt`
+        img.dataset.tooltip = /* ${title} –  */ `Prohlédnout projekt`
         img.dataset.title = src.tooltip ?? title
         img.dataset.project = src.projectName
       } else 
       
       if(src.tooltip) {
-        img.classList.add("tooltip", "interactable")
-        img.dataset.tooltip = src.tooltip
+        img.dataset.title = src.tooltip
       } else {
         
       }
+
+
 
       if(src.hasBrightSubject === true) {
         img.classList.add("has-bright-subject")

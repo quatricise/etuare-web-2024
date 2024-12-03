@@ -55,7 +55,7 @@
   <main>
     
   <div class="page page--home">
-    <div class="section home--section--intro"> <!-- V2 -->
+    <div class="section home--section--intro">
       <img src="images/background_var_2.png" class="home--section--intro--background-0" alt="">
       <img src="images/background_var_2.png" class="home--section--intro--background-1" alt="">
       <div class="intro-text">
@@ -149,23 +149,25 @@
 
 
   <div class="page page--about hidden">
+
     <div class="section about--section--intro">
       <h1 class="page-heading--about">O nás</h1>
       <p class="about--intro-text-1 add-nbsp auto-shy">
         Jsme grafické a produkční studio ze Zlína a fungujeme již 19 let. Za sebou máme spolupráce různého druhu - vinařství, výrobci kosmetiky, mražená zelenina, nealko/alko nápoje.
       </p>
     </div>
+
     <div class="section about--section--team">
       <div class="about--team--segment-1">
         <div class="team--role--text">
-          <h2 class="team--role--title">Hlavní tým</h2>
-          <p class="team--role--description auto-shy add-nbsp">
+          <!-- <h2 class="team--role--title">Hlavní tým</h2> -->
+          <!-- <p class="team--role--description auto-shy add-nbsp">
             Trvaj a Trvaj. Otec a syn. Známá firma. Znají se už od doby co se narodil Štěpán.
-          </p>
+          </p> -->
         </div>
         <div class="about--people-container--employee"> <!-- JS --> </div>
       </div>
-      <div class="about--team--segment-2">
+      <div class="about--team--segment-2 hidden">
         <div class="team--role--text">
           <h2 class="team--role--title">Externisté</h2>
           <p class="team--role--description auto-shy add-nbsp">
@@ -174,6 +176,13 @@
         </div>
         <div class="about--people-container--contractor"> <!-- JS --> </div>
       </div>
+    </div>
+
+    <div class="section about--section--contractors">
+      <h1 class="page--heading--about" >Neděláme všechno, ale...</h1>
+      <p>
+        Dokážeme zajistit spolupráci s fotografy, ilustrátory, tiskárnami a dále; vše podle potřeb projektu, abychom měli jistotu že se vše dokončí včas a správně.
+      </p>
     </div>
 
     <div class="section about--section--logos">
@@ -189,6 +198,7 @@
         <img class="client-logo" src="images/client_logos/martenz.png" alt="" >
       </div>
     </div>
+
   </div> <!-- page--about -->
 
   </main>
@@ -205,11 +215,9 @@
         <img class="icon--contact" src="images/icon_big_contact.png" alt="">
         <div class="contact--text">
           <a class="tooltip" href="mailto:trvaj@etuare.com" data-tooltip="Napsat mail"> 
-            <!-- <img src="images/icon_copy.png" class="icon--copy--inline" alt=""> -->
             trvaj@etuare.com
           </a>
           <a class="tooltip" href="tel:+420 736 689 470" data-tooltip="Zavolat">    
-            <!-- <img src="images/icon_copy.png" class="icon--copy--inline" alt=""> -->
             +420 736 689 470
           </a>
         </div>
@@ -218,7 +226,6 @@
         <img class="icon--address" src="images/icon_big_address.png" alt="">
         <div class="address--text">
           <a class="tooltip" data-tooltip="Najít na mapě" href="https://maps.app.goo.gl/d3hiDmHyFH9zAc9x8"> 
-            <!-- <img class="icon--gps" src="images/icon_gps.png" alt="">  -->
             Vavrečkova 5673, <br> Budova 54 <br>
             Zlín 760 01
           </a>
@@ -230,7 +237,7 @@
   </footer>
 
 
-
+  <script src="https://unpkg.com/microtypejs/dist/microtype.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
