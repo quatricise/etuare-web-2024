@@ -32,6 +32,7 @@ class Touch {
   }
   static touchEnd(/** @type TouchEvent */ e) {
     if(!this.active) return
+    if(!this.target) return
 
     const angle = radToDeg(this.start.angleTo(this.end))
 

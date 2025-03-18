@@ -142,6 +142,7 @@ window.onload = () => {
       Tooltip.init()
     }
 
+    Project.init()
     Ticker.start()
     Touch.init()
 
@@ -457,7 +458,7 @@ class Page {
           const card = new ServiceCard(key)
           
           if(index === 0) {
-            card.checkVisibility()
+            card.show()
           }
         }
         break

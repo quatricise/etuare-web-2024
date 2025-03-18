@@ -9,6 +9,15 @@ class Project {
     const description = Create("p",   {c: "project--description", t: this.data.description})
     const bannerImage = Create("img", {c: "project--banner--image", a: `src=../projects/${name}/banner.jpg`})
     const content =     Create("div", {c: "section \f project--section--content"})
+    const buttons =     Create("div", {c: "project--buttons"})
+    const buttonPrev =  Create("button", {c: "button \f dark \f dark-0"})
+    const buttonNext =  Create("button", {c: "button \f dark \f dark-0"})
+    buttonPrev.append(Create("div", {c: "button-arrow \f rotate-180"}))
+    buttonPrev.append(Create("div", {t: "Předchozí" + (state.mobile ? "" : " projekt")}))
+    buttonNext.append(Create("div", {t: "Další" + (state.mobile ? "" : " projekt")}))
+    buttonNext.append(Create("div", {c: "button-arrow"}))
+    buttonPrev.onclick = () => Project.openPrev()
+    buttonNext.onclick = () => Project.openNext()
 
     autoShy(description)
     description.innerHTML = addNBSPToString(description.innerHTML)
@@ -158,6 +167,9 @@ class Project {
       Qa_On(container, "img").forEach(image => image.dataset.openlightbox = "true")
     }
 
+    buttons.append(buttonPrev, buttonNext)
+    content.append(buttons)
+
     this.elements = {
       heading,
       description,
@@ -256,6 +268,42 @@ class Project {
   }
 
 
+
+  static openPrev() {
+    if(this.current && this.current.data.index <= 0) {
+      Page.applyState({page: "project", project: Object.keys(Project.data).last()})
+      return
+    }
+
+    
+    for(let key in Project.data) {
+      console.log(this.current.index)
+      if(Project.data[key].index === this.current.data.index - 1) {
+        Page.applyState({page: "project", project: key})
+        break
+      }
+    }
+  }
+
+
+
+  static openNext() {
+    if(this.current && this.current.data.index === this.count - 1) {
+      Page.applyState({page: "project", project: Object.keys(Project.data)[0]})
+      return
+    }
+
+    
+    for(let key in Project.data) {
+      console.log(this.current.index)
+      if(Project.data[key].index === this.current.data.index + 1) {
+        Page.applyState({page: "project", project: key})
+        break
+      }
+    }
+  }
+
+
   
   static close() {
     for(const key in Project.current.elements) {
@@ -266,11 +314,25 @@ class Project {
 
 
 
+  static init() {
+    let index = 0
+    for(let key in Project.data) {
+      Project.data[key].index = index
+      index++
+    }
+    Project.count = index
+  }
+
+
+
   /** @type Map<string, Project> */
   static loadedProjects = new Map()
 
   /** @type Project */
   static current = null
+
+  /** @type number; Calculated in init() */
+  static count = 0
 
   /** @type Set<string> */
   static homeCardsLoaded = new Set()
@@ -295,11 +357,6 @@ class Project {
           l: "Logo + claim a rozvinutí identity na vizuálním stylu a variace loga na další produkty značky.",
           f: ["logo_intro.png", "logo_intro_2.jpg", "loga_tocena_a_trist.jpg"],
         },
-        // {
-        //   t: "image",
-        //   l: "Variace loga na další produkty firmy.",
-        //   f: "loga_tocena_a_trist.jpg"
-        // },
         {
           t: "heading",
           h: "Tiskoviny",
@@ -308,8 +365,8 @@ class Project {
           t: "image_2",
           d: "column",
           o: {gap: "2px"},
-          l: "Manuál zmrzlináře - jak správně pracovat se zmrzlinou.",
-          f: ["manual_0.jpg", "manual_1.jpg"]
+          l: "Katalog nabídek pro velkoobchody a restaurace.",
+          f: ["katalog_0.jpg", "katalog_1.jpg"]
         },
         {
           t: "image_2",
@@ -319,11 +376,11 @@ class Project {
           f: ["tocena_0.jpg", "tocena_1.jpg"]
         },
         {
-          t: "image_2",
+          t: "image",
           d: "column",
           o: {gap: "2px"},
-          l: "Katalog nabídek pro velkoobchody a restaurace.",
-          f: ["katalog_0.jpg", "katalog_1.jpg"]
+          l: "Manuál zmrzlináře - jak správně pracovat se zmrzlinou.",
+          f: "manual_0.jpg"
         },
         {
           t: "image",
@@ -339,31 +396,26 @@ class Project {
           l: "Obaly na prémiovou řadu zmrzlin.",
           f: "obaly_0.jpg"
         },
-        /* {
-          t: "image",
-          l: "Obaly na topping.",
-          f: "topping.jpg"
-        }, */
         {
           t: "heading",
           h: "POP materiály",
         },
         {
           t: "paragraph",
-          h: "Materiály jsme navrhovali a zároveň zařizovali jejich produkci. Dělali jsme toho více, ale protože se to často nefotilo, je těžké ty věci teď najít a musel bych proto všechno vymodelovat a to smrdí prací. \n — Štěpán",
+          h: "Materiály jsme navrhovali a zároveň zařizovali jejich produkci.",
         },
         {
           t: "image",
           l: "Velké reklamní kornouty, výška cca. 160cm.",
-          f: "kornouty.jpg"
+          f: "kornouty.jpg",
         },
         {
           t: "image",
-          f: "zapichovatka.jpg"
+          f: "zapichovatka.jpg",
         },
         {
           t: "image_2",
-          f: ["stojanek_1.jpg", "stojanek_2.jpg"]
+          f: ["stojanek_1.jpg", "stojanek_2.jpg"],
         },
         {
           t: "image_2",
@@ -373,7 +425,8 @@ class Project {
         {
           t: "image_2",
           d: "column",
-          f: ["stanek_1.jpg", "stanek_2.jpg"]
+          f: ["stanek_1.jpg", "stanek_2.jpg"],
+          l: "Fotky z 'terénu'."
         },
       ],
     },
@@ -407,6 +460,12 @@ class Project {
           t: "image",
           f: "send_vegana.jpg"
         },
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "2px"},
+          f: ["katalog_gastro.jpg", "katalog_gastro_2.jpg"]
+        },
       ],
     },
 
@@ -416,7 +475,7 @@ class Project {
       titleShort: "Martenz",
       title: "Martenz",
       descriptionShort: "Etikety pro moravskou pálenku",
-      description: "Design exclusivní borůvkovice od značky Martenz. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky/fanoušky značky.",
+      description: "Moravský výrobce prémiových pálenek. Navrhovali jsme design loga, etikety a dárkové krabičky.",
       content: [
         {
           t: "image",
@@ -449,7 +508,7 @@ class Project {
         },
         {
           t: "image",
-          l: "",
+          l: "Design exclusivní borůvkovice od značky Martenz. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky/fanoušky značky.",
           f: "boruvkovice.jpg"
         },
         {
@@ -467,7 +526,7 @@ class Project {
       titleShort: "",
       title: "Vinařství Kovacs",
       descriptionShort: "Vizuální identita a obaly pro vinařství",
-      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, polepy vinárny, propagační materiály a další.",
+      description: "Pro Kovacse jsme dělali redesign loga, návrhy etiket, exteriér provozovny, propagační materiály a další.",
       content: [
         {
           t: "image",
@@ -514,7 +573,7 @@ class Project {
           t: "image_2",
           f: ["vinovice_1.jpg", "vinovice_2.jpg"],
         },
-{
+        {
           t: "heading",
           h: "Kovacs & Hess"
         },
@@ -532,41 +591,13 @@ class Project {
 
 
 
-    "kralovske_marmelady": {
-      featured: true,
-      titleShort: "Královské Marmelády",
-      title: "Královské Marmelády",
-      descriptionShort: "Série obalů pro značku marmelád",
-      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
-      content: [
-        {
-          t: "image_2",
-          d: "column",
-          l: "Dvě varianty návrhu pro citrónovou marmeládu.",
-          f: ["citron_a.jpg", "citron_b.jpg"]
-        },
-        {
-          t: "image_2",
-          d: "column",
-          l: "Dvě varianty návrhu pro pomerančovou marmeládu.",
-          f: ["pomeranc_a.jpg", "pomeranc_b.jpg"]
-        },
-        {
-          t: "image_grid_2",
-          l: "Návrhy ilustrací ve dvou různých stylech.",
-          f: ["ilu_1.png", "ilu_2.png", "ilu_3.png", "ilu_4.png"]
-        },
-      ],
-    },
-
-
-
     "vest": {
       featured: false,
       titleShort: "Vest",
       title: "Vest - Slané tyčinky a krekry",
       descriptionShort: "Obaly pro slané krekry",
-      description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání a mlaskání přišel domů a měl sváteční košili potečenou od slin a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to, že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Wild Wild Vest: Pepa Chroupal a kluci od železnice.',
+      // description: 'Každý si dnes vzpomene na klasické \"Vestky\" jak mu je koupila babička v místní sámošce a potom se vydali s kamarády za železnici chroupat tyto lahodné, slané tyčinky. Pepa vždycky řekl, že není nad takové dobré pochutnání a ukousnul přitom do tyčinky, která byla tak lahodná a křupavá, že vždycky začal slintat jako pes. Maminka z toho nebyla nadšená, když po takovém chroupání a mlaskání přišel domů a měl sváteční košili potečenou od slin a plnou drobků - musela ji vždy řádně vyprat, ale to byla tehdy jiná doba, panečku, to když ještě existovaly nějaké mravy a dívky se nehonili s chlapci po ulicích a diskotékách jako kdyby zítřku nebylo, když chlapci dostali pořádný výprask za to, že jedli moc tyčinek a když bylo na světě dobře. \n — Mark Twain, Wild Wild Vest: Pepa Chroupal a kluci od železnice.',
+      description: "Pro výrobce VEST ze Zlína jsme navrhovali design obalů na Tuty krekry i oblíbené Makovky a Sýrovky.",
       content: [
         {
           t: "image",
@@ -649,25 +680,25 @@ class Project {
 
 
 
-    "brela": {
-      featured: false,
-      titleShort: "",
-      title: "Brela",
-      descriptionShort: "Obal na čistící prostředek",
-      description: "Redesign etikety pro čistící prostředek Brela.",
-      content: [
-        {
-          t: "image",
-          f: "lahvicka.jpg"
-        },
-        {
-          t: "image_grid_2",
-          l: "Originální ilustrace vytvořené pro projekt.",
-          f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg", "ilu_4.jpg"]
-        },
+    // "brela": {
+    //   featured: false,
+    //   titleShort: "",
+    //   title: "Brela",
+    //   descriptionShort: "Obal na čistící prostředek",
+    //   description: "Redesign etikety pro čistící prostředek Brela.",
+    //   content: [
+    //     {
+    //       t: "image",
+    //       f: "lahvicka.jpg"
+    //     },
+    //     {
+    //       t: "image_grid_2",
+    //       l: "Originální ilustrace vytvořené pro projekt.",
+    //       f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg", "ilu_4.jpg"]
+    //     },
         
-      ],
-    },
+    //   ],
+    // },
 
 
 
@@ -677,6 +708,11 @@ class Project {
       descriptionShort: "Obaly na řadu přírodní kosmetiky",
       description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
       content: [
+        {
+          t: "image",
+          l: "",
+          f: "logo_karima_remake.jpg"
+        },
         {
           t: "image",
           l: "",
@@ -726,7 +762,10 @@ class Project {
       titleShort: "Jarmila",
       title: "Víno Jarmila",
       descriptionShort: "Obaly pro řadu vína",
-      description: "Jarmila je žena Miroslava Kovácse a teď nevím jestli to víno dělá ona nebo její manžel ale každopádně Zbyněk to ví.", //@todo
+      description: `
+      Design etikety a loga pro vinařství Jarmila. Logotyp a etiketa vznikly ve spoluprací s výtvarnicí Michaelou Žemličkovou. 
+      `,
+      
       content: [
         {
           t: "image",
@@ -740,10 +779,6 @@ class Project {
           t: "image",
           f: "photo_1.jpg"
         },
-        /* {
-          t: "image",
-          f: "bottle_interior_photo.jpg"
-        }, */
         {
           t: "image",
           f: "domecek.jpg"
@@ -824,6 +859,35 @@ class Project {
           t: "image_grid_2",
           l: "Další ilustrace, které se nakonec na etiketu nepoužily.",
           f: ["ilu_wood_wonky_1.png", "ilu_wood_wonky_2.png", "ilu_wood_wonky_3.png", "ilu_wood_wonky_4.png"]
+        },
+      ],
+    },
+    
+
+
+    "kralovske_marmelady": {
+      featured: true,
+      titleShort: "Královské Marmelády",
+      title: "Královské Marmelády",
+      descriptionShort: "Série obalů pro značku marmelád",
+      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
+      content: [
+        {
+          t: "image_2",
+          d: "column",
+          l: "Dvě varianty návrhu pro citrónovou marmeládu.",
+          f: ["citron_a.jpg", "citron_b.jpg"]
+        },
+        {
+          t: "image_2",
+          d: "column",
+          l: "Dvě varianty návrhu pro pomerančovou marmeládu.",
+          f: ["pomeranc_a.jpg", "pomeranc_b.jpg"]
+        },
+        {
+          t: "image_grid_2",
+          l: "Návrhy ilustrací ve dvou různých stylech.",
+          f: ["ilu_1.png", "ilu_2.png", "ilu_3.png", "ilu_4.png"]
         },
       ],
     },

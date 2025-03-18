@@ -19,6 +19,9 @@ class Lightbox {
     /** @type HTMLImageElement */
     const image =    Create("img", {c: "lightbox-image", d: "blocktooltip=true"})
 
+    /** @type HTMLDivElement */
+    const label =    Create("div", {c: "lightbox--label", d: "blocktooltip=true", t: ""})
+
     document.addEventListener("click", (e) => {
       if(e.target.closest(".lightbox") === this.elements.lightbox && Mouse.movedFromClick.length() < 5) {
         this.close()
@@ -26,11 +29,12 @@ class Lightbox {
     })
 
     parent.append(lightbox)
-    lightbox.append(image)
+    lightbox.append(image, /* label */)
 
     this.elements = {
       lightbox,
-      image
+      image,
+      label,
     }
     Lightbox.list.push(this)
   }
@@ -49,8 +53,7 @@ class Lightbox {
     ], {duration: 250, easing: "cubic-bezier(0.3, 0.0, 0.2, 1.0"})
 
     this.current = this.images.indexOf(imageSrc)
-    // console.log(this.current)
-
+    this.labelUpdate()
     this.open()
   }
   loadImageSet(/** @type Array<string> */sources) {
@@ -66,12 +69,18 @@ class Lightbox {
 
     this.current++
     this.elements.image.src = this.images[this.current]
+    this.labelUpdate()
   }
   prev() {
     if(this.current === 0) return
 
     this.current--
     this.elements.image.src = this.images[this.current]
+    this.labelUpdate()
+  }
+
+  labelUpdate() {
+    this.elements.label.innerText = (this.current + 1) + "/" + this.images.length
   }
 
 

@@ -2,7 +2,8 @@ class Services {
   static list = {
     "Obalový design": {
       key: "obalovy_design",
-      blurb: "Obalíme vaši firmu alobalem abychom ji ochránili před útoky mimozemšťanů!",
+      blurb: "Specializujeme se na obaly pro potraviny, nápoje a kosmetiku.",
+      // blurb: "Obalované řízky...teda, obaly na obalované řízky!",
       description: `
       • Grafický návrh nových obalů
       • Redesign stávajících obalů
@@ -10,11 +11,12 @@ class Services {
       • Příprava tiskových podkladů pro výrobu
       `,
       examples: [
-        {src: "../images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
+        {src: "../images/carousel/3d_1.jpg", projectName: "vest", hasBrightBG: true},
         {src: "../images/carousel/3d_2.jpg", projectName: "karima"},
         {src: "../images/carousel/3d_3.jpg", projectName: "henna"},
         {src: "../images/carousel/3d_4.jpg", projectName: "agro_jesenice"},
-        {src: "../images/carousel/3d_5.jpg", projectName: "vest"},
+        {src: "../images/carousel/3d_6.jpg", projectName: "kralovske_marmelady"},
+        // {src: "../images/carousel/3d_7.jpg", projectName: "vest"},
       ]
     },
 
@@ -22,14 +24,12 @@ class Services {
 
     "Grafický design": {
       key: "graficky_design",
-      blurb: "Letáky, tiskoviny, plakáty, loga a další...",
+      blurb: "Navrhneme letáky, katalogy, plakáty a další...",
       description: `
-      • logo či jeho redesign
       • firemní identita
       • grafický logomanuál
       • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
-      • inzeráty pro tištěná média, 
-      • bannery pro internet, billboardy, plakáty...
+      • inzeráty, billboardy, plakáty
       `,
       examples: [
         {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: false, hasBrightSubject: true},
@@ -43,17 +43,17 @@ class Services {
 
     "Logo a identita": {
       key: "logo_design",
-      blurb: "Design, redesign a varianty. Vše co se týče loga a brand identity.",
+      blurb: "Vytvoříme logo pro vaši firmu či produkt.",
       description: `
       • Navrhneme vám nové logo a identitu
       • Zmodernizujeme vaši starou identitu
-      • Vytvoříme varianty loga pro nové produkty
+      • Vytvoříme loga pro nové produkty
       `,
       examples: [
         {src: "../images/carousel/logo_1.png", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/logo_5.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_6.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_7.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
       ]
     },
 
@@ -61,12 +61,11 @@ class Services {
 
     "Produkce": {
       key: "produkce",
-      blurb: "Vyrobíme cokoliv - tiskoviny, polepy, stojánky, držáky, POP materiály...",
+      blurb: "Vyrobíme cokoliv - tiskoviny, POP a POS materiály...",
       description: `
       Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
       • tiskoviny - katalogy, vizitky, plakáty
       • roll-upy, ochutnávkové stolky, displeje, polepy
-      • fotografie vašich výrobků či firmy
       • polepy firemních vozidel, prodejen
       • navigační prvky - směrovky, cedule, plachty...
       `,
@@ -82,12 +81,11 @@ class Services {
 
     "Digitální design": {
       key: "digitalni_design",
-      blurb: "FB reklamy, digitální prezentace a weby, ikony, správa eshopů...",
+      blurb: "Digitální prezentace a weby, design eshopů, FB reklamy.",
       description: `
-      • navrhneme design a prototyp webu
-      • pomůžeme vám navrhnout obsahovou strukturu
-      • vytvoříme obsah pro internetovou reklamní kampaň
       • navrhneme a naprogramujeme prezentační weby
+      • pomůžeme vám navrhnout obsahovou strukturu
+      • vytvoříme obsah pro reklamní kampaň
       • zařídíme SEO optimalizaci
       `,
       examples: [
@@ -109,11 +107,11 @@ class Services {
       • na polepy budov, aut, výloh
       `,
       examples: [
-        {src: "images/carousel/3d_1.jpg", projectName: "kralovske_marmelady"},
+        {src: "images/carousel/3d_6.jpg", projectName: "kralovske_marmelady"},
         {src: "images/carousel/3d_2.jpg", projectName: "karima"},
         {src: "images/carousel/3d_3.jpg", projectName: "henna"},
         {src: "images/carousel/3d_4.jpg", projectName: "agro_jesenice"},
-        {src: "images/carousel/3d_5.jpg", projectName: "vest"},
+        {src: "images/carousel/3d_1.jpg", projectName: "vest"},
       ]
     },
 
@@ -121,7 +119,7 @@ class Services {
 
     "Ilustrace": {
       key: "ilustrace",
-      blurb: "Ozdobíme váš projekt originálními ilustracemi",
+      blurb: "Ozdobíme váš projekt originálními ilustracemi.",
       description: `
       • vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
@@ -189,7 +187,9 @@ class ServiceCard {
     
     this.title = serviceName
     this.description = this.data.description ?? "MISSING!"
-    this.initiated = false
+    this.flags = {
+      visible: false
+    }
 
 
     /* Create HTML */
@@ -237,9 +237,11 @@ class ServiceCard {
 
 
     /* try a little animation on entry */
-    this.checkVisibility = (e) => {
+    this.show = (/** @type boolean */ force) => {
+      if(this.flags.visible) return
+
       const rect = container.getBoundingClientRect()
-      if(rect.y < window.innerHeight && rect.bottom > 0) {
+      if((rect.y < window.innerHeight && rect.bottom > 0) || force) {
         container.style.opacity = ""
 
         new Animate(container)
@@ -259,10 +261,11 @@ class ServiceCard {
           easing: "cubic-bezier(0.2, 0.2, 0.3, 1)",
         })
 
-        document.removeEventListener("scroll", this.checkVisibility)
+        document.removeEventListener("scroll", this.show)
+        this.flags.visible = true
       }
     }
-    document.addEventListener("scroll", this.checkVisibility)
+    document.addEventListener("scroll", this.show)
 
 
 
@@ -272,13 +275,16 @@ class ServiceCard {
   /** @type Map<string, ServiceCard> */
   static list = new Map()
 
-  static navigateToCard(name) {
+  static async navigateToCard(name) {
     Page.applyState({page: "services"})
     const card = this.list.get(name)
+    card.show(true)
+    await wait(100)
     card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
   }
 }
 
+/** The small card for the homepage. */
 class ServiceCardSmall {
   constructor(/** @type string */ serviceName) {
     this.data = Services.list[serviceName]

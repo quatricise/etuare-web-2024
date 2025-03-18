@@ -91,8 +91,9 @@
 
     <div class="section home--section--about">
       <h1 class="home--section--about--heading">O nás</h1>
-      <p class="home--section--about--text auto-shy">
-        Fungujeme už 19 let. Snažíme se aby práce dobrá a klient spokojený.
+      <p class="home--section--about--text auto-shy add-nbsp">
+        <!-- Fungujeme už 20 let. Jsme v tom pro peníze, ale občas nás to i baví :) -->
+        Grafi­cké a p­rodukční stu­dio ze Zlína, které vám pomůže s vaší firemní identitou i propagací.
       </p>
       <div class="home--section--about--buttons">
         <button onclick="Page.applyState({page: 'about'})">
@@ -109,7 +110,7 @@
     <div class="section services--section--intro">
       <h1 class="page-heading page-heading--services">Naše služby</h1>
       <div class="services--intro-text-1 auto-shy add-nbsp">
-        Tvoříme řešení, která vám pomohou na cestě k úspěchu. Máme 19 let zkušeností a nebojíme se dlouhodobé spolupráce.
+        Tvoříme řešení, která vám pomohou na cestě k úspěchu. Máme 20 let zkušeností a nebojíme se dlouhodobé spolupráce.
       </div>
       <div class="services--intro-text-2">
         <div class="button-arrow" style="display: inline-block; width: 18px; height: 18px; top: 3px; margin-right: 2px;"></div> 
@@ -123,10 +124,13 @@
     </div>
     <div class="section services--section--cards"></div>
 
-    <div class="section services--section--donts hidden">
-      <h1>Co neděláme</h1>
-      <p>Sice toho děláme dost, ale všechno taky nezvládneme. Televizní kampaně, profesionální copywriting nebo třeba CAD modeling.</p>
+    <div class="section about--section--contractors" style="padding-bottom: 0px"> <!-- fix this and unify classes -->
+      <h2 class="page--heading--about">Neděláme všechno, ale...</h2>
+      <p style="max-width: 720px;">
+        Dokážeme zajistit spolupráci s fotografy, ilustrátory, tiskárnami a dále; vše podle potřeb projektu, abychom měli jistotu, že se vše dokončí včas a správně.
+      </p>
     </div>
+
   </div> <!-- page--services -->
 
 
@@ -135,7 +139,7 @@
     <div class="project--banner">
     </div>
     <div class="project--button--go-back--container">
-      <button class="dark dark-0 project--button--go-back" onclick="history.back()">
+      <button class="dark dark-0 project--button--go-back" onclick='Page.applyState({page: "home"})'>
         <div class="button-arrow rotate-180"></div>
         Zpět k projektům
       </button>
@@ -153,7 +157,7 @@
     <div class="section about--section--intro">
       <h1 class="page-heading--about">O nás</h1>
       <p class="about--intro-text-1 add-nbsp auto-shy">
-        Jsme grafické a produkční studio ze Zlína a fungujeme již 19 let. Za sebou máme spolupráce různého druhu - vinařství, výrobci kosmetiky, mražená zelenina, nealko/alko nápoje.
+        Jsme grafi­cké a p­rodukční stu­dio ze Zlína a fu­ngujeme pro vás již 20 let. Za sebou máme spolu­práce růz­ného druhu - vinař­ství, výro­bci kosme­tiky, mra­žená zele­nina, nealko­/alko nápo­je. <br><br> Nejvíce nás baví obaly a etikety, ale navrhneme vám i webové stránky, propagační grafiku a reklamní materiály pro vaši firmu. Také zajistíme produkci dle vašich požadavků a další potřebné služby pro vaši propagaci offline i online.
       </p>
     </div>
 
@@ -167,22 +171,23 @@
         </div>
         <div class="about--people-container--employee"> <!-- JS --> </div>
       </div>
-      <div class="about--team--segment-2 hidden">
-        <div class="team--role--text">
-          <h2 class="team--role--title">Externisté</h2>
-          <p class="team--role--description auto-shy add-nbsp">
-            Nemají sice židli v kanceláři, ale stejně je považujeme za hodnotné kolegy a platíme jim za jejich práci.
-          </p>
-        </div>
-        <div class="about--people-container--contractor"> <!-- JS --> </div>
-      </div>
     </div>
 
     <div class="section about--section--contractors">
       <h1 class="page--heading--about" >Neděláme všechno, ale...</h1>
-      <p>
-        Dokážeme zajistit spolupráci s fotografy, ilustrátory, tiskárnami a dále; vše podle potřeb projektu, abychom měli jistotu že se vše dokončí včas a správně.
+      <p style="max-width: 720px;">
+        Dokážeme zajistit spolupráci s fotografy, ilustrátory, tiskárnami a dále; vše podle potřeb projektu, abychom měli jistotu, že se vše dokončí včas a správně.
       </p>
+    </div>
+
+    <div class="about--team--segment-2">
+      <div class="team--role--text hidden">
+        <h2 class="team--role--title">Externisté</h2>
+        <p class="team--role--description auto-shy add-nbsp">
+          Nemají sice židli v kanceláři, ale stejně je považujeme za hodnotné kolegy a platíme jim za jejich práci.
+        </p>
+      </div>
+      <div class="about--people-container--contractor"> <!-- JS --> </div>
     </div>
 
     <div class="section about--section--logos">
@@ -208,12 +213,13 @@
   <footer>
     <h1 class="footer-heading">Kontakt</h1>
     <p class="footer--description auto-shy add-nbsp">
-      Za dotaz nic nedáte! Nebojte se na nás obrátit s otázkou či nezávaznou poptávkou a domluvíme se jestli jsme pro vás ti praví. Nebo se můžete stavit, pokud to máte po cestě.
+      Za dotaz nic nedáte. Nebojte se na nás obrátit s otázkou či nezávaznou poptávkou a domluvíme se jestli jsme pro vás ti praví. Nebo se můžete stavit, pokud to máte po cestě (Kafe zdarma, samozřejmě).
     </p>
     <div class="footer--content">
       <div class="footer--content--contacts" id="link--contact">
         <img class="icon--contact" src="images/icon_big_contact.png" alt="">
         <div class="contact--text">
+          <span>Ing. Zbyněk Trvaj</span>
           <a class="tooltip" href="mailto:trvaj@etuare.com" data-tooltip="Napsat mail"> 
             trvaj@etuare.com
           </a>
@@ -237,7 +243,7 @@
   </footer>
 
 
-  <script src="https://unpkg.com/microtypejs/dist/microtype.js"></script>
+  <!-- <script src="https://unpkg.com/microtypejs/dist/microtype.js"></script> --> <!-- yeah okay until I try using this shit, don't fucking include it -->
   <script src="js/app.js"></script>
 </body>
 </html>

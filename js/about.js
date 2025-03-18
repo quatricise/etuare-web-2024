@@ -1,25 +1,25 @@
 class Person {
   static list = {
-    "Zbyněk Trvaj": {
+    "Ing. Zbyněk Trvaj": {
       role: "employee",
       filename: "zbynek.jpg",
       description: "Grafika, obalový design, DTP, marketing",
       portfolioLink: "",
     },
-    "Štěpán Trvaj": {
+    "BcA. Štěpán Trvaj": {
       role: "employee",
       filename: "stepan.jpg",
       description: "Grafika, obaly, web design, programování, ilustrace",
       portfolioLink: "https://www.quatricise.com",
     },
     "Tomáš Novosád": {
-      role: "employee",
+      role: "contractor",
       filename: "tomas.jpg",
       description: "Fotografie, fotografická post-produkce",
       portfolioLink: "https://www.tomas-novosad.com",
     },
     "Ivana Kotásková": {
-      role: "employee",
+      role: "contractor",
       filename: "iva.jpg",
       description: "Ilustrace, malba",
       portfolioLink: "https://www.instagram.com/ivana.kotaskova/",
