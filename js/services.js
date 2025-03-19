@@ -11,7 +11,7 @@ class Services {
       • Příprava tiskových podkladů pro výrobu
       `,
       examples: [
-        {src: "../images/carousel/3d_1.jpg", projectName: "vest", hasBrightBG: true},
+        {src: "../images/carousel/obal_1.jpg", projectName: "vest", hasBrightBG: true},
         {src: "../images/carousel/3d_2.jpg", projectName: "karima"},
         {src: "../images/carousel/3d_3.jpg", projectName: "henna"},
         {src: "../images/carousel/3d_4.jpg", projectName: "agro_jesenice"},
@@ -32,7 +32,7 @@ class Services {
       • inzeráty, billboardy, plakáty
       `,
       examples: [
-        {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: false, hasBrightSubject: true},
+        {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_4.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
@@ -50,7 +50,7 @@ class Services {
       • Vytvoříme loga pro nové produkty
       `,
       examples: [
-        {src: "../images/carousel/logo_1.png", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_1.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_6.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_7.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
@@ -72,8 +72,10 @@ class Services {
       examples: [
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu."},
-        {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold"},
-        {src: "../images/carousel/prod_8.jpg", projectName: "kovacs", hasBrightBG: true, tooltip: "Rollupy pro prezentaci firmy na akcích." },
+        {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold", tooltip: "Štítky do zmrzlinových van."},
+        {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Držáky na kornouty."},
+        {src: "../images/carousel/prod_8.jpg", projectName: "kovacs",  hasBrightBG: true, tooltip: "Rollupy pro prezentaci firmy na akcích." },
+        {src: "../images/carousel/prod_9.jpg", projectName: "la_food", hasBrightBG: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
       ]
     },
 
@@ -89,7 +91,7 @@ class Services {
       • zařídíme SEO optimalizaci
       `,
       examples: [
-        {src: "images/carousel/digi_3.jpg",    projectName: "napacider", tooltip: "Reklamní FB kampaň pro Napa cider."},
+        {src: "images/carousel/digi_3.jpg",    projectName: "napacider", tooltip: "Reklamní FB kampaň pro Napa cider.", hasBrightBG: true, },
         {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", tooltip: "Web pro Napa cider",  hasBrightBG: true, hasBrightSubject: true},
         {src: "images/carousel/digi_4.jpg",    projectName: "$out", url: "https://quatricise.com", tooltip: "Portfolio pro umělce a ilustrátora."},
       ]
@@ -237,8 +239,9 @@ class ServiceCard {
 
 
     /* try a little animation on entry */
-    this.show = (/** @type boolean */ force) => {
+    this.show = (/** @type Event */ event, /** @type boolean */ force = false) => {
       if(this.flags.visible) return
+      if(Page.current != "services") return
 
       const rect = container.getBoundingClientRect()
       if((rect.y < window.innerHeight && rect.bottom > 0) || force) {
@@ -278,7 +281,7 @@ class ServiceCard {
   static async navigateToCard(name) {
     Page.applyState({page: "services"})
     const card = this.list.get(name)
-    card.show(true)
+    card.show(undefined, true)
     await wait(100)
     card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
   }

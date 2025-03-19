@@ -773,10 +773,11 @@ footer {
 }
 
 :root {
-  --works--column-gap: 3vw;
-  --works--column-gap: 2px;
+  /* --works--column-gap: 3vw; */
+  /* --works--column-gap: 2px; */
   --works--column-gap: 2vw;
-  --works--width: 1200px;
+  --works--column-gap: 0px;
+  --works--width: 1280px;
   --works--column-width: calc(50% - var(--works--column-gap)/2);
 }
 
@@ -1017,6 +1018,15 @@ footer {
   align-items: center;
 }
 
+.services--section--we-dont-do-it-all {
+  align-items: center;
+  padding-top: 240px;
+  /* padding-bottom: 180px; */
+  padding-left: var(--mobile-padding);
+  padding-right: var(--mobile-padding);
+  gap: 40px;
+}
+
 .page-heading--services {
   margin-bottom: 40px;
 }
@@ -1062,7 +1072,7 @@ footer {
 
 .services--section--cards {
   /* gap: 360px; */
-  gap: 160px;
+  gap: 120px;
   align-items: center;
   padding: 0 60px;
 }
@@ -1070,7 +1080,7 @@ footer {
 /* Page services - SERVICE CARD */
 
 :root {
-  --service-card--width: min(1100px, 100vw);
+  --service-card--width: min(1440px, 100vw);
   --service-card--height: calc(var(--service-card--width) / 2.2);
 }
 
@@ -1401,8 +1411,8 @@ footer {
 
 .about--section--contractors {
   align-items: center;
-  padding-top: 180px;
-  padding-bottom: 180px;
+  padding-top: 120px;
+  padding-bottom: 120px;
   padding-left: var(--mobile-padding);
   padding-right: var(--mobile-padding);
   gap: 40px;
@@ -1464,7 +1474,7 @@ footer {
 
 .about--section--logos {
   /* margin-top: 360px; */
-  margin-top: 180px;
+  margin-top: 240px;
   align-items: center;
 }
 

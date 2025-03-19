@@ -352,10 +352,10 @@ class Project {
           h: "Vizuální identita"
         },
         {
-          t: "image_3",
+          t: "image_2",
           d: "column",
           l: "Logo + claim a rozvinutí identity na vizuálním stylu a variace loga na další produkty značky.",
-          f: ["logo_intro.png", "logo_intro_2.jpg", "loga_tocena_a_trist.jpg"],
+          f: ["logo_intro.png", "logo_intro_2.jpg"/* , "loga_tocena_a_trist.jpg" */],
         },
         {
           t: "heading",
@@ -426,7 +426,7 @@ class Project {
           t: "image_2",
           d: "column",
           f: ["stanek_1.jpg", "stanek_2.jpg"],
-          l: "Fotky z 'terénu'."
+          l: "Fotky z prezentačních akcí."
         },
       ],
     },
@@ -464,7 +464,15 @@ class Project {
           t: "image_2",
           d: "column",
           o: {gap: "2px"},
-          f: ["katalog_gastro.jpg", "katalog_gastro_2.jpg"]
+          f: ["katalog_gastro.jpg", "katalog_gastro_2.jpg"],
+          l: "Katalog pro gastro provozovny."
+        },
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "2px"},
+          f: ["katalog_retail.jpg", "katalog_retail_2.jpg"],
+          l: "Katalog pro retailové zákazníky."
         },
       ],
     },
@@ -781,6 +789,10 @@ class Project {
         },
         {
           t: "image",
+          f: "tiskoviny.jpg"
+        },
+        {
+          t: "image",
           f: "domecek.jpg"
         },
       ]
@@ -924,7 +936,7 @@ class ProjectCard {
     const borderRight = Create("div",    {c: "project-card--border-right"})
     const borderTop =   Create("div",    {c: "project-card--border-top"})
 
-    card.append(image, borderLeft, borderRight, borderTop, text)
+    card.append(image, /* borderLeft, borderRight, borderTop, */ text)
     text.append(title)
     text.append(desc)
     text.append(button)
@@ -957,6 +969,7 @@ class ProjectCard {
     // }
 
     new Animate(card)
+    .set({style: {zIndex: -1}})
     .animate([
       {transform: "translateY(-8px)", filter: "opacity(0)"},
       {transform: "translateY(0px)", filter: "opacity(1)"}
@@ -964,6 +977,9 @@ class ProjectCard {
       duration: 750, 
       easing: "cubic-bezier(0.3, 0.0, 0.6, 1.0)"
     })
+    .resetStyle();
+
+    console.log(card)
 
     autoShy(desc)
     autoNBSP(desc)

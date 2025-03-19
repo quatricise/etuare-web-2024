@@ -53,6 +53,10 @@ class Animate {
           this._classSet(action.state, action.classes)
           break
         }
+        case "resetStyle": {
+          this.resetStyle(action.state)
+          break
+        }
         case "wait": {
           this.wait(action.durationMS)
           break
@@ -116,6 +120,7 @@ class Animate {
 
   /** Sets some things on the element */
   set(data = {style: {}, attribs: {}}) {
+    if(!data) return
 
     if(this.current) {
       this.actions.push({type: "set", data})
@@ -123,12 +128,12 @@ class Animate {
 
     else {
       // console.log("set")
-      if(data?.style) {
+      if(data.style) {
         for(let key in data.style) {
           this.element.style[key] = data.style[key]
         }
       }
-      if(data?.attribs) {
+      if(data.attribs) {
         for(let key in data.attribs) {
           this.element.setAttribute(key, data.attribs[key])
         }
@@ -136,6 +141,17 @@ class Animate {
       this._queueNext()
     }
 
+    return this
+  }
+
+  resetStyle() {
+    if(this.current) {
+      this.actions.push({type: "resetStyle"})
+    }
+    else {
+      this.element.style = ""
+    }
+    
     return this
   }
 

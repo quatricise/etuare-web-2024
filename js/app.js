@@ -458,7 +458,7 @@ class Page {
           const card = new ServiceCard(key)
           
           if(index === 0) {
-            card.show()
+            setTimeout(() => card.show(), 100)
           }
         }
         break
