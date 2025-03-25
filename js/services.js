@@ -11,12 +11,11 @@ class Services {
       • Příprava tiskových podkladů pro výrobu
       `,
       examples: [
-        {src: "../images/carousel/obal_1.jpg", projectName: "vest", hasBrightBG: true},
-        {src: "../images/carousel/3d_2.jpg", projectName: "karima"},
-        {src: "../images/carousel/3d_3.jpg", projectName: "henna"},
-        {src: "../images/carousel/3d_4.jpg", projectName: "agro_jesenice"},
-        {src: "../images/carousel/3d_6.jpg", projectName: "kralovske_marmelady"},
-        // {src: "../images/carousel/3d_7.jpg", projectName: "vest"},
+        {src: "../images/carousel/obal_1.jpg",  projectName: "vest", hasBrightBG: true},
+        {src: "../images/carousel/3d_2.jpg",    projectName: "karima"},
+        {src: "../images/carousel/3d_3.jpg",    projectName: "henna"},
+        {src: "../images/carousel/3d_4.jpg",    projectName: "agro_jesenice"},
+        {src: "../images/carousel/3d_6.jpg",    projectName: "kralovske_marmelady"},
       ]
     },
 

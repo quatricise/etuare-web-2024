@@ -410,7 +410,7 @@ class Page {
     }
   }
 
-  static set(page, scroll) {
+  static set(/** @type string */ page) {
     if(state.mobile) {
       toggleNavlinks(false)
     }
