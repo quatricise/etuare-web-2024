@@ -775,8 +775,9 @@ footer {
 :root {
   /* --works--column-gap: 3vw; */
   /* --works--column-gap: 2px; */
-  --works--column-gap: 2vw;
   --works--column-gap: 0px;
+  --works--column-gap: 2vw;
+  /* --works--column-gap: 2px; */
   --works--width: 1280px;
   --works--column-width: calc(50% - var(--works--column-gap)/2);
 }
@@ -884,6 +885,7 @@ footer {
 .project-card--image {
   object-fit: cover;
   width: 100%;
+  border-radius: 30px 30px 32px 32px;
 }
 
 .project-card * {
@@ -952,6 +954,7 @@ footer {
   background-size: cover;
   opacity: 0.0;
   filter: brightness(0.1);
+  border-radius: 0  0 28px 28px;
   transition: left 0.5s cubic-bezier(0.3, 0.0, 0.1, 1.0), opacity 0.75s cubic-bezier(0.3, 0.0, 0.1, 1.0), filter 0.8s ease-in-out;
 }
 
@@ -986,7 +989,7 @@ footer {
 }
 
 .project-card.brighten-on-hover:hover {
-  filter: brightness(1.07);
+  filter: brightness(1.06);
 }
 
 .project-card:hover .project-card--description {
@@ -1150,6 +1153,7 @@ footer {
   flex-grow: 1;
   background-image: url(images/background_var_0.png);
   background-position: bottom left;
+  background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 }
@@ -1279,6 +1283,7 @@ footer {
   overflow-y: hidden;
   overflow-x: auto;
   scrollbar-width: 0;
+  border-radius: 30px;
 }
 
 .carousel-image {
@@ -1544,6 +1549,7 @@ footer {
 
 .person-card--image {
   width: 100%;
+  border-radius: 18px;
   transition: filter 0.5s ease-in-out;
 }
 
@@ -1744,6 +1750,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: 20px 20px;
   width: 100%;
   font-size: 18px;

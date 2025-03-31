@@ -82,15 +82,22 @@ class Project {
 
       } else
 
-      if(object.t === "image_2_1") {
+      if(object.t.isAny("image_2_1", "image_1_2")) {
         const dir =   object.d ?? "row"
         const flex =  Create("div",   {c: `project--image--flex \f ${dir}`})
         for(let [index, filename] of object.f.entries()) {
           const i = Create("img",   {c: "project--image--one-of-two", a: `loading=lazy \f src=../projects/${name}/${filename}`})
           flex.append(i)
 
-          if (index === 2) {
-            i.classList.replace("project--image--one-of-two", "project--image--single")
+          if(object.t === "image_2_1") {
+            if (index === 2) {
+              i.classList.replace("project--image--one-of-two", "project--image--single")
+            }
+          } else
+          if(object.t === "image_1_2") {
+            if (index === 0) {
+              i.classList.replace("project--image--one-of-two", "project--image--single")
+            }
           }
 
           i.onerror = () => replaceWithPlaceholder(i, "project--image--one-of-two") 
@@ -438,7 +445,7 @@ class Project {
       titleShort: "",
       title: "Agro Jesenice",
       descriptionShort: "Vizuální identita a obaly",
-      description: "Obaly pro řady mražených výrobků - zelenina, smoothies a směsi různého druhu.",
+      description: "Od roku 2011 pro ně navrhujeme obaly pro řady mražených výrobků — zelenina, smoothies a směsi různého druhu. Připravujeme i a veškeré tiskové a prezentační materiály.",
       content: [
         {
           t: "image",
@@ -480,6 +487,7 @@ class Project {
 
 
     "martenz": {
+      brightOnHover: false,
       titleShort: "Martenz",
       title: "Martenz",
       descriptionShort: "Etikety pro moravskou pálenku",
@@ -499,12 +507,17 @@ class Project {
           f: "black_silver.jpg",
         },
         {
+          t: "heading",
+          h: "Řady Reserve"
+        },
+        {
           t: "image",
           f: "black_reserve_lahev_a_krabicka.jpg",
         },
         {
-          t: "image",
-          f: "malinovice_reserve.jpg",
+          t: "image_1_2",
+          f: ["malinovice_reserve_lahve_s_krabickou_montaz.jpg", "reserve_detail_1.jpg", "reserve_detail_2.jpg"],
+          l: "Vítěz soutěže Obal roku 2024 v kategorii Dárkové balení.",
         },
         {
           t: "image",
@@ -516,14 +529,14 @@ class Project {
         },
         {
           t: "image",
-          l: "Design exclusivní borůvkovice od značky Martenz. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky/fanoušky značky.",
+          l: "Design exclusivní borůvkovice. Jedná se o speciální design, tzv. Fan Edition, která byla navrhnuta společně se zákazníky a fanoušky značky.",
           f: "boruvkovice.jpg"
         },
-        {
+        /* {
           t: "image_3",
           l: "Alternativní ilustrace pro etiketu Borůvkovice, z nichž se nakonec použila prostřední.",
           f: ["ilu_1.jpg", "ilu_2.jpg", "ilu_3.jpg"]
-        },
+        }, */
       ],
     },
 
@@ -560,18 +573,19 @@ class Project {
         },
         {
           t: "image_2",
-          f: ["rollups_mockup.jpg", "sidlo_1.jpg"],
-        },
-        {
-          t: "image_2",
           d: "column",
           l: "Profil - leták o 4 stránkách, který shrnuje filozofii firmy.",
           f: ["profil_1.jpg", "profil_2.jpg"],
         },
         {
-          t: "image_2_1",
+          t: "image_2",
           l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
-          f: ["vinny_listek.jpg", "reklamni_predmety.jpg", "ubrus.jpg"],
+          f: ["rollups_mockup.jpg", "vinny_listek.jpg"],
+        },
+        {
+          t: "image_2",
+          l: "Reklamní předměty - Zařizovali jsme výrobu a dodání + design potisku.",
+          f: ["reklamni_predmety.jpg", "ubrus.jpg"],
         },
         {
           t: "heading",
@@ -819,6 +833,24 @@ class Project {
         {
           t: "image",
           f: "ryze.jpg",
+        },
+        {
+          t: "heading",
+          h: "Katalogy"
+        },
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "2px"},
+          f: ["katalog_gastro_1.jpg", "katalog_gastro_2.jpg"],
+          l: "Katalog pro gastro provozovny",
+        },
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "2px"},
+          f: ["katalog_retail_1.jpg", "katalog_retail_2.jpg"],
+          l: "Katalog pro retail/koncové zákazníky",
         },
       ]
     },

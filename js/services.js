@@ -3,7 +3,6 @@ class Services {
     "Obalový design": {
       key: "obalovy_design",
       blurb: "Specializujeme se na obaly pro potraviny, nápoje a kosmetiku.",
-      // blurb: "Obalované řízky...teda, obaly na obalované řízky!",
       description: `
       • Grafický návrh nových obalů
       • Redesign stávajících obalů
@@ -11,7 +10,10 @@ class Services {
       • Příprava tiskových podkladů pro výrobu
       `,
       examples: [
-        {src: "../images/carousel/obal_1.jpg",  projectName: "vest", hasBrightBG: true},
+        // {src: "../images/carousel/obal_1.jpg",  projectName: "vest", hasBrightBG: true},
+        {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
+        {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
+        {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
         {src: "../images/carousel/3d_2.jpg",    projectName: "karima"},
         {src: "../images/carousel/3d_3.jpg",    projectName: "henna"},
         {src: "../images/carousel/3d_4.jpg",    projectName: "agro_jesenice"},
@@ -33,8 +35,8 @@ class Services {
       examples: [
         {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/graf_4.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
+        // {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
+        // {src: "../images/carousel/graf_4.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
       ]
     },
 
@@ -70,9 +72,9 @@ class Services {
       `,
       examples: [
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu."},
-        {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold", tooltip: "Štítky do zmrzlinových van."},
-        {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Držáky na kornouty."},
+        {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu.", hasBrightBG: true},
+        {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold", tooltip: "Štítky do zmrzlinových van.", hasBrightBG: true},
+        {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Držáky na kornouty.", hasBrightBG: true},
         {src: "../images/carousel/prod_8.jpg", projectName: "kovacs",  hasBrightBG: true, tooltip: "Rollupy pro prezentaci firmy na akcích." },
         {src: "../images/carousel/prod_9.jpg", projectName: "la_food", hasBrightBG: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
       ]
@@ -128,14 +130,16 @@ class Services {
       • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace
       `,
       examples: [
-        {src: "images/carousel/ilu_1.jpg", projectName: "corston_and_william"},
-        {src: "images/carousel/ilu_2.jpg", projectName: "brela"},
-        {src: "images/carousel/ilu_3.jpg", projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
-        {src: "images/carousel/ilu_4.jpg", projectName: "kovacs",              hasBrightBG: true},
-        {src: "images/carousel/ilu_5.jpg", projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true},
-        {src: "images/carousel/ilu_6.jpg", projectName: "kralovske_marmelady", hasBrightBG: true},
-        {src: "images/carousel/ilu_7.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},
-        {src: "images/carousel/ilu_8.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Kreslená pozvánka na firemní akci PPG"},
+        {src: "images/carousel/ilu_9.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Ilustrace ve stylu 'Corporate Memphis', nebo Alegria"},
+        {src: "images/carousel/ilu_11.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Propagační plakát pro značku Piva"},
+        {src: "images/carousel/ilu_3.jpg",  projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
+        {src: "images/carousel/ilu_2.jpg",  projectName: "",                    tooltip: "Digitální ilustrace pro čistící produkt"},
+        {src: "images/carousel/ilu_1.jpg",  projectName: "corston_and_william"},
+        {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true},
+        {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true},
+        {src: "images/carousel/ilu_7.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},
+        {src: "images/carousel/ilu_8.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Kreslená pozvánka na firemní akci PPG"},
       ]
     },
   }
