@@ -54,7 +54,7 @@ class Services {
         {src: "../images/carousel/logo_1.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_6.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/logo_7.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_7.jpg", projectName: "karima",     hasBrightBG: true, hasBrightSubject: true},
       ]
     },
 
@@ -71,7 +71,7 @@ class Services {
       • navigační prvky - směrovky, cedule, plachty...
       `,
       examples: [
-        {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", tooltip: "InZlin - Zlínský lifestylový magazín.", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu.", hasBrightBG: true},
         {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold", tooltip: "Štítky do zmrzlinových van.", hasBrightBG: true},
         {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Držáky na kornouty.", hasBrightBG: true},
@@ -92,9 +92,9 @@ class Services {
       • zařídíme SEO optimalizaci
       `,
       examples: [
-        {src: "images/carousel/digi_3.jpg",    projectName: "napacider", tooltip: "Reklamní FB kampaň pro Napa cider.", hasBrightBG: true, },
-        {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", tooltip: "Web pro Napa cider",  hasBrightBG: true, hasBrightSubject: true},
-        {src: "images/carousel/digi_4.jpg",    projectName: "$out", url: "https://quatricise.com", tooltip: "Portfolio pro umělce a ilustrátora."},
+        {src: "images/carousel/digi_5.jpg", projectName: "napacider", tooltip: "Reklamní FB kampaň pro Napa cider.", hasBrightBG: true, },
+        // {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", tooltip: "Web pro Napa cider",  hasBrightBG: true, hasBrightSubject: true},
+        // {src: "images/carousel/digi_4.jpg",    projectName: "$out", url: "https://quatricise.com", tooltip: "Portfolio pro umělce a ilustrátora."},
       ]
     },
 
@@ -134,10 +134,10 @@ class Services {
         {src: "images/carousel/ilu_11.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Propagační plakát pro značku Piva"},
         {src: "images/carousel/ilu_3.jpg",  projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
         {src: "images/carousel/ilu_2.jpg",  projectName: "",                    tooltip: "Digitální ilustrace pro čistící produkt"},
-        {src: "images/carousel/ilu_1.jpg",  projectName: "corston_and_william"},
+        {src: "images/carousel/ilu_1.jpg",  projectName: "corston_and_william", tooltip: "Design ilustrací pro značku whisky"},
         {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true},
         {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true},
-        {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true},
+        {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
         {src: "images/carousel/ilu_7.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},
         {src: "images/carousel/ilu_8.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Kreslená pozvánka na firemní akci PPG"},
       ]

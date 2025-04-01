@@ -17,6 +17,8 @@ class Carousel {
     imageSources.forEach((src, index) => {
       const img = Create("img", {c: "carousel-image", a: `src=${src.src}`})
 
+
+
       /* placeholder clones are replaced with the right image when it is loaded */
       img.onload = () => {
         this.images[index].replaceWith(img)
@@ -24,43 +26,9 @@ class Carousel {
 
         /* add functionality to the image */
         if(img.dataset.title) {
-          img.onmouseenter = () => {
-            currentSlideName.classList.remove("hidden")
-            currentSlideNameText.innerText = img.dataset.title
-            currentSlideName.getAnimations().forEach(a => a.cancel())
-              currentSlideName.animate([
-                {bottom: "-60px"},
-                {bottom: "0"},
-              ],{
-                duration: 400,
-                easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
-              })
-          }
+          img.onmouseenter = () => this._showSlideInfo(img)
     
-          img.onmouseleave = () => {
-            const anims = currentSlideName.getAnimations()
-            if(anims.length) {
-              anims.forEach((a, index) => {
-                if(index !== anims.length - 1) a.cancel()
-              })
-              anims[anims.length - 1].onfinish = () => animate()
-            }
-            else {
-              animate()
-            }
-            
-            function animate() {
-              currentSlideName.animate([
-                {bottom: "0"},
-                {bottom: "-60px"},
-              ],{
-                duration: 400,
-                easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
-              }).onfinish = () => {
-                currentSlideName.classList.add("hidden")
-              }
-            }
-          }
+          img.onmouseleave = () => this._hideSlideInfo(img)
     
           if(src.projectName != "$out" && src.projectName) {
             img.onclick = () => this._queueClick(() => Page.applyState({page: "project", project: img.dataset.project}))
@@ -68,6 +36,9 @@ class Carousel {
         }
         if(index === 0) {
           this._updateControlsColor()
+        }
+        if(state.mobile) {
+          this._showSlideInfo()
         }
       }
 
@@ -132,10 +103,14 @@ class Carousel {
     const arrowRight =               Create("div", {c: "button-arrow", a: "title=Next"})
     const bubbles =                  Create("div", {c: "carousel--bubble-container"})
 
-    const currentSlideName =         Create("div", {c: "carousel--current-slide-name \f hidden"})
+    const currentSlideName =         Create("div", {c: "carousel--current-slide-name"})
     const currentSlideNameText =     Create("div", {c: "carousel--current-slide-name--text", t: Project.data[imageSources[0].projectName]?.titleShort})
     const currentSlideBorderTop =    Create("div", {c: "carousel--current-slide-name--border--top"})
     const currentSlideBorderBottom = Create("div", {c: "carousel--current-slide-name--border--bottom"})
+
+    if(!state.mobile) {
+      currentSlideName.classList.add("hidden")
+    }
     
     arrowLeft.style.mixBlendMode = "difference"
     arrowRight.style.mixBlendMode = "difference"
@@ -186,9 +161,55 @@ class Carousel {
       arrowLeft,
       arrowRight,
       bubbles,
+      currentSlideName,
+      currentSlideNameText,
     }
 
     Carousel.list.push(this)
+  }
+  _showSlideInfo() {
+    const name = this.elements.currentSlideName
+    const text = this.elements.currentSlideNameText
+
+    name.classList.remove("hidden")
+    text.innerText = this.images[this.current].dataset.title
+    if(!state.mobile) {
+      name.getAnimations().forEach(a => a.cancel())
+      name.animate([
+        {bottom: "-60px"},
+        {bottom: "0"},
+      ],{
+        duration: 400,
+        easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
+      })
+    }
+  }
+  _hideSlideInfo() {
+    if(state.mobile) return //return because the info is never hidden on mobile
+
+    const name = this.elements.currentSlideName
+    const anims = name.getAnimations()
+    if(anims.length) {
+      anims.forEach((a, index) => {
+        if(index !== anims.length - 1) a.cancel()
+      })
+      anims[anims.length - 1].onfinish = () => animate()
+    }
+    else {
+      animate()
+    }
+    
+    function animate() {
+      name.animate([
+        {bottom: "0"},
+        {bottom: "-60px"},
+      ],{
+        duration: 400,
+        easing: "cubic-bezier(0.7, 0.0, 0.25, 0.9)"
+      }).onfinish = () => {
+        name.classList.add("hidden")
+      }
+    }
   }
   _queueClick(fn) { //only queues one click
     if(this.busy) {
@@ -256,6 +277,10 @@ class Carousel {
     this.current++
 
     this._updateBubbles()
+
+    if(state.mobile) {
+      this._showSlideInfo()
+    }
   }
   _prev() {
     if(this.current === 0) {
@@ -269,6 +294,10 @@ class Carousel {
     this.current--
 
     this._updateBubbles()
+
+    if(state.mobile) {
+      this._showSlideInfo()
+    }
   }
   _updateBubbles() {
     Array.from(this.elements.bubbles.children).forEach((bubble, index) => {
@@ -283,16 +312,20 @@ class Carousel {
   }
   _updateControlsColor() {
     if(this.images[this.current].dataset.hasBrightBG === "true") {
+      if(!state.mobile) {
+        this.elements.arrowLeft.classList.add("dark")
+        this.elements.arrowRight.classList.add("dark")
+        this.elements.arrowBg.classList.add("dark")
+      }
       this.elements.bubbles.classList.add("dark")
-      this.elements.arrowLeft.classList.add("dark")
-      this.elements.arrowRight.classList.add("dark")
-      this.elements.arrowBg.classList.add("dark")
     }
     else {
+      if(!state.mobile) {
+        this.elements.arrowLeft.classList.remove("dark")
+        this.elements.arrowRight.classList.remove("dark")
+        this.elements.arrowBg.classList.remove("dark")
+      }
       this.elements.bubbles.classList.remove("dark")
-      this.elements.arrowLeft.classList.remove("dark")
-      this.elements.arrowRight.classList.remove("dark")
-      this.elements.arrowBg.classList.remove("dark")
     }
   }
   updateGlowOnMouse(e) {

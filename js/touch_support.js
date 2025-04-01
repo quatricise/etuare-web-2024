@@ -27,7 +27,7 @@ class Touch {
     this.start.set(e.touches[0].pageX, e.touches[0].pageY)
 
     if(this.active) {
-      this.target.touchStart(e)
+      this.target?.touchStart(e)
     }
   }
   static touchEnd(/** @type TouchEvent */ e) {
@@ -58,7 +58,7 @@ class Touch {
     if(!this.active) return
 
     this.end.set(e.touches[0].pageX, e.touches[0].pageY)
-    this.target.touchMove()
+    this.target?.touchMove()
   }
   static active = false
 

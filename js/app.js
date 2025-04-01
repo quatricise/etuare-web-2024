@@ -502,7 +502,7 @@ class Page {
 
 
 async function showMoreProjects() {
-  const max = 6
+  const max = 4
   let counter = 0
 
   for(let key in Project.data) {
@@ -518,7 +518,7 @@ async function showMoreProjects() {
     }
   }
 
-  if(counter < max) { //ran out of projects
+  if(counter < max || Project.homeCardsLoaded.size === Object.keys(Project.data).length) { //ran out of projects
     Q(".home--section--see-more").classList.add("hidden")
   }
 }

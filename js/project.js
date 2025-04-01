@@ -491,7 +491,7 @@ class Project {
       titleShort: "Martenz",
       title: "Martenz",
       descriptionShort: "Etikety pro moravskou pálenku",
-      description: "Moravský výrobce prémiových pálenek. Navrhovali jsme design loga, etikety a dárkové krabičky.",
+      description: "Moravský výrobce prémiových pálenek. Navrhovali jsme design loga, etikety a dárkové krabičky. ",
       content: [
         {
           t: "image",

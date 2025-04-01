@@ -775,9 +775,8 @@ footer {
 :root {
   /* --works--column-gap: 3vw; */
   /* --works--column-gap: 2px; */
-  --works--column-gap: 0px;
+  /* --works--column-gap: 0px; */
   --works--column-gap: 2vw;
-  /* --works--column-gap: 2px; */
   --works--width: 1280px;
   --works--column-width: calc(50% - var(--works--column-gap)/2);
 }
@@ -944,7 +943,6 @@ footer {
   left: -100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 10px;
   width: 100%;
   padding: 20px 20px;
@@ -2014,6 +2012,16 @@ footer {
     padding-right: var(--mobile-padding);
   }
 
+  /* PROJECT CARD */
+
+  .project-card--image {
+    border-radius: 3px;
+  }
+
+  .project-card--text {
+    border-radius: 0  0 2px 2px;
+  }
+
   .project-card--text {
     position: relative;
     top: 0;
@@ -2158,8 +2166,40 @@ footer {
 
   /* CAROUSEL */
 
+  .carousel-container {
+    flex-direction: column;
+  }
+
+  .carousel--current-slide-name--text {
+    position: relative;
+    font-size: 0.9rem;
+    letter-spacing: -0.015rem;
+    top: 2px;
+  }
+
   .carousel--image-container {
     overflow-x: hidden;
+    border-radius: 3px;
+  }
+
+  .carousel--bubble-container {
+    position: relative;
+    top: -48px;
+    border-radius: 0 0 25px 25px;
+    overflow: hidden;
+  }
+
+  .arrow-container {
+    position: relative;
+    overflow: visible;
+  }
+
+  .arrow-container--background {
+    display: none;
+  }
+
+  .arrow-container .button-arrow.dark {
+    z-index: 10;
   }
 
 
