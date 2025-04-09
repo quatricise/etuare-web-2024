@@ -136,7 +136,7 @@ class Services {
         {src: "images/carousel/ilu_2.jpg",  projectName: "",                    tooltip: "Digitální ilustrace pro čistící produkt"},
         {src: "images/carousel/ilu_1.jpg",  projectName: "corston_and_william", tooltip: "Design ilustrací pro značku whisky"},
         {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true},
-        {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true},
+        {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true, tooltip: "Digitální vodovky"},
         {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
         {src: "images/carousel/ilu_7.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},
         {src: "images/carousel/ilu_8.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Kreslená pozvánka na firemní akci PPG"},

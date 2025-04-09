@@ -776,7 +776,7 @@ footer {
   /* --works--column-gap: 3vw; */
   /* --works--column-gap: 2px; */
   /* --works--column-gap: 0px; */
-  --works--column-gap: 2vw;
+  --works--column-gap: 2.6vw;
   --works--width: 1280px;
   --works--column-width: calc(50% - var(--works--column-gap)/2);
 }
@@ -884,7 +884,8 @@ footer {
 .project-card--image {
   object-fit: cover;
   width: 100%;
-  border-radius: 30px 30px 32px 32px;
+  /* border-radius: 30px 30px 32px 32px; */
+  border-radius: 2px;
 }
 
 .project-card * {
@@ -952,8 +953,8 @@ footer {
   background-size: cover;
   opacity: 0.0;
   filter: brightness(0.1);
-  border-radius: 0  0 28px 28px;
-  transition: left 0.5s cubic-bezier(0.3, 0.0, 0.1, 1.0), opacity 0.75s cubic-bezier(0.3, 0.0, 0.1, 1.0), filter 0.8s ease-in-out;
+  /* border-radius: 0  0 28px 28px; */
+  transition: left 0.5s cubic-bezier(0.3, 0.0, 0.1, 1.0), opacity 0.65s cubic-bezier(0.4, 0.0, 0.2, 1.0), filter 0.9s ease-in-out;
 }
 
 .project-card--text h2 {
@@ -1021,11 +1022,11 @@ footer {
 
 .services--section--we-dont-do-it-all {
   align-items: center;
+  gap: 40px;
   padding-top: 240px;
-  /* padding-bottom: 180px; */
+  padding-bottom: 0;
   padding-left: var(--mobile-padding);
   padding-right: var(--mobile-padding);
-  gap: 40px;
 }
 
 .page-heading--services {
@@ -1547,7 +1548,7 @@ footer {
 
 .person-card--image {
   width: 100%;
-  border-radius: 18px;
+  border-radius: 2px;
   transition: filter 0.5s ease-in-out;
 }
 
@@ -1892,15 +1893,16 @@ footer {
 
 @media screen and (max-width: 720px) {
 
-  /* body {
-    overflow-x: hidden;
-  } */
-
   body::-webkit-scrollbar {
     display: none;
   }
+  
   * {
     scrollbar-width: 0;
+  }
+
+  h1 {
+    text-align: center;
   }
 
   header {

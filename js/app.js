@@ -178,13 +178,12 @@ window.onload = () => {
     Qa(".add-nbsp").forEach(element => autoNBSP(element))
 
     {
-      let [intro, intro2] = [Q(".intro-text--line-1"), Q(".intro-text--line-2")]
+      let intro = Q(".intro-text")
       let width = intro.getBoundingClientRect().width
       let scale = width / window.innerWidth
       const desiredScale = 0.70
       if(scale > desiredScale) {
         intro.style.transform = `scale(${desiredScale / scale})`
-        intro2.style.transform = `scale(${desiredScale / scale})`
       }
     }
 
