@@ -448,6 +448,10 @@ class Project {
       description: "Od roku 2011 pro ně navrhujeme obaly pro řady mražených výrobků — zelenina, smoothies a směsi různého druhu. Připravujeme i a veškeré tiskové a prezentační materiály.",
       content: [
         {
+          t: "heading",
+          h: "Směsi",
+        },
+        {
           t: "image",
           f: "zaklad.jpg"
         },
@@ -468,6 +472,10 @@ class Project {
           f: "send_vegana.jpg"
         },
         {
+          t: "heading",
+          h: "Katalogy",
+        },
+        {
           t: "image_2",
           d: "column",
           o: {gap: "2px"},
@@ -480,6 +488,18 @@ class Project {
           o: {gap: "2px"},
           f: ["katalog_retail.jpg", "katalog_retail_2.jpg"],
           l: "Katalog pro retailové zákazníky."
+        },
+        {
+          t: "heading",
+          h: "Hranolky",
+        },
+        {
+          t: "image",
+          f: "hranolky_light.jpg"
+        },
+        {
+          t: "image",
+          f: "hranolky_dark.jpg"
         },
       ],
     },

@@ -406,6 +406,8 @@ class Page {
 
     if(!fromHistory) {
       history.pushState(stateData, "", Page.serializeSearchString(stateData))
+      console.log("Push state: ", stateData)
+      /* @todo this is shite, google probably does not index the site because this is always called, so it's a soft redirect. I guess don't do this the first time the site loads. Somehow. */
     }
   }
 
@@ -594,7 +596,7 @@ placeholder.src = "../images/placeholder.jpg"
 
 
 
-/* syllable splitting idea unfinished */
+/* syllable splitting idea - unfinished */
 function syllableSplit(word) {
   
   "a ne ta";
