@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etuare | Grafické a produkční studio</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
+
+
+  <!-- Cache-busted CSS -->
+  <script>
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'style.css?v=' + Date.now();
+    document.head.appendChild(link);
+  </script>
+
 </head>
 <body>
   <div class="header-fake"></div>
@@ -248,7 +257,12 @@
   </footer>
 
 
-  <!-- <script src="https://unpkg.com/microtypejs/dist/microtype.js"></script> --> <!-- yeah okay until I try using this shit, don't fucking include it -->
-  <script src="js/app.js"></script>
+  <!-- Cache-busted JS -->
+  <script>
+    const scriptTag = document.createElement('script');
+    scriptTag.src = 'js/app.js?v=' + Date.now();
+    document.body.appendChild(scriptTag);
+  </script>
+
 </body>
 </html>
