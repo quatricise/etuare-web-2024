@@ -593,7 +593,7 @@ placeholder.src = "../images/placeholder.jpg"
 
 
 /* VISITED BEFORE => Show visitor different projects at the front, based on the featured property of the project. */
-
+//yeah this is unfinished
 
 
 /* syllable splitting idea - unfinished */
