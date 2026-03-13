@@ -284,7 +284,7 @@ class Project {
 
     
     for(let key in Project.data) {
-      console.log(this.current.index)
+      // console.log(this.current.index)
       if(Project.data[key].index === this.current.data.index - 1) {
         Page.applyState({page: "project", project: key})
         break
@@ -302,7 +302,7 @@ class Project {
 
     
     for(let key in Project.data) {
-      console.log(this.current.index)
+      // console.log(this.current.index)
       if(Project.data[key].index === this.current.data.index + 1) {
         Page.applyState({page: "project", project: key})
         break
@@ -494,12 +494,9 @@ class Project {
           h: "Hranolky",
         },
         {
-          t: "image",
-          f: "hranolky_light.jpg"
-        },
-        {
-          t: "image",
-          f: "hranolky_dark.jpg"
+          t: "image_2",
+          d: "column",
+          f: ["hranolky_light.jpg", "hranolky_dark.jpg"]
         },
       ],
     },
@@ -642,21 +639,10 @@ class Project {
       description: "Pro výrobce VEST ze Zlína jsme navrhovali design obalů na Tuty krekry i oblíbené Makovky a Sýrovky.",
       content: [
         {
-          t: "image",
-          f: "tuty.jpg"
+          t: "image_3",
+          d: "column",
+          f: ["tuty.jpg","makovky.jpg","syrovky.jpg"]
         },
-        {
-          t: "image",
-          f: "makovky.jpg"
-        },
-        {
-          t: "image",
-          f: "syrovky.jpg"
-        },
-        // {
-        //   t: "image",
-        //   f: "obaly.jpg"
-        // }
       ],
     },
 

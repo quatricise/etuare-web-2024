@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
   
   <!-- Google tag (gtag.js) -->
@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etuare | Grafické a produkční studio</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://www.etuare.com">
 
   <!-- Cache-busted CSS -->
   <script>
@@ -30,13 +31,13 @@
   <div class="header-fake"></div>
   <header>
     <div class="header--contents">
-      <div class="header--logo hidden">etuare</div>
+      <div class="header--logo">etuare</div>
 
       <div class="navlinks">
-        <div class="navlink" data-page="home" style="margin-right: 15px;">    
+        <!-- <div class="navlink" data-page="home" style="margin-right: 15px;">    
           Naše&nbsp;práce
           <div class="navlink--border--bottom"></div>
-        </div>
+        </div> -->
         <div class="navlink" data-page="services">
           Naše&nbsp;služby
           <div class="navlink--border--bottom"></div>
@@ -78,8 +79,9 @@
       <img src="images/background_var_2.png" class="home--section--intro--background-1" alt="">
       <div class="intro-text">
         <span class="intro-text--line-1">etuare</span>
-        <span class="intro-text--line-2 auto-shy add-nbsp">grafické a produkční studio</span>
+        <span class="intro-text--line-2 add-nbsp">grafické a produkční studio</span>
       </div>
+      <p class="intro-text--paragraph add-nbsp">„Jsme grafické a produkční studio s 20 let zkušeností. Tvoříme sny o dobrém jídle a pití.“ — Praotec Etuare</p>
     </div>
 
     <div class="section home--section--works">
@@ -95,23 +97,23 @@
     </div>
 
     <div class="section home--section--services">
-      <h1>Služby</h1>
-
-         <div class="intro-text--services">
-            <!-- JS -->
-         </div>
+      <h1 class="home--section--services--heading">Služby</h1>
+      <p class="home--section--services--text">
+        Nabízíme škálů řešení od designu kompletní firemní identity, loga, tiskovin a materiálů až po jednotlivosti jako design etiket, katalogů či webových stránek.
+      </p>
+        <!-- unused probably forever, this was filled with JS via "new ServiceCardSmall(key)" construct -->
+        <!--  <div class="intro-text--services"> </div> -->
 
         <button class="intro-text--button" onclick="Page.applyState({page: 'services'});">
-          Více o našich službách 
+          Více zde
           <div class="button-arrow dark" style="margin-top: 2px;"></div>
         </button>
     </div>
 
-    <div class="section home--section--about">
+    <!-- This is hidden cos it was kind of duplicit -->
+    <div class="section home--section--about hidden">
       <h1 class="home--section--about--heading">O nás</h1>
-      <p class="home--section--about--text auto-shy add-nbsp">
-        <!-- Fungujeme už 20 let. Jsme v tom pro peníze, ale občas nás to i baví :) -->
-        Grafi­cké a p­rodukční stu­dio ze Zlína, <br> které vám pomůže s vaší firemní identitou i propagací.
+      <p class="home--section--about--text add-nbsp">Grafi­cké a p­rodukční stu­dio ze Zlína, <br> které vám pomůže s vaší firemní identitou i propagací.
       </p>
       <div class="home--section--about--buttons">
         <button onclick="Page.applyState({page: 'about'})">
@@ -127,18 +129,16 @@
   <div class="page page--services hidden">
     <div class="section services--section--intro">
       <h1 class="page-heading page-heading--services">Naše služby</h1>
-      <div class="services--intro-text-1 auto-shy add-nbsp">
-        Tvoříme řešení, která vám pomohou na cestě k úspěchu. Máme 20 let zkušeností a nebojíme se dlouhodobé spolupráce.
-      </div>
-      <div class="services--intro-text-2">
-        <!-- <div class="button-arrow" style="display: inline-block; width: 18px; height: 18px; top: 3px; margin-right: 2px;"></div>  -->
-        <span class="auto-shy add-nbsp">Poskytujeme komplexní službu týkající se designu, propagace produktů a firemní identity. Dokážeme zařídit projekt od prvních návrhů až k finální realizaci.</span>
-      </div>
-      <!-- <div class="services--intro-text-3 hidden">
-        Ceník nemáme, na cenách se domlouváme individuálně tak aby to odpovídalo potřebám vašeho projektu či firmy. Nebojte se ozvat i v případě že rozjíždíte startup, pokud se nám projekt bude líbit jsme ochotni slevit. (napsat to lépe, ale myslím že něco takového by tu mohlo být??)
-      </div> -->
-      <!-- <div class="services--intro-buttons"></div> -->
-      <!-- <div class="icon--mouse-animated"></div> -->
+      <p class="services--intro-text-1 add-nbsp">
+        Vytváříme řešení na míru. Máme 20 let zkušeností a nebojíme se dlouhodobé spolupráce.
+      </p>
+      <p class="services--intro-text-2">
+        <span class="add-nbsp">Poskytujeme komplexní službu týkající se designu, propagace produktů a firemní identity. Dokážeme zařídit projekt od prvních návrhů až k finální realizaci.</span>
+      </p>
+      <p class="services--intro-text-3">
+        Do ničeho vás nebudeme tlačit, vy nám řeknete co potřebujete, a&nbsp;my navrhneme odpovídající řešení.
+      </p>
+
     </div>
     <div class="section services--section--cards"></div>
 
@@ -162,7 +162,7 @@
   <div class="page page--project hidden">
     <div class="project--banner">
     </div>
-    <div class="project--button--go-back--container">
+    <div class="project--button--go-back--container hidden">
       <button class="dark dark-0 project--button--go-back" onclick='Page.applyState({page: "home"})'>
         <div class="button-arrow rotate-180"></div>
         Zpět k projektům
@@ -180,18 +180,20 @@
 
     <div class="section about--section--intro">
       <h1 class="page-heading--about">O nás</h1>
-      <p class="about--intro-text-1 add-nbsp auto-shy">
-        Nejvíce nás baví obaly a etikety, ale navrhneme vám i webové stránky, propagační grafiku a reklamní materiály pro vaši firmu. Také zajistíme produkci dle vašich požadavků a další potřebné služby pro vaši propagaci offline i online. <br><br> Jsme grafi­cké a p­rodukční stu­dio ze Zlína a fu­ngujeme pro vás již 20 let. Za sebou máme spolu­práce růz­ného druhu - vinař­ství, výro­bci kosme­tiky, mra­žená zele­nina, nealko­/alko nápo­je.
+      <p class="about--intro-text-1 add-nbsp">Jsme grafi­cké a p­rodukční stu­dio ze Zlína a fu­ngujeme pro vás již 20 let. Za sebou máme spolu­práce růz­ného druhu - vinař­ství, výro­bci kosme­tiky, mra­žená zele­nina, nealko­/alko nápo­je.
+      </p>
+      <p class="about--intro-text-2">
+        Nejvíce nás baví obaly a etikety, ale navrhneme vám i webové stránky, propagační grafiku a reklamní materiály pro vaši firmu. Také zajistíme produkci dle vašich požadavků a další potřebné služby pro vaši propagaci offline i online.
       </p>
     </div>
 
     <div class="section about--section--team">
       <div class="about--team--segment-1">
-        <div class="team--role--text">
-          <!-- <h2 class="team--role--title">Hlavní tým</h2> -->
-          <!-- <p class="team--role--description auto-shy add-nbsp">
+        <div class="team--role--text hidden">
+          <h2 class="team--role--title">Hlavní tým</h2>
+          <p class="team--role--description add-nbsp">
             Trvaj a Trvaj. Otec a syn. Známá firma. Znají se už od doby co se narodil Štěpán.
-          </p> -->
+          </p>
         </div>
         <div class="about--people-container--employee"> <!-- JS --> </div>
       </div>
@@ -200,14 +202,14 @@
     <div class="section about--section--contractors">
       <h2 class="page--heading--about" >Nejsme na to sami</h2>
       <p style="max-width: 720px;">
-        Spolupracujeme s fotografy, ilustrátory, tiskárnami a dále; vše podle potřeb projektu, abychom měli jistotu, že se vše dokončí včas a správně.
+        Spolupracujeme s&nbsp;fotografy, ilustrátory, tiskárnami a&nbsp;dále; vše podle potřeb projektu, abychom měli jistotu, že se vše dokončí správně a&nbsp;včas.
       </p>
     </div>
 
     <div class="about--team--segment-2">
       <div class="team--role--text hidden">
         <h2 class="team--role--title">Externisté</h2>
-        <p class="team--role--description auto-shy add-nbsp">
+        <p class="team--role--description add-nbsp">
           Nemají sice židli v kanceláři, ale stejně je považujeme za hodnotné kolegy a platíme jim za jejich práci.
         </p>
       </div>
@@ -236,8 +238,7 @@
 
   <footer>
     <h1 class="footer-heading">Kontakt</h1>
-    <p class="footer--description auto-shy add-nbsp">
-      Za dotaz nic nedáte. Obraťte se na nás s dotazem či nezávaznou poptávkou a domluvíme se, jestli jsme pro vás ti praví. Nebo se můžete stavit, pokud to máte po cestě (Kafe zdarma, samozřejmě).
+    <p class="footer--description add-nbsp">Za dotaz nic nedáte. Obraťte se na nás s dotazem či nezávaznou poptávkou a domluvíme se, jestli jsme pro vás ti praví. A nebo se u nás můžete stavit, pokud to máte po cestě (Kafe zdarma, samozřejmě).
     </p>
     <div class="footer--content">
       <div class="footer--content--contacts" id="link--contact">
@@ -262,8 +263,8 @@
         </div>
       </div>
     </div>
-    <img class="footer--decoration-1" src="images/background_var_2.png" alt="">
-    <img class="footer--decoration-2" src="images/background_var_2.png" alt="">
+    <img class="footer--background-1" src="images/background_var_2.png" alt="">
+    <img class="footer--background-2" src="images/background_var_2.png" alt="">
   </footer>
 
 

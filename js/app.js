@@ -172,9 +172,17 @@ window.onload = () => {
     lightbox = new Lightbox(document.body)
     
 
-    Q(".header--logo").onclick = () => Page.applyState({page: "home"})
+    Q(".header--logo").onclick = () => {
+      if(Page.current !== "home") {
+        Page.applyState({page: "home", scroll: "resume"})
+      } else {
+        window.scrollTo({top: 0, behavior: "smooth"})
+      }
+    }
 
-    Qa(".auto-shy").forEach(element => autoShy(element))
+    // not needed. I turned on auto hyphens in CSS
+    // Qa(".auto-shy").forEach(element => autoShy(element))
+    
     Qa(".add-nbsp").forEach(element => autoNBSP(element))
 
     {
@@ -206,13 +214,12 @@ window.onload = () => {
     if(Page.current === "home") {
       Page.setup("home")
     } 
-    
     else {
 
     }
 
-    const data = Page.deserializeSearchString()
-    Page.applyState(data)
+    const stData = Page.deserializeSearchString()
+    Page.applyState(stData)
   })
   .catch((error) => {
     console.error(error)
@@ -368,7 +375,7 @@ class Page {
       stateData.page = "home"
     }
 
-    if(stateData.page.isAny("home", "services")) {
+    if(stateData.page.isAny("home", "services") && (!stateData.scroll && stateData.scroll !== "resume") === true) {
       stateData.scroll = "resume"
     }
 
@@ -395,7 +402,9 @@ class Page {
           break
         }
         case "scrollY": {
-          
+          setTimeout(() => {
+            window.scrollTo({top: value ?? 0, behavior: "instant"})
+          }, 0)
           break
         }
         default: {
@@ -406,7 +415,7 @@ class Page {
 
     if(!fromHistory) {
       history.pushState(stateData, "", Page.serializeSearchString(stateData))
-      console.log("Push state: ", stateData)
+      if(debug) console.log("Push state: ", stateData)
       /* @todo this is shite, google probably does not index the site because this is always called, so it's a soft redirect. I guess don't do this the first time the site loads. Somehow. */
     }
   }
@@ -416,7 +425,7 @@ class Page {
       toggleNavlinks(false)
     }
 
-    console.log(page)
+    if(debug) console.log(page)
 
     Page.data[Page.current].scrollY = window.scrollY
 
@@ -426,9 +435,7 @@ class Page {
 
     window.scrollTo({top: 0, behavior: "instant"})
   
-    if(debug) {
-      console.log("New page's previous scrollY position: ", Page.data[page].scrollY)
-    }
+    if(debug) console.log("New page's previous scrollY position: ", Page.data[page].scrollY)
 
     if(Page.data[page].ready === false) {
       Page.setup(page)
@@ -442,14 +449,18 @@ class Page {
 
     switch(page) {
       case "home": {
-        for(let key in Services.list) {
-          new ServiceCardSmall(key)
-        }
+        
+        /* we do not do this now because it was taking up space and it was too far off the overall webpage design and focus on products and photos */
+        // for(let key in Services.list) {
+        //   new ServiceCardSmall(key)
+        // }
   
         new ProjectCard("adria_gold")
         new ProjectCard("kovacs")
         new ProjectCard("agro_jesenice")
         new ProjectCard("la_food")
+        new ProjectCard("martenz")
+        new ProjectCard("vest")
         break
       }
 
@@ -503,7 +514,7 @@ class Page {
 
 
 async function showMoreProjects() {
-  const max = 4
+  const max = 6
   let counter = 0
 
   for(let key in Project.data) {
@@ -571,7 +582,7 @@ function scrollToContactOnDesktop() {
 
 
 
-/* PRELOAD STUFF */
+/* PRELOAD ANIMATIONS STUFF */
 
 for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
   for(let i = 0; i < 10; ++i) {

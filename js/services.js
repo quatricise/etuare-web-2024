@@ -10,12 +10,8 @@ class Services {
       • Příprava tiskových podkladů pro výrobu
       `,
       examples: [
-        // {src: "../images/carousel/obal_1.jpg",  projectName: "vest", hasBrightBG: true},
-        {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
-        {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
-        {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
-        {src: "../images/carousel/3d_2.jpg",    projectName: "karima"},
         {src: "../images/carousel/3d_3.jpg",    projectName: "henna"},
+        {src: "../images/carousel/3d_2.jpg",    projectName: "karima"},
         {src: "../images/carousel/3d_4.jpg",    projectName: "agro_jesenice"},
         {src: "../images/carousel/3d_6.jpg",    projectName: "kralovske_marmelady"},
       ]
@@ -23,20 +19,39 @@ class Services {
 
 
 
-    "Grafický design": {
+    "Design etiket": {
+      key: "obalovy_design", //@todo for now cos i dont have a new picture
+      blurb: "Navrhneme etikety pro váš produkt",
+      description: `
+      • etikety na brikety @todo texty
+      • etikety na plakáty
+      • etikety kecy v kleci
+      `,
+      examples: [
+        {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
+        {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
+        {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
+      ]
+    },
+
+
+
+    "Tiskoviny": {
       key: "graficky_design",
       blurb: "Navrhneme letáky, katalogy, plakáty a další...",
       description: `
-      • firemní identita
-      • grafický logomanuál
       • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
       • inzeráty, billboardy, plakáty
+      • grafické logo manuály
       `,
       examples: [
         {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_4.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/prod_9.jpg", projectName: "la_food",    hasBrightBG: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
+        {src: "../images/carousel/graf_5.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
+        {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
-        // {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
-        // {src: "../images/carousel/graf_4.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", tooltip: "InZlin - Zlínský lifestylový magazín.", hasBrightBG: true, hasBrightSubject: true},
       ]
     },
 
@@ -64,7 +79,7 @@ class Services {
       key: "produkce",
       blurb: "Vyrobíme cokoliv - tiskoviny, POP a POS materiály...",
       description: `
-      Dokážeme pro vás zajistit kompletní produkci, rychle a spolehlivě dodáme všechny navržené materiály.
+      Dokážeme pro vás zajistit kompletní produkci. Rychle a spolehlivě vyrobíme a dodáme všechny navržené materiály.
       • tiskoviny - katalogy, vizitky, plakáty
       • roll-upy, ochutnávkové stolky, displeje, polepy
       • polepy firemních vozidel, prodejen
@@ -76,17 +91,17 @@ class Services {
         {src: "../images/carousel/prod_6.jpg", projectName: "adria_gold", tooltip: "Štítky do zmrzlinových van.", hasBrightBG: true},
         {src: "../images/carousel/prod_7.jpg", projectName: "adria_gold", tooltip: "Držáky na kornouty.", hasBrightBG: true},
         {src: "../images/carousel/prod_8.jpg", projectName: "kovacs",  hasBrightBG: true, tooltip: "Rollupy pro prezentaci firmy na akcích." },
-        {src: "../images/carousel/prod_9.jpg", projectName: "la_food", hasBrightBG: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
       ]
     },
 
 
 
-    "Digitální design": {
+    /* "Digitální design": {
       key: "digitalni_design",
       blurb: "Digitální prezentace a weby, design eshopů, FB reklamy.",
       description: `
       • navrhneme a naprogramujeme prezentační weby
+      • navrhneme strukturu a obsah větších webů a najdeme studio které se postará o realizaci
       • pomůžeme vám navrhnout obsahovou strukturu
       • vytvoříme obsah pro reklamní kampaň
       • zařídíme SEO optimalizaci
@@ -96,7 +111,7 @@ class Services {
         // {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", tooltip: "Web pro Napa cider",  hasBrightBG: true, hasBrightSubject: true},
         // {src: "images/carousel/digi_4.jpg",    projectName: "$out", url: "https://quatricise.com", tooltip: "Portfolio pro umělce a ilustrátora."},
       ]
-    },
+    }, */
 
 
 
@@ -130,16 +145,16 @@ class Services {
       • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace
       `,
       examples: [
-        {src: "images/carousel/ilu_9.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Ilustrace ve stylu 'Corporate Memphis', nebo Alegria"},
-        {src: "images/carousel/ilu_11.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Propagační plakát pro značku Piva"},
-        {src: "images/carousel/ilu_3.jpg",  projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
-        {src: "images/carousel/ilu_2.jpg",  projectName: "",                    tooltip: "Digitální ilustrace pro čistící produkt"},
-        {src: "images/carousel/ilu_1.jpg",  projectName: "corston_and_william", tooltip: "Design ilustrací pro značku whisky"},
-        {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true},
-        {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true, tooltip: "Digitální vodovky"},
+        {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true,  tooltip: "Ilustrace pro etiketu vína"},
         {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
+        {src: "images/carousel/ilu_3.jpg",  projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
+        {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true, tooltip: "Digitální vodovky"},
         {src: "images/carousel/ilu_7.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},
         {src: "images/carousel/ilu_8.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Kreslená pozvánka na firemní akci PPG"},
+        {src: "images/carousel/ilu_2.jpg",  projectName: "",                    tooltip: "Digitální ilustrace pro čistící produkt"},
+        {src: "images/carousel/ilu_11.jpg", projectName: "",                    hasBrightBG: true,  tooltip: "Propagační plakát pro značku Piva"},
+        {src: "images/carousel/ilu_9.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Ilustrace ve stylu 'Corporate Memphis', a nebo Alegria"},
+        {src: "images/carousel/ilu_1.jpg",  projectName: "corston_and_william", tooltip: "Design ilustrací pro značku whisky"},
       ]
     },
   }
@@ -186,6 +201,11 @@ class Services {
   }
 }
 
+
+
+
+
+
 class ServiceCard {
   constructor(/** @type string */ serviceName) {
     this.data = Services.list[serviceName]
@@ -205,7 +225,7 @@ class ServiceCard {
     const textContainer =     Create("div", {c: "service-card--text-container"})
     const title =             Create("h2",  {c: "service-card--title",              t: this.title})
     const description =       Create("p",   {c: "service-card--description",        t: this.description})
-    const backgroundImg =     Create("img", {c: "service-card--background-image-v2", a:`src=../images/services_icons/${this.data.key}.png`})
+    const backgroundImg =     Create("img", {c: "service-card--background-image-v2", a:`src=../images/services_icons_home/${this.data.key}.png`})
 
     const borderTop =         Create("div", {c: "service-card--border-top"})
     const borderRight =       Create("div", {c: "service-card--border-right"})
@@ -289,6 +309,11 @@ class ServiceCard {
     card.elements.get("container").scrollIntoView({block: "center", behavior: "smooth"})
   }
 }
+
+
+
+
+
 
 /** The small card for the homepage. */
 class ServiceCardSmall {

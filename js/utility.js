@@ -1,7 +1,9 @@
 /* QUERY */
 
 function Q(query) {
-  return document.querySelector(query)
+  /** @type HTMLElement */
+  let element = document.querySelector(query)
+  return element
 }
 function Qa(query) {
   return Array.from(document.querySelectorAll(query))
