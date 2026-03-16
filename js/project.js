@@ -19,7 +19,6 @@ class Project {
     buttonPrev.onclick = () => Project.openPrev()
     buttonNext.onclick = () => Project.openNext()
 
-    autoShy(description)
     description.innerHTML = addNBSPToString(description.innerHTML)
 
     /** What the shortened property names mean */
@@ -151,8 +150,7 @@ class Project {
       } else
 
       if(object.t === "paragraph") {
-        const para = Create("div", {c: "project--description", t: object.h})
-        autoShy(para)
+        const para = Create("p", {c: "project--description", t: object.h})
         container.append(para)
       } else
 

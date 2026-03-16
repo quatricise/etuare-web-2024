@@ -304,7 +304,7 @@ button:hover > .button-arrow.rotate-270 {
   padding: 10px 60px;
   background-color: var(--c-light-0);
   color: var(--c-dark-0);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   pointer-events: none;
   user-select: none;
   width: max-content;
@@ -1115,14 +1115,14 @@ p.footer--description {
 }
 
 .service-card--title {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   padding-right: 40px;
   max-width: 100%;
 }
 
 .service-card--description {
   font-size: 18px;
-  line-height: 220%;
+  line-height: 240%;
   width: calc(var(--service-card--width) - var(--service-card--height) - 80px);
   text-shadow: 0px 0px 10px var(--c-dark-0);
   padding: 0 60px 0 0;
@@ -2179,10 +2179,10 @@ p.footer--description {
   }
 
   .services--intro-text-1 {
-    text-align: justify;
+    text-align: left;
   }
   .services--intro-text-2 {
-    text-align: justify;
+    text-align: left;
   }
 
   .services--intro-buttons {

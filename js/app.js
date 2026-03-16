@@ -159,7 +159,10 @@ window.onload = () => {
     }
 
     Qa(".navlink").forEach(navlink => navlink.onmousedown = () => {
-      if(navlink.dataset.page === Page.current) return
+      if(navlink.dataset.page === Page.current) {
+        window.scrollTo({top: 0, behavior: "smooth"})
+        return
+      }
 
       if(navlink.dataset.page === "home") {
         Page.applyState({page: navlink.dataset.page, scroll: "resume"})
@@ -182,13 +185,13 @@ window.onload = () => {
     
     Qa(".add-nbsp").forEach(element => autoNBSP(element))
 
-    {
+    { //scale down the intro text
       let intro = Q(".intro-text")
       let width = intro.getBoundingClientRect().width
       let scale = width / window.innerWidth
-      const desiredScale = 0.70
-      if(scale > desiredScale) {
-        intro.style.transform = `scale(${desiredScale / scale})`
+      const maximumScale = 0.70
+      if(scale > maximumScale) {
+        intro.style.transform = `scale(${maximumScale / scale})`
       }
     }
 

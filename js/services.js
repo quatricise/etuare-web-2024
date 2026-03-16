@@ -3,12 +3,11 @@ class Services {
     "Obalový design": {
       key: "obalovy_design",
       blurb: "Specializujeme se na obaly pro potraviny, nápoje a kosmetiku.",
-      description: `
-      • Grafický návrh nových obalů
+      description: 
+      `• Grafický návrh nových obalů
       • Redesign stávajících obalů
       • Návrh krabiček a prodejních kartonů
-      • Příprava tiskových podkladů pro výrobu
-      `,
+      • Příprava tiskových podkladů pro výrobu`,
       examples: [
         {src: "../images/carousel/3d_3.jpg",    projectName: "henna"},
         {src: "../images/carousel/3d_2.jpg",    projectName: "karima"},
@@ -20,17 +19,18 @@ class Services {
 
 
     "Design etiket": {
-      key: "obalovy_design", //@todo for now cos i dont have a new picture
+      key: "obalovy_design", //@todo for now cos i dont have a new illustration
       blurb: "Navrhneme etikety pro váš produkt",
-      description: `
-      • etikety na krabičky, lahve, tuby a balící sáčky
+      description:
+      `• etikety na krabičky, lahve, tuby a balící sáčky
       • etikety pro různé produktové řady
-      • vytvoříme vám vizualizace produktů před jejich realizací
-      `,
+      • vytvoříme vám vizualizace produktů před jejich realizací`,
       examples: [
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
+        {src: "../images/carousel/etik_2.jpg",  projectName: "napacider", hasBrightBG: true},
         {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
         {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
+        {src: "../images/carousel/etik_1.jpg",  projectName: "napacider", hasBrightBG: true},
       ]
     },
 
@@ -39,11 +39,10 @@ class Services {
     "Grafický design": {
       key: "graficky_design",
       blurb: "Navrhneme letáky, katalogy, plakáty a další...",
-      description: `
-      • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
+      description: 
+      `• firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
       • inzeráty, billboardy, plakáty
-      • grafické logo manuály
-      `,
+      • grafické logo manuály`,
       examples: [
         {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_4.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
@@ -51,6 +50,8 @@ class Services {
         {src: "../images/carousel/graf_5.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
         {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_6.jpg", projectName: "agro_jesenice",  hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_7.jpg", projectName: "agro_jesenice",  hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", tooltip: "InZlin - Zlínský lifestylový magazín.", hasBrightBG: true, hasBrightSubject: true},
       ]
     },
@@ -60,11 +61,10 @@ class Services {
     "Logo a identita": {
       key: "logo_design",
       blurb: "Vytvoříme logo pro vaši firmu či produkt.",
-      description: `
-      • Navrhneme vám nové logo a identitu
+      description: 
+      `• Navrhneme vám nové logo a identitu
       • Zmodernizujeme vaši starou identitu
-      • Vytvoříme loga pro nové produkty
-      `,
+      • Vytvoříme loga pro nové produkty`,
       examples: [
         {src: "../images/carousel/logo_1.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
@@ -78,13 +78,12 @@ class Services {
     "Produkce": {
       key: "produkce",
       blurb: "Vyrobíme cokoliv - tiskoviny, POP a POS materiály...",
-      description: `
-      Dokážeme pro vás zajistit kompletní produkci. Rychle a spolehlivě vyrobíme a dodáme všechny navržené materiály.
+      description: 
+      `Dokážeme pro vás zajistit kompletní produkci. Rychle a spolehlivě vyrobíme a dodáme všechny navržené materiály.
       • tiskoviny - katalogy, vizitky, plakáty
       • roll-upy, ochutnávkové stolky, displeje, polepy
       • polepy firemních vozidel, prodejen
-      • navigační prvky - směrovky, cedule, plachty...
-      `,
+      • navigační prvky - směrovky, cedule, plachty...`,
       examples: [
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", tooltip: "InZlin - Zlínský lifestylový magazín.", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu.", hasBrightBG: true},
@@ -99,13 +98,12 @@ class Services {
     /* "Digitální design": {
       key: "digitalni_design",
       blurb: "Digitální prezentace a weby, design eshopů, FB reklamy.",
-      description: `
-      • navrhneme a naprogramujeme prezentační weby
+      description: 
+      `• navrhneme a naprogramujeme prezentační weby
       • navrhneme strukturu a obsah větších webů a najdeme studio které se postará o realizaci
       • pomůžeme vám navrhnout obsahovou strukturu
       • vytvoříme obsah pro reklamní kampaň
-      • zařídíme SEO optimalizaci
-      `,
+      • zařídíme SEO optimalizaci`,
       examples: [
         {src: "images/carousel/digi_5.jpg", projectName: "napacider", tooltip: "Reklamní FB kampaň pro Napa cider.", hasBrightBG: true, },
         // {src: "images/carousel/napacider.jpg", projectName: "$out", url: "https://napacider.cz", tooltip: "Web pro Napa cider",  hasBrightBG: true, hasBrightSubject: true},
@@ -118,8 +116,8 @@ class Services {
     "3D vizualizace": {
       key: "3d_vizualizace",
       blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt.",
-      description: `
-      Vytvoříme vizualizace:
+      description: 
+      `Vytvoříme vizualizace:
       • do katalogů, 
       • pro web,
       • na polepy budov, aut, výloh
@@ -138,12 +136,11 @@ class Services {
     "Ilustrace": {
       key: "ilustrace",
       blurb: "Ozdobíme váš projekt originálními ilustracemi.",
-      description: `
-      • vytvoříme vám originální ilustrace pro váš projekt
+      description: 
+      `• vytvoříme vám originální ilustrace pro váš projekt
       • navrhneme ilustrovaný plakát
       • digitální ilustrace - lineart, airbrush, comicbook-style, vektorová ilustrace, 3D art
-      • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace
-      `,
+      • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace`,
       examples: [
         {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true,  tooltip: "Ilustrace pro etiketu vína"},
         {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
@@ -238,11 +235,7 @@ class ServiceCard {
     container.append(carouselContainer, textContainer, borderRight, borderLeft, borderTop)
     textContainer.append(title, description, backgroundImg)
 
-
-    autoShy(description)
     autoNBSP(description, false)
-    autoShy(title)
-
 
     /** @type Map<string, HTMLElement> */
 
@@ -332,9 +325,6 @@ class ServiceCardSmall {
 
     card.append(background, icon, heading, description, borderBottom, borderTop, glowContainer)
     glowContainer.append(glow)
-
-    autoShy(heading)
-    autoShy(description)
 
     /* functionality */
     card.onclick = () => ServiceCard.navigateToCard(serviceName)
