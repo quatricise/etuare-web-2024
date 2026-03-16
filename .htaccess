@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Allow existing files (js, css, images, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Allow existing directories
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise send everything to index.html
+RewriteRule ^ index.html [L]

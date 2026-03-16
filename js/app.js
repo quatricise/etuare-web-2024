@@ -9,7 +9,7 @@ state.navlinksOpen = !state.mobile
 const ls = localStorage
 
 /** @type Lightbox */
-let lightbox
+let lightbox = null;
 
 const addNBSPToString = (str) => str.replace(
   / ([a-zA-Z]) /g,
@@ -179,9 +179,6 @@ window.onload = () => {
         window.scrollTo({top: 0, behavior: "smooth"})
       }
     }
-
-    // not needed. I turned on auto hyphens in CSS
-    // Qa(".auto-shy").forEach(element => autoShy(element))
     
     Qa(".add-nbsp").forEach(element => autoNBSP(element))
 
@@ -213,13 +210,13 @@ window.onload = () => {
     
     if(Page.current === "home") {
       Page.setup("home")
-    } 
+    }
     else {
 
     }
 
     const stData = Page.deserializeSearchString()
-    Page.applyState(stData)
+    Page.applyState(stData, true);
   })
   .catch((error) => {
     console.error(error)
@@ -254,17 +251,6 @@ function addEventListeners() {
         element.style.pointerEvents = ""
       }
     })
-
-    // {
-    //   const button  = Q(".project--button--go-back--container")
-    //   const rect    = button.getBoundingClientRect()
-    //   if(rect.y < 60) {
-    //     button.style.position = "fixed"
-    //   } else {
-    //     button.style.position = "relative"
-    //   }
-    // }
-    
   })
 
   document.addEventListener("mouseover", (e) => {
@@ -309,7 +295,6 @@ function addEventListeners() {
     Tooltip.updateOnMouse(e)
     Carousel.list.forEach(car => car.updateGlowOnMouse(e))
     ServiceCardSmall.list.forEach(card => card.updateGlowOnMouse(e))
-
   })
 
   document.addEventListener("keydown", (e) => {
@@ -368,8 +353,13 @@ class Page {
     return url
   }
 
-  static applyState(stateData, fromHistory = false) {
-    if(!stateData) return
+  static applyState(stateData, fromHistory = false, initialPageLoad = false) {
+    if(!stateData) {
+      stateData = {
+        page: "home",
+        scroll: "resume"
+      }
+    }
 
     if(keyInObject(stateData, "page") === false) {
       stateData.page = "home"
@@ -413,11 +403,15 @@ class Page {
       }
     }
 
+    if(initialPageLoad) {
+      history.replaceState(stateData, "", Page.serializeSearchString(stateData ?? {}))
+      if(debug) console.log("History replaceState: ", stateData)
+    } else
     if(!fromHistory) {
-      history.pushState(stateData, "", Page.serializeSearchString(stateData))
-      if(debug) console.log("Push state: ", stateData)
-      /* @todo this is shite, google probably does not index the site because this is always called, so it's a soft redirect. I guess don't do this the first time the site loads. Somehow. */
+      history.pushState(stateData, "", Page.serializeSearchString(stateData ?? {}))
+      if(debug) console.log("History pushState: ", stateData)
     }
+    
   }
 
   static set(/** @type string */ page) {
@@ -596,44 +590,6 @@ for(let anim of ["icon_mouse_animated", "icon_cursor_animated"]) {
 
 const placeholder = new Image();
 placeholder.src = "../images/placeholder.jpg"
-
-
-
-
-
-
-
-/* VISITED BEFORE => Show visitor different projects at the front, based on the featured property of the project. */
-//yeah this is unfinished
-
-
-/* syllable splitting idea - unfinished */
-function syllableSplit(word) {
-  
-  "a ne ta";
-  "an té na";
-  "ant mé na";
-  "man dra žé";
-  "kr ko no še";
-
-  /* these are what is accepted as the core vowel sound of a syllable */
-  const cores = ["a", "e", "i", "o", "u", "ě", "á", "í", "é", "ý", "ó", "ů", "ú"]
-  /* these only apply if the primary core is not found */
-  const cores_2nd = ["l", "r"]
-
-  let foundConsonant = false
-  let lastVowelAt = 0 //index in word
-  for(let [index, char] of [word.split("").entries()]) {
-    if(char.includesAny(...cores)) {
-      lastVowelAt = index
-    }
-
-    if(lastVowelAt === index - 1) {}
-  }
-
-}
-
-
 
 function testOverflowXElements(...excludedQueries) {
   let query = "*"

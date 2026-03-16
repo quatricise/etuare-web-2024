@@ -23,9 +23,9 @@ class Services {
       key: "obalovy_design", //@todo for now cos i dont have a new picture
       blurb: "Navrhneme etikety pro váš produkt",
       description: `
-      • etikety na brikety @todo texty
-      • etikety na plakáty
-      • etikety kecy v kleci
+      • etikety na krabičky, lahve, tuby a balící sáčky
+      • etikety pro různé produktové řady
+      • vytvoříme vám vizualizace produktů před jejich realizací
       `,
       examples: [
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
@@ -36,7 +36,7 @@ class Services {
 
 
 
-    "Tiskoviny": {
+    "Grafický design": {
       key: "graficky_design",
       blurb: "Navrhneme letáky, katalogy, plakáty a další...",
       description: `

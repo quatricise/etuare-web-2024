@@ -1017,9 +1017,6 @@ class ProjectCard {
     })
     .resetStyle();
 
-    console.log(card)
-
-    autoShy(desc)
     autoNBSP(desc)
     ProjectCard.placeCard(card)
     Project.homeCardsLoaded.add(name)
