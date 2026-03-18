@@ -90,3 +90,11 @@ function keyInObject(obj, tested) {
   if(!obj) return false
   return Object.keys(obj).has(tested)
 }
+
+function clamp(value, min, max) {
+  /** @type number */
+  let val = value
+  if(val <= min) val = min
+  if(val >= max) val = max
+  return val
+}

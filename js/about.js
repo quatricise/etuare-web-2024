@@ -31,7 +31,7 @@ class PersonCard {
   constructor(name) {
     this.title = name
 
-    /* Map list contents onto properties of the "this" */
+    /* Maps list contents onto properties of the "this" */
     for(let key of ["role", "filename", "description", "portfolioLink"]) {
       if(Person.list[name][key] === undefined) {
         throw "Missing key '" + key +  "' in person: " + name

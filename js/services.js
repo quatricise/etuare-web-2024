@@ -4,7 +4,8 @@ class Services {
       key: "obalovy_design",
       blurb: "Specializujeme se na obaly pro potraviny, nápoje a kosmetiku.",
       description: 
-      `• Grafický návrh nových obalů
+      `
+      • Grafický návrh nových obalů
       • Redesign stávajících obalů
       • Návrh krabiček a prodejních kartonů
       • Příprava tiskových podkladů pro výrobu`,
@@ -22,15 +23,18 @@ class Services {
       key: "obalovy_design", //@todo for now cos i dont have a new illustration
       blurb: "Navrhneme etikety pro váš produkt",
       description:
-      `• etikety na krabičky, lahve, tuby a balící sáčky
+      `Navrhneme etiketu pro váš produkt, nebo sérii produktů.
+      • etikety na krabičky, lahve, tuby a balící sáčky
       • etikety pro různé produktové řady
       • vytvoříme vám vizualizace produktů před jejich realizací`,
       examples: [
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
-        {src: "../images/carousel/etik_2.jpg",  projectName: "napacider", hasBrightBG: true},
+        {src: "../images/carousel/etik_4.jpg",  projectName: "martenz", hasBrightBG: true},
+        {src: "../images/carousel/etik_2.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
         {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
         {src: "../images/carousel/etik_1.jpg",  projectName: "napacider", hasBrightBG: true},
+        {src: "../images/carousel/etik_3.jpg",  projectName: "corston_and_william", hasBrightBG: false},
       ]
     },
 
@@ -40,7 +44,8 @@ class Services {
       key: "graficky_design",
       blurb: "Navrhneme letáky, katalogy, plakáty a další...",
       description: 
-      `• firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
+      `Vytvoříme grafický návrh a správně připravíme tisková data.
+      • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
       • inzeráty, billboardy, plakáty
       • grafické logo manuály`,
       examples: [
@@ -62,9 +67,10 @@ class Services {
       key: "logo_design",
       blurb: "Vytvoříme logo pro vaši firmu či produkt.",
       description: 
-      `• Navrhneme vám nové logo a identitu
-      • Zmodernizujeme vaši starou identitu
-      • Vytvoříme loga pro nové produkty`,
+      `Navrhneme logo pro vaši firmu či produkt.
+      • Navrhneme vám nové logo a identitu
+      • Zmodernizujeme vaše staré logo nebo celou identitu
+      • Vytvoříme loga pro nové produkty a produktové řady`,
       examples: [
         {src: "../images/carousel/logo_1.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
@@ -79,7 +85,7 @@ class Services {
       key: "produkce",
       blurb: "Vyrobíme cokoliv - tiskoviny, POP a POS materiály...",
       description: 
-      `Dokážeme pro vás zajistit kompletní produkci. Rychle a spolehlivě vyrobíme a dodáme všechny navržené materiály.
+      `Zajistit kompletní produkci. Rychle a spolehlivě vyrobíme a dodáme všechny navržené materiály.
       • tiskoviny - katalogy, vizitky, plakáty
       • roll-upy, ochutnávkové stolky, displeje, polepy
       • polepy firemních vozidel, prodejen
@@ -117,7 +123,7 @@ class Services {
       key: "3d_vizualizace",
       blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt.",
       description: 
-      `Vytvoříme vizualizace:
+      `Vytvoříme 3D produktové vizualizace:
       • do katalogů, 
       • pro web,
       • na polepy budov, aut, výloh
@@ -137,13 +143,13 @@ class Services {
       key: "ilustrace",
       blurb: "Ozdobíme váš projekt originálními ilustracemi.",
       description: 
-      `• vytvoříme vám originální ilustrace pro váš projekt
+      `Vytvoříme vám originální ilustrace pro váš projekt.
       • navrhneme ilustrovaný plakát
       • digitální ilustrace - lineart, airbrush, comicbook-style, vektorová ilustrace, 3D art
       • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace`,
       examples: [
-        {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true,  tooltip: "Ilustrace pro etiketu vína"},
         {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
+        {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true,  tooltip: "Ilustrace pro etiketu vína"},
         {src: "images/carousel/ilu_3.jpg",  projectName: "",                    hasBrightBG: true, hasBrightSubject: true, tooltip: "Banánové špagety, kresba pastelkama"},
         {src: "images/carousel/ilu_5.jpg",  projectName: "napacider",           hasBrightBG: true, hasBrightSubject: true, tooltip: "Digitální vodovky"},
         {src: "images/carousel/ilu_7.jpg",  projectName: "",                    hasBrightBG: true,  tooltip: "Low poly ilustrace brusinek"},

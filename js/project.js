@@ -918,7 +918,7 @@ class Project {
       titleShort: "Královské Marmelády",
       title: "Královské Marmelády",
       descriptionShort: "Série obalů pro značku marmelád",
-      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu.",
+      description: "Design pro malovýrobce prémiových českých marmelád. Navrhovali jsme logo a etikety pro první řadu. Projekt sice nakonec nedopadl díky Covidu, ale stejně jsme si řekli že se etikety docela povedly a že má cenu ho prezentovat.",
       content: [
         {
           t: "image_2",
