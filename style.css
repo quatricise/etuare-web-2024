@@ -447,6 +447,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 120px;
+  white-space: nowrap;
   height: 100%;
   padding: 20px;
   font-family: "rale";
