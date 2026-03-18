@@ -543,9 +543,10 @@ async function showMoreProjects() {
 
 
 function toggleNavlinks(visible) {
-  const duration = 700
+  const duration = 550
   const easing = "cubic-bezier(0.7, 0.0, 0.3, 1.0)"
   const heightEst = 400
+
   if(visible === false || state.navlinksOpen) {
     
     new Animate(Q(".navlinks"))
@@ -558,8 +559,8 @@ function toggleNavlinks(visible) {
       .animate([{transform: `translateY(0px)`}, {transform: `translateY(${60 + index*10}px)`}], {duration: duration * (1 + index/3), easing})
     })
 
-  } else
-
+  } 
+  else
   {
     Q(".navlinks").classList.remove("hidden")
 

@@ -67,7 +67,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--c-dark-0);
+  /* background-color: var(--c-dark-0); */
   color: var(--c-light-0);
   width: 100%;
   font-family: "rale";
@@ -79,7 +79,7 @@ main {
   flex-direction: column;
   gap: 360px;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 img {
@@ -835,6 +835,24 @@ p.footer--description {
   text-align: center;
 }
 
+.home--section--services--bg-strip {
+  position: absolute;
+  top: -0px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: -1;
+  display: none; /* fuck this, probably not working */
+}
+.home--section--services--bg-strip img {
+  width: calc(100% / 5);
+  margin-left: -20px;
+}
+
 .home--section--about {
   position: relative;
   align-items: center;
@@ -1049,7 +1067,8 @@ p.footer--description {
 /* PAGE - SERVICES */
 
 .services--section--intro {
-  padding: 120px 0 120px;
+  padding: 120px 0 0;
+  margin-bottom: 60px;
   align-items: center;
 }
 
@@ -1066,18 +1085,29 @@ p.footer--description {
   margin-bottom: 40px;
 }
 
+.services--intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 720px;
+  text-align: justify;
+  text-justify: distribute;
+  hyphens: auto;
+}
+
 .services--intro-text-1 {
-  max-width: 600px;
-  margin-bottom: 20px;
 }
 
 .services--intro-text-2 {
-  max-width: 600px;
 }
 
 .services--intro-text-3 {
-  max-width: 600px;
-  margin-top: 20px;
+}
+
+.services--heading {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .services--intro-buttons {

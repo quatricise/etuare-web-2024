@@ -23,7 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#131313">
   <title>Etuare | Grafické a produkční studio</title>
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=2">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://www.etuare.com">
   <link rel="preload" as="image" href="images/logo_preloader_animated.webp">
@@ -105,9 +105,18 @@
     </div>
 
     <div class="section home--section--services">
-      <h1 class="home--section--services--heading">Služby</h1>
+      <div class="home--section--services--bg-strip">
+        <img src="images/services_icons_home/3d_vizualizace.png" alt="">
+        <img src="images/services_icons_home/digitalni_design.png" alt="">
+        <img src="images/services_icons_home/graficky_design.png" alt="">
+        <img src="images/services_icons_home/ilustrace.png" alt="">
+        <img src="images/services_icons_home/logo_design.png" alt="">
+        <img src="images/services_icons_home/obalovy_design.png" alt="">
+        <img src="images/services_icons_home/produkce.png" alt="">
+      </div>
+      <h2 class="home--section--services--heading">Co pro vás můžeme udělat?</h2>
       <p class="home--section--services--text">
-        Nabízíme škálů řešení od designu kompletní firemní identity, loga, tiskovin a materiálů až po jednotlivosti jako design etiket, katalogů či webových stránek.
+        Nabízíme škálů řešení od jednotlivostí jako design etiket, katalogů či webových stránek až po kompletní designové řešení firemní identity.
       </p>
         <!-- unused probably forever, this was filled with JS via "new ServiceCardSmall(key)" construct -->
         <!--  <div class="intro-text--services"> </div> -->
@@ -137,23 +146,27 @@
   <div class="page page--services hidden">
     <div class="section services--section--intro">
       <h1 class="page-heading page-heading--services">Naše služby</h1>
-      <p class="services--intro-text-1 add-nbsp">
-        Vytváříme řešení na míru. Máme 20 let zkušeností a nebojíme se dlouhodobé spolupráce.
-      </p>
-      <p class="services--intro-text-2">
-        <span class="add-nbsp">Poskytujeme komplexní službu týkající se designu, propagace produktů a firemní identity. Dokážeme zařídit projekt od prvních návrhů až k finální realizaci.</span>
-      </p>
-      <p class="services--intro-text-3">
-        Do ničeho vás nebudeme tlačit, vy nám řeknete co potřebujete, a&nbsp;my navrhneme odpovídající řešení.
-      </p>
-
+      <div class="services--intro-text">
+        <p class="services--intro-text-1">
+          <span>Poskytujeme služby týkající se designu, propagace produktů a firemní identity. Dokážeme zařídit projekt od prvních návrhů až k finální realizaci.</span>
+        </p>
+        <p class="services--intro-text-2">
+          Vytváříme designová řešení na míru a do ničeho vás nebudeme tlačit. Vy nám řeknete co potřebujete, a my navrhneme odpovídající řešení.
+        </p>
+        <p class="services--intro-text-3">
+          Vše je samozřejmě na domluvě, a tak nabízíme konzultace zdarma, pokud si nejste jistí tím co všechno vaše firma potřebuje, nebo jestli jsme pro vás ti praví.
+        </p>
+      </div>
     </div>
+
+    <h1 class="services--heading">. . .</h1>
+
     <div class="section services--section--cards"></div>
 
     <div class="section services--section--we-dont-do-it-all">
       <h2>Neděláme všechno, ale...</h2>
       <p style="max-width: 720px;">
-        Dokážeme zajistit spolupráci s fotografy, ilustrátory, tiskárnami a dále; vše podle potřeb projektu, abychom měli jistotu, že se vše dokončí včas a správně.
+        Dokážeme zajistit spolupráci s&nbsp;fotografy, ilustrátory, programátory, tiskárnami a&nbsp;dále; vše podle potřeb projektu, abyste měli jistotu, že se vše dokončí včas a&nbsp;správně.
       </p>
       <div class="home--section--about--buttons">
         <button onclick="Page.applyState({page: 'about'})">
@@ -246,7 +259,7 @@
 
 
   <footer style="display: none;">
-    <h1 class="footer-heading">Kontakt</h1>
+    <h2 class="footer-heading">Kontakt</h2>
     <p class="footer--description add-nbsp">Za dotaz nic nedáte. Obraťte se na nás s dotazem či nezávaznou poptávkou a domluvíme se, jestli jsme pro vás ti praví. A nebo se u nás můžete stavit, pokud to máte po cestě (Kafe zdarma, samozřejmě).
     </p>
     <div class="footer--content">

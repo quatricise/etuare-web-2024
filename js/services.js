@@ -222,7 +222,7 @@ class ServiceCard {
     const textContainer =     Create("div", {c: "service-card--text-container"})
     const title =             Create("h2",  {c: "service-card--title",              t: this.title})
     const description =       Create("p",   {c: "service-card--description",        t: this.description})
-    const backgroundImg =     Create("img", {c: "service-card--background-image-v2", a:`src=../images/services_icons_home/${this.data.key}.png`})
+    const backgroundImg =     Create("img", {c: "service-card--background-image-v2", a:`src=../images/services_icons/${this.data.key}.png`})
 
     const borderTop =         Create("div", {c: "service-card--border-top"})
     const borderRight =       Create("div", {c: "service-card--border-right"})
