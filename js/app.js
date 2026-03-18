@@ -138,6 +138,14 @@ window.onload = () => {
       debug = false
     }
 
+    const preloader = Q(".preloader-container")
+    const preloaderAnim = preloader.animate([{opacity: 1}, {opacity: 0}], {duration: 400, easing: "ease-in-out"})
+    preloaderAnim.onfinish = () => preloader.classList.add("hidden")
+    document.documentElement.style = ""
+    Q("header").style = ""
+    Q("main").style = ""
+    Q("footer").style = ""
+
     if(!state.mobile) {
       Tooltip.init()
     }

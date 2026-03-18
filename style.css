@@ -61,6 +61,7 @@
 
 html {
   overflow-x: hidden;
+  background-color: var(--c-dark-0);
 }
 
 body {
@@ -585,6 +586,32 @@ p.footer--description {
   mix-blend-mode: lighten;
   transform: scaleX(-1);
   z-index: -1;
+}
+
+
+
+/* PRELOADER */
+
+.preloader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--c-dark-0);
+  pointer-events: none;
+}
+
+.preloader {
+  width: calc(min(100%, 380px));
+}
+
+.preloader * {
+  width: 100%;
 }
 
 
@@ -2018,6 +2045,15 @@ p.footer--description {
 
   .home--section--intro {
     
+  }
+
+  .home--section--services {
+    padding-inline: calc(var(--mobile-padding) * 2);
+  }
+
+  .home--section--services--text {
+    text-align: justify;
+    text-justify: distribute;
   }
 
   .home--section--about--heading {
