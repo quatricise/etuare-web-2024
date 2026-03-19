@@ -139,9 +139,9 @@ class Carousel {
     container.append(images, arrows)
     this.parent.append(container)
 
-    container.onwheel = (e) => {
-      if(!state.mobile && debug) e.preventDefault()
-    }
+    // container.onwheel = (e) => {
+    //   if(!state.mobile && debug) e.preventDefault()
+    // }
 
     /* append placeholder first */
   

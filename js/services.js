@@ -29,8 +29,8 @@ class Services {
       • vytvoříme vám vizualizace produktů před jejich realizací`,
       examples: [
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
-        {src: "../images/carousel/etik_4.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_2.jpg",  projectName: "martenz", hasBrightBG: true},
+        {src: "../images/carousel/etik_4.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_5.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
         {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
