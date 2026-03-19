@@ -202,6 +202,7 @@ class Project {
       "descriptionShort",
       "featured",
       "brightOnHover",
+      "index",
     ].concat(requiredProps)
 
     /** @type Array<string> */
@@ -211,6 +212,7 @@ class Project {
       "image",
       "image_2",
       "image_2_1",
+      "image_1_2",
       "image_3",
       "image_grid_2",
       "image_grid_3",
@@ -728,58 +730,7 @@ class Project {
 
 
 
-    "karima": {
-      titleShort: "Karima",
-      title: "Karima - Přírodní Kosmetika",
-      descriptionShort: "Obaly na řadu přírodní kosmetiky",
-      description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
-      content: [
-        {
-          t: "image",
-          l: "",
-          f: "logo_karima_remake.jpg"
-        },
-        {
-          t: "image",
-          l: "",
-          f: "sampon.jpg"
-        },
-        {
-          t: "image",
-          l: "",
-          f: "sampon_s_kondicionerem.jpg"
-        },
-        {
-          t: "image",
-          l: "",
-          f: "pena.jpg"
-        },
-      ],
-    },
-
-
-
-    "henna": {
-      featured: false,
-      titleShort: "",
-      title: "Henna",
-      descriptionShort: "Obaly na řadu přírodní kosmetiky",
-      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
-      content: [
-        {
-          t: "image",
-          f: "damske.jpg"
-        },
-        {
-          t: "image",
-          f: "panske.jpg"
-        },
-        {
-          t: "image",
-          f: "balzam_a_gel.jpg"
-        },
-      ],
-    },
+    
 
 
 
@@ -794,12 +745,9 @@ class Project {
       
       content: [
         {
-          t: "image",
-          f: "jarmila_logo.png"
-        },
-        {
-          t: "image",
-          f: "ilustrace.jpg"
+          t: "image_2",
+          f: ["jarmila_logo.png", "ilustrace.jpg"],
+          l: "Logo a ikona brandu."
         },
         {
           t: "image",
@@ -936,6 +884,52 @@ class Project {
           t: "image_grid_2",
           l: "Návrhy ilustrací ve dvou různých stylech.",
           f: ["ilu_1.png", "ilu_2.png", "ilu_3.png", "ilu_4.png"]
+        },
+      ],
+    },
+
+
+
+    "karima": {
+      titleShort: "Karima",
+      title: "Karima - Přírodní Kosmetika",
+      descriptionShort: "Obaly na řadu přírodní kosmetiky",
+      description: "Design obalů pro sadu přírodní kosmetiky se solí z Mrtvého moře.",
+      content: [
+        {
+          t: "image",
+          l: "",
+          f: "logo_clean.jpg"
+        },
+        {
+          t: "image_3",
+          l: "",
+          d: "column",
+          f: ["sampon.jpg","sampon_s_kondicionerem.jpg","pena.jpg"]
+        },
+      ],
+    },
+
+
+
+    "henna": {
+      featured: false,
+      titleShort: "",
+      title: "Henna",
+      descriptionShort: "Obaly na řadu přírodní kosmetiky",
+      description: "Henna je česká firma, vyrábí přírodní kosmetiku, sprchové gely a šampony. Dělali jsme obaly, propagační materiály a redesign loga.",
+      content: [
+        {
+          t: "image",
+          f: "damske.jpg"
+        },
+        {
+          t: "image",
+          f: "panske.jpg"
+        },
+        {
+          t: "image",
+          f: "balzam_a_gel.jpg"
         },
       ],
     },

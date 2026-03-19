@@ -1,5 +1,7 @@
 /* GENERAL TEMPLATING RULES */
 :root {
+  font-size: 15.5px;
+
   --header-height: 60px;
   --mobile-padding: 10px;
 
@@ -127,7 +129,7 @@ p {
   font-size: 1.125rem;
   font-family: "rale";
   font-weight: 300;
-  line-height: 150%;
+  line-height: 165%;
   letter-spacing: 0.025em;
   hyphens: auto;
 }
@@ -512,13 +514,13 @@ p.footer--description {
   text-align: left;
   text-align: justify;
   text-justify: inter-word;
-  width: min(720px, 100%);
+  width: calc(min(720px, 100% - var(--mobile-padding) * 2));
 }
 
 .footer--content {
   display: flex;
   justify-content: space-between;
-  width: 760px;
+  width: calc(min(760px, 100% - var(--mobile-padding)*2));
   margin-top: 60px;
   margin-left: -20px;
 }
@@ -1128,13 +1130,8 @@ p.footer--description {
   hyphens: auto;
 }
 
-.services--intro-text-1 {
-}
-
-.services--intro-text-2 {
-}
-
-.services--intro-text-3 {
+.services--intro-text h3 {
+  text-align: center;
 }
 
 .services--heading {
@@ -1761,7 +1758,7 @@ p.footer--description {
 
 .project--section--intro {
   align-items: center;
-  width: 100vw;
+  width: 100%;
   margin: var(--project-content--spacing) 0 var(--project-content--spacing);
 }
 
@@ -1774,8 +1771,7 @@ p.footer--description {
 
 .project--banner {
   position: relative;
-  width: 100vw;
-  height: 30vw;
+  width: 100%;
 }
 
 .project--button--go-back--container {
@@ -1792,7 +1788,8 @@ p.footer--description {
 
 .project--banner--image {
   width: 100%;
-  height: 100%;
+  min-height: 50vh;
+  max-height: 75vh;
   object-fit: cover;
 }
 
@@ -2041,6 +2038,21 @@ p.footer--description {
   }
 }
 
+
+
+
+
+
+/* TABLET LAYOUT - narrow */
+
+@media screen and (max-width: 760px) {
+  .icon--address, .icon--contact {
+    --width: 120px;
+    margin-top: calc(var(--width) / -3);
+    width: var(--width);
+    object-fit: contain;
+  }
+}
 
 
 
@@ -2322,17 +2334,14 @@ p.footer--description {
     padding-top: 60px;
   }
 
+  .services--intro-image-container {
+    display: none;
+  }
+
   .page-heading--services {
     width: 100%;
     text-align: center;
     line-height: 140%;
-  }
-
-  .services--intro-text-1 {
-    text-align: left;
-  }
-  .services--intro-text-2 {
-    text-align: left;
   }
 
   .services--intro-buttons {
@@ -2424,8 +2433,10 @@ p.footer--description {
 
   /* PAGE - PROJECT */
 
-  .project--banner {
-    height: 50vw;
+  .project--banner--image {
+    min-height: unset;
+    height: unset;
+    aspect-ratio: 7 / 4;
   }
 
   .page-heading--project {
@@ -2490,7 +2501,7 @@ p.footer--description {
   
   .footer--content {
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     margin: 0;
   }
 

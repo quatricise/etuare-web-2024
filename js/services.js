@@ -31,6 +31,7 @@ class Services {
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_4.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_2.jpg",  projectName: "martenz", hasBrightBG: true},
+        {src: "../images/carousel/etik_5.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
         {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
         {src: "../images/carousel/etik_1.jpg",  projectName: "napacider", hasBrightBG: true},
@@ -76,6 +77,8 @@ class Services {
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_6.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_7.jpg", projectName: "karima",     hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_8.jpg", projectName: "jarmila",    hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/logo_9.jpg", projectName: "",           hasBrightBG: false, hasBrightSubject: false},
       ]
     },
 

@@ -1,4 +1,4 @@
-let debug = false
+let debug = true
 
 const state = {
   mobile: window.innerWidth <= 720,
