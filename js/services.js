@@ -4,16 +4,23 @@ class Services {
       key: "obalovy_design",
       blurb: "Specializujeme se na obaly pro potraviny, nápoje a kosmetiku.",
       description: 
-      `
-      • Grafický návrh nových obalů
-      • Redesign stávajících obalů
-      • Návrh krabiček a prodejních kartonů
-      • Příprava tiskových podkladů pro výrobu`,
+      `Obalíme vaše obaly alobalem abychom je ochránili před útokem mimozemšťanů a reptiliánů.
+      • grafický návrh nových obalů
+      • redesign stávajících obalů
+      • návrh prodejních kartonů a stojanů
+      • příprava tiskových podkladů pro výrobu`,
       examples: [
         {src: "../images/carousel/3d_3.jpg",    projectName: "henna"},
+        {src: "../images/carousel/obal_11.jpg", projectName: "henna"},
         {src: "../images/carousel/3d_2.jpg",    projectName: "karima"},
-        {src: "../images/carousel/3d_4.jpg",    projectName: "agro_jesenice"},
         {src: "../images/carousel/3d_6.jpg",    projectName: "kralovske_marmelady"},
+        {src: "../images/carousel/obal_6.jpg",  projectName: "agro_jesenice", hasBrightBG: true},
+        {src: "../images/carousel/obal_7.jpg",  projectName: "agro_jesenice", hasBrightBG: true},
+        {src: "../images/carousel/obal_8.jpg",  projectName: "vest", hasBrightBG: true},
+        {src: "../images/carousel/obal_9.jpg",  projectName: "vest", hasBrightBG: true},
+        {src: "../images/carousel/obal_5.jpg",  projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/obal_10.jpg", projectName: "la_food", hasBrightBG: true},
+        {src: "../images/carousel/obal_12.jpg", projectName: "", hasBrightBG: true},
       ]
     },
 
@@ -24,15 +31,16 @@ class Services {
       blurb: "Navrhneme etikety pro váš produkt",
       description:
       `Navrhneme etiketu pro váš produkt, nebo sérii produktů.
-      • etikety na krabičky, lahve, tuby a balící sáčky
-      • etikety pro různé produktové řady
-      • vytvoříme vám vizualizace produktů před jejich realizací`,
+      • etikety na láhve
+      • dárkové krabičky
+      • + případná vizualizace produktů`,
       examples: [
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_2.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_4.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_5.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/obal_4.jpg",  projectName: "kovacs", hasBrightBG: true},
+        {src: "../images/carousel/etik_6.jpg",  projectName: "kovacs", hasBrightBG: true},
         {src: "../images/carousel/obal_3.jpg",  projectName: "jarmila", hasBrightBG: true},
         {src: "../images/carousel/etik_1.jpg",  projectName: "napacider", hasBrightBG: true},
         {src: "../images/carousel/etik_3.jpg",  projectName: "corston_and_william", hasBrightBG: false},
@@ -46,16 +54,16 @@ class Services {
       blurb: "Navrhneme letáky, katalogy, plakáty a další...",
       description: 
       `Vytvoříme grafický návrh a správně připravíme tisková data.
-      • firemní tiskoviny - nabídkové listy, katalogy, vizitky atd.
+      • firemní tiskoviny - katalogy, nabídkové listy, vizitky atd.
       • inzeráty, billboardy, plakáty
-      • grafické logo manuály`,
+      • prezentační stánky, polepy vozidel, POS materiály`,
       examples: [
-        {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/graf_4.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/prod_9.jpg", projectName: "la_food",    hasBrightBG: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
-        {src: "../images/carousel/graf_5.jpg", projectName: "la_food",    hasBrightBG: true, hasBrightSubject: true, tooltip: "Katalog pro produktovou řadu MENU GOLD." },
-        {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
-        {src: "../images/carousel/graf_2.jpg", projectName: "napacider",  hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_1.jpg", projectName: "adria_gold",     hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_4.jpg", projectName: "adria_gold",     hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/prod_9.jpg", projectName: "la_food",        hasBrightBG: true, /* tooltip: "Katalog pro produktovou řadu MENU GOLD." */ },
+        {src: "../images/carousel/graf_5.jpg", projectName: "la_food",        hasBrightBG: true, hasBrightSubject: true, /* tooltip: "Katalog pro produktovou řadu MENU GOLD." */ },
+        {src: "../images/carousel/graf_3.jpg", projectName: "kovacs",         hasBrightBG: true, hasBrightSubject: true},
+        {src: "../images/carousel/graf_2.jpg", projectName: "napacider",      hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_6.jpg", projectName: "agro_jesenice",  hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/graf_7.jpg", projectName: "agro_jesenice",  hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", tooltip: "InZlin - Zlínský lifestylový magazín.", hasBrightBG: true, hasBrightSubject: true},
@@ -68,10 +76,10 @@ class Services {
       key: "logo_design",
       blurb: "Vytvoříme logo pro vaši firmu či produkt.",
       description: 
-      `Navrhneme logo pro vaši firmu či produkt.
-      • Navrhneme vám nové logo a identitu
-      • Zmodernizujeme vaše staré logo nebo celou identitu
-      • Vytvoříme loga pro nové produkty a produktové řady`,
+      `Navrhneme vám nebo zmodernizujeme:
+      • firemní logo a identitu
+      • produktové logo
+      • logo vaší akce`,
       examples: [
         {src: "../images/carousel/logo_1.jpg", projectName: "kovacs",     hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/logo_2.jpg", projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
@@ -88,11 +96,11 @@ class Services {
       key: "produkce",
       blurb: "Vyrobíme cokoliv - tiskoviny, POP a POS materiály...",
       description: 
-      `Zajistit kompletní produkci. Rychle a spolehlivě vyrobíme a dodáme všechny navržené materiály.
+      `Dokážeme pro vás zajistit kompletní produkci.
       • tiskoviny - katalogy, vizitky, plakáty
       • roll-upy, ochutnávkové stolky, displeje, polepy
       • polepy firemních vozidel, prodejen
-      • navigační prvky - směrovky, cedule, plachty...`,
+      • navigační prvky - směrovky, cedule, plachty…`,
       examples: [
         {src: "../images/carousel/prod_3.jpg", projectName: "$out", url: "https://inzlin.info", tooltip: "InZlin - Zlínský lifestylový magazín.", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/prod_1.jpg", projectName: "adria_gold", tooltip: "Velké zmrzlinové kornouty před curkárnu.", hasBrightBG: true},
@@ -126,11 +134,10 @@ class Services {
       key: "3d_vizualizace",
       blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt.",
       description: 
-      `Vytvoříme 3D produktové vizualizace:
-      • do katalogů, 
-      • pro web,
-      • na polepy budov, aut, výloh
-      `,
+      `Připravíme vizualizace vašich produktů.
+      • do katalogů
+      • pro web a propagaci
+      • pro další aplikace - roll-upy, firemní auta, stánky`,
       examples: [
         {src: "images/carousel/3d_6.jpg", projectName: "kralovske_marmelady"},
         {src: "images/carousel/3d_2.jpg", projectName: "karima"},
@@ -146,10 +153,9 @@ class Services {
       key: "ilustrace",
       blurb: "Ozdobíme váš projekt originálními ilustracemi.",
       description: 
-      `Vytvoříme vám originální ilustrace pro váš projekt.
-      • navrhneme ilustrovaný plakát
-      • digitální ilustrace - lineart, airbrush, comicbook-style, vektorová ilustrace, 3D art
-      • analogové ilustrace - akvarel, tužka, perokresba či pastelová ilustrace`,
+      `Vytvoříme originální ilustrace pro váš projekt.
+      • digitální ilustrace - lineart, airbrush, comicbook-style, corporate
+      • analogové ilustrace - akvarel, tužka, perokresba`,
       examples: [
         {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
         {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true,  tooltip: "Ilustrace pro etiketu vína"},

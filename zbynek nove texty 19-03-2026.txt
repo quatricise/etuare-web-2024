@@ -1,18 +1,21 @@
 UVODNÍ STRANA
 
+✅
 etuare - logo
 grafické a produkční studio
 
+❌
 Vytváříme designová řešení na míru. Vy nám řeknete co potřebujete, a my navrhneme odpovídající řešení.
-
-//pozn. š.: "You hire us for our opinions but also simply our ability to create things. We can offer design guidance or just get the job done. It is ultimately up to you, because what we offer is a service."
 
 „Tvoříme sny o dobrém jídle a pití.“ — Praotec Etuare  ????
 
 Co pro vás můžeme udělat?
 Nabízíme škálů řešení od návrhu designu obalů a etiket, katalogů či webových stránek až po kompletní řešení firemní identity.
 
-button: Více zde ->  odkaz na Naše služby
+[Button] Více zde ->  odkaz na Naše služby
+
+
+
 
 
 
@@ -34,7 +37,7 @@ Design etiket
 ???
 • etikety na láhve
 • dárkové krabičky
-• vytvoříme vám i vizualizace produktů
+• + případná vizualizace produktů
 
 Grafický design
 ???
@@ -42,12 +45,14 @@ Grafický design
 • inzeráty, billboardy, plakáty
 • prezentační stánky, polepy vozidel, POS materiály
 
+✅
 Loga a identita
 Navrhneme vám nebo zmodernizujeme
 •  firemní logo a identitu
 •  produktové logo
 •  logo vaší akce
 
+✅
 Produkce
 Dokážeme pro vás zajistit kompletní produkci.
 • tiskoviny - katalogy, vizitky, plakáty
@@ -55,12 +60,14 @@ Dokážeme pro vás zajistit kompletní produkci.
 • polepy firemních vozidel, prodejen
 • navigační prvky - směrovky, cedule, plachty…
 
+✅
 3D vizualizace
 Připravíme vizualizace vašich produktů
 • do katalogů
 • pro web a propagaci
 • pro další aplikace - roll-upy, firemní auta, stánky
 
+✅
 Ilustrace
 Vytvoříme vám originální ilustrace pro váš projekt nebo ilustrovaný plakát
 • digitální ilustrace - lineart, airbrush, comicbook-style, vektorová ilustrace, 3D art
@@ -70,7 +77,11 @@ Vytvoříme vám originální ilustrace pro váš projekt nebo ilustrovaný plak
 Neděláme všechno, ale...
 Dokážeme zajistit spolupráci s fotografy, ilustrátory, programátory, tiskárnami a dále; vše podle potřeb projektu, abyste měli jistotu, že se vše dokončí včas a správně.
 
-button: Více o nás ->
+[button] Více o nás ->
+
+
+
+
 
 
 O NÁS
@@ -91,4 +102,4 @@ Tomáš + Iva
 
 Naši klienti
 
-button: Ukázky naší práce ->  odkaz na úvod
+[Button] Ukázky naší práce ->  odkaz na úvod

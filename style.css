@@ -1124,7 +1124,7 @@ p.footer--description {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 720px;
+  max-width: 600px;
   text-align: justify;
   text-justify: distribute;
   hyphens: auto;
