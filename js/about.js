@@ -3,7 +3,7 @@ class Person {
     "Zbyněk Trvaj": {
       role: "employee",
       filename: "zbynek.jpg",
-      description: "Grafika, obalový design, DTP, marketing",
+      description: "Obalový design a grafika",
       portfolioLink: "",
     },
     "Štěpán Trvaj": {

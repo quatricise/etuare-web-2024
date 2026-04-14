@@ -1175,7 +1175,7 @@ p.footer--description {
 /* Page services - SERVICE CARD */
 
 :root {
-  --service-card--width: min(1280px, 100vw);
+  --service-card--width: min(1280px, 100vw - 20px);
   --service-card--height: calc(var(--service-card--width) / 2.2);
 }
 
@@ -1921,7 +1921,9 @@ p.footer--description {
 }
 
 .project--video {
-  width: 50%;
+  width: 100%;
+  max-height: 84vh;
+  object-fit: contain;
 }
 
 .lightbox {
@@ -1963,6 +1965,10 @@ p.footer--description {
 /* TABLET LAYOUT */
 
 @media screen and (max-width: 1100px) {
+
+  :root {
+    --service-card--width: calc(100vw - 20px);
+  }
 
   .navlink {
     width: 100px;

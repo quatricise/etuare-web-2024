@@ -3,8 +3,8 @@ class Services {
     "Obalový design": {
       key: "obalovy_design",
       blurb: "Specializujeme se na obaly pro potraviny, nápoje a kosmetiku.",
-      description: 
-      `Obalíme vaše obaly alobalem abychom je ochránili před útokem mimozemšťanů a reptiliánů.
+      description:
+      `Navrhneme design pro vaše obaly.
       • grafický návrh nových obalů
       • redesign stávajících obalů
       • návrh prodejních kartonů a stojanů
@@ -21,6 +21,7 @@ class Services {
         {src: "../images/carousel/obal_5.jpg",  projectName: "adria_gold", hasBrightBG: true, hasBrightSubject: true},
         {src: "../images/carousel/obal_10.jpg", projectName: "la_food", hasBrightBG: true},
         {src: "../images/carousel/obal_12.jpg", projectName: "", hasBrightBG: true},
+        {src: "../images/carousel/obal_13.jpg", projectName: "", hasBrightBG: false},
       ]
     },
 
@@ -33,7 +34,7 @@ class Services {
       `Navrhneme etiketu pro váš produkt, nebo sérii produktů.
       • etikety na láhve
       • dárkové krabičky
-      • + případná vizualizace produktů`,
+      • vizualizace produktů`,
       examples: [
         {src: "../images/carousel/obal_2.jpg",  projectName: "martenz", hasBrightBG: true},
         {src: "../images/carousel/etik_2.jpg",  projectName: "martenz", hasBrightBG: true},
@@ -53,7 +54,7 @@ class Services {
       key: "graficky_design",
       blurb: "Navrhneme letáky, katalogy, plakáty a další...",
       description: 
-      `Vytvoříme grafický návrh a správně připravíme tisková data.
+      `Vytvoříme grafický návrh a připravíme tisková data.
       • firemní tiskoviny - katalogy, nabídkové listy, vizitky atd.
       • inzeráty, billboardy, plakáty
       • prezentační stánky, polepy vozidel, POS materiály`,
@@ -76,7 +77,7 @@ class Services {
       key: "logo_design",
       blurb: "Vytvoříme logo pro vaši firmu či produkt.",
       description: 
-      `Navrhneme vám nebo zmodernizujeme:
+      `Navrhneme vám nebo zmodernizujeme
       • firemní logo a identitu
       • produktové logo
       • logo vaší akce`,
@@ -134,7 +135,7 @@ class Services {
       key: "3d_vizualizace",
       blurb: "Vytvoříme 3D vizualizace na míru pro jakýkoliv produkt.",
       description: 
-      `Připravíme vizualizace vašich produktů.
+      `Připravíme vizualizace vašich produktů
       • do katalogů
       • pro web a propagaci
       • pro další aplikace - roll-upy, firemní auta, stánky`,
@@ -155,7 +156,7 @@ class Services {
       description: 
       `Vytvoříme originální ilustrace pro váš projekt.
       • digitální ilustrace - lineart, airbrush, comicbook-style, corporate
-      • analogové ilustrace - akvarel, tužka, perokresba`,
+      • analogové ilustrace - akvarel, tužka, pastel, perokresba`,
       examples: [
         {src: "images/carousel/ilu_6.jpg",  projectName: "kralovske_marmelady", hasBrightBG: true,  tooltip: "Ilustrace pro značku marmelád"},
         {src: "images/carousel/ilu_4.jpg",  projectName: "kovacs",              hasBrightBG: true,  tooltip: "Ilustrace pro etiketu vína"},

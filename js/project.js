@@ -49,6 +49,7 @@ class Project {
       label.append(labelBorder)
 
 
+
       if(object.t === "heading") {
         const h = Create("h2", {c: "project--sub-heading", t: object.h})
         container.append(h)
@@ -166,6 +167,11 @@ class Project {
         /* add label */
         if(object.l) container.append(label)
       }
+
+      if(object.c !== undefined) {
+        container.style.backgroundColor = object.c
+      }
+
 
       /* THIS HAPPENS FOR EVERY BLOCK */
       content.append(container)
@@ -498,6 +504,15 @@ class Project {
           d: "column",
           f: ["hranolky_light.jpg", "hranolky_dark.jpg"]
         },
+        {
+          t: "heading",
+          h: "Polep kamionu",
+        },
+        {
+          t: "image",
+          d: "column",
+          f: ["kamion.jpg"]
+        },
       ],
     },
 
@@ -651,13 +666,15 @@ class Project {
     "napacider": {
       featured: true, brightOnHover: false,
       titleShort: "Napa cider",
-      title: "Napa cider - Řemeslný cider z Moravy",
+      title: "Napa cider",
       descriptionShort: "Vizuální identita pro řemeslný cider",
       description: "Napa cider je příjemné alkoholické letní občerstvení. Osvěžující dávka ovocné chuti, nic komplikovaného.  Skvělý pro posezení ve dvou na zahradě i večírek s přáteli. \n \n Pro Napa cider jsme dělali všechno, vlastně i ten cider, do kterého se pan Zbyněk pustil ve volném čase, když zrovna neměl co na práci.",
       content: [
         {
-          t: "image",
-          f: ["logo.png"],
+          t: "image_2",
+          l: "",
+          d: "column",
+          f: ["product_photo_sunny.jpg", "product_photo_studio.jpg"]
         },
         {
           t: "image_2",
@@ -680,6 +697,7 @@ class Project {
         },
         {
           t: "video",
+          c: "white",
           l: "Reklamní 'reels' video pro upoutání pozornosti, použití je možné na FB i Instagramu.",
           f: "video.mp4"
         },
@@ -803,6 +821,24 @@ class Project {
           o: {gap: "2px"},
           f: ["katalog_retail_1.jpg", "katalog_retail_2.jpg"],
           l: "Katalog pro retail/koncové zákazníky",
+        },
+        {
+          t: "heading",
+          h: "Další materiály"
+        },
+        {
+          t: "image_2",
+          d: "column",
+          o: {gap: "2px"},
+          f: ["kamion_bok_ryze.jpg", "kamion_bok_lusteniny.jpg"],
+          l: "",
+        },
+        {
+          t: "image_2",
+          d: "row",
+          o: {gap: "2px"},
+          f: ["stanek_2026_1.jpg", "stanek_2026_2.jpg"],
+          l: "",
         },
       ]
     },
